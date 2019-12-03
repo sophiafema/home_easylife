@@ -2,17 +2,67 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btnHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/btnMainLogIn"
+        android:layout_width="127dp"
+        android:layout_height="53dp"
+        android:background="@android:color/darker_gray"
+        android:bufferType="spannable"
+        android:lineSpacingExtra="10sp"
+        android:orientation="horizontal"
+        android:text="Log In"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <EditText
+        android:id="@+id/eTMainName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hallo ich bin anjacrypto!"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/eTMainPasswort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Passwort"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.586" />
+
+    <TextView
+        android:id="@+id/tVMainInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anzahl fehlerhafter Anmeldeversuche: "
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.808" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
