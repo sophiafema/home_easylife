@@ -32,8 +32,17 @@ public class Home extends AppCompatActivity {
         tVHomeKitchen = (TextView) findViewById(R.id.tVHomeKitchen);
         tVHomeBath = (TextView) findViewById(R.id.tVHomeBath);
 
+        iVHomeLiving = (ImageView) findViewById(R.id.iVHomeLiving);
+        iVHomeSleeping = (ImageView) findViewById(R.id.iVHomeSleeping);
+        iVHomeHallway = (ImageView) findViewById(R.id.iVHomeHallway);
+        iVHomeKitchen = (ImageView) findViewById(R.id.iVHomeKitchen);
+        iVHomeBath = (ImageView) findViewById(R.id.iVHomeBath);
+
+
 
 
 
     }
+
+
 }
