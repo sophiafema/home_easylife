@@ -3,10 +3,11 @@ package com.sophiafema.home_easylife;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class PlainRoom extends AppCompatActivity {
+public class PlainRoom extends AppCompatActivity implements View.OnClickListener {
 
     ImageView iVPlainRoomMenue;
     TextView tVPlainRoomMenue;
@@ -26,6 +27,8 @@ public class PlainRoom extends AppCompatActivity {
 
         iVPlainRoomMenue = (ImageView) findViewById(R.id.iVPlainRoomMenue);
         tVPlainRoomMenue = (TextView) findViewById(R.id.tVPlainRoomMenue);
+        tVPlainRoomMenue.setOnClickListener(this);
+
 
         iVPlainRoomHallway = (ImageView) findViewById(R.id.iVPlainRoomHallway);
         iVPlainRoomLiving = (ImageView) findViewById(R.id.iVPlainRoomLiving);
@@ -34,7 +37,10 @@ public class PlainRoom extends AppCompatActivity {
         iVPlainRoomBath = (ImageView) findViewById(R.id.iVPlainRoomBath);
 
 
+    }
 
-
+    @Override
+    public void onClick(View view) {
+        this.finish();
     }
 }

@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PlainRoom"></activity>
+        <activity android:name=".Events"></activity>
+        <activity android:name=".General" />
+        <activity android:name=".PlainRoom" />
         <activity android:name=".LogIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
