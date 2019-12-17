@@ -61,8 +61,10 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         {
             switch(position)
             {
-                case 0: return new Fragment_Light_Kitchen();
-                case 1: return new Fragment_Termostat();
+                case 0: return new Fragment_Light();
+                case 1: return new Fragment_Thermostat();
+                case 2: return new Fragment_Jalousie();
+                case 3: return new Fragment_Music();
 
             }
             return null;
@@ -71,7 +73,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         @Override
         public int getCount()
         {
-            return 2;
+            return 4;
         }
     }
 }

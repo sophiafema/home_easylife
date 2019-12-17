@@ -7,10 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 
-public class Fragment_Light_Kitchen extends Fragment
+public class Fragment_Light extends Fragment
 {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
@@ -20,4 +19,15 @@ public class Fragment_Light_Kitchen extends Fragment
 
     }
 
+
+    public Fragment getItem(int position)
+    {
+        switch(position)
+        {
+            case 0: return new Fragment_Light();
+            case 1: return new Fragment_Thermostat();
+
+        }
+        return null;
+    }
 }
