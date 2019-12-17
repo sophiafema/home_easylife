@@ -1,6 +1,10 @@
 package com.sophiafema.home_easylife;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +22,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     ImageView iVPlainRoomSleeping;
     ImageView iVPlainRoomBath;
 
-
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +40,38 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         iVPlainRoomSleeping = (ImageView) findViewById(R.id.iVPlainRoomSleeping);
         iVPlainRoomBath = (ImageView) findViewById(R.id.iVPlainRoomBath);
 
-
+        viewPager = (ViewPager)findViewById(R.id.pager);
+        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
     }
 
     @Override
     public void onClick(View view) {
         this.finish();
+    }
+
+    private class PagerAdapter extends FragmentPagerAdapter
+    {
+        public PagerAdapter(FragmentManager fm)
+        {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position)
+        {
+            switch(position)
+            {
+                case 0: return new Fragment_Light_Kitchen();
+                case 1: return new Fragment_Termostat();
+
+            }
+            return null;
+        }
+
+        @Override
+        public int getCount()
+        {
+            return 2;
+        }
     }
 }
