@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Home">
 
     <ImageView
@@ -102,6 +102,7 @@
         android:layout_width="101dp"
         android:layout_height="19dp"
         android:text="Wohnzimmer"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeLiving"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeLiving"
         app:layout_constraintHorizontal_bias="0.491"
@@ -114,6 +115,7 @@
         android:layout_width="61dp"
         android:layout_height="20dp"
         android:text="Küche"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeKitchen"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeKitchen"
         app:layout_constraintHorizontal_bias="0.491"
@@ -126,6 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Flur"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeHallway"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeHallway"
         app:layout_constraintHorizontal_bias="0.776"
@@ -138,6 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Schlafzimmer"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeSleeping"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeSleeping"
         app:layout_constraintHorizontal_bias="0.475"
@@ -150,11 +154,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bad"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeBath"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeBath"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="@+id/iVHomeBath"
-        app:layout_constraintTop_toBottomOf="@+id/iVHomeBath"
+        app:layout_constraintTop_toTopOf="@+id/iVHomeBath"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -162,6 +166,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zentralsteuerung"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeGeneral"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeGeneral"
         app:layout_constraintHorizontal_bias="0.419"
@@ -174,6 +179,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ereignisse"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeEvents"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeEvents"
         app:layout_constraintHorizontal_bias="0.545"

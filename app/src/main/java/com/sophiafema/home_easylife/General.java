@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class General extends AppCompatActivity implements View.OnClickListener{
@@ -14,6 +15,14 @@ public class General extends AppCompatActivity implements View.OnClickListener{
 
     TextView tVGeneralHeading;
 
+    ImageView iVGeneralLight;
+    ImageView iVGeneralTemperature;
+    ImageView iVGeneralShutters;
+    ImageView iVGeneralMusic;
+
+    Switch swGeneralLight;
+    Switch swGeneralTemperature;
+    Switch swGeneralMusic;
 
 
 
@@ -27,6 +36,17 @@ public class General extends AppCompatActivity implements View.OnClickListener{
         tVGeneralMenue.setOnClickListener(this);
 
         tVGeneralHeading = (TextView) findViewById(R.id.tVGeneralHeading);
+
+        iVGeneralLight = (ImageView) findViewById(R.id.iVGeneralLight);
+        iVGeneralTemperature = (ImageView) findViewById(R.id.iVGeneralTemperature);
+        iVGeneralShutters = (ImageView) findViewById(R.id.iVGeneralShutters);
+        iVGeneralMusic = (ImageView) findViewById(R.id.iVGeneralMusic);
+
+        swGeneralLight = (Switch) findViewById(R.id.swGeneralLight);
+        swGeneralTemperature = (Switch) findViewById(R.id.swGeneralTemperature);
+        swGeneralMusic = (Switch) findViewById(R.id.swGeneralMusic);
+
+
     }
 
     @Override
