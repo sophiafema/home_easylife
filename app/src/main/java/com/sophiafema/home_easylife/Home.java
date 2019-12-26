@@ -8,6 +8,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sophiafema.home_easylife.database.DatabaseAdapter;
+import com.sophiafema.home_easylife.models.Light;
+import com.sophiafema.home_easylife.models.Music;
+import com.sophiafema.home_easylife.models.Room;
+import com.sophiafema.home_easylife.models.Shutter;
+import com.sophiafema.home_easylife.models.Thermostat;
+
+import java.util.ArrayList;
+
 public class Home extends AppCompatActivity implements View.OnClickListener {
 
     TextView tVHomeLiving;
@@ -27,6 +36,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     ImageView iVHomeBath;
     ImageView iVHomeGeneral;
     ImageView iVHomeEvents;
+
+    DatabaseAdapter db;
+    Room r;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +69,21 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         iVHomeGeneral .setOnClickListener(this);
         iVHomeEvents = (ImageView) findViewById(R.id.iVHomeEvents);
         iVHomeEvents .setOnClickListener(this);
+
+
+        //Datenbank Test hinzufuegen von Raum
+        db = new DatabaseAdapter();
+        ArrayList<Light> l = new ArrayList<>();
+        l.add(new Light(0, "esstisch", 3, 4, true));
+        l.add(new Light(1, "sofa", 3, 4, false));
+        Thermostat t = new Thermostat(0, "thermo", 30, true);
+        ArrayList<Shutter> lo = new ArrayList<>();
+        lo.add(new Shutter(0, "east", 40));
+        lo.add(new Shutter(0, "west", 50));
+        Music m = new Music(0, "music", 4, true, false);
+        r = new Room("wohnzimmer", 0, l, t, lo,m);
+        db.setRoom(r.getName(), r);
+
     }
 
     @Override
@@ -74,6 +101,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         }
         else if(view.getId() == R.id.iVHomeSettings)
         {
+
+
             Intent intent2 = new Intent(this, Settings.class);
             startActivity(intent2);
         }
@@ -83,6 +112,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         {
             Intent intent3 = new Intent(this, PlainRoom.class);
             startActivity(intent3);
+
+            //Datenbank Testabfrage
+            System.out.println("room: " + db.getRoom(r.getName()).getName());
+            System.out.println(db.getThermostat(r.getName()).getTemperature());
+
+
         }
     }
 
