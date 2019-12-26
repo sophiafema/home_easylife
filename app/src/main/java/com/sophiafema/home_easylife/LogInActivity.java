@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class LogIn extends AppCompatActivity{
+public class LogInActivity extends AppCompatActivity{
 
     private EditText eTMainName;
     private EditText eTMainPasswort;
@@ -48,7 +48,7 @@ public class LogIn extends AppCompatActivity{
     {
         if((nutzerName.equals("a")) && (nutzerPasswort.equals("1")))
         {
-            Intent intent = new Intent(LogIn.this, Home.class);
+            Intent intent = new Intent(LogInActivity.this, Home.class);
             startActivity(intent);
         }
         else

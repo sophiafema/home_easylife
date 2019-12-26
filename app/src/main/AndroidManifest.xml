@@ -12,7 +12,7 @@
         <activity android:name=".Events"></activity>
         <activity android:name=".General" />
         <activity android:name=".PlainRoom" />
-        <activity android:name=".LogIn">
+        <activity android:name=".LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

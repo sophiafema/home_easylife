@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "647487707935",
+    "firebase_url": "https://homeeasylife-ce92a.firebaseio.com",
+    "project_id": "homeeasylife-ce92a",
+    "storage_bucket": "homeeasylife-ce92a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647487707935:android:6cb4f3dcb756d20ba42e2a",
+        "android_client_info": {
+          "package_name": "com.sophiafema.home_easylife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647487707935-7r27ngphno53srapnos9jcmq73r98ire.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sophiafema.home_easylife",
+            "certificate_hash": "32b71659468c74c737721fd246cc6a12bfdf8d5a"
+          }
+        },
+        {
+          "client_id": "647487707935-fejjvjvnjjn6anvr2req9vb6qq2q6l57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdGAD8dBRGjTZ8OlaGXGnMYqHk8BsC3xE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647487707935-fejjvjvnjjn6anvr2req9vb6qq2q6l57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
