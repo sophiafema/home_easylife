@@ -19,6 +19,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     TextView tVHomeEvents;
 
 
+    ImageView iVHomeSettings;
     ImageView iVHomeLiving;
     ImageView iVHomeSleeping;
     ImageView iVHomeHallway;
@@ -40,6 +41,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         tVHomeGeneral = (TextView) findViewById(R.id.tVHomeGeneral);
         tVHomeEvents = (TextView) findViewById(R.id.tVHomeEvents);
 
+        iVHomeSettings = (ImageView) findViewById(R.id.iVHomeSettings);
+        iVHomeSettings .setOnClickListener(this);
         iVHomeLiving = (ImageView) findViewById(R.id.iVHomeLiving);
         iVHomeLiving .setOnClickListener(this);
         iVHomeSleeping = (ImageView) findViewById(R.id.iVHomeSleeping);
@@ -64,12 +67,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             Intent intent1 = new Intent(this, General.class);
             startActivity(intent1);
         }
-
         else if(view.getId() == R.id.iVHomeEvents)
         {
             Intent intent2 = new Intent(this, Events.class);
             startActivity(intent2);
         }
+        else if(view.getId() == R.id.iVHomeSettings)
+        {
+            Intent intent2 = new Intent(this, Settings.class);
+            startActivity(intent2);
+        }
+
 
         else
         {

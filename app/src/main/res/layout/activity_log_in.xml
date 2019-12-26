@@ -8,6 +8,15 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".LogInActivity">
 
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abgemeldet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <Button
         android:id="@+id/btnMainLogIn"
         android:layout_width="127dp"
@@ -31,8 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         android:backgroundTint="@android:color/background_light"
@@ -47,7 +56,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Passwort"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         android:backgroundTint="@android:color/background_light"
@@ -57,16 +66,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.586" />
 
+
     <TextView
-        android:id="@+id/tVMainInfo"
+        android:id="@+id/btnMainCreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Anzahl fehlerhafter Anmeldeversuche: "
-        android:textColor="@android:color/background_light"
+        android:text="@string/create_account"
+        android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.808" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMainLogIn"
+        app:layout_constraintVertical_bias="0.188" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
