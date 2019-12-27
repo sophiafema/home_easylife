@@ -114,6 +114,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             startActivity(intent3);
 
             //Datenbank Testabfrage
+
             System.out.println("room: " + db.getRoom(r.getName()).getName());
             System.out.println(db.getThermostat(r.getName()).getTemperature());
 

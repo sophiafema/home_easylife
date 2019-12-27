@@ -170,6 +170,19 @@ public class DatabaseAdapter {
 
     public Room getRoom(String room) {
 
+        Room r = null;
+        try {
+            r = (Room) new Database().execute(new Object[] {"room", userId, room}).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return r;
+    }
+
+    public Room getSRoom(String room) {
+
         SimpleRoom d = null;
         try {
             d = (SimpleRoom) new Database().execute(new Object[] {"room", userId, room}).get();
@@ -233,7 +246,7 @@ public class DatabaseAdapter {
         ArrayList<Shutter> l = new ArrayList<>();
         try {
             Object obj = new Database().execute(new Object[] {"functions", userId, room, Database.SHUTTER}).get();
-            System.out.println("Object " +obj);
+            //System.out.println("Object " +obj);
             if (obj instanceof ArrayList<?>) {
                 // Get the List.
                 ArrayList<?> al = (ArrayList<?>) obj;
@@ -406,7 +419,7 @@ public class DatabaseAdapter {
         System.out.println(lightIds);
         for(String lightId : lightIds) {
             Light l = getLight(roomId, lightId);
-            System.out.println(lightId);
+            //System.out.println(lightId);
             if(l.isOn()) {
                 return true;
             }

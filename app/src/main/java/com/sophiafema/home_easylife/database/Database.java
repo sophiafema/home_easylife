@@ -17,6 +17,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.sophiafema.home_easylife.models.Event;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Music;
+import com.sophiafema.home_easylife.models.Room;
 import com.sophiafema.home_easylife.models.Shutter;
 import com.sophiafema.home_easylife.models.SimpleRoom;
 import com.sophiafema.home_easylife.models.Thermostat;
@@ -152,7 +153,7 @@ public class Database extends AsyncTask<Object, Void, Object> {
         }
         return o;
     }
-    public SimpleRoom getRoom(String userId, String room) throws InterruptedException {
+    public SimpleRoom getSRoom(String userId, String room) throws InterruptedException {
         DocumentReference docRef = getDocumentReferenceRoom(userId, room);
 
         Task<DocumentSnapshot> task = docRef.get();
@@ -163,6 +164,67 @@ public class Database extends AsyncTask<Object, Void, Object> {
             e.printStackTrace();
         }
         return (SimpleRoom) o;
+    }
+
+    public Room getRoom(String userId, String room) throws InterruptedException {
+        DocumentReference docRef = getDocumentReferenceRoom(userId, room);
+
+        Task<DocumentSnapshot> task = docRef.get();
+        try {
+            DocumentSnapshot doc = Tasks.await(task);
+            SimpleRoom s = doc.toObject(SimpleRoom.class);
+            CollectionReference colRef = getCollectionReferenceFunction(userId, room, LIGHT);
+            Room r = new Room();
+            r.setId(s.getId());
+            r.setName(s.getName());
+            final ArrayList<Light> lights = new ArrayList<>();
+            colRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        lights.add((Light) getObjectFromSnapshot(LIGHT, document));
+                    }
+                }
+            });
+            r.setLights(lights);
+            colRef = getCollectionReferenceFunction(userId, room, SHUTTER);
+            final ArrayList<Shutter> shutter = new ArrayList<>();
+            colRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        shutter.add((Shutter) getObjectFromSnapshot(SHUTTER, document));
+                    }
+                }
+            });
+            r.setShutters(shutter);
+
+            DocumentReference docFunc = getDocumentReferenceFunction(userId, room, THERMOSTAT, THERMOSTAT);
+            docFunc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    o = getObjectFromSnapshot(THERMOSTAT, documentSnapshot);
+                }
+            });
+            r.setThermo((Thermostat) o);
+
+            docFunc = getDocumentReferenceFunction(userId, room, MUSIC, MUSIC);
+            docFunc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    o = getObjectFromSnapshot(MUSIC, documentSnapshot);
+                }
+            });
+            r.setMusic((Music) o);
+
+            o = r;
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return (Room) o;
     }
 
 
