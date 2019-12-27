@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#121212</color>
     <color name="colorAccent">#2BDBDB</color>
 
+    <!-- picker colors -->
+    <color name="colorText">#ffffff</color>
+    <color name="colorSelectedWheel">#FFB200</color>
+    <color name="colorDisabledWheel">#5C5C5C</color>
+
     <!-- shutter colors -->
     <color name="shutterParts">#818181</color>
     <color name="shutterHandle">#FAF9F9</color>
