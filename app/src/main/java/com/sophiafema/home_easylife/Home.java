@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
@@ -37,6 +38,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     ImageView iVHomeGeneral;
     ImageView iVHomeEvents;
 
+    private ProgressBar spinner;
     DatabaseAdapter db;
     Room r;
 
@@ -44,6 +46,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
 
         tVHomeLiving = (TextView) findViewById(R.id.tVHomeLiving);
         tVHomeSleeping = (TextView) findViewById(R.id.tVHomeSleeping);
@@ -110,14 +115,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
         else
         {
-            Intent intent3 = new Intent(this, PlainRoom.class);
-            startActivity(intent3);
+            spinner.setVisibility(View.VISIBLE);
 
             //Datenbank Testabfrage
 
             System.out.println("room: " + db.getRoom(r.getName()).getName());
             System.out.println(db.getThermostat(r.getName()).getTemperature());
 
+            Intent intent3 = new Intent(this, PlainRoom.class);
+            startActivity(intent3);
 
         }
     }
