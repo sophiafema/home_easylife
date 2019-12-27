@@ -24,6 +24,13 @@ public class General extends AppCompatActivity implements View.OnClickListener{
     Switch swGeneralTemperature;
     Switch swGeneralMusic;
 
+    ImageView iVGeneralShuttersUp;
+    ImageView iVGeneralShuttersDown;
+
+    TextView tVGeneralLight;
+    TextView tVGeneralTemperature;
+    TextView tVGeneralMusic;
+    TextView tVGeneralShutters;
 
 
     @Override
@@ -46,7 +53,13 @@ public class General extends AppCompatActivity implements View.OnClickListener{
         swGeneralTemperature = (Switch) findViewById(R.id.swGeneralTemperature);
         swGeneralMusic = (Switch) findViewById(R.id.swGeneralMusic);
 
+        iVGeneralShuttersUp = (ImageView) findViewById(R.id.iVGeneralShuttersUp);
+        iVGeneralShuttersDown = (ImageView) findViewById(R.id.iVGeneralShuttersDown);
 
+        tVGeneralLight = (TextView) findViewById(R.id.tVGeneralLight);
+        tVGeneralTemperature = (TextView) findViewById(R.id.tVGeneralTemperature);
+        tVGeneralMusic = (TextView) findViewById(R.id.tVGeneralMusic);
+        tVGeneralShutters = (TextView) findViewById(R.id.tVGeneralShutters);
     }
 
     @Override
