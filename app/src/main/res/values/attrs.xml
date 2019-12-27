@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="Shutters">
+        <attr name="window_width" format="dimension" />
+        <attr name="window_border_thickness" format="dimension" />
+        <attr name="shutter_part_amount" format="integer" />
+        <attr name="shutter_gap_percent_of_part" format="integer" />
+        <attr name="android:src" />
+    </declare-styleable>
+
+</resources>
