@@ -86,7 +86,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         lo.add(new Shutter(0, "east", 40));
         lo.add(new Shutter(0, "west", 50));
         Music m = new Music(0, "music", 4, true, false);
-        r = new Room("wohnzimmer", 0, l, t, lo,m);
+        r = new Room(Util.LIVING, 0, l, t, lo,m);
         db.setRoom(r.getName(), r);
 
     }
@@ -123,6 +123,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             System.out.println(db.getThermostat(r.getName()).getTemperature());
 
             Intent intent3 = new Intent(this, PlainRoom.class);
+            //TODO Raum übergeben --> mit statischen variablen in Util
             startActivity(intent3);
 
         }

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sophiafema.home_easylife.models.Room;
+
 public class PlainRoom extends AppCompatActivity implements View.OnClickListener {
 
     ImageView iVPlainRoomMenue;
@@ -23,6 +25,8 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     ImageView iVPlainRoomBath;
 
     ViewPager viewPager;
+    //TODO Room mit Wert aus Datenbank befüllen
+    Room room;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         tVPlainRoomMenue = (TextView) findViewById(R.id.tVPlainRoomMenue);
         tVPlainRoomMenue.setOnClickListener(this);
 
+        //TODO Onclicklistener hinzufügen: Raumvariable aktualisieren, Hintergrund aktualisieren
 
         iVPlainRoomHallway = (ImageView) findViewById(R.id.iVPlainRoomHallway);
         iVPlainRoomLiving = (ImageView) findViewById(R.id.iVPlainRoomLiving);
@@ -59,6 +64,9 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         @Override
         public Fragment getItem(int position)
         {
+            //TODO in switch position abfrage in welchem raum man ist und je nachdem fragment starten
+            //TODO am sinnvollsten für licht und jalousien für jeden raum ein eigenes fragment
+            //TODO an die fragments die Werte vom Room übergeben
             switch(position)
             {
                 case 0: return new Fragment_Light();
