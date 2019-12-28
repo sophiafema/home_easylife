@@ -18,16 +18,4 @@ public class Fragment_Light extends Fragment
         return light;
 
     }
-
-
-    public Fragment getItem(int position)
-    {
-        switch(position)
-        {
-            case 0: return new Fragment_Light();
-            case 1: return new Fragment_Thermostat();
-
-        }
-        return null;
-    }
 }

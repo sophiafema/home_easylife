@@ -8,7 +8,7 @@
     tools:context=".Fragment_Light" >
 
     <ImageView
-        android:id="@+id/iVFLight1"
+        android:id="@+id/iVFLightKitchen1"
         android:layout_width="66dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_crop"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.662" />
 
     <ImageView
-        android:id="@+id/iVFLight2"
+        android:id="@+id/iVFLightKitchen2"
         android:layout_width="66dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_crop"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.815" />
 
     <ImageView
-        android:id="@+id/iVFLight3"
+        android:id="@+id/iVFLightKitchen3"
         android:layout_width="66dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_crop"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.583" />
 
     <TextView
-        android:id="@+id/tVFJalousie1"
+        android:id="@+id/tVFLightKitchen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.304" />
 
     <Switch
-        android:id="@+id/sFJalousie1"
+        android:id="@+id/sFLightKitchen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

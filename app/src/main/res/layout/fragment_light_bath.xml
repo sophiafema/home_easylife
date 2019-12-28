@@ -8,68 +8,78 @@
     tools:context=".Fragment_Light" >
 
     <ImageView
-        android:id="@+id/iVFJalousie1"
+        android:id="@+id/iVFLightBath1"
         android:layout_width="66dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_crop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598" />
+        app:layout_constraintVertical_bias="0.662" />
 
     <ImageView
-        android:id="@+id/iVFJalousie2"
+        android:id="@+id/iVFLightBath2"
         android:layout_width="66dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_crop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
+        app:layout_constraintVertical_bias="0.815" />
+
+    <ImageView
+        android:id="@+id/iVFLightBath3"
+        android:layout_width="66dp"
+        android:layout_height="64dp"
+        android:src="@android:drawable/ic_menu_crop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583" />
 
     <TextView
-        android:id="@+id/tVFJalousie1"
+        android:id="@+id/tVFLightBath"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="120dp"
-        android:text="Jalousie"
+        android:text="Licht"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.033"
+        app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.304" />
 
     <Switch
-        android:id="@+id/sFJalousie1"
+        android:id="@+id/sFLightBath"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintVertical_bias="0.426" />
 
-    <com.sophiafema.home_easylife.view.Shutters
-        android:id="@+id/shutter"
-        android:layout_width="240dp"
-        android:layout_height="280dp"
-        android:src="@drawable/image_test_2"
+    <com.sophiafema.home_easylife.view.BrightnessPicker
+        android:id="@+id/picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.406"
+        tools:layout_editor_absoluteX="0dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

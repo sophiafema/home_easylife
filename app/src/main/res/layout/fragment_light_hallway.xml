@@ -8,43 +8,43 @@
     tools:context=".Fragment_Light" >
 
     <ImageView
-        android:id="@+id/iVFLightLiving1"
+        android:id="@+id/iVFLightHallway1"
         android:layout_width="66dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_crop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.662" />
 
     <ImageView
-        android:id="@+id/iVFLightLiving2"
+        android:id="@+id/iVFLightHallway2"
         android:layout_width="66dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_crop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.426"
+        app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintVertical_bias="0.815" />
 
     <ImageView
-        android:id="@+id/iVFLightLiving3"
+        android:id="@+id/iVFLightHallway3"
         android:layout_width="66dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_crop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
+        app:layout_constraintVertical_bias="0.583" />
 
     <TextView
-        android:id="@+id/tVFLightLiving"
+        android:id="@+id/tVFLightHallway"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.304" />
 
     <Switch
-        android:id="@+id/sFLightLiving"
+        android:id="@+id/sFLightHallway"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

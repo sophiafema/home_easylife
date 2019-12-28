@@ -18,6 +18,5 @@ public class Fragment_Music extends Fragment
     {
         View music = inflater.inflate(R.layout.fragment_music, container, false);
         return music;
-
     }
 }

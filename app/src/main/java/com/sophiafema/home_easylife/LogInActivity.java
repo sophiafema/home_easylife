@@ -19,6 +19,7 @@ package com.sophiafema.home_easylife;
         import com.google.firebase.auth.FirebaseUser;
         import com.sophiafema.home_easylife.R;
 
+
 public class LogInActivity extends AppCompatActivity implements
         View.OnClickListener {
 

@@ -15,6 +15,5 @@ public class Fragment_Thermostat extends Fragment
     {
         View thermostat = inflater.inflate(R.layout.fragment_thermostat, container, false);
         return thermostat;
-
     }
 }

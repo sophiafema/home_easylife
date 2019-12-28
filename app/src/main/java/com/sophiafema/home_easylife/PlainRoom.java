@@ -6,12 +6,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sophiafema.home_easylife.models.Room;
+
+import static com.sophiafema.home_easylife.Util.HALLWAY;
 
 public class PlainRoom extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,6 +26,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     ImageView iVPlainRoomKitchen;
     ImageView iVPlainRoomSleeping;
     ImageView iVPlainRoomBath;
+    ImageView iVPlainRoomBackground;
 
     ViewPager viewPager;
     //TODO Room mit Wert aus Datenbank befüllen
@@ -44,6 +48,14 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         iVPlainRoomKitchen = (ImageView) findViewById(R.id.iVPlainRoomKitchen);
         iVPlainRoomSleeping = (ImageView) findViewById(R.id.iVPlainRoomSleeping);
         iVPlainRoomBath = (ImageView) findViewById(R.id.iVPlainRoomBath);
+        iVPlainRoomBackground = (ImageView) findViewById(R.id.iVPlainRoomBackground);
+
+        iVPlainRoomHallway.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+               //String raumvariable = HALLWAY;
+               //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+             }
+        });
 
         viewPager = (ViewPager)findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
@@ -67,6 +79,8 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
             //TODO in switch position abfrage in welchem raum man ist und je nachdem fragment starten
             //TODO am sinnvollsten für licht und jalousien für jeden raum ein eigenes fragment
             //TODO an die fragments die Werte vom Room übergeben
+            //TODO Activity zur Einstellung von Einzelnen Lampen und Jalousien
+
             switch(position)
             {
                 case 0: return new Fragment_Light();
