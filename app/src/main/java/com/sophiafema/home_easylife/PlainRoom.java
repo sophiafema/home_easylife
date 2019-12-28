@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.sophiafema.home_easylife.models.Room;
 
+import me.relex.circleindicator.CircleIndicator;
+
 import static com.sophiafema.home_easylife.Util.HALLWAY;
 
 public class PlainRoom extends AppCompatActivity implements View.OnClickListener {
@@ -29,6 +31,8 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     ImageView iVPlainRoomBackground;
 
     ViewPager viewPager;
+    CircleIndicator indicator;
+
     //TODO Room mit Wert aus Datenbank befüllen
     Room room;
 
@@ -59,6 +63,13 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         viewPager = (ViewPager)findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
+
+        indicator = (CircleIndicator)findViewById(R.id.indicator);
+        indicator.setViewPager(viewPager);
+        indicator.createIndicators(4,0);
+        //optional
+       //new PagerAdapter(getSupportFragmentManager()).registerDataSetObserver(indicator.getDataSetObserver());
+
     }
 
     @Override
@@ -98,4 +109,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
             return 4;
         }
     }
+
+
+
 }
