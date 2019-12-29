@@ -11,7 +11,6 @@ import android.widget.TextView;
 public class General extends AppCompatActivity implements View.OnClickListener{
 
     ImageView iVGeneralMenue;
-    TextView tVGeneralMenue;
 
     TextView tVGeneralHeading;
 
@@ -39,10 +38,9 @@ public class General extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_general);
 
         iVGeneralMenue = (ImageView) findViewById(R.id.iVGeneralMenue);
-        tVGeneralMenue = (TextView) findViewById(R.id.tVGeneralMenue);
-        tVGeneralMenue.setOnClickListener(this);
 
         tVGeneralHeading = (TextView) findViewById(R.id.tVGeneralHeading);
+        tVGeneralHeading.setOnClickListener(this);
 
         iVGeneralLight = (ImageView) findViewById(R.id.iVGeneralLight);
         iVGeneralTemperature = (ImageView) findViewById(R.id.iVGeneralTemperature);

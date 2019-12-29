@@ -10,7 +10,6 @@ import android.widget.TextView;
 public class Events extends AppCompatActivity implements View.OnClickListener {
 
     ImageView iVEventsMenue;
-    TextView tVEventsMenue;
 
     TextView tVEventsHeading;
 
@@ -20,10 +19,10 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_events);
 
         iVEventsMenue = (ImageView) findViewById(R.id.iVEventsMenue);
-        tVEventsMenue = (TextView) findViewById(R.id.tVEventsMenue);
-        tVEventsMenue.setOnClickListener(this);
-
         tVEventsHeading = (TextView) findViewById(R.id.tVEventsHeading);
+
+        tVEventsHeading.setOnClickListener(this);
+
 
 
     }

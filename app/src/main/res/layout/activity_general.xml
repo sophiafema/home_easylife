@@ -9,20 +9,20 @@
 
 
     <TextView
-        android:id="@+id/tVGeneralMenue"
-        android:layout_width="152dp"
-        android:layout_height="50dp"
+        android:id="@+id/tVGeneralHeading"
+        android:layout_width="223dp"
+        android:layout_height="51dp"
         android:paddingLeft="55dp"
         android:paddingTop="12dp"
-        android:text="Menü"
+        android:text="Zentralsteuerung"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <ImageView
         android:id="@+id/iVGeneralMenue"
@@ -36,20 +36,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@android:drawable/ic_input_delete" />
-
-    <TextView
-        android:id="@+id/tVGeneralHeading"
-        android:layout_width="238dp"
-        android:layout_height="59dp"
-        android:text="Zentralsteuerung"
-        android:textColor="@android:color/background_light"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
 
     <ImageView
         android:id="@+id/iVGeneralLight"
@@ -82,7 +68,7 @@
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681"
+        app:layout_constraintVertical_bias="0.844"
         app:srcCompat="@color/colorPrimary" />
 
     <ImageView
@@ -94,7 +80,7 @@
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853"
+        app:layout_constraintVertical_bias="0.672"
         app:srcCompat="@color/colorPrimary" />
 
     <Switch
@@ -133,12 +119,12 @@
         android:id="@+id/iVGeneralShuttersDown"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.833"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralMusic"
+        app:layout_constraintEnd_toEndOf="@+id/iVGeneralMusic"
+        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralMusic"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/ic_menu_more" />
 
     <ImageView
@@ -146,12 +132,12 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:rotation="180"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralMusic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812"
+        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralMusic"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic"
+        app:layout_constraintVertical_bias="0.09"
         app:srcCompat="@android:drawable/ic_menu_more" />
 
     <TextView
@@ -160,49 +146,48 @@
         android:layout_height="23dp"
         android:text="Jalousie unten"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.252"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralMusic"
+        app:layout_constraintEnd_toEndOf="@+id/iVGeneralMusic"
+        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralMusic"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic" />
 
     <TextView
         android:id="@+id/tVGeneralMusic"
         android:layout_width="150dp"
         android:layout_height="23dp"
-        android:text="Musik an"
+        android:text="Musik aus"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.252"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.672" />
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralShutters"
+        app:layout_constraintEnd_toEndOf="@+id/iVGeneralShutters"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralShutters"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralShutters"
+        app:layout_constraintVertical_bias="0.543" />
 
     <TextView
         android:id="@+id/tVGeneralTemperature"
         android:layout_width="150dp"
         android:layout_height="23dp"
-        android:text="Thermostat an"
+        android:text="Thermostat aus"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralTemperature"
+        app:layout_constraintEnd_toEndOf="@+id/iVGeneralTemperature"
         app:layout_constraintHorizontal_bias="0.252"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralTemperature"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralTemperature" />
 
     <TextView
         android:id="@+id/tVGeneralLight"
         android:layout_width="150dp"
         android:layout_height="23dp"
-        android:text="Licht an"
+        android:text="Licht aus"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.252"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331" />
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralLight"
+        app:layout_constraintEnd_toEndOf="@+id/iVGeneralLight"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralLight"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralLight"
+        app:layout_constraintVertical_bias="0.586" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
