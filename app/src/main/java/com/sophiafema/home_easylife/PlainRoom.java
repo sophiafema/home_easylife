@@ -16,7 +16,11 @@ import com.sophiafema.home_easylife.models.Room;
 
 import me.relex.circleindicator.CircleIndicator;
 
+import static com.sophiafema.home_easylife.Util.BATH;
 import static com.sophiafema.home_easylife.Util.HALLWAY;
+import static com.sophiafema.home_easylife.Util.KITCHEN;
+import static com.sophiafema.home_easylife.Util.LIVING;
+import static com.sophiafema.home_easylife.Util.SLEEPING;
 
 public class PlainRoom extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,7 +37,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     ViewPager viewPager;
     CircleIndicator indicator;
 
-    //TODO Room mit Wert aus Datenbank befüllen
+   //TODO Room mit Wert aus Datenbank befüllen
     Room room;
 
     @Override
@@ -56,9 +60,37 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         iVPlainRoomHallway.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-               //String raumvariable = HALLWAY;
+             room.setName(HALLWAY);
                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
              }
+        });
+
+        iVPlainRoomLiving.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                room.setName(LIVING);
+                iVPlainRoomBackground.setImageResource(R.drawable.living_test_image);
+            }
+        });
+
+        iVPlainRoomKitchen.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                room.setName(KITCHEN);
+                iVPlainRoomBackground.setImageResource(R.drawable.kitchen_test_image);
+            }
+        });
+
+        iVPlainRoomSleeping.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                room.setName(SLEEPING);
+                iVPlainRoomBackground.setImageResource(R.drawable.sleeping_test_iamge);
+            }
+        });
+
+        iVPlainRoomBath.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                room.setName(BATH);
+                iVPlainRoomBackground.setImageResource(R.drawable.bath_test_image);
+            }
         });
 
         viewPager = (ViewPager)findViewById(R.id.pager);
