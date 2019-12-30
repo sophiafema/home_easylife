@@ -38,7 +38,8 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     CircleIndicator indicator;
 
    //TODO Room mit Wert aus Datenbank befüllen
-    Room room;
+    Room room = new Room();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,28 +69,28 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         iVPlainRoomLiving.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 room.setName(LIVING);
-                iVPlainRoomBackground.setImageResource(R.drawable.living_test_image);
+                //iVPlainRoomBackground.setImageResource(R.drawable..new_background);
             }
         });
 
         iVPlainRoomKitchen.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 room.setName(KITCHEN);
-                iVPlainRoomBackground.setImageResource(R.drawable.kitchen_test_image);
+                //iVPlainRoomBackground.setImageResource(R.drawable..new_background);
             }
         });
 
         iVPlainRoomSleeping.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 room.setName(SLEEPING);
-                iVPlainRoomBackground.setImageResource(R.drawable.sleeping_test_iamge);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
             }
         });
 
         iVPlainRoomBath.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 room.setName(BATH);
-                iVPlainRoomBackground.setImageResource(R.drawable.bath_test_image);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
             }
         });
 
@@ -106,7 +107,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        this.finish();
+
     }
 
     private class PagerAdapter extends FragmentPagerAdapter
