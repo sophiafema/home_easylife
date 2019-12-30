@@ -17,24 +17,154 @@
         android:text="Ereignisse"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.172" />
 
     <ImageView
         android:id="@+id/iVEventsMenue"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:contentDescription="Menü"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        app:layout_constraintVertical_bias="0.172"
         app:srcCompat="@android:drawable/ic_input_delete" />
+
+    <ImageView
+        android:id="@+id/iVEventsAdd"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="359dp"
+        android:layout_height="532dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tVEventsAll"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                android:text="Mehrere Räume"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iVEventsAll"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                app:srcCompat="@color/colorPrimary" />
+
+
+            <TextView
+                android:id="@+id/tVEventsKitchen"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                android:text="Küche"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iVEventsKitchen"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                app:srcCompat="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tVEventsLiving"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                android:text="Wohnzimmer"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iVEventsLiving"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                app:srcCompat="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tVEventsSleeping"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                android:text="Schlafzimmer"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iVEventsSleeping"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                app:srcCompat="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tVEventsBath"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                android:text="Badezimmer"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iVEventsBath"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                app:srcCompat="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tVEventsHallway"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                android:text="Flur"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iVEventsHallway"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:paddingTop="@dimen/color_wheel_thickness"
+                app:srcCompat="@color/colorPrimary" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
