@@ -127,7 +127,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             //TODO Raum übergeben --> mit statischen variablen in Util
             startActivity(intent3);
 
+
         }
+        spinner.setVisibility(View.VISIBLE);
+
     }
 
 
