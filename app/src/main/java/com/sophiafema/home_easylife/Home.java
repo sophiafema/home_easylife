@@ -40,7 +40,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressBar spinner;
     DatabaseAdapter db;
-    Room r;
+    //Room r;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +78,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
         //Datenbank Test hinzufuegen von Raum
         db = new DatabaseAdapter();
-        ArrayList<Light> l = new ArrayList<>();
+        /*ArrayList<Light> l = new ArrayList<>();
         l.add(new Light(0, "esstisch", 3, 4, true));
         l.add(new Light(1, "sofa", 3, 4, false));
         Thermostat t = new Thermostat(0, "thermo", 30, true);
@@ -87,12 +87,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         lo.add(new Shutter(0, "west", 50));
         Music m = new Music(0, "music", 4, true, false);
         r = new Room(Util.LIVING, 0, l, t, lo,m);
-        db.setRoom(r.getName(), r);
+        db.setRoom(r.getName(), r);*/
 
     }
 
     @Override
     public void onClick(View view) {
+        spinner.setVisibility(View.VISIBLE);
         System.out.println(view.getId());
         if(view.getId() == R.id.iVHomeGeneral)
         {
@@ -115,12 +116,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
         else
         {
-            spinner.setVisibility(View.VISIBLE);
+
 
             //Datenbank Testabfrage
 
-            System.out.println("room: " + db.getRoom(r.getName()).getName());
-            System.out.println(db.getThermostat(r.getName()).getTemperature());
+            System.out.println("room: " + db.getRoom(Util.LIVING).getName());
+            //System.out.println(db.getThermostat(r.getName()).getTemperature());
 
             Intent intent3 = new Intent(this, PlainRoom.class);
             //TODO Raum übergeben --> mit statischen variablen in Util
