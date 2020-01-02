@@ -6,21 +6,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
 
 import me.relex.circleindicator.CircleIndicator;
-
-import static com.sophiafema.home_easylife.Util.BATH;
-import static com.sophiafema.home_easylife.Util.HALLWAY;
-import static com.sophiafema.home_easylife.Util.KITCHEN;
-import static com.sophiafema.home_easylife.Util.LIVING;
-import static com.sophiafema.home_easylife.Util.SLEEPING;
 
 public class PlainRoom extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,14 +32,39 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     ViewPager viewPager;
     CircleIndicator indicator;
 
-   //TODO Room mit Wert aus Datenbank befüllen
-    Room room = new Room();
+   //TODO Room mit Wert aus Datenbank befüllen ??
+    Room r;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plain_room);
+
+        //TODO currentRoom bekommt den Namen nicht --> NullPointerException
+        //Raumabfrage für Hintergrund
+       //String currentRoom = r.getName();
+        //Log.e("room:",currentRoom);
+        /*switch(currentRoom)
+        {
+            case "living":
+               //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                break;
+            case "bath":
+              //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                break;
+            case "hallway":
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                break;
+            case "sleeping":
+               //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                break;
+            case "kitchen":
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                break;
+             default:
+        }*/
 
         iVPlainRoomMenue = (ImageView) findViewById(R.id.iVPlainRoomMenue);
         tVPlainRoomMenue = (TextView) findViewById(R.id.tVPlainRoomMenue);
@@ -61,35 +81,36 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         iVPlainRoomHallway.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-             room.setName(HALLWAY);
-               //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+             r.setName(Util.HALLWAY);
+             //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+
              }
         });
 
         iVPlainRoomLiving.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                room.setName(LIVING);
-                //iVPlainRoomBackground.setImageResource(R.drawable..new_background);
+                r.setName(Util.LIVING);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
             }
         });
 
         iVPlainRoomKitchen.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                room.setName(KITCHEN);
-                //iVPlainRoomBackground.setImageResource(R.drawable..new_background);
+                r.setName(Util.KITCHEN);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
             }
         });
 
         iVPlainRoomSleeping.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                room.setName(SLEEPING);
+                r.setName(Util.SLEEPING);
                 //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
             }
         });
 
         iVPlainRoomBath.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                room.setName(BATH);
+                r.setName(Util.BATH);
                 //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
             }
         });
@@ -99,7 +120,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         indicator = (CircleIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
-        indicator.createIndicators(4,0);
+        indicator.createIndicators(5,0);
         //optional
        //new PagerAdapter(getSupportFragmentManager()).registerDataSetObserver(indicator.getDataSetObserver());
 
@@ -107,7 +128,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-
+        this.finish();
     }
 
     private class PagerAdapter extends FragmentPagerAdapter
@@ -120,9 +141,10 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         @Override
         public Fragment getItem(int position)
         {
-            //TODO in switch position abfrage in welchem raum man ist und je nachdem fragment starten
+            //TODO in switch position abfrage in welchem raum man ist und je nachdem fragment starten --> in Fragment Klassen (Fragment_Light / Fragment_Jalousie)
             //TODO am sinnvollsten für licht und jalousien für jeden raum ein eigenes fragment
-            //TODO an die fragments die Werte vom Room übergeben
+            //TODO an die fragments die Werte vom Room übergeben ??
+
             //TODO Activity zur Einstellung von Einzelnen Lampen und Jalousien
 
             switch(position)
@@ -131,7 +153,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                 case 1: return new Fragment_Thermostat();
                 case 2: return new Fragment_Jalousie();
                 case 3: return new Fragment_Music();
-
+                case 4: return new Fragment_Events();
             }
             return null;
         }
@@ -139,7 +161,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         @Override
         public int getCount()
         {
-            return 4;
+            return 5;
         }
     }
 

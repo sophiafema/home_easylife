@@ -124,6 +124,32 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
             Intent intent3 = new Intent(this, PlainRoom.class);
             //TODO Raum übergeben --> mit statischen variablen in Util
+
+            if(view.getId() == R.id.iVHomeHallway)
+            {
+                r.setName(Util.HALLWAY);
+            }
+
+            else if (view.getId() == R.id.iVHomeBath)
+            {
+                r.setName(Util.BATH);
+            }
+
+            else if (view.getId() == R.id.iVHomeKitchen)
+            {
+                r.setName(Util.KITCHEN);
+            }
+
+            else if (view.getId() == R.id.iVHomeLiving)
+            {
+                r.setName(Util.LIVING);
+            }
+
+            else if (view.getId() == R.id.iVHomeSleeping)
+            {
+                r.setName(Util.SLEEPING);
+            }
+
             startActivity(intent3);
 
         }
