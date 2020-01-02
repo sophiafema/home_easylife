@@ -56,7 +56,6 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         iVEventsHallway = (ImageView) findViewById(R.id.iVEventsHallway);
 
 
-
     }
 
     @Override
