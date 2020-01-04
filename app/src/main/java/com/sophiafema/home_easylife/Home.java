@@ -40,7 +40,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressBar spinner;
     DatabaseAdapter db;
-    //Room r;
+    Room r;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,53 +107,46 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         }
         else if(view.getId() == R.id.iVHomeSettings)
         {
-
-
             Intent intent2 = new Intent(this, Settings.class);
             startActivity(intent2);
         }
-
-
         else
         {
 
 
             //Datenbank Testabfrage
 
-            System.out.println("room: " + db.getRoom(Util.LIVING).getName());
+            //System.out.println("room: " + db.getRoom(Util.LIVING).getName());
             //System.out.println(db.getThermostat(r.getName()).getTemperature());
 
             Intent intent3 = new Intent(this, PlainRoom.class);
-            //TODO Raum übergeben --> mit statischen variablen in Util
+
+            //Raum übergeben --> mit statischen variablen in Util
 
             if(view.getId() == R.id.iVHomeHallway)
             {
-                r.setName(Util.HALLWAY);
+                intent3.putExtra(Util.ROOM, Util.HALLWAY);
             }
 
             else if (view.getId() == R.id.iVHomeBath)
             {
-                r.setName(Util.BATH);
+                intent3.putExtra(Util.ROOM, Util.BATH);
             }
-
             else if (view.getId() == R.id.iVHomeKitchen)
             {
-                r.setName(Util.KITCHEN);
+                intent3.putExtra(Util.ROOM, Util.KITCHEN);
             }
 
             else if (view.getId() == R.id.iVHomeLiving)
             {
-                r.setName(Util.LIVING);
+                intent3.putExtra(Util.ROOM, Util.LIVING);
             }
-
             else if (view.getId() == R.id.iVHomeSleeping)
             {
-                r.setName(Util.SLEEPING);
+                intent3.putExtra(Util.ROOM, Util.SLEEPING);
             }
 
             startActivity(intent3);
-
-
         }
         spinner.setVisibility(View.VISIBLE);
 

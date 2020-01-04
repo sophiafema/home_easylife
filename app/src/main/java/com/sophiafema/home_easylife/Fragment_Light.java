@@ -12,17 +12,34 @@ import com.sophiafema.home_easylife.models.Room;
 public class Fragment_Light extends Fragment
 {
     Room r;
+
+    public Fragment_Light(Room room) {
+        // Required empty public constructor
+        this.r = room;
+    }
+
+    //TODO nach diesem Schema Raum übergeben
+    //TODO alternativ kann man natürlich auch andere Werte übergeben wenn das besser passt
+    public static Fragment_Light newInstance(Room room) {
+        return new Fragment_Light(room);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
         View light = null;
 
-        if (r.getName() == Util.BATH)
+        light = inflater.inflate(R.layout.fragment_light_bath, container, false);
+
+        //System.out.println(room);
+
+        //TODO Name vergleichen mit equals
+        if (r.getName().equals(Util.BATH))
         {
             light = inflater.inflate(R.layout.fragment_light_bath, container, false);
         }
 
-        else if (r.getName() == Util.HALLWAY)
+        /*else if (r.getName() == Util.HALLWAY)
         {
             light = inflater.inflate(R.layout.fragment_light_hallway, container, false);
         }
@@ -40,7 +57,7 @@ public class Fragment_Light extends Fragment
         else if (r.getName() == Util.SLEEPING)
         {
             light = inflater.inflate(R.layout.fragment_light_sleeping, container, false);
-        }
+        }*/
 
        return light;
 
