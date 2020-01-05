@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".Events_Add">
+
+    <TextView
+        android:id="@+id/tVEvents_AddCancel"
+        android:layout_width="130dp"
+        android:layout_height="24dp"
+        android:text="Abbrechen"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <TextView
+        android:id="@+id/tVEvents_AddSave"
+        android:layout_width="49dp"
+        android:layout_height="24dp"
+        android:text="Sichern"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddPicture"
+        android:layout_width="46dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <EditText
+        android:id="@+id/eTEvents_AddName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/background_light"
+        android:ems="10"
+        android:hint="Ereignisname"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.161" />
+
+
+    <ImageView
+        android:id="@+id/iVEvents_AddHallway"
+        android:layout_width="82dp"
+        android:layout_height="65dp"
+        android:contentDescription="Flur"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddLiving"
+        android:layout_width="82dp"
+        android:layout_height="65dp"
+        android:contentDescription="Wohnzimmer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddBath"
+        android:layout_width="82dp"
+        android:layout_height="65dp"
+        android:contentDescription="Bad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddSleeping"
+        android:layout_width="82dp"
+        android:layout_height="65dp"
+        android:contentDescription="Schlafzimmer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddKitchen"
+        android:layout_width="82dp"
+        android:layout_height="65dp"
+        android:contentDescription="Küche"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddTime"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.448"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddRepetition"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.528"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddLight"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.685"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddTemperature"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddShutters"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.846"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/iVEvents_AddMusic"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.929"
+        app:srcCompat="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/tVEvents_AddTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zeitraum"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEvents_AddTime"
+        app:layout_constraintEnd_toEndOf="@+id/iVEvents_AddTime"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="@+id/iVEvents_AddTime"
+        app:layout_constraintTop_toTopOf="@+id/iVEvents_AddTime"
+        app:layout_constraintVertical_bias="0.551" />
+
+    <TextView
+        android:id="@+id/tVEvents_AddRepetition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wochentage"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEvents_AddRepetition"
+        app:layout_constraintEnd_toEndOf="@+id/iVEvents_AddRepetition"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="@+id/iVEvents_AddRepetition"
+        app:layout_constraintTop_toTopOf="@+id/iVEvents_AddRepetition"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <TextView
+        android:id="@+id/tVEvents_AddLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Licht"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEvents_AddLight"
+        app:layout_constraintEnd_toEndOf="@+id/iVEvents_AddLight"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="@+id/iVEvents_AddLight"
+        app:layout_constraintTop_toTopOf="@+id/iVEvents_AddLight" />
+
+    <TextView
+        android:id="@+id/tVEvents_AddTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thermostat"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEvents_AddTemperature"
+        app:layout_constraintEnd_toEndOf="@+id/iVEvents_AddTemperature"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="@+id/iVEvents_AddTemperature"
+        app:layout_constraintTop_toTopOf="@+id/iVEvents_AddTemperature"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <TextView
+        android:id="@+id/tVEvents_AddShutters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:text="Jalousien"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEvents_AddShutters"
+        app:layout_constraintEnd_toEndOf="@+id/iVEvents_AddShutters"
+        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintStart_toStartOf="@+id/iVEvents_AddShutters"
+        app:layout_constraintTop_toTopOf="@+id/iVEvents_AddShutters"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <TextView
+        android:id="@+id/tVEvents_AddMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Musik"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEvents_AddMusic"
+        app:layout_constraintEnd_toEndOf="@+id/iVEvents_AddMusic"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="@+id/iVEvents_AddMusic"
+        app:layout_constraintTop_toTopOf="@+id/iVEvents_AddMusic"
+        app:layout_constraintVertical_bias="0.517" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

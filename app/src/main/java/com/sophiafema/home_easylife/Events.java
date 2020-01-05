@@ -2,6 +2,7 @@ package com.sophiafema.home_easylife;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -41,6 +42,8 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         tVEventsHeading = (TextView) findViewById(R.id.tVEventsHeading);
         tVEventsHeading.setOnClickListener(this);
         iVEventsAdd = (ImageView) findViewById(R.id.iVEventsAdd);
+        iVEventsAdd.setOnClickListener(this);
+
 
         tVEventsAll = (TextView) findViewById(R.id.tVEventsAll);
         iVEventsAll = (ImageView) findViewById(R.id.iVEventsAll);
@@ -60,6 +63,17 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        this.finish();
+        System.out.println(view.getId());
+             if(view.getId() == R.id.tVEventsHeading)
+             {
+                 this.finish();
+             }
+             else if(view.getId() == R.id.iVEventsAdd)
+             {
+                 Intent intent1 = new Intent(this, Events_Add.class);
+                 startActivity(intent1);
+             }
     }
+
+
 }
