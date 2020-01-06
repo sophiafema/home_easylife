@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ProgressBar;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
@@ -49,6 +50,8 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         //Raumabfrage für Hintergrund
         Intent intent = getIntent();
         currentRoom = intent.getStringExtra(Util.ROOM);
+        Log.e("Utli.room", Util.ROOM);
+        Log.e("currentroom", currentRoom);
         if(currentRoom == null) {
             currentRoom = Util.LIVING;
         }
@@ -71,7 +74,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
             case Util.SLEEPING:
                 //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
                 break;
-             default:
         }
 
         //Room mit Wert aus Datenbank befüllen
@@ -80,54 +82,20 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         iVPlainRoomMenue = (ImageView) findViewById(R.id.iVPlainRoomMenue);
         tVPlainRoomMenue = (TextView) findViewById(R.id.tVPlainRoomMenue);
+        iVPlainRoomMenue.setOnClickListener(this);
         tVPlainRoomMenue.setOnClickListener(this);
 
-        //TODO Onclicklistener hinzufügen: Raumvariable aktualisieren, Hintergrund aktualisieren
-
-        iVPlainRoomHallway = (ImageView) findViewById(R.id.iVPlainRoomHallway);
+               iVPlainRoomHallway = (ImageView) findViewById(R.id.iVPlainRoomHallway);
+        iVPlainRoomHallway.setOnClickListener(this);
         iVPlainRoomLiving = (ImageView) findViewById(R.id.iVPlainRoomLiving);
+        iVPlainRoomLiving.setOnClickListener(this);
         iVPlainRoomKitchen = (ImageView) findViewById(R.id.iVPlainRoomKitchen);
+        iVPlainRoomKitchen.setOnClickListener(this);
         iVPlainRoomSleeping = (ImageView) findViewById(R.id.iVPlainRoomSleeping);
+        iVPlainRoomSleeping.setOnClickListener(this);
         iVPlainRoomBath = (ImageView) findViewById(R.id.iVPlainRoomBath);
+        iVPlainRoomBath.setOnClickListener(this);
         iVPlainRoomBackground = (ImageView) findViewById(R.id.iVPlainRoomBackground);
-
-        //TODO verstehe nicht ganz was du mit r.setName machen möchtest
-        //TODO onclicklistener vermutlich besser wenn wie in Home gelöst -> über ids, da duplizierter code vermieden werden kann
-        iVPlainRoomHallway.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view) {
-             r.setName(Util.HALLWAY);
-             //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
-
-             }
-        });
-
-        iVPlainRoomLiving.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view) {
-                r.setName(Util.LIVING);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
-            }
-        });
-
-        iVPlainRoomKitchen.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view) {
-                r.setName(Util.KITCHEN);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
-            }
-        });
-
-        iVPlainRoomSleeping.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view) {
-                r.setName(Util.SLEEPING);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
-            }
-        });
-
-        iVPlainRoomBath.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view) {
-                r.setName(Util.BATH);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
-            }
-        });
 
         viewPager = (ViewPager)findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
@@ -136,14 +104,57 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         indicator.setViewPager(viewPager);
         indicator.createIndicators(5,0);
         //optional
-       //new PagerAdapter(getSupportFragmentManager()).registerDataSetObserver(indicator.getDataSetObserver());
+        //new PagerAdapter(getSupportFragmentManager()).registerDataSetObserver(indicator.getDataSetObserver());
 
     }
 
-    //TODO wofür braauchst du das? hab s nicht gefunden
+    //TODO Hintergrünbilder einfügen
     @Override
     public void onClick(View view) {
-        this.finish();
+
+        if((view.getId() == R.id.iVPlainRoomMenue) || (view.getId() == R.id.tVPlainRoomMenue))
+        {
+            Intent intent1 = new Intent(this, Home.class);
+            startActivity(intent1);
+        }
+
+        else
+        {
+            Intent intent2 = new Intent(this, PlainRoom.class);
+
+            //Raum übergeben --> mit statischen variablen in Util
+
+            if(view.getId() == R.id.iVPlainRoomHallway)
+            {
+                intent2.putExtra(Util.ROOM, Util.HALLWAY);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+            }
+
+            else if (view.getId() == R.id.iVPlainRoomBath)
+            {
+                intent2.putExtra(Util.ROOM, Util.BATH);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+            }
+
+            else if (view.getId() == R.id.iVPlainRoomKitchen)
+            {
+                intent2.putExtra(Util.ROOM, Util.KITCHEN);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+            }
+
+            else if (view.getId() == R.id.iVPlainRoomLiving)
+            {
+                intent2.putExtra(Util.ROOM, Util.LIVING);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+            }
+            else if (view.getId() == R.id.iVPlainRoomSleeping)
+            {
+                intent2.putExtra(Util.ROOM, Util.SLEEPING);
+                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+            }
+
+            startActivity(intent2);
+        }
     }
 
     private class PagerAdapter extends FragmentPagerAdapter
@@ -156,20 +167,18 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         @Override
         public Fragment getItem(int position)
         {
-            //TODO in switch position abfrage in welchem raum man ist und je nachdem fragment starten --> in Fragment Klassen (Fragment_Light / Fragment_Jalousie)
-            //TODO am sinnvollsten für licht und jalousien für jeden raum ein eigenes fragment
             //TODO an die fragments die Werte vom Room übergeben
 
             //TODO Activity zur Einstellung von Einzelnen Lampen und Jalousien
 
             switch(position)
             {
-                //TODO auch hier nach Schema von case 0 abändern
                 case 0: return Fragment_Light.newInstance(r);
-                case 1: return new Fragment_Thermostat();
-                case 2: return new Fragment_Jalousie();
-                case 3: return new Fragment_Music();
-                case 4: return new Fragment_Events();
+                case 1: return Fragment_Thermostat.newInstance(r);
+                case 2: return Fragment_Jalousie.newInstance(r);
+                case 3: return Fragment_Music.newInstance(r);
+                case 4: return Fragment_Events.newInstance(r);
+
             }
             return null;
         }
