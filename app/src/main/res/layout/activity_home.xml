@@ -8,105 +8,91 @@
     tools:context=".Home">
 
 
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        android:progressDrawable="@drawable/circular_progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/iVHomeSettings"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/iVHomeEvents"
-        android:layout_width="121dp"
-        android:layout_height="79dp"
+        android:layout_width="134dp"
+        android:layout_height="81dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Ereignisse"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.779"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832"
+        app:layout_constraintEnd_toEndOf="@+id/iVHomeSleeping"
+        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintStart_toEndOf="@+id/iVHomeGeneral"
+        app:layout_constraintTop_toTopOf="@+id/iVHomeGeneral"
         app:srcCompat="@android:drawable/ic_menu_crop" />
 
     <ImageView
         android:id="@+id/iVHomeHallway"
         android:layout_width="163dp"
         android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Flur"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iVHomeLiving"
+        app:layout_constraintTop_toBottomOf="@+id/iVHomeLiving"
         app:srcCompat="@android:drawable/ic_menu_crop" />
 
     <ImageView
         android:id="@+id/iVHomeSleeping"
         android:layout_width="120dp"
-        android:layout_height="152dp"
+        android:layout_height="149dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Schlafzimmer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.573"
+        app:layout_constraintEnd_toEndOf="@+id/iVHomeKitchen"
+        app:layout_constraintTop_toBottomOf="@+id/iVHomeKitchen"
         app:srcCompat="@android:drawable/ic_menu_crop" />
 
     <ImageView
         android:id="@+id/iVHomeGeneral"
-        android:layout_width="121dp"
-        android:layout_height="79dp"
+        android:layout_width="134dp"
+        android:layout_height="81dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Zentralsteuerung"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.213"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832"
+        app:layout_constraintStart_toStartOf="@+id/iVHomeBath"
+        app:layout_constraintTop_toBottomOf="@+id/tVHomeBath"
+        app:layout_constraintVertical_bias="0.497"
         app:srcCompat="@android:drawable/ic_menu_crop" />
 
     <ImageView
         android:id="@+id/iVHomeLiving"
-        android:layout_width="162dp"
+        android:layout_width="163dp"
         android:layout_height="166dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Wohnzimmer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.293"
+        app:layout_constraintVertical_bias="0.27"
         app:srcCompat="@android:drawable/ic_menu_crop" />
 
     <ImageView
         android:id="@+id/iVHomeBath"
-        android:layout_width="160dp"
-        android:layout_height="89dp"
+        android:layout_width="163dp"
+        android:layout_height="87dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="8dp"
         android:contentDescription="Bad"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615"
+        app:layout_constraintStart_toStartOf="@+id/iVHomeHallway"
+        app:layout_constraintTop_toBottomOf="@+id/iVHomeHallway"
         app:srcCompat="@android:drawable/ic_menu_crop" />
 
     <ImageView
         android:id="@+id/iVHomeKitchen"
         android:layout_width="120dp"
-        android:layout_height="152dp"
+        android:layout_height="148dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:contentDescription="Küche"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.286"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iVHomeLiving"
+        app:layout_constraintTop_toTopOf="@+id/iVHomeLiving"
         app:srcCompat="@android:drawable/ic_menu_crop" />
 
     <TextView
@@ -211,5 +197,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:progressDrawable="@drawable/circular_progress_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iVHomeSettings"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
