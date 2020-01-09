@@ -6,6 +6,17 @@
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
 
 
+    <string name="living">Wohnzimmer</string>
+    <string name="bath">Bad</string>
+    <string name="hallway">Flur</string>
+    <string name="sleeping">Schlafzimmer</string>
+    <string name="kitchen">Küche</string>
+    <string name="settings">Einstellungen</string>
+    <string name="general">Zentralsteuerung</string>
+    <string name="events">Ereignisse</string>
+    <string name="event">Ereignis</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
