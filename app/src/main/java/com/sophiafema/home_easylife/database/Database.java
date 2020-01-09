@@ -163,6 +163,20 @@ public class Database extends AsyncTask<Object, Void, Object> {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        /*Thread t = new Thread(){
+
+            @Override
+            public void run() {
+                super.run();
+
+                syso
+            }
+        }.start();
+
+
+        t.wait();*/
+
         return (SimpleRoom) o;
     }
 

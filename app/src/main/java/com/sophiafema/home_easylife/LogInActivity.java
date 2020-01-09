@@ -18,13 +18,14 @@ package com.sophiafema.home_easylife;
         import com.google.firebase.auth.FirebaseAuth;
         import com.google.firebase.auth.FirebaseUser;
         import com.sophiafema.home_easylife.R;
+        import com.sophiafema.home_easylife.models.House;
 
 
 public class LogInActivity extends AppCompatActivity implements
         View.OnClickListener {
 
     private static final String TAG = "EmailPassword";
-    private static final String USER_UID = "USER_UID";
+    public static String USER_UID = "USER_UID";
 
     private TextView mStatusTextView;
     //private TextView mDetailTextView;
@@ -49,7 +50,7 @@ public class LogInActivity extends AppCompatActivity implements
 
         // Buttons
         findViewById(R.id.btnMainLogIn).setOnClickListener(this);
-        findViewById(R.id.btnMainCreateAccount).setOnClickListener(this);
+        //findViewById(R.id.btnMainCreateAccount).setOnClickListener(this);
         //findViewById(R.id.signOutButton).setOnClickListener(this);
         //findViewById(R.id.verifyEmailButton).setOnClickListener(this);
 
@@ -86,6 +87,9 @@ public class LogInActivity extends AppCompatActivity implements
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            USER_UID = user.getUid();
+                            House house = new House();
+                            house.setHouseInDatebase();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -204,6 +208,7 @@ public class LogInActivity extends AppCompatActivity implements
         //hideProgressBar();
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail(), user.isEmailVerified()));
+            USER_UID = user.getUid();
 
             Intent intent = new Intent(LogInActivity.this, Home.class);
             intent.putExtra(USER_UID, user.getUid());
@@ -222,11 +227,13 @@ public class LogInActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.btnMainCreateAccount) {
-            createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.btnMainLogIn) {
+        if (i == R.id.btnMainLogIn) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } /*else if (i == R.id.signOutButton) {
+        }
+        /*else if (i == R.id.btnMainCreateAccount) {
+            createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+        }
+        else if (i == R.id.signOutButton) {
             signOut();
         } else if (i == R.id.verifyEmailButton) {
             sendEmailVerification();

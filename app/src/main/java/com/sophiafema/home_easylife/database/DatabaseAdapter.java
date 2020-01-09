@@ -1,5 +1,6 @@
 package com.sophiafema.home_easylife.database;
 
+import com.sophiafema.home_easylife.LogInActivity;
 import com.sophiafema.home_easylife.models.Event;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Music;
@@ -12,11 +13,13 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class DatabaseAdapter {
-    Database db;
-    String userId="userId";
+    private Database db;
+    private String userId;
 
     public DatabaseAdapter() {
         this.db = new Database();
+        userId = LogInActivity.USER_UID;
+
         //this.userId = Auth.getUserid();
     }
 
@@ -82,12 +85,14 @@ public class DatabaseAdapter {
             setLight(r.getName(), light);
         }
 
-        ArrayList<Shutter> shutters = r.getShutters();
-        for(Shutter shutter : shutters) {
-            setLouvre(r.getName(), shutter);
+        if(r.getShutters() != null) {
+            ArrayList<Shutter> shutters = r.getShutters();
+            for (Shutter shutter : shutters) {
+                setLouvre(r.getName(), shutter);
+            }
         }
-
-        setMusic(r.getName(), r.getMusic());
+        if(r.getMusic() != null)
+            setMusic(r.getName(), r.getMusic());
         setThermostat(r.getName(), r.getThermo());
     }
     public void setEvent(Event e) {

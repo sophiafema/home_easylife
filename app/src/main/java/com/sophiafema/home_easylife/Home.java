@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
+import com.sophiafema.home_easylife.models.House;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Music;
 import com.sophiafema.home_easylife.models.Room;
@@ -75,9 +76,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         iVHomeEvents = (ImageView) findViewById(R.id.iVHomeEvents);
         iVHomeEvents .setOnClickListener(this);
 
-
         //Datenbank Test hinzufuegen von Raum
-        db = new DatabaseAdapter();
+        //db = new DatabaseAdapter();
         /*ArrayList<Light> l = new ArrayList<>();
         l.add(new Light(0, "esstisch", 3, 4, true));
         l.add(new Light(1, "sofa", 3, 4, false));
