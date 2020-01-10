@@ -42,6 +42,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general);
 
+
         //getData from database
         dba = new DatabaseAdapter();
         boolean lightIsOn = dba.getAllLightsPower();

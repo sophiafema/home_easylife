@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.sophiafema.home_easylife.database.Database;
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.House;
@@ -79,8 +80,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
 
         //Datenbank Test hinzufuegen von Raum
-        DatabaseAdapter dba = new DatabaseAdapter();
-        dba.setLightPower(Util.LIVING, "esstisch", true);
+        //DatabaseAdapter dba = new DatabaseAdapter();
+        //dba.setLightPower(Util.LIVING, "esstisch", true);
         /*ArrayList<Light> l = new ArrayList<>();
         l.add(new Light(0, "esstisch", 3, 4, true));
         l.add(new Light(1, "sofa", 3, 4, false));
@@ -95,9 +96,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        spinner.setVisibility(View.GONE);
+    }
+
+
+    @Override
     public void onClick(View view) {
         spinner.setVisibility(View.VISIBLE);
-        System.out.println(view.getId());
+        //System.out.println(view.getId());
         if(view.getId() == R.id.iVHomeGeneral)
         {
             Intent intent1 = new Intent(this, General.class);
@@ -151,8 +159,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
             startActivity(intent3);
         }
-        spinner.setVisibility(View.VISIBLE);
-
     }
 
 
