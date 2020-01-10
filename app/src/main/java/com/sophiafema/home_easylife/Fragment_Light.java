@@ -39,7 +39,7 @@ public class Fragment_Light extends Fragment
         {
             light = inflater.inflate(R.layout.fragment_light_bath, container, false);
 
-            brightness = 30;
+            brightness = r.getLights().get(0).getBrightness();
             light.findViewById(R.id.iVFLightBath1).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -173,7 +173,7 @@ public class DatabaseAdapter {
         return t;
     }
 
-    public Room getRoom(String room) {
+    public Room getSRoom(String room) {
 
         Room r = null;
         try {
@@ -186,7 +186,7 @@ public class DatabaseAdapter {
         return r;
     }
 
-    public Room getSRoom(String room) {
+    public Room getRoom(String room) {
 
         SimpleRoom d = null;
         try {

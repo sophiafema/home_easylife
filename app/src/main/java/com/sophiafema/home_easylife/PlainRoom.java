@@ -78,6 +78,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         //Room mit Wert aus Datenbank befüllen
         r = db.getRoom(currentRoom);
+        //Log.e("Lights", r.getLights().get(0).getName());
 
 
         iVPlainRoomMenue = (ImageView) findViewById(R.id.iVPlainRoomMenue);
