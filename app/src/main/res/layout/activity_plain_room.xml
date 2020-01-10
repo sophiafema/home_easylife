@@ -24,6 +24,7 @@
         android:id="@+id/iVPlainRoomHallway"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Flur"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,12 +32,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/iv_plainroom_hallway" />
 
     <ImageView
         android:id="@+id/iVPlainRoomLiving"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Wohnzimmer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,12 +46,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/iv_plainroom_living" />
 
     <ImageView
         android:id="@+id/iVPlainRoomKitchen"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Küche"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,12 +60,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/iv_plainroom_kitchen" />
 
     <ImageView
         android:id="@+id/iVPlainRoomSleeping"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Schlafzimmer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,12 +74,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/iv_plainroom_sleeping" />
 
     <ImageView
         android:id="@+id/iVPlainRoomBath"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="Bad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/iv_plainroom_bath" />
 
     <TextView
         android:id="@+id/tVPlainRoomMenue"
@@ -139,6 +144,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

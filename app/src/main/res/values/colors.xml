@@ -3,6 +3,7 @@
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#121212</color>
     <color name="colorAccent">#2BDBDB</color>
+    <color name="bright">#EBEBEB</color>
 
     <!-- picker colors -->
     <color name="colorText">#ffffff</color>

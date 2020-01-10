@@ -30,12 +30,16 @@ public class Fragment_Light extends Fragment
     {
         View light = inflater.inflate(R.layout.fragment_light_bath, container, false);
 
+        //Lampen bekommen über Room.getLight
+        //setzen über Database über room und get database
+
         Log.e("fragment_light", r.getName() );
 
         //TODO Name vergleichen mit equals
        if (r.getName().equals(Util.BATH))
         {
             light = inflater.inflate(R.layout.fragment_light_bath, container, false);
+
         }
 
         else if (r.getName().equals(Util.HALLWAY))
