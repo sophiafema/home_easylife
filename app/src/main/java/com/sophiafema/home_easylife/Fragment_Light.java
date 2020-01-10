@@ -1,5 +1,6 @@
 package com.sophiafema.home_easylife;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +13,9 @@ import com.sophiafema.home_easylife.models.Room;
 
 public class Fragment_Light extends Fragment
 {
+    public static final String LIGHT_BRIGHTNESS = "LIGHT_BRIGHTNESS";
     Room r;
+    double brightness;
 
     public Fragment_Light(Room room) {
         // Required empty public constructor
@@ -29,13 +32,23 @@ public class Fragment_Light extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
         View light = inflater.inflate(R.layout.fragment_light_bath, container, false);
-
         Log.e("fragment_light", r.getName() );
 
         //TODO Name vergleichen mit equals
        if (r.getName().equals(Util.BATH))
         {
             light = inflater.inflate(R.layout.fragment_light_bath, container, false);
+
+            brightness = 30;
+            light.findViewById(R.id.iVFLightBath1).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
+
+                    intent.putExtra(LIGHT_BRIGHTNESS, brightness);
+                    startActivity(intent);
+                }
+            });
         }
 
         else if (r.getName().equals(Util.HALLWAY))
