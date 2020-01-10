@@ -182,7 +182,6 @@ public class Database extends AsyncTask<Object, Void, Object> {
 
     public Room getRoom(String userId, String room) throws InterruptedException {
         DocumentReference docRef = getDocumentReferenceRoom(userId, room);
-
         Task<DocumentSnapshot> task = docRef.get();
         try {
             DocumentSnapshot doc = Tasks.await(task);

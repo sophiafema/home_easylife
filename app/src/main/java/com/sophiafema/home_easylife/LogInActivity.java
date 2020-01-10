@@ -50,7 +50,7 @@ public class LogInActivity extends AppCompatActivity implements
 
         // Buttons
         findViewById(R.id.btnMainLogIn).setOnClickListener(this);
-        //findViewById(R.id.btnMainCreateAccount).setOnClickListener(this);
+        findViewById(R.id.btnMainCreateAccount).setOnClickListener(this);
         //findViewById(R.id.signOutButton).setOnClickListener(this);
         //findViewById(R.id.verifyEmailButton).setOnClickListener(this);
 
@@ -230,10 +230,10 @@ public class LogInActivity extends AppCompatActivity implements
         if (i == R.id.btnMainLogIn) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }
-        /*else if (i == R.id.btnMainCreateAccount) {
+        else if (i == R.id.btnMainCreateAccount) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }
-        else if (i == R.id.signOutButton) {
+        /*else if (i == R.id.signOutButton) {
             signOut();
         } else if (i == R.id.verifyEmailButton) {
             sendEmailVerification();
