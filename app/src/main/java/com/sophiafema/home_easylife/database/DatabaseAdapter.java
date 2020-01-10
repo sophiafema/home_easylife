@@ -411,7 +411,7 @@ public class DatabaseAdapter {
         }
     }
 
-    public boolean getAllLightsPower() throws ExecutionException, InterruptedException {
+    public boolean getAllLightsPower() {
         ArrayList<String> roomIds = getRoomIds();
         for(String roomId : roomIds) {
             if(getAllLightsInOneRoomPower(roomId))
@@ -446,8 +446,10 @@ public class DatabaseAdapter {
         ArrayList<String> roomIds = getRoomIds();
         for(String roomId : roomIds) {
             Music m = getMusic(roomId);
-            if(m.isPower())
-                return true;
+            if(m != null) {
+                if (m.isPower())
+                    return true;
+            }
         }
         return false;
     }
@@ -456,19 +458,29 @@ public class DatabaseAdapter {
         ArrayList<String> roomIds = getRoomIds();
         double position = 0;
         for(String roomId : roomIds) {
-            position += getAllLouvrePositionInOneRoom(roomId);
+            double pos = getAllLouvrePositionInOneRoom(roomId);
+            if(pos > -1)
+                position += pos;
         }
         position /= roomIds.size();
         return false;
     }
     public double getAllLouvrePositionInOneRoom(String roomId) {
-        ArrayList<String> louvreIds = getFunctionIds(roomId, Database.LIGHT);
+        ArrayList<String> louvreIds = getFunctionIds(roomId, Database.SHUTTER);
         double position = 0;
-        for(String louvreId : louvreIds) {
-            Shutter l = getLouvre(roomId, louvreId);
-            position += l.getPosition();
+        if(louvreIds != null) {
+            for(String louvreId : louvreIds) {
+                Shutter l = getLouvre(roomId, louvreId);
+                if(l != null)
+                    position += l.getPosition();
+            }
+            position /= louvreIds.size();
+            if(louvreIds.size() < 1)
+                position = -1;
         }
-        position /= louvreIds.size();
+        else
+            position = -1;
+
         return position;
     }
 

@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class General extends AppCompatActivity implements View.OnClickListener{
+import com.sophiafema.home_easylife.database.DatabaseAdapter;
+
+public class General extends AppCompatActivity implements View.OnClickListener , CompoundButton.OnCheckedChangeListener {
 
     ImageView iVGeneralMenue;
 
@@ -32,12 +34,21 @@ public class General extends AppCompatActivity implements View.OnClickListener{
     TextView tVGeneralMusic;
     TextView tVGeneralShutters;
 
+    DatabaseAdapter dba;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general);
 
+        //getData from database
+        dba = new DatabaseAdapter();
+        boolean lightIsOn = dba.getAllLightsPower();
+        boolean temperatureIsOn = dba.getAllThermostatPower();
+        boolean musicIsOn = dba.getAllMusicPower();
+
+        //initialised view
         iVGeneralMenue = (ImageView) findViewById(R.id.iVGeneralMenue);
 
         tVGeneralHeading = (TextView) findViewById(R.id.tVGeneralHeading);
@@ -62,48 +73,72 @@ public class General extends AppCompatActivity implements View.OnClickListener{
         tVGeneralShutters = (TextView) findViewById(R.id.tVGeneralShutters);
 
 
-        //Status Text Licht
-        swGeneralLight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked == true) {
-                    tVGeneralLight.setText("Licht an");
-                }else{
-                    tVGeneralLight.setText("Licht aus");
-                }
 
-            }
-        });
+        //set checked
+        swGeneralLight.setChecked(lightIsOn);
+        swGeneralTemperature.setChecked(temperatureIsOn);
+        swGeneralMusic.setChecked(musicIsOn);
 
-        //Status Text Temperatur
-        swGeneralTemperature.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked == true) {
-                    tVGeneralTemperature.setText("Thermostat an");
-                }else{
-                    tVGeneralTemperature.setText("Thermostat aus");
-                }
+        //setText
+        setTextLightOn(lightIsOn);
+        setTextTemperatureOn(temperatureIsOn);
+        setTextMusicOn(musicIsOn);
 
-            }
-        });
 
-        //Status Text Musik
-        swGeneralMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked == true) {
-                    tVGeneralMusic.setText("Musik an");
-                }else{
-                    tVGeneralMusic.setText("Musik aus");
-                }
-
-            }
-        });
+        //checkchanged listener
+        swGeneralLight.setOnCheckedChangeListener(this);
+        swGeneralTemperature.setOnCheckedChangeListener(this);
+        swGeneralMusic.setOnCheckedChangeListener(this);
     }
+
+    //Status Text Licht
+    public void setTextLightOn(boolean isChecked) {
+        if(isChecked) {
+            tVGeneralLight.setText("Licht an");
+            dba.setAllLightsPower(true);
+        }else{
+            tVGeneralLight.setText("Licht aus");
+            dba.setAllLightsPower(false);
+        }
+    }
+
+    //Status Text Temperatur
+    public void setTextTemperatureOn(boolean isChecked) {
+        if(isChecked) {
+            tVGeneralTemperature.setText("Thermostat an");
+            dba.setAllThermoPower(true);
+        }else{
+            tVGeneralTemperature.setText("Thermostat aus");
+            dba.setAllThermoPower(false);
+        }
+    }
+
+    //Status Text Musik
+    public void setTextMusicOn(boolean isChecked) {
+        if(isChecked) {
+            tVGeneralMusic.setText("Musik an");
+            dba.setAllMusicPower(true);
+        }else{
+            tVGeneralMusic.setText("Musik aus");
+            dba.setAllMusicPower(false);
+        }
+    }
+
 
     @Override
     public void onClick(View view) {
         this.finish();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(buttonView.getId() == R.id.swGeneralLight)
+            setTextLightOn(isChecked);
+        else if(buttonView.getId() == R.id.swGeneralTemperature) {
+            setTextTemperatureOn(isChecked);
+        }
+        else if(buttonView.getId() == R.id.swGeneralMusic) {
+            setTextMusicOn(isChecked);
+        }
     }
 }

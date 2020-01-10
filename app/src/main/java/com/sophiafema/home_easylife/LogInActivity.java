@@ -26,6 +26,7 @@ public class LogInActivity extends AppCompatActivity implements
 
     private static final String TAG = "EmailPassword";
     public static String USER_UID = "USER_UID";
+    public static String STRING_USER_UID = "USER_UID";
 
     private TextView mStatusTextView;
     //private TextView mDetailTextView;
@@ -209,9 +210,11 @@ public class LogInActivity extends AppCompatActivity implements
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail(), user.isEmailVerified()));
             USER_UID = user.getUid();
+            //House house = new House();
+            //house.setHouseInDatebase();
 
             Intent intent = new Intent(LogInActivity.this, Home.class);
-            intent.putExtra(USER_UID, user.getUid());
+            intent.putExtra(STRING_USER_UID, user.getUid());
             startActivity(intent);
 
         } else {
