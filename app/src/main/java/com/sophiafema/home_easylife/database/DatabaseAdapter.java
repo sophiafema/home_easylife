@@ -1,5 +1,6 @@
 package com.sophiafema.home_easylife.database;
 
+import com.sophiafema.home_easylife.LogInActivity;
 import com.sophiafema.home_easylife.models.Event;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Music;
@@ -12,11 +13,13 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class DatabaseAdapter {
-    Database db;
-    String userId="userId";
+    private Database db;
+    private String userId;
 
     public DatabaseAdapter() {
         this.db = new Database();
+        userId = LogInActivity.USER_UID;
+
         //this.userId = Auth.getUserid();
     }
 
@@ -82,12 +85,14 @@ public class DatabaseAdapter {
             setLight(r.getName(), light);
         }
 
-        ArrayList<Shutter> shutters = r.getShutters();
-        for(Shutter shutter : shutters) {
-            setLouvre(r.getName(), shutter);
+        if(r.getShutters() != null) {
+            ArrayList<Shutter> shutters = r.getShutters();
+            for (Shutter shutter : shutters) {
+                setLouvre(r.getName(), shutter);
+            }
         }
-
-        setMusic(r.getName(), r.getMusic());
+        if(r.getMusic() != null)
+            setMusic(r.getName(), r.getMusic());
         setThermostat(r.getName(), r.getThermo());
     }
     public void setEvent(Event e) {
@@ -168,7 +173,7 @@ public class DatabaseAdapter {
         return t;
     }
 
-    public Room getRoom(String room) {
+    public Room getSRoom(String room) {
 
         Room r = null;
         try {
@@ -181,7 +186,7 @@ public class DatabaseAdapter {
         return r;
     }
 
-    public Room getSRoom(String room) {
+    public Room getRoom(String room) {
 
         SimpleRoom d = null;
         try {
@@ -406,7 +411,7 @@ public class DatabaseAdapter {
         }
     }
 
-    public boolean getAllLightsPower() throws ExecutionException, InterruptedException {
+    public boolean getAllLightsPower() {
         ArrayList<String> roomIds = getRoomIds();
         for(String roomId : roomIds) {
             if(getAllLightsInOneRoomPower(roomId))
@@ -441,8 +446,10 @@ public class DatabaseAdapter {
         ArrayList<String> roomIds = getRoomIds();
         for(String roomId : roomIds) {
             Music m = getMusic(roomId);
-            if(m.isPower())
-                return true;
+            if(m != null) {
+                if (m.isPower())
+                    return true;
+            }
         }
         return false;
     }
@@ -451,19 +458,29 @@ public class DatabaseAdapter {
         ArrayList<String> roomIds = getRoomIds();
         double position = 0;
         for(String roomId : roomIds) {
-            position += getAllLouvrePositionInOneRoom(roomId);
+            double pos = getAllLouvrePositionInOneRoom(roomId);
+            if(pos > -1)
+                position += pos;
         }
         position /= roomIds.size();
         return false;
     }
     public double getAllLouvrePositionInOneRoom(String roomId) {
-        ArrayList<String> louvreIds = getFunctionIds(roomId, Database.LIGHT);
+        ArrayList<String> louvreIds = getFunctionIds(roomId, Database.SHUTTER);
         double position = 0;
-        for(String louvreId : louvreIds) {
-            Shutter l = getLouvre(roomId, louvreId);
-            position += l.getPosition();
+        if(louvreIds != null) {
+            for(String louvreId : louvreIds) {
+                Shutter l = getLouvre(roomId, louvreId);
+                if(l != null)
+                    position += l.getPosition();
+            }
+            position /= louvreIds.size();
+            if(louvreIds.size() < 1)
+                position = -1;
         }
-        position /= louvreIds.size();
+        else
+            position = -1;
+
         return position;
     }
 

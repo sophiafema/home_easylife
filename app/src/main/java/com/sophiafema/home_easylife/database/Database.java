@@ -153,7 +153,7 @@ public class Database extends AsyncTask<Object, Void, Object> {
         }
         return o;
     }
-    public SimpleRoom getSRoom(String userId, String room) throws InterruptedException {
+    public SimpleRoom getRoom(String userId, String room) throws InterruptedException {
         DocumentReference docRef = getDocumentReferenceRoom(userId, room);
 
         Task<DocumentSnapshot> task = docRef.get();
@@ -163,12 +163,25 @@ public class Database extends AsyncTask<Object, Void, Object> {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        /*Thread t = new Thread(){
+
+            @Override
+            public void run() {
+                super.run();
+
+                syso
+            }
+        }.start();
+
+
+        t.wait();*/
+
         return (SimpleRoom) o;
     }
 
-    public Room getRoom(String userId, String room) throws InterruptedException {
+    public Room getSRoom(String userId, String room) throws InterruptedException {
         DocumentReference docRef = getDocumentReferenceRoom(userId, room);
-
         Task<DocumentSnapshot> task = docRef.get();
         try {
             DocumentSnapshot doc = Tasks.await(task);
@@ -183,6 +196,7 @@ public class Database extends AsyncTask<Object, Void, Object> {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
+                        System.out.println(getObjectFromSnapshot(LIGHT, document));
                         lights.add((Light) getObjectFromSnapshot(LIGHT, document));
                     }
                 }

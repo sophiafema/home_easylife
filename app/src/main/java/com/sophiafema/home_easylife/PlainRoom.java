@@ -56,7 +56,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
             currentRoom = Util.LIVING;
         }
 
-        //Log.e("room:",currentRoom);
         switch(currentRoom)
         {
             case Util.LIVING:
@@ -78,6 +77,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         //Room mit Wert aus Datenbank befüllen
         r = db.getRoom(currentRoom);
+        //Log.e("Lights", r.getLights().get(0).getName());
 
 
         iVPlainRoomMenue = (ImageView) findViewById(R.id.iVPlainRoomMenue);
@@ -102,7 +102,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         indicator = (CircleIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
-        indicator.createIndicators(5,0);
+
         //optional
         //new PagerAdapter(getSupportFragmentManager()).registerDataSetObserver(indicator.getDataSetObserver());
 
@@ -159,8 +159,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
     private class PagerAdapter extends FragmentPagerAdapter
     {
-        public PagerAdapter(FragmentManager fm)
-        {
+        public PagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -169,27 +168,38 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         {
             //TODO an die fragments die Werte vom Room übergeben
 
-            //TODO Activity zur Einstellung von Einzelnen Lampen und Jalousien
 
-            switch(position)
+            if (r.getName().equals(Util.HALLWAY))
             {
-                case 0: return Fragment_Light.newInstance(r);
-                case 1: return Fragment_Thermostat.newInstance(r);
-                case 2: return Fragment_Jalousie.newInstance(r);
-                case 3: return Fragment_Music.newInstance(r);
-                case 4: return Fragment_Events.newInstance(r);
-
+                switch (position)
+                {
+                    case 0: return Fragment_Light.newInstance(r);
+                    case 1: return Fragment_Thermostat.newInstance(r);
+                }
+                indicator.createIndicators(2,0);
+                return null;
             }
-            return null;
+            else
+            {
+                switch(position)
+                {
+                    case 0: return Fragment_Light.newInstance(r);
+                    case 1: return Fragment_Thermostat.newInstance(r);
+                    case 2: return Fragment_Jalousie.newInstance(r);
+                    case 3: return Fragment_Music.newInstance(r);
+
+                }
+                indicator.createIndicators(4,0);
+                return null;
+            }
         }
 
         @Override
-        public int getCount()
-        {
-            return 5;
-        }
+        public int getCount() {
+            int count;
+            if (r.getName().equals(Util.HALLWAY)) {count = 2;}
+            else {count = 4;}
+            return count;}
+
     }
-
-
-
 }

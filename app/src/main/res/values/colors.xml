@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#121212</color>
+    <color name="colorPrimaryLight">#2BDBDB</color>
     <color name="colorAccent">#2BDBDB</color>
-    <color name="bright">#EBEBEB</color>
+    <color name="colorSecondary">#2BDBDB</color>
+    <color name="colorHot">#2BDBDB</color>
 
     <!-- picker colors -->
     <color name="colorText">#ffffff</color>
