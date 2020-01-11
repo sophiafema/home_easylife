@@ -2,6 +2,7 @@ package com.sophiafema.home_easylife;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -48,8 +49,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         boolean lightIsOn = dba.getAllLightsPower();
         boolean temperatureIsOn = dba.getAllThermostatPower();
         boolean musicIsOn = dba.getAllMusicPower();
-        boolean shuttersUp = dba.getAllShutterPosition();
-        boolean shuttersDown = dba.getAllShutterPosition();
+        double shuttersUp = dba.getAllShutterPosition();
 
         //initialised view
         iVGeneralMenue = (ImageView) findViewById(R.id.iVGeneralMenue);
@@ -88,7 +88,6 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         setTextLightOn(lightIsOn);
         setTextTemperatureOn(temperatureIsOn);
         setTextMusicOn(musicIsOn);
-        setTextShuttersUp(shuttersUp);
 
 
         //checkchanged listener
@@ -150,9 +149,13 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         }
         else if(view.getId() == R.id.iVGeneralShuttersUp) {
             setTextShuttersUp(true);
+            iVGeneralShuttersUp.setColorFilter(Color.CYAN);
+            iVGeneralShuttersDown.setColorFilter(Color.TRANSPARENT);
         }
         else if(view.getId() == R.id.iVGeneralShuttersDown) {
             setTextShuttersUp(false);
+            iVGeneralShuttersDown.setColorFilter(Color.CYAN);
+            iVGeneralShuttersUp.setColorFilter(Color.TRANSPARENT);
         }
     }
 

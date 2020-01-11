@@ -3,22 +3,24 @@ package com.sophiafema.home_easylife.models;
 import java.util.ArrayList;
 
 public class Event {
+    private int pictureID;
     private String name;
     private int id;
     private ArrayList<Room> rooms;
-    private String day;
-    private int time;
+//    private String day;
+//    private int time;
 
     public Event() {
 
     }
 
-    public Event(String name, int id, ArrayList<Room> rooms, String day, int time) {
+    public Event(int pictureID, String name, int id, ArrayList<Room> rooms) {
+        this.pictureID = pictureID;
         this.name = name;
         this.id = id;
         this.rooms = rooms;
-        this.day = day;
-        this.time = time;
+//        this.day = day;
+//        this.time = time;
     }
 
     public boolean inMultipleRooms() {
@@ -49,19 +51,19 @@ public class Event {
         this.rooms = rooms;
     }
 
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
+//    public String getDay() {
+//        return day;
+//    }
+//
+//    public void setDay(String day) {
+//        this.day = day;
+//    }
+//
+//    public int getTime() {
+//        return time;
+//    }
+//
+//    public void setTime(int time) {
+//        this.time = time;
+//    }
 }

@@ -454,7 +454,7 @@ public class DatabaseAdapter {
         return false;
     }
 
-    public boolean getAllShutterPosition() {
+    public double getAllShutterPosition() {
         ArrayList<String> roomIds = getRoomIds();
         double position = 0;
         for(String roomId : roomIds) {
@@ -463,7 +463,7 @@ public class DatabaseAdapter {
                 position += pos;
         }
         position /= roomIds.size();
-        return false;
+        return position;
     }
     public double getAllShutterPositionInOneRoom(String roomId) {
         ArrayList<String> shutterIds = getFunctionIds(roomId, Database.SHUTTER);
