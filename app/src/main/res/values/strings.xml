@@ -17,6 +17,17 @@
     <string name="event">Ereignis</string>
 
 
+<!--    //Test für Events &ndash;&gt; RecyclerView-->
+<!--    <string-array name="events">-->
+<!--        <item>Kochabend</item>-->
+<!--        <item>Schlafen</item>-->
+<!--        <item>Fernsehabend</item>-->
+<!--        <item>Romantik</item>-->
+<!--        <item>Entspannung</item>-->
+<!--        <item>Morgenroutine</item>-->
+<!--    </string-array>-->
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

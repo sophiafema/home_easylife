@@ -1,12 +1,15 @@
 package com.sophiafema.home_easylife;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.sophiafema.home_easylife.models.Event;
 
 public class Events_Add extends AppCompatActivity implements View.OnClickListener{
 
@@ -22,21 +25,16 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     ImageView iVEvents_AddSleeping;
     ImageView iVEvents_AddKitchen;
 
-    ImageView iVEvents_AddTime;
-    ImageView iVEvents_AddRepetition;
-
     ImageView iVEvents_AddLight;
     ImageView iVEvents_AddTemperature;
     ImageView iVEvents_AddShutters;
     ImageView iVEvents_AddMusic;
 
-    TextView tVEvents_AddTime;
-    TextView tVEvents_AddRepetition;
-
     TextView tVEvents_AddLight;
     TextView tVEvents_AddTemperature;
     TextView tVEvents_AddShutters;
     TextView tVEvents_AddMusic;
+
 
 
     @Override
@@ -59,16 +57,12 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         iVEvents_AddSleeping = (ImageView) findViewById(R.id.iVEvents_AddSleeping);
         iVEvents_AddKitchen = (ImageView) findViewById(R.id.iVEvents_AddKitchen);
 
-        iVEvents_AddTime = (ImageView) findViewById(R.id.iVEvents_AddTime);
-        iVEvents_AddRepetition = (ImageView) findViewById(R.id.iVEvents_AddRepetition);
 
         iVEvents_AddLight = (ImageView) findViewById(R.id.iVEvents_AddLight);
         iVEvents_AddTemperature = (ImageView) findViewById(R.id.iVEvents_AddTemperature);
         iVEvents_AddShutters = (ImageView) findViewById(R.id.iVEvents_AddShutters);
         iVEvents_AddMusic = (ImageView) findViewById(R.id.iVEvents_AddMusic);
 
-        tVEvents_AddTime = (TextView) findViewById(R.id.tVEvents_AddTime);
-        tVEvents_AddRepetition = (TextView) findViewById(R.id.tVEvents_AddRepetition);
 
         tVEvents_AddLight = (TextView) findViewById(R.id.tVEvents_AddLight);
         tVEvents_AddTemperature = (TextView) findViewById(R.id.tVEvents_AddTemperature);

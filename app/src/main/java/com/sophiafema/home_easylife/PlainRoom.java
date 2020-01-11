@@ -127,30 +127,30 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
             if(view.getId() == R.id.iVPlainRoomHallway)
             {
                 intent2.putExtra(Util.ROOM, Util.HALLWAY);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_flur_raum_v2);
             }
 
             else if (view.getId() == R.id.iVPlainRoomBath)
             {
                 intent2.putExtra(Util.ROOM, Util.BATH);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);
             }
 
             else if (view.getId() == R.id.iVPlainRoomKitchen)
             {
                 intent2.putExtra(Util.ROOM, Util.KITCHEN);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_kueche_raum);
             }
 
             else if (view.getId() == R.id.iVPlainRoomLiving)
             {
                 intent2.putExtra(Util.ROOM, Util.LIVING);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_wohnzimmer_raum_v2);
             }
             else if (view.getId() == R.id.iVPlainRoomSleeping)
             {
                 intent2.putExtra(Util.ROOM, Util.SLEEPING);
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_schlafzimmer_raum_v2);
             }
 
             startActivity(intent2);
