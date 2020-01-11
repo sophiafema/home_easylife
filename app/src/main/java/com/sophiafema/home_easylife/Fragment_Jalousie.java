@@ -32,11 +32,6 @@ public class Fragment_Jalousie extends Fragment
             jalousie = inflater.inflate(R.layout.fragment_jalousie_bath, container, false);
         }
 
-        else if (r.getName().equals(Util.HALLWAY))
-        {
-            jalousie = inflater.inflate(R.layout.fragment_jalousie_hallway, container, false);
-        }
-
         else if (r.getName().equals(Util.KITCHEN))
         {
             jalousie = inflater.inflate(R.layout.fragment_jalousie_kitchen, container, false);

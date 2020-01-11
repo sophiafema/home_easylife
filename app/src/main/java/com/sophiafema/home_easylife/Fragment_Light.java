@@ -36,6 +36,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
             brightness = r.getLights().get(0).getBrightness();
             light.findViewById(R.id.iVFLightBath).setOnClickListener(this);
+
+
         }
 
         else if (r.getName().equals(Util.HALLWAY))
