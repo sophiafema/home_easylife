@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
 import com.sophiafema.home_easylife.models.Thermostat;
+import com.sophiafema.home_easylife.view.Picker;
 
 public class Fragment_Thermostat extends Fragment implements View.OnClickListener
 {
@@ -34,9 +35,17 @@ public class Fragment_Thermostat extends Fragment implements View.OnClickListene
         View thermostat = inflater.inflate(R.layout.fragment_thermostat, container, false);
         temperature = r.getThermo().getTemperature();
         power = r.getThermo().isPower();
+        //dba erstellen
 
         pFTermostat = (com.sophiafema.home_easylife.view.TemperaturePicker) thermostat.findViewById(R.id.pFTermostat);
-        pFTermostat.setOnClickListener(this);
+        pFTermostat.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
+            @Override
+            public void onColorSelected(int color) {
+                //color == temperatur
+                r.getThermo().setTemperature(color);
+                //dba set
+            }
+        });
 
         return thermostat;
     }
@@ -44,14 +53,11 @@ public class Fragment_Thermostat extends Fragment implements View.OnClickListene
     //TODO Wo bekomme ich die Rückgabewerte vom Picker her?
     @Override
     public void onClick(View v) {
-        Thermostat thermo = new Thermostat();
-        //thermo = ;
-
-        //r.setThermo(thermo);
-        //Thermostat set Temperature und setPower?
 
         db = new DatabaseAdapter();
-       //db.setTemperature(r.getName(), ).setThermostatPower(r.getName(), );
+       //db.setTemperature(r.getName(), )
+        //
+        // für sitch .setThermostatPower(r.getName(), );
 
     }
 }
