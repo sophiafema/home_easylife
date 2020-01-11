@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class Events extends AppCompatActivity implements View.OnClickListener {
@@ -14,24 +15,14 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
     TextView tVEventsHeading;
     ImageView iVEventsAdd;
 
-    TextView tVEventsAll;
-    ImageView iVEventsAll;
 
-    TextView tVEventsKitchen;
-    ImageView iVEventsKitchen;
-
-    TextView tVEventsLiving;
-    ImageView iVEventsLiving;
-
-    TextView tVEventsSleeping;
-    ImageView iVEventsSleeping;
-
-    TextView tVEventsBath;
-    ImageView iVEventsBath;
-
-    TextView tVEventsHallway;
-    ImageView iVEventsHallway;
-
+    ImageView iVEventsBackground;
+    TextView tVEventsRoom;
+    TextView tVEventsName;
+    TextView tVEventsTime;
+    TextView tVEventsRepetition;
+    Switch swEvents;
+    ImageView iVEventsPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +35,13 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         iVEventsAdd = (ImageView) findViewById(R.id.iVEventsAdd);
         iVEventsAdd.setOnClickListener(this);
 
-
-        tVEventsAll = (TextView) findViewById(R.id.tVEventsAll);
-        iVEventsAll = (ImageView) findViewById(R.id.iVEventsAll);
-        tVEventsKitchen = (TextView) findViewById(R.id.tVEventsKitchen);
-        iVEventsKitchen = (ImageView) findViewById(R.id.iVEventsKitchen);
-        tVEventsLiving = (TextView) findViewById(R.id.tVEventsLiving);
-        iVEventsLiving = (ImageView) findViewById(R.id.iVEventsLiving);
-        tVEventsSleeping = (TextView) findViewById(R.id.tVEventsSleeping);
-        iVEventsSleeping = (ImageView) findViewById(R.id.iVEventsSleeping);
-        tVEventsBath = (TextView) findViewById(R.id.tVEventsBath);
-        iVEventsBath = (ImageView) findViewById(R.id.iVEventsBath);
-        tVEventsHallway = (TextView) findViewById(R.id.tVEventsHallway);
-        iVEventsHallway = (ImageView) findViewById(R.id.iVEventsHallway);
+        iVEventsBackground = (ImageView) findViewById(R.id.iVEventsBackground);
+        tVEventsRoom = (TextView) findViewById(R.id.tVEventsRoom);
+        tVEventsName = (TextView) findViewById(R.id.tVEventsName);
+        tVEventsTime = (TextView) findViewById(R.id.tVEventsTime);
+        tVEventsRepetition = (TextView) findViewById(R.id.tVEventsRepetition);
+        swEvents = (Switch) findViewById(R.id.swEvents);
+        iVEventsPicture = (ImageView) findViewById(R.id.iVEventsPicture);
 
 
     }

@@ -48,6 +48,8 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         boolean lightIsOn = dba.getAllLightsPower();
         boolean temperatureIsOn = dba.getAllThermostatPower();
         boolean musicIsOn = dba.getAllMusicPower();
+        boolean shuttersUp = dba.getAllShutterPosition();
+        boolean shuttersDown = dba.getAllShutterPosition();
 
         //initialised view
         iVGeneralMenue = (ImageView) findViewById(R.id.iVGeneralMenue);
@@ -66,7 +68,9 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
 
 
         iVGeneralShuttersUp = (ImageView) findViewById(R.id.iVGeneralShuttersUp);
+        iVGeneralShuttersUp.setOnClickListener(this);
         iVGeneralShuttersDown = (ImageView) findViewById(R.id.iVGeneralShuttersDown);
+        iVGeneralShuttersDown.setOnClickListener(this);
 
         tVGeneralLight = (TextView) findViewById(R.id.tVGeneralLight);
         tVGeneralTemperature = (TextView) findViewById(R.id.tVGeneralTemperature);
@@ -84,6 +88,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         setTextLightOn(lightIsOn);
         setTextTemperatureOn(temperatureIsOn);
         setTextMusicOn(musicIsOn);
+        setTextShuttersUp(shuttersUp);
 
 
         //checkchanged listener
@@ -125,16 +130,37 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         }
     }
 
+    //Status Text Jalousie
+    public void setTextShuttersUp(boolean isChecked)
+    {
+        if(isChecked) {
+            tVGeneralShutters.setText("Jalousie oben");
+            dba.setAllShutterPosition(0.0);
+        }else{
+            tVGeneralShutters.setText("Jalousie unten");
+            dba.setAllShutterPosition(100.0);
+        }
+    }
+
 
     @Override
     public void onClick(View view) {
-        this.finish();
+        if(view.getId() == R.id.tVGeneralHeading) {
+            this.finish();
+        }
+        else if(view.getId() == R.id.iVGeneralShuttersUp) {
+            setTextShuttersUp(true);
+        }
+        else if(view.getId() == R.id.iVGeneralShuttersDown) {
+            setTextShuttersUp(false);
+        }
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(buttonView.getId() == R.id.swGeneralLight)
+        if(buttonView.getId() == R.id.swGeneralLight) {
             setTextLightOn(isChecked);
+        }
         else if(buttonView.getId() == R.id.swGeneralTemperature) {
             setTextTemperatureOn(isChecked);
         }

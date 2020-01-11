@@ -71,7 +71,7 @@ public class DatabaseAdapter {
     public void setMusic(String room, Music m) {
         db.setFunction(userId, room, Database.MUSIC, m,  Database.MUSIC);
     }
-    public void setLouvre(String room, Shutter l) {
+    public void setShutter(String room, Shutter l) {
         db.setFunction(userId, room, Database.SHUTTER, l,  l.getName());
     }
     public void setThermostat(String room, Thermostat t) {
@@ -88,7 +88,7 @@ public class DatabaseAdapter {
         if(r.getShutters() != null) {
             ArrayList<Shutter> shutters = r.getShutters();
             for (Shutter shutter : shutters) {
-                setLouvre(r.getName(), shutter);
+                setShutter(r.getName(), shutter);
             }
         }
         if(r.getMusic() != null)
@@ -139,7 +139,7 @@ public class DatabaseAdapter {
         //Light l = (Light) db.getFunction(userId, room, Database.LIGHT, id);
         return l;
     }
-    public Shutter getLouvre(String room, String id) {
+    public Shutter getShutter(String room, String id) {
         //Shutter l = (Shutter) db.getFunction(userId, room, Database.SHUTTER, id);
         Shutter l = null;
         try {
@@ -201,7 +201,7 @@ public class DatabaseAdapter {
         r.setId(d.getId());
         r.setName(d.getName());
         r.setLights(getLights(d.getName()));
-        r.setShutters(getLouvres(d.getName()));
+        r.setShutters(getShutters(d.getName()));
         r.setThermo(getThermostat(d.getName()));
         r.setMusic(getMusic(d.getName()));
         return r;
@@ -246,7 +246,7 @@ public class DatabaseAdapter {
 
         return l;
     }
-    public ArrayList<Shutter> getLouvres(String room) {
+    public ArrayList<Shutter> getShutters(String room) {
         ArrayList<Object> o = new ArrayList<>();
         ArrayList<Shutter> l = new ArrayList<>();
         try {
@@ -398,13 +398,13 @@ public class DatabaseAdapter {
         }
     }
 
-    public void setAllLouvrePosition(double value) {
+    public void setAllShutterPosition(double value) {
         ArrayList<String> roomIds = getRoomIds();
         for(String roomId : roomIds) {
-            setAllLouvrePositionInOneRoom(roomId, value);
+            setAllShutterPositionInOneRoom(roomId, value);
         }
     }
-    public void setAllLouvrePositionInOneRoom(String roomId, double value) {
+    public void setAllShutterPositionInOneRoom(String roomId, double value) {
         ArrayList<String> louvreIds = getFunctionIds(roomId, Database.SHUTTER);
         for(String louvreId : louvreIds) {
             setPosition(roomId, louvreId, value);
@@ -454,28 +454,28 @@ public class DatabaseAdapter {
         return false;
     }
 
-    public boolean getAllLouvrePosition() {
+    public boolean getAllShutterPosition() {
         ArrayList<String> roomIds = getRoomIds();
         double position = 0;
         for(String roomId : roomIds) {
-            double pos = getAllLouvrePositionInOneRoom(roomId);
+            double pos = getAllShutterPositionInOneRoom(roomId);
             if(pos > -1)
                 position += pos;
         }
         position /= roomIds.size();
         return false;
     }
-    public double getAllLouvrePositionInOneRoom(String roomId) {
-        ArrayList<String> louvreIds = getFunctionIds(roomId, Database.SHUTTER);
+    public double getAllShutterPositionInOneRoom(String roomId) {
+        ArrayList<String> shutterIds = getFunctionIds(roomId, Database.SHUTTER);
         double position = 0;
-        if(louvreIds != null) {
-            for(String louvreId : louvreIds) {
-                Shutter l = getLouvre(roomId, louvreId);
+        if(shutterIds != null) {
+            for(String shutterId : shutterIds) {
+                Shutter l = getShutter(roomId, shutterId);
                 if(l != null)
                     position += l.getPosition();
             }
-            position /= louvreIds.size();
-            if(louvreIds.size() < 1)
+            position /= shutterIds.size();
+            if(shutterIds.size() < 1)
                 position = -1;
         }
         else
