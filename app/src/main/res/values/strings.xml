@@ -16,6 +16,9 @@
     <string name="events">Ereignisse</string>
     <string name="event">Ereignis</string>
 
+    <string name="light_on">Licht an</string>
+    <string name="light_off">Licht aus</string>
+
 
 <!--    //Test für Events &ndash;&gt; RecyclerView-->
 <!--    <string-array name="events">-->

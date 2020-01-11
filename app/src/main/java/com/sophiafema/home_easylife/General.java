@@ -49,7 +49,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         boolean lightIsOn = dba.getAllLightsPower();
         boolean temperatureIsOn = dba.getAllThermostatPower();
         boolean musicIsOn = dba.getAllMusicPower();
-        double shuttersUp = dba.getAllShutterPosition();
+        double shutterPosition = dba.getAllShutterPosition();
 
         //initialised view
         iVGeneralMenue = (ImageView) findViewById(R.id.iVGeneralMenue);
@@ -84,10 +84,12 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         swGeneralTemperature.setChecked(temperatureIsOn);
         swGeneralMusic.setChecked(musicIsOn);
 
+
         //setText
         setTextLightOn(lightIsOn);
         setTextTemperatureOn(temperatureIsOn);
         setTextMusicOn(musicIsOn);
+        setTextShuttersUp(isShutterUp(shutterPosition));
 
 
         //checkchanged listener
@@ -99,10 +101,15 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     //Status Text Licht
     public void setTextLightOn(boolean isChecked) {
         if(isChecked) {
-            tVGeneralLight.setText("Licht an");
+            tVGeneralLight.setText(R.string.light_on);
+        }else{
+            tVGeneralLight.setText(R.string.light_off);
+        }
+    }
+    public void setLightOn(boolean isChecked) {
+        if(isChecked) {
             dba.setAllLightsPower(true);
         }else{
-            tVGeneralLight.setText("Licht aus");
             dba.setAllLightsPower(false);
         }
     }
@@ -111,9 +118,14 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     public void setTextTemperatureOn(boolean isChecked) {
         if(isChecked) {
             tVGeneralTemperature.setText("Thermostat an");
-            dba.setAllThermoPower(true);
         }else{
             tVGeneralTemperature.setText("Thermostat aus");
+        }
+    }
+    public void setTemperatureOn(boolean isChecked) {
+        if(isChecked) {
+            dba.setAllThermoPower(true);
+        }else{
             dba.setAllThermoPower(false);
         }
     }
@@ -122,9 +134,14 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     public void setTextMusicOn(boolean isChecked) {
         if(isChecked) {
             tVGeneralMusic.setText("Musik an");
-            dba.setAllMusicPower(true);
         }else{
             tVGeneralMusic.setText("Musik aus");
+        }
+    }
+    public void setMusicOn(boolean isChecked) {
+        if(isChecked) {
+            dba.setAllMusicPower(true);
+        }else{
             dba.setAllMusicPower(false);
         }
     }
@@ -134,13 +151,23 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     {
         if(isChecked) {
             tVGeneralShutters.setText("Jalousie oben");
-            dba.setAllShutterPosition(0.0);
         }else{
             tVGeneralShutters.setText("Jalousie unten");
+        }
+    }
+    public void setShuttersUp(boolean isChecked)
+    {
+        if(isChecked) {
+            dba.setAllShutterPosition(0.0);
+        }else{
             dba.setAllShutterPosition(100.0);
         }
     }
 
+
+    private boolean isShutterUp(double shutterPosition) {
+        return shutterPosition < 50;
+    }
 
     @Override
     public void onClick(View view) {
@@ -149,11 +176,13 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         }
         else if(view.getId() == R.id.iVGeneralShuttersUp) {
             setTextShuttersUp(true);
+            setShuttersUp(true);
             iVGeneralShuttersUp.setColorFilter(Color.CYAN);
             iVGeneralShuttersDown.setColorFilter(Color.TRANSPARENT);
         }
         else if(view.getId() == R.id.iVGeneralShuttersDown) {
             setTextShuttersUp(false);
+            setShuttersUp(false);
             iVGeneralShuttersDown.setColorFilter(Color.CYAN);
             iVGeneralShuttersUp.setColorFilter(Color.TRANSPARENT);
         }
@@ -163,12 +192,15 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if(buttonView.getId() == R.id.swGeneralLight) {
             setTextLightOn(isChecked);
+            setLightOn(isChecked);
         }
         else if(buttonView.getId() == R.id.swGeneralTemperature) {
             setTextTemperatureOn(isChecked);
+            setTemperatureOn(isChecked);
         }
         else if(buttonView.getId() == R.id.swGeneralMusic) {
             setTextMusicOn(isChecked);
+            setMusicOn(isChecked);
         }
     }
 }

@@ -58,19 +58,19 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         switch(currentRoom)
         {
             case Util.LIVING:
-               //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_wohnzimmer_raum_v2);
                 break;
             case Util.BATH:
-              //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);
                 break;
             case Util.HALLWAY:
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_flur_raum_v2);
                 break;
             case Util.KITCHEN:
-               //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_kueche_raum);
                 break;
             case Util.SLEEPING:
-                //iVPlainRoomBackground.setImageResource(R.drawable.new_background);
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_schlafzimmer_raum_v2);
                 break;
         }
 
@@ -119,40 +119,41 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         else
         {
-            Intent intent2 = new Intent(this, PlainRoom.class);
+//            Intent intent2 = new Intent(this, PlainRoom.class);
 
             //Raum übergeben --> mit statischen variablen in Util
 
+
             if(view.getId() == R.id.iVPlainRoomHallway)
             {
-                intent2.putExtra(Util.ROOM, Util.HALLWAY);
+                //intent2.putExtra(Util.ROOM, Util.HALLWAY);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_flur_raum_v2);
             }
 
             else if (view.getId() == R.id.iVPlainRoomBath)
             {
-                intent2.putExtra(Util.ROOM, Util.BATH);
+                //intent2.putExtra(Util.ROOM, Util.BATH);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);
             }
 
             else if (view.getId() == R.id.iVPlainRoomKitchen)
             {
-                intent2.putExtra(Util.ROOM, Util.KITCHEN);
+                //intent2.putExtra(Util.ROOM, Util.KITCHEN);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_kueche_raum);
             }
 
             else if (view.getId() == R.id.iVPlainRoomLiving)
             {
-                intent2.putExtra(Util.ROOM, Util.LIVING);
+                //intent2.putExtra(Util.ROOM, Util.LIVING);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_wohnzimmer_raum_v2);
             }
             else if (view.getId() == R.id.iVPlainRoomSleeping)
             {
-                intent2.putExtra(Util.ROOM, Util.SLEEPING);
+                //intent2.putExtra(Util.ROOM, Util.SLEEPING);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_schlafzimmer_raum_v2);
             }
 
-            startActivity(intent2);
+//            startActivity(intent2);
         }
     }
 

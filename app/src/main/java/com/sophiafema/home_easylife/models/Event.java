@@ -3,6 +3,14 @@ package com.sophiafema.home_easylife.models;
 import java.util.ArrayList;
 
 public class Event {
+    public int getPictureID() {
+        return pictureID;
+    }
+
+    public void setPictureID(int pictureID) {
+        this.pictureID = pictureID;
+    }
+
     private int pictureID;
     private String name;
     private int id;

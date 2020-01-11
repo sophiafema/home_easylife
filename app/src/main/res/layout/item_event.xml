@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iVEventsBackground"
+        android:layout_width="370dp"
+        android:layout_height="77dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="30dp"
+        android:layout_padding="30dp"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView"
+        app:srcCompat="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/tVEventsName"
+        android:layout_width="198dp"
+        android:layout_height="29dp"
+        android:text=" "
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEventsBackground"
+        app:layout_constraintEnd_toEndOf="@+id/iVEventsBackground"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/iVEventsBackground"
+        app:layout_constraintTop_toTopOf="@+id/iVEventsBackground"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <TextView
+        android:id="@+id/tVEventsTime"
+        android:layout_width="116dp"
+        android:layout_height="19dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="@+id/iVEventsBackground"
+        app:layout_constraintEnd_toEndOf="@+id/iVEventsBackground"
+        app:layout_constraintHorizontal_bias="0.324"
+        app:layout_constraintStart_toStartOf="@+id/iVEventsBackground"
+        app:layout_constraintTop_toTopOf="@+id/iVEventsBackground"
+        app:layout_constraintVertical_bias="0.892" />
+
+    <TextView
+        android:id="@+id/tVEventsRepetition"
+        android:layout_width="116dp"
+        android:layout_height="19dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="@+id/iVEventsBackground"
+        app:layout_constraintEnd_toEndOf="@+id/iVEventsBackground"
+        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintStart_toStartOf="@+id/iVEventsBackground"
+        app:layout_constraintTop_toTopOf="@+id/iVEventsBackground"
+        app:layout_constraintVertical_bias="0.896" />
+
+    <Switch
+        android:id="@+id/swEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEventsBackground"
+        app:layout_constraintEnd_toEndOf="@+id/iVEventsBackground"
+        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintStart_toStartOf="@+id/iVEventsBackground"
+        app:layout_constraintTop_toTopOf="@+id/iVEventsBackground" />
+
+    <ImageView
+        android:id="@+id/iVEventsPicture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iVEventsBackground"
+        app:layout_constraintEnd_toEndOf="@+id/iVEventsBackground"
+        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintStart_toStartOf="@+id/iVEventsBackground"
+        app:layout_constraintTop_toTopOf="@+id/iVEventsBackground"
+        app:layout_constraintVertical_bias="0.481"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+</androidx.constraintlayout.widget.ConstraintLayout>

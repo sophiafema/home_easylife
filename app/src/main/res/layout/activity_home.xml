@@ -87,7 +87,7 @@
         android:layout_height="169dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="112dp"
         android:background="@color/colorPrimary"
         android:contentDescription="@string/kitchen"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,10 +118,10 @@
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeLiving"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeLiving"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="@+id/iVHomeLiving"
         app:layout_constraintTop_toTopOf="@+id/iVHomeLiving"
-        app:layout_constraintVertical_bias="0.951" />
+        app:layout_constraintVertical_bias="0.969" />
 
     <TextView
         android:id="@+id/tVHomeKitchen"
@@ -208,7 +208,7 @@
         app:layout_constraintBottom_toTopOf="@+id/iVHomeKitchen"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeKitchen"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534"
+        app:layout_constraintVertical_bias="0.581"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
 
     <ProgressBar

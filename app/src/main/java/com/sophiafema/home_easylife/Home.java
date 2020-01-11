@@ -41,6 +41,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     ImageView iVHomeGeneral;
     ImageView iVHomeEvents;
 
+
     private ProgressBar spinner;
     DatabaseAdapter db;
     Room r;
@@ -138,7 +139,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             {
                 intent3.putExtra(Util.ROOM, Util.HALLWAY);
             }
-
             else if (view.getId() == R.id.iVHomeBath)
             {
                 intent3.putExtra(Util.ROOM, Util.BATH);
