@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,124 +9,143 @@
 
     <ImageView
         android:id="@+id/iVPlainRoomMenue"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:contentDescription="Menü"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+
+        android:layout_alignBottom="@+id/tVPlainRoomMenue"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="0dp"
         app:srcCompat="@android:drawable/ic_input_delete" />
 
     <ImageView
         android:id="@+id/iVPlainRoomHallway"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="Flur"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="101dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
+        android:background="@color/colorPrimary"
+        app:srcCompat="@drawable/iv_plainroom_hallway" />
 
     <ImageView
         android:id="@+id/iVPlainRoomLiving"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="Wohnzimmer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginRight="83dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
+        android:background="@color/colorPrimary"
+        app:srcCompat="@drawable/iv_plainroom_living" />
 
     <ImageView
         android:id="@+id/iVPlainRoomKitchen"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="Küche"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="186dp"
+        android:layout_marginLeft="186dp"
+        android:layout_marginTop="101dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
+        android:background="@color/colorPrimary"
+        app:srcCompat="@drawable/iv_plainroom_kitchen" />
+
 
     <ImageView
         android:id="@+id/iVPlainRoomSleeping"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="Schlafzimmer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.675"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="101dp"
+        android:background="@color/colorPrimary"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
+        app:srcCompat="@drawable/iv_plainroom_sleeping" />
 
     <ImageView
         android:id="@+id/iVPlainRoomBath"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="Bad"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
+        android:background="@color/colorPrimary"
+        app:srcCompat="@drawable/iv_plainroom_bath" />
 
     <TextView
         android:id="@+id/tVPlainRoomMenue"
         android:layout_width="152dp"
         android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="17dp"
         android:paddingLeft="55dp"
         android:paddingTop="12dp"
         android:text="Menü"
         android:textColor="@android:color/background_light"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/iVPlainRoomBackground"
-        android:layout_width="406dp"
+        android:layout_width="match_parent"
         android:layout_height="476dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="69dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iVPlainRoomKitchen" />
+        android:layout_below="@+id/iVPlainRoomKitchen"
+        android:layout_above="@+id/indicator"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="0dp" />
+
+    <TextView
+        android:id="@+id/iVPlainRoomLinear"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignTop="@+id/pager"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimary"
+        android:text=" " />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
-        android:layout_width="407dp"
-        android:layout_height="476dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/iVPlainRoomBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iVPlainRoomKitchen"
-        app:layout_constraintVertical_bias="0.729">
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_above="@+id/indicator"
+        android:layout_below="@+id/iVPlainRoomKitchen"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp">
 
     </androidx.viewpager.widget.ViewPager>
 
@@ -134,11 +153,10 @@
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:gravity="bottom" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
