@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ProgressBar;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
@@ -85,7 +84,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         iVPlainRoomMenue.setOnClickListener(this);
         tVPlainRoomMenue.setOnClickListener(this);
 
-               iVPlainRoomHallway = (ImageView) findViewById(R.id.iVPlainRoomHallway);
+        iVPlainRoomHallway = (ImageView) findViewById(R.id.iVPlainRoomHallway);
         iVPlainRoomHallway.setOnClickListener(this);
         iVPlainRoomLiving = (ImageView) findViewById(R.id.iVPlainRoomLiving);
         iVPlainRoomLiving.setOnClickListener(this);
@@ -185,7 +184,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                 {
                     case 0: return Fragment_Light.newInstance(r);
                     case 1: return Fragment_Thermostat.newInstance(r);
-                    case 2: return Fragment_Jalousie.newInstance(r);
+                    case 2: return Fragment_Shutter.newInstance(r);
                     case 3: return Fragment_Music.newInstance(r);
 
                 }

@@ -35,7 +35,7 @@
         android:textColor="@color/colorText" />
 
     <com.sophiafema.home_easylife.view.TemperaturePicker
-        android:id="@+id/picker"
+        android:id="@+id/pFTermostat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

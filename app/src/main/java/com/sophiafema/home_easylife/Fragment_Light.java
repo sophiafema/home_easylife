@@ -23,6 +23,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
     //TODO nach diesem Schema Raum übergeben
     //TODO alternativ kann man natürlich auch andere Werte übergeben wenn das besser passt
+
+    //TODO veränderete Daten in der Datenbank abspeichern
     public static Fragment_Light newInstance(Room room) { return new Fragment_Light(room);}
 
     @Override
