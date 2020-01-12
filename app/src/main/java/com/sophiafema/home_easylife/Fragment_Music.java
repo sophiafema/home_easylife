@@ -136,6 +136,7 @@ public class Fragment_Music extends Fragment
                 {
                     iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
                     play = true;
+                    sFMusic.setChecked(true);
                 }
                 //Übergabe Play Pause in Raum und Datenbank
                 r.getMusic().setPlay(play);

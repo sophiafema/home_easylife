@@ -172,7 +172,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     public void setButtonColor (String currentRoom) {
         switch (currentRoom) {
             case Util.LIVING:
-                Log.e("ButtonColor", currentRoom);
                 iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorGrey));
                 iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -180,7 +179,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                 iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case Util.BATH:
-                Log.e("ButtonColor", currentRoom);
                 iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -188,7 +186,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                 iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorGrey));
                 break;
             case Util.HALLWAY:
-                Log.e("ButtonColor", currentRoom);
                 iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorGrey));
                 iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -196,7 +193,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                 iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case Util.KITCHEN:
-                Log.e("ButtonColor", currentRoom);
                 iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -204,7 +200,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                 iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case Util.SLEEPING:
-                Log.e("ButtonColor", currentRoom);
                 iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorGrey));
