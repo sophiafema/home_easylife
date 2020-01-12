@@ -12,6 +12,7 @@ import android.widget.Switch;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
+import com.sophiafema.home_easylife.view.Shutters;
 
 public class Fragment_Shutter extends Fragment
 {
@@ -50,32 +51,125 @@ public class Fragment_Shutter extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
         View shutter = inflater.inflate(R.layout.fragment_shutter_bath, container, false);
-
+        db = new DatabaseAdapter();
 
         if (r.getName().equals(Util.BATH) )
         {
             shutter = inflater.inflate(R.layout.fragment_shutter_bath, container, false);
             position = r.getShutters().get(0).getPosition();
+
+            shutterFBath = (com.sophiafema.home_easylife.view.Shutters) shutter.findViewById(R.id.shutterFBath);
+            shutterFBath.setOnPositionChangedListener(new Shutters.OnPositionChangedListener() {
+                @Override
+                public void onColorChanged(float value) {
+                    //Übergabe Position in Raum und Datenbank
+                    r.getShutters().get(0).setPosition(value);
+                    //TODO value ist float aber set Shutter verlangt double
+                    //db.setShutter(r.getName(),value);
+                }
+            });
+
+            iVFBathShuttersUp = (ImageView) shutter.findViewById(R.id.iVFBathShuttersUp);
+            iVFBathShuttersUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO welche values?
+                    //r.getShutters().get(0).setPosition();
+                    //db.setShutter(r.getName(), );
+                }
+            });
+            iVFBathShuttersDown = (ImageView) shutter.findViewById(R.id.iVFBathShuttersDown);
+            iVFBathShuttersUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO welche values?
+                    //r.getShutters().get(0).setPosition();
+                    //db.setShutter(r.getName(), );
+                }
+            });
         }
 
         else if (r.getName().equals(Util.KITCHEN))
         {
+            //TODO Kitchen beide Shutters
             shutter = inflater.inflate(R.layout.fragment_shutter_kitchen, container, false);
 
             positionlist[0] = r.getShutters().get(0).getPosition();
             positionlist[1] = r.getShutters().get(1).getPosition();
+
+
         }
 
         else if (r.getName().equals(Util.LIVING))
         {
             shutter = inflater.inflate(R.layout.fragment_shutter_living, container, false);
             position = r.getShutters().get(0).getPosition();
+
+            shutterFLiving = (com.sophiafema.home_easylife.view.Shutters) shutter.findViewById(R.id.shutterFLiving);
+            shutterFLiving.setOnPositionChangedListener(new Shutters.OnPositionChangedListener() {
+                @Override
+                public void onColorChanged(float value) {
+                    //Übergabe Position in Raum und Datenbank
+                    r.getShutters().get(0).setPosition(value);
+                    //TODO value ist float aber set Shutter verlangt double
+                    //db.setShutter(r.getName(),value);
+                }
+            });
+
+            iVFLivingShuttersUp = (ImageView) shutter.findViewById(R.id. iVFLivingShuttersUp);
+            iVFLivingShuttersUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO welche values?
+                    //r.getShutters().get(0).setPosition();
+                    //db.setShutter(r.getName(), );
+                }
+            });
+            iVFLivingShuttersDown = (ImageView) shutter.findViewById(R.id.iVFLivingShuttersDown);
+            iVFLivingShuttersDown.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO welche values?
+                    //r.getShutters().get(0).setPosition();
+                    //db.setShutter(r.getName(), );
+                }
+            });
         }
 
         else if (r.getName().equals(Util.SLEEPING))
         {
             shutter = inflater.inflate(R.layout.fragment_shutter_sleeping, container, false);
             position = r.getShutters().get(0).getPosition();
+
+            shutterFSleeping = (com.sophiafema.home_easylife.view.Shutters) shutter.findViewById(R.id.shutterFSleeping);
+            shutterFSleeping.setOnPositionChangedListener(new Shutters.OnPositionChangedListener() {
+                @Override
+                public void onColorChanged(float value) {
+                    //Übergabe Position in Raum und Datenbank
+                    r.getShutters().get(0).setPosition(value);
+                    //TODO value ist float aber set Shutter verlangt double
+                    //db.setShutter(r.getName(),value);
+                }
+            });
+
+            iVFSleepingShuttersUp = (ImageView) shutter.findViewById(R.id. iVFSleepingShuttersUp);
+            iVFSleepingShuttersUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO welche values?
+                    //r.getShutters().get(0).setPosition();
+                    //db.setShutter(r.getName(), );
+                }
+            });
+            iVFSleepingShuttersDown = (ImageView) shutter.findViewById(R.id.iVFSleepingShuttersDown);
+            iVFSleepingShuttersDown.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO welche values?
+                    //r.getShutters().get(0).setPosition();
+                    //db.setShutter(r.getName(), );
+                }
+            });
         }
 
         return shutter;

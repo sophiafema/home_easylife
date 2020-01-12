@@ -1,12 +1,14 @@
 package com.sophiafema.home_easylife;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
+
+import javax.annotation.Nullable;
 
 import me.relex.circleindicator.CircleIndicator;
 
@@ -60,9 +64,11 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         {
             case Util.LIVING:
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_wohnzimmer_raum_v2);
+                //iVPlainRoomLiving.setBackgroundResource(R.color.colorGrey);
                 break;
             case Util.BATH:
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);
+                //iVPlainRoomLiving.setBackgroundResource(R.color.colorGrey);
                 break;
             case Util.HALLWAY:
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_flur_raum_v2);

@@ -16,6 +16,11 @@
     <string name="events">Ereignisse</string>
     <string name="event">Ereignis</string>
 
+    <string name="light">Licht</string>
+    <string name="thermo">Thermostat</string>
+    <string name="shutter">Jalousien</string>
+    <string name="music">Musik</string>
+
     <string name="light_on">Licht an</string>
     <string name="light_off">Licht aus</string>
 

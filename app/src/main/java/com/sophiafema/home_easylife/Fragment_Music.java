@@ -158,10 +158,12 @@ public class Fragment_Music extends Fragment
                 if(isChecked)
                 {
                     power = true;
+                    iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
                 }
                 else
                 {
                     power = false;
+                    iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_pause);
                 }
             }
         });

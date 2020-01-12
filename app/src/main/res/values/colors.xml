@@ -7,6 +7,8 @@
     <color name="colorSecondary">#2BDBDB</color>
     <color name="colorHot">#2BDBDB</color>
 
+    <color name="colorGrey">#616162</color>
+
     <!-- picker colors -->
     <color name="colorText">#FFFFFF</color>
     <color name="colorSelectedWheel">#FFB200</color>

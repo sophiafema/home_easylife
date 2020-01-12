@@ -22,14 +22,14 @@
         android:id="@+id/iVPlainRoomHallway"
         android:layout_width="70dp"
         android:layout_height="70dp"
-
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="101dp"
+        android:background="@color/colorPrimary"
         android:paddingTop="5dp"
         android:paddingEnd="5dp"
         android:paddingRight="5dp"
-        android:background="@color/colorPrimary"
+        android:state_selected="true"
         app:srcCompat="@drawable/iv_plainroom_hallway" />
 
     <ImageView
