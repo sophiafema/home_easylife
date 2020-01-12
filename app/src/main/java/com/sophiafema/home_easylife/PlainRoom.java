@@ -53,38 +53,9 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         //Raumabfrage für Hintergrund
         Intent intent = getIntent();
         currentRoom = intent.getStringExtra(Util.ROOM);
-        Log.e("Utli.room", Util.ROOM);
-        Log.e("currentroom", currentRoom);
         if(currentRoom == null) {
             currentRoom = Util.LIVING;
         }
-
-        iVPlainRoomBackground = (ImageView) findViewById(R.id.iVPlainRoomBackground);
-        switch(currentRoom)
-        {
-            case Util.LIVING:
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_wohnzimmer_raum_v2);
-                //iVPlainRoomLiving.setBackgroundResource(R.color.colorGrey);
-                break;
-            case Util.BATH:
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);
-                //iVPlainRoomLiving.setBackgroundResource(R.color.colorGrey);
-                break;
-            case Util.HALLWAY:
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_flur_raum_v2);
-                break;
-            case Util.KITCHEN:
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_kueche_raum);
-                break;
-            case Util.SLEEPING:
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_schlafzimmer_raum_v2);
-                break;
-        }
-
-        //Room mit Wert aus Datenbank befüllen
-        r = db.getRoom(currentRoom);
-        //Log.e("Lights", r.getLights().get(0).getName());
-
 
         iVPlainRoomMenue = (ImageView) findViewById(R.id.iVPlainRoomMenue);
         tVPlainRoomMenue = (TextView) findViewById(R.id.tVPlainRoomMenue);
@@ -101,6 +72,36 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         iVPlainRoomSleeping.setOnClickListener(this);
         iVPlainRoomBath = (ImageView) findViewById(R.id.iVPlainRoomBath);
         iVPlainRoomBath.setOnClickListener(this);
+
+        iVPlainRoomBackground = (ImageView) findViewById(R.id.iVPlainRoomBackground);
+
+        switch(currentRoom)
+        {
+            case Util.LIVING:
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_wohnzimmer_raum_v2);
+                setButtonColor(currentRoom);
+                break;
+            case Util.BATH:
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);;
+                setButtonColor(currentRoom);
+                break;
+            case Util.HALLWAY:
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_flur_raum_v2);
+                setButtonColor(currentRoom);
+                break;
+            case Util.KITCHEN:
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_kueche_raum);
+                setButtonColor(currentRoom);
+                break;
+            case Util.SLEEPING:
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_schlafzimmer_raum_v2);
+                setButtonColor(currentRoom);
+                break;
+        }
+
+        //Room mit Wert aus Datenbank befüllen
+        r = db.getRoom(currentRoom);
+        //Log.e("Lights", r.getLights().get(0).getName());
 
         viewPager = (ViewPager)findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
@@ -125,42 +126,93 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         else
         {
-//            Intent intent2 = new Intent(this, PlainRoom.class);
+             Intent intent2 = new Intent(this, PlainRoom.class);
 
             //Raum übergeben --> mit statischen variablen in Util
 
 
             if(view.getId() == R.id.iVPlainRoomHallway)
             {
-                //intent2.putExtra(Util.ROOM, Util.HALLWAY);
+                intent2.putExtra(Util.ROOM, Util.HALLWAY);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_flur_raum_v2);
+                setButtonColor(currentRoom);
             }
 
             else if (view.getId() == R.id.iVPlainRoomBath)
             {
-                //intent2.putExtra(Util.ROOM, Util.BATH);
+                intent2.putExtra(Util.ROOM, Util.BATH);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);
+                setButtonColor(currentRoom);
             }
 
             else if (view.getId() == R.id.iVPlainRoomKitchen)
             {
-                //intent2.putExtra(Util.ROOM, Util.KITCHEN);
+                intent2.putExtra(Util.ROOM, Util.KITCHEN);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_kueche_raum);
+                setButtonColor(currentRoom);
             }
 
             else if (view.getId() == R.id.iVPlainRoomLiving)
             {
-                //intent2.putExtra(Util.ROOM, Util.LIVING);
+                intent2.putExtra(Util.ROOM, Util.LIVING);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_wohnzimmer_raum_v2);
+                setButtonColor(currentRoom);
             }
             else if (view.getId() == R.id.iVPlainRoomSleeping)
             {
-                //intent2.putExtra(Util.ROOM, Util.SLEEPING);
+                intent2.putExtra(Util.ROOM, Util.SLEEPING);
                 iVPlainRoomBackground.setImageResource(R.drawable.ic_schlafzimmer_raum_v2);
+                setButtonColor(currentRoom);
             }
 
-//            startActivity(intent2);
+            startActivity(intent2);
         }
+    }
+
+    public void setButtonColor (String currentRoom) {
+        switch (currentRoom) {
+            case Util.LIVING:
+                Log.e("ButtonColor", currentRoom);
+                iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+                iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomKitchen.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                break;
+            case Util.BATH:
+                Log.e("ButtonColor", currentRoom);
+                iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomKitchen.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+                break;
+            case Util.HALLWAY:
+                Log.e("ButtonColor", currentRoom);
+                iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+                iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomKitchen.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                break;
+            case Util.KITCHEN:
+                Log.e("ButtonColor", currentRoom);
+                iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomKitchen.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+                iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                break;
+            case Util.SLEEPING:
+                Log.e("ButtonColor", currentRoom);
+                iVPlainRoomLiving.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomHallway.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomSleeping.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+                iVPlainRoomKitchen.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                iVPlainRoomBath.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                break;
+        }
+
     }
 
     private class PagerAdapter extends FragmentPagerAdapter
