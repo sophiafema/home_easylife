@@ -55,6 +55,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
             currentRoom = Util.LIVING;
         }
 
+        iVPlainRoomBackground = (ImageView) findViewById(R.id.iVPlainRoomBackground);
         switch(currentRoom)
         {
             case Util.LIVING:
@@ -94,7 +95,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         iVPlainRoomSleeping.setOnClickListener(this);
         iVPlainRoomBath = (ImageView) findViewById(R.id.iVPlainRoomBath);
         iVPlainRoomBath.setOnClickListener(this);
-        iVPlainRoomBackground = (ImageView) findViewById(R.id.iVPlainRoomBackground);
 
         viewPager = (ViewPager)findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
