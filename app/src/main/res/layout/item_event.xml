@@ -10,11 +10,12 @@
     <ImageView
         android:id="@+id/iVEventsBackground"
         android:layout_width="376dp"
-        android:layout_height="704dp"
+        android:layout_height="70dp"
         android:layout_margin="30dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recyclerView"
         app:srcCompat="@color/colorPrimary" />

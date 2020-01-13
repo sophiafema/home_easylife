@@ -5,36 +5,58 @@
 
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
 
-
+    //Zimmer
+    <string name="rooms">Mehrere Räume</string>
     <string name="living">Wohnzimmer</string>
     <string name="bath">Bad</string>
     <string name="hallway">Flur</string>
     <string name="sleeping">Schlafzimmer</string>
     <string name="kitchen">Küche</string>
+
+    //Home-Screen
     <string name="settings">Einstellungen</string>
     <string name="general">Zentralsteuerung</string>
     <string name="events">Ereignisse</string>
     <string name="event">Ereignis</string>
+    <string name="home">HOME</string>
+    <string name="easy_life">LIVE YOUR EASY LIFE</string>
 
+    //Einstellungen
+    <string name="username">Nutzername</string>
+    <string name="max123">max123</string>
+    <string name="change_pwd">Passwort ändern</string>
+    <string name="logout">Abmelden</string>
+    <string name="old_pwd">Altes Passwort</string>
+    <string name="new_pwd">Neues Passwort</string>
+    <string name="repeat_pwd">Passwort wiederholen</string>
+
+    //Allgemein
+    <string name="cancel">Abbrechen</string>
+    <string name="safe">Sichern</string>
+    <string name="accept">Übernehmen</string>
+
+    //Funktionen
     <string name="light">Licht</string>
+    <string name="lights">Lichter</string>
     <string name="thermo">Thermostat</string>
     <string name="shutter">Jalousien</string>
     <string name="music">Musik</string>
 
+    //Zentralsteuerung
     <string name="light_on">Licht an</string>
     <string name="light_off">Licht aus</string>
+    <string name="thermo_on">Thermostat an</string>
+    <string name="thermo_off">Thermostat aus</string>
+    <string name="shutter_up">Jalousie oben</string>
+    <string name="shutter_down">Jalousie unten</string>
+    <string name="music_on">Musik an</string>
+    <string name="music_off">Musik aus</string>
 
-
-<!--    //Test für Events &ndash;&gt; RecyclerView-->
-<!--    <string-array name="events">-->
-<!--        <item>Kochabend</item>-->
-<!--        <item>Schlafen</item>-->
-<!--        <item>Fernsehabend</item>-->
-<!--        <item>Romantik</item>-->
-<!--        <item>Entspannung</item>-->
-<!--        <item>Morgenroutine</item>-->
-<!--    </string-array>-->
-
+    //Ereignisse
+    <string name="delete_event">HOME</string>
+    <string name="take_photo">Foto aufnehmen</string>
+    <string name="add_from_galery">Aus Gelerie hinzufügen</string>
+    <string name="choose_existing_icon">Bestehendes Icon wählen</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
