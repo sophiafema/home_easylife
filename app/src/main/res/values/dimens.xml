@@ -16,4 +16,16 @@
     <dimen name="color_pointer_radius">14dp</dimen>
 
 
+    //Zentralsteuerung
+    <dimen name="distance_switch">10dp</dimen>
+    <dimen name="distance_fields">2dp</dimen>
+    <dimen name="distance_height">100dp</dimen>
+    <dimen name="icon_height">50dp</dimen>
+    <dimen name="icon_width">50dp</dimen>
+
+
+
+
+
+
 </resources>

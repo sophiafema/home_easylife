@@ -39,8 +39,8 @@
 
     <ImageView
         android:id="@+id/iVGeneralLight"
-        android:layout_width="335dp"
-        android:layout_height="69dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -51,47 +51,45 @@
 
     <ImageView
         android:id="@+id/iVGeneralTemperature"
-        android:layout_width="335dp"
-        android:layout_height="69dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_height"
+        android:layout_marginTop="@dimen/distance_fields"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iVGeneralLight"
         app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/iVGeneralShutters"
-        android:layout_width="335dp"
-        android:layout_height="69dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_height"
+        android:layout_marginTop="@dimen/distance_fields"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844"
+        app:layout_constraintTop_toBottomOf="@+id/iVGeneralMusic"
         app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/iVGeneralMusic"
-        android:layout_width="335dp"
-        android:layout_height="69dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_height"
+        android:layout_marginTop="@dimen/distance_fields"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.672"
+        app:layout_constraintTop_toBottomOf="@+id/iVGeneralTemperature"
         app:srcCompat="@color/colorPrimary" />
 
     <Switch
         android:id="@+id/swGeneralLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="@dimen/distance_switch"
         android:textColorLink="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralLight"
         app:layout_constraintEnd_toEndOf="@+id/iVGeneralLight"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="@+id/iVGeneralLight"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralLight"
         app:layout_constraintVertical_bias="0.547" />
 
@@ -99,95 +97,135 @@
         android:id="@+id/swGeneralTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="@dimen/distance_switch"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralTemperature"
         app:layout_constraintEnd_toEndOf="@+id/iVGeneralTemperature"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toStartOf="@+id/iVGeneralTemperature"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralTemperature" />
 
     <Switch
         android:id="@+id/swGeneralMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="@dimen/distance_switch"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralShutters"
         app:layout_constraintEnd_toEndOf="@+id/iVGeneralShutters"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="@+id/iVGeneralShutters"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralShutters" />
 
     <ImageView
         android:id="@+id/iVGeneralShuttersDown"
         android:layout_width="36dp"
         android:layout_height="36dp"
+        android:layout_marginRight="@dimen/distance_switch"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralMusic"
         app:layout_constraintEnd_toEndOf="@+id/iVGeneralMusic"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toStartOf="@+id/iVGeneralMusic"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.81"
         app:srcCompat="@android:drawable/ic_menu_more" />
 
     <ImageView
         android:id="@+id/iVGeneralShuttersUp"
         android:layout_width="36dp"
         android:layout_height="36dp"
+        android:layout_marginRight="@dimen/distance_switch"
+        android:layout_marginBottom="2dp"
         android:rotation="180"
-        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralMusic"
+        app:layout_constraintBottom_toTopOf="@+id/iVGeneralShuttersDown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
-        app:layout_constraintStart_toStartOf="@+id/iVGeneralMusic"
-        app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic"
-        app:layout_constraintVertical_bias="0.09"
         app:srcCompat="@android:drawable/ic_menu_more" />
 
     <TextView
         android:id="@+id/tVGeneralShutters"
         android:layout_width="150dp"
         android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/shutter_down"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralMusic"
-        app:layout_constraintEnd_toEndOf="@+id/iVGeneralMusic"
-        app:layout_constraintHorizontal_bias="0.254"
-        app:layout_constraintStart_toStartOf="@+id/iVGeneralMusic"
+        app:layout_constraintStart_toEndOf="@+id/iVGeneralShutterIcon"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic" />
 
     <TextView
         android:id="@+id/tVGeneralMusic"
         android:layout_width="150dp"
         android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/music_off"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralShutters"
-        app:layout_constraintEnd_toEndOf="@+id/iVGeneralShutters"
-        app:layout_constraintHorizontal_bias="0.248"
-        app:layout_constraintStart_toStartOf="@+id/iVGeneralShutters"
-        app:layout_constraintTop_toTopOf="@+id/iVGeneralShutters"
-        app:layout_constraintVertical_bias="0.543" />
+        app:layout_constraintStart_toEndOf="@+id/iVGeneralMusicIcon"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralShutters" />
 
     <TextView
         android:id="@+id/tVGeneralTemperature"
         android:layout_width="150dp"
         android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/thermo_off"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralTemperature"
-        app:layout_constraintEnd_toEndOf="@+id/iVGeneralTemperature"
-        app:layout_constraintHorizontal_bias="0.252"
-        app:layout_constraintStart_toStartOf="@+id/iVGeneralTemperature"
-        app:layout_constraintTop_toTopOf="@+id/iVGeneralTemperature" />
+        app:layout_constraintStart_toEndOf="@+id/iVGeneralTemperatureIcon"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralTemperature"
+        app:layout_constraintVertical_bias="0.48" />
 
     <TextView
         android:id="@+id/tVGeneralLight"
         android:layout_width="150dp"
         android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/light_off"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralLight"
-        app:layout_constraintEnd_toEndOf="@+id/iVGeneralLight"
-        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toEndOf="@+id/iVGeneralLightIcon"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralLight" />
+
+    <ImageView
+        android:id="@+id/iVGeneralLightIcon"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="@dimen/distance_switch"
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralLight"
         app:layout_constraintStart_toStartOf="@+id/iVGeneralLight"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralLight"
-        app:layout_constraintVertical_bias="0.586" />
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/iVGeneralTemperatureIcon"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="@dimen/distance_switch"
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralTemperature"
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/iVGeneralLight"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/iVGeneralShutterIcon"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="@dimen/distance_switch"
+        app:layout_constraintBottom_toTopOf="@+id/iVGeneralShutters"
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralMusic"
+        app:layout_constraintTop_toBottomOf="@+id/iVGeneralTemperature"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
+    <ImageView
+        android:id="@+id/iVGeneralMusicIcon"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iVGeneralShutters"
+        app:layout_constraintStart_toStartOf="@+id/iVGeneralShutters"
+        app:layout_constraintTop_toTopOf="@+id/iVGeneralShutters"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
