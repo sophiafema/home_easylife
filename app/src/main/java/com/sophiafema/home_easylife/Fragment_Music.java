@@ -69,9 +69,11 @@ public class Fragment_Music extends Fragment
         }
 
         pFMusik = (com.sophiafema.home_easylife.view.VolumePicker) music.findViewById(R.id.pFMusic);
+        System.out.println("Music" + r.getMusic().getVolume());
+        pFMusik.setValueToPercent(r.getMusic().getVolume());
         pFMusik.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override
-            public void onColorSelected(int color) {
+            public void onColorSelected(float color) {
                 //color = music
 
                 //Übergabe Lautstärke in Raum und Datenbank

@@ -42,15 +42,18 @@ public class Fragment_Thermostat extends Fragment
         db = new DatabaseAdapter();
 
         pFTermostat = (com.sophiafema.home_easylife.view.TemperaturePicker) thermostat.findViewById(R.id.pFTermostat);
+        pFTermostat.setValueToPercent((float) temperature);
         //TODO Picker temperature übergeben
+        //setPercentFromTemp
+
         pFTermostat.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override
-            public void onColorSelected(int color) {
+            public void onColorSelected(float color) {
                 //color = temperature
 
                 //Übergabe Temperatur in Raum und Datenbank
                 r.getThermo().setTemperature(color);
-                db.setTemperature(r.getName(),color);
+                db.setTemperature(r.getName(), color);
             }
         });
 
@@ -69,10 +72,12 @@ public class Fragment_Thermostat extends Fragment
                 if(isChecked)
                 {
                     power = true;
+                    pFTermostat.setWheelIsEnabled(true);
                 }
                 else
                 {
                     power = false;
+                    pFTermostat.setWheelIsEnabled(false);
                     //TODO picker auf 18°C setzen
                 }
             }
