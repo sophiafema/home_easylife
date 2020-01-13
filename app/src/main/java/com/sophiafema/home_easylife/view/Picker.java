@@ -258,7 +258,7 @@ public abstract class Picker extends View {
      *
      */
     public interface OnColorSelectedListener {
-        public void onColorSelected(int color);
+        public void onColorSelected(float color);
     }
 
 
@@ -322,7 +322,7 @@ public abstract class Picker extends View {
     /**
      * Color of the latest entry of the onColorSelectedListener.
      */
-    private int oldSelectedListenerValue;
+    private float oldSelectedListenerValue;
 
 
     @SuppressLint("ResourceType")
@@ -665,17 +665,19 @@ public abstract class Picker extends View {
                     mUserIsMovingPointer = false;
                     //mCenterHaloPaint.setAlpha(0x00);
 
-                    if (onColorSelectedListener != null && mCenterNewColor != oldSelectedListenerValue) {
-                        onColorSelectedListener.onColorSelected(mCenterNewColor);
-                        oldSelectedListenerValue = mCenterNewColor;
+                    float percent = calculatePercentWithValue(mValue);
+                    if (onColorSelectedListener != null && percent != oldSelectedListenerValue) {
+                        onColorSelectedListener.onColorSelected(percent);
+                        oldSelectedListenerValue = percent;
                     }
 
                     invalidate();
                     break;
                 case MotionEvent.ACTION_CANCEL:
-                    if (onColorSelectedListener != null && mCenterNewColor != oldSelectedListenerValue) {
-                        onColorSelectedListener.onColorSelected(mCenterNewColor);
-                        oldSelectedListenerValue = mCenterNewColor;
+                    percent = calculatePercentWithValue(mValue);
+                    if (onColorSelectedListener != null && percent != oldSelectedListenerValue) {
+                        onColorSelectedListener.onColorSelected(percent);
+                        oldSelectedListenerValue = percent;
                     }
                     break;
             }
@@ -763,7 +765,9 @@ public abstract class Picker extends View {
 
 
     public void setWheelIsEnabled(boolean isEnabled) {
+
         this.mWheelIsEnabled = isEnabled;
+        invalidate();
     }
     public boolean getWheelIsEnabled() {
         return this.mWheelIsEnabled;

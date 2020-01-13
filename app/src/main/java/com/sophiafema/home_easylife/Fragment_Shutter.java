@@ -59,32 +59,40 @@ public class Fragment_Shutter extends Fragment
             position = r.getShutters().get(0).getPosition();
 
             shutterFBath = (com.sophiafema.home_easylife.view.Shutters) shutter.findViewById(R.id.shutterFBath);
+            shutterFBath.setPosition((float) position);
+
             shutterFBath.setOnPositionChangedListener(new Shutters.OnPositionChangedListener() {
                 @Override
                 public void onColorChanged(float value) {
                     //Übergabe Position in Raum und Datenbank
-                    r.getShutters().get(0).setPosition(value);
+                    //r.getShutters().get(0).setPosition(value);
                     //TODO value ist float aber set Shutter verlangt double
                     //db.setShutter(r.getName(),value);
+
+                    r.getShutters().get(0).setPosition(value);
+                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), value);
+                    shutterFBath.setPosition(value);
                 }
             });
 
-            iVFKitchenShuttersUp = (ImageView) shutter.findViewById(R.id.iVFKitchenShuttersUp);
+            iVFKitchenShuttersUp = (ImageView) shutter.findViewById(R.id.iVFBathShuttersUp);
             iVFKitchenShuttersUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //TODO welche values?
-                    //r.getShutters().get(0).setPosition();
-                    //db.setShutter(r.getName(), );
+                    r.getShutters().get(0).setPosition(0);
+                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 0);
+                    shutterFBath.setPosition(0);
                 }
             });
-            iVFKitchenShuttersDown = (ImageView) shutter.findViewById(R.id.iVFKitchenShuttersDown);
+            iVFKitchenShuttersDown = (ImageView) shutter.findViewById(R.id.iVFBathShuttersDown);
             iVFKitchenShuttersDown.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //TODO welche values?
-                    //r.getShutters().get(0).setPosition();
-                    //db.setShutter(r.getName(), );
+                    r.getShutters().get(0).setPosition(1);
+                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 1);
+                    shutterFBath.setPosition(1);
                 }
             });
         }
