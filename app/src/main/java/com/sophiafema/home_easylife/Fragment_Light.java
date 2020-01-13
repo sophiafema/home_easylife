@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Switch;
+
+import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
 
 public class Fragment_Light extends Fragment implements View.OnClickListener
@@ -15,6 +19,9 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     public static final String LIGHT_BRIGHTNESS = "LIGHT_BRIGHTNESS";
     Room r;
     double brightness;
+    boolean on;
+    DatabaseAdapter db;
+
 
     public Fragment_Light(Room room) {
         // Required empty public constructor

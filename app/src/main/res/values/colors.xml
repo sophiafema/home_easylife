@@ -8,6 +8,8 @@
     <color name="colorHot">#2BDBDB</color>
 
     <color name="colorGrey">#616162</color>
+    <color name="colorTextLight">#EBEBEB</color>
+
 
     <!-- picker colors -->
     <color name="colorText">#FFFFFF</color>
