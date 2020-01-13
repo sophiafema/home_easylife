@@ -28,16 +28,13 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         this.r = room;
     }
 
-    //TODO nach diesem Schema Raum übergeben
-    //TODO alternativ kann man natürlich auch andere Werte übergeben wenn das besser passt
-
-    //TODO veränderete Daten in der Datenbank abspeichern
     public static Fragment_Light newInstance(Room room) { return new Fragment_Light(room);}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
         View light = inflater.inflate(R.layout.fragment_light_bath, container, false);
+
 
        if (r.getName().equals(Util.BATH))
         {
@@ -115,7 +112,9 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
         intent.putExtra(LIGHT_BRIGHTNESS, brightness);
+        //LightSettingsActivity.newInstance(r);
         startActivity(intent);
+
     }
 
 }

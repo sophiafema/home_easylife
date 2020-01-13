@@ -35,11 +35,4 @@ public class TemperaturePicker extends Picker {
         return Math.round(temp*10)/10.0;
     }
 
-    public void setPercentFromTemp(float temp) {
-        double percent = temp*7.14285 -18;
-        setValueToPercent((float) percent);
-    }
-
-
-
 }

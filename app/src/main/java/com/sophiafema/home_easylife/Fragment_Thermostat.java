@@ -41,9 +41,12 @@ public class Fragment_Thermostat extends Fragment
         power = r.getThermo().isPower();
         db = new DatabaseAdapter();
 
+        sFTermostat = (Switch) thermostat.findViewById(R.id.sFTermostat);
         pFTermostat = (com.sophiafema.home_easylife.view.TemperaturePicker) thermostat.findViewById(R.id.pFTermostat);
         pFTermostat.setValueToPercent((float) temperature);
-        //TODO Picker temperature übergeben
+        pFTermostat.setWheelIsEnabled(power);
+        sFTermostat.setChecked(power);
+
         //setPercentFromTemp
 
         pFTermostat.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
@@ -57,15 +60,6 @@ public class Fragment_Thermostat extends Fragment
             }
         });
 
-        sFTermostat = (Switch) thermostat.findViewById(R.id.sFTermostat);
-        if (power)
-        {
-            sFTermostat.setChecked(true);
-        }
-        else
-        {
-            sFTermostat.setChecked(false);
-        }
         sFTermostat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -78,13 +72,13 @@ public class Fragment_Thermostat extends Fragment
                 {
                     power = false;
                     pFTermostat.setWheelIsEnabled(false);
-                    //TODO picker auf 18°C setzen
                 }
+                //Übergabe Power in Raum und Datenbank
+                r.getThermo().setPower(power);
+                db.setThermostatPower(r.getName(),power);
             }
         });
-        //Übergabe Power in Raum und Datenbank
-        r.getThermo().setPower(power);
-        db.setThermostatPower(r.getName(),power);
+
         return thermostat;
     }
 
