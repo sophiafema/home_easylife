@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,8 +70,10 @@ public class Fragment_Music extends Fragment
         }
 
         pFMusik = (com.sophiafema.home_easylife.view.VolumePicker) music.findViewById(R.id.pFMusic);
-        System.out.println("Music" + r.getMusic().getVolume());
-        pFMusik.setValueToPercent(r.getMusic().getVolume());
+        sFMusic = (Switch) music.findViewById(R.id.sFMusic1);
+        pFMusik.setValueToPercent(volume);
+        sFMusic.setChecked(power);
+
         pFMusik.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override
             public void onColorSelected(float color) {
@@ -79,6 +82,25 @@ public class Fragment_Music extends Fragment
                 //Übergabe Lautstärke in Raum und Datenbank
                 r.getMusic().setVolume(color);
                 db.setMusicVolume(r.getName(),color);
+            }
+        });
+
+        sFMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    power = true;
+                    iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_pause);
+                }
+                else
+                {
+                    power = false;
+                    iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
+                }
+                //Übergabe Power in Raum und Datenbank
+                r.getMusic().setPower(power);
+                db.setMusicPower(r.getName(),power);
             }
         });
 
@@ -132,47 +154,19 @@ public class Fragment_Music extends Fragment
                 {
                     iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_pause);
                     play = false;
+                    sFMusic.setChecked(true);
 
                 }
                 else
                 {
                     iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
                     play = true;
-                    sFMusic.setChecked(true);
                 }
                 //Übergabe Play Pause in Raum und Datenbank
                 r.getMusic().setPlay(play);
                 db.setMusicPlay(r.getName(), play);
             }
         });
-
-        sFMusic = (Switch) music.findViewById(R.id.sFMusic1);
-        if (power)
-        {
-            sFMusic.setChecked(true);
-        }
-        else
-        {
-            sFMusic.setChecked(false);
-        }
-        sFMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                {
-                    power = true;
-                    iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
-                }
-                else
-                {
-                    power = false;
-                    iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_pause);
-                }
-            }
-        });
-        //Übergabe Power in Raum und Datenbank
-        r.getMusic().setPower(power);
-        db.setMusicPower(r.getName(), power);
 
         return music;
     }

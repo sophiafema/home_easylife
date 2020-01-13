@@ -31,7 +31,7 @@ public class VolumePicker extends Picker {
 
     @Override
     public void setTextFromValue(float value) {
-        setCenterText("" + calculatePercentWithValue(value));
+        setCenterText("" + (int) calculatePercentWithValue(value));
     }
 
 }
