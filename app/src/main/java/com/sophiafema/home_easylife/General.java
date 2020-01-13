@@ -117,9 +117,9 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     //Status Text Temperatur
     public void setTextTemperatureOn(boolean isChecked) {
         if(isChecked) {
-            tVGeneralTemperature.setText("Thermostat an");
+            tVGeneralTemperature.setText(R.string.thermo_on);
         }else{
-            tVGeneralTemperature.setText("Thermostat aus");
+            tVGeneralTemperature.setText(R.string.thermo_off);
         }
     }
     public void setTemperatureOn(boolean isChecked) {
@@ -133,9 +133,9 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     //Status Text Musik
     public void setTextMusicOn(boolean isChecked) {
         if(isChecked) {
-            tVGeneralMusic.setText("Musik an");
+            tVGeneralMusic.setText(R.string.music_on);
         }else{
-            tVGeneralMusic.setText("Musik aus");
+            tVGeneralMusic.setText(R.string.music_off);
         }
     }
     public void setMusicOn(boolean isChecked) {
@@ -150,9 +150,9 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     public void setTextShuttersUp(boolean isChecked)
     {
         if(isChecked) {
-            tVGeneralShutters.setText("Jalousie oben");
+            tVGeneralShutters.setText(R.string.shutter_up);
         }else{
-            tVGeneralShutters.setText("Jalousie unten");
+            tVGeneralShutters.setText(R.string.shutter_down);
         }
     }
     public void setShuttersUp(boolean isChecked)
@@ -160,7 +160,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         if(isChecked) {
             dba.setAllShutterPosition(0.0);
         }else{
-            dba.setAllShutterPosition(100.0);
+            dba.setAllShutterPosition(1.0);
         }
     }
 
