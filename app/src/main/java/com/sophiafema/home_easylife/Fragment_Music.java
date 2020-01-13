@@ -28,6 +28,8 @@ public class Fragment_Music extends Fragment
     boolean power;
     DatabaseAdapter db;
     int musiccounter = 1;
+    final String musiclist [] = {"Mamma Mia - ABBA", "Better - Nico Santos", "Let It Be - Beatles", "Sixteen - Ellie Goulding", "SOS - Avicii" };
+
 
     com.sophiafema.home_easylife.view.VolumePicker pFMusik;
     ImageView iVFMusicFF;
@@ -54,25 +56,21 @@ public class Fragment_Music extends Fragment
         power = r.getMusic().isPower();
         db = new DatabaseAdapter();
 
-        final String musiclist [] = {"Mamma Mia - ABBA", "Better - Nico Santos", "Let It Be - Beatles", "Sixteen - Ellie Goulding", "SOS - Avicii" };
-
         tVFMusicTitel = (TextView) music.findViewById(R.id.tVFMusicTitel);
         iVFMusicPlayPause = (ImageView) music.findViewById(R.id.iVFMusicPlayPause);
-        if (play)
-        {
-            iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_pause);
-            play = false;
-        }
-        else
-        {
-            iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
-            play = true;
-        }
-
         pFMusik = (com.sophiafema.home_easylife.view.VolumePicker) music.findViewById(R.id.pFMusic);
         sFMusic = (Switch) music.findViewById(R.id.sFMusic1);
+        iVFMusicFF = (ImageView) music.findViewById(R.id.iVFMusicFF);
+        iVFMusicBack = (ImageView) music.findViewById(R.id.iVFMusicBack);
+
         pFMusik.setValueToPercent(volume);
         sFMusic.setChecked(power);
+        tVFMusicTitel.setText(musiclist[0]);
+
+        if(power)
+        {
+            setPlayPauseButton();
+        }
 
         pFMusik.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override
@@ -104,8 +102,6 @@ public class Fragment_Music extends Fragment
             }
         });
 
-        iVFMusicFF = (ImageView) music.findViewById(R.id.iVFMusicFF);
-        tVFMusicTitel.setText(musiclist[0]);
         iVFMusicFF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +122,6 @@ public class Fragment_Music extends Fragment
             }
         });
 
-        iVFMusicBack = (ImageView) music.findViewById(R.id.iVFMusicBack);
         iVFMusicBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,19 +145,8 @@ public class Fragment_Music extends Fragment
         iVFMusicPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (play)
-                {
-                    iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_pause);
-                    play = false;
-                    sFMusic.setChecked(true);
 
-                }
-                else
-                {
-                    iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
-                    play = true;
-                }
-                //Übergabe Play Pause in Raum und Datenbank
+                setPlayPauseButton();
                 r.getMusic().setPlay(play);
                 db.setMusicPlay(r.getName(), play);
             }
@@ -171,5 +155,18 @@ public class Fragment_Music extends Fragment
         return music;
     }
 
-
+    public void setPlayPauseButton ()
+    {
+        if (play)
+        {
+            iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_pause);
+            play = false;
+            sFMusic.setChecked(true);
+        }
+        else
+        {
+            iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
+            play = true;
+        }
+    }
 }

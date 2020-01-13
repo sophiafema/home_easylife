@@ -11,16 +11,16 @@
     <ImageView
         android:id="@+id/iVPlainRoomBackground"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
-        android:layout_above="@+id/indicator"
+        android:layout_height="450dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/indicator"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
 
     <TextView
         android:id="@+id/iVPlainRoomLinear"
@@ -32,21 +32,23 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:text=" "
+        app:layout_constraintBottom_toTopOf="@+id/iVPlainRoomBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iVPlainRoomBackground" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="193dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/iVPlainRoomLinear"
+        android:layout_below="@id/tVPlainRoomMenue"
         android:orientation="horizontal"
-        android:layout_above="@+id/iVPlainRoomBackground"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/iVPlainRoomBackground"
+        app:layout_constraintBottom_toTopOf="@+id/iVPlainRoomLinear"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tVPlainRoomMenue">
 
         <ImageView
             android:id="@+id/iVPlainRoomHallway"
@@ -55,7 +57,7 @@
 
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="101dp"
+            android:layout_marginTop="0dp"
             android:background="@color/colorPrimary"
             android:paddingStart="7dp"
             android:paddingLeft="7dp"
@@ -72,7 +74,7 @@
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="101dp"
+            android:layout_marginTop="0dp"
             android:background="@color/colorPrimary"
             android:paddingStart="7dp"
             android:paddingLeft="7dp"
@@ -89,7 +91,7 @@
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="101dp"
+            android:layout_marginTop="0dp"
             android:background="@color/colorPrimary"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
@@ -106,7 +108,7 @@
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="101dp"
+            android:layout_marginTop="0dp"
             android:background="@color/colorPrimary"
             android:paddingStart="7dp"
             android:paddingLeft="7dp"
@@ -123,7 +125,7 @@
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="101dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginRight="0dp"
             android:background="@color/colorPrimary"
@@ -154,8 +156,10 @@
 
     <TextView
         android:id="@+id/tVPlainRoomMenue"
-        android:layout_width="152dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="16dp"
         android:paddingLeft="55dp"
         android:paddingTop="12dp"
@@ -163,43 +167,41 @@
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iVPlainRoomMenue"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iVPlainRoomMenue"
-        android:layout_width="49dp"
-        android:layout_height="47dp"
-
-        android:layout_alignBottom="@+id/tVPlainRoomMenue"
-        android:layout_alignTop="@+id/tVPlainRoomMenue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tVPlainRoomMenue"
         android:layout_alignLeft="@+id/tVPlainRoomMenue"
+        android:layout_alignTop="@+id/tVPlainRoomMenue"
+        android:layout_alignBottom="@+id/tVPlainRoomMenue"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/tVPlainRoomMenue"
-        app:layout_constraintStart_toStartOf="@+id/tVPlainRoomMenue"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tVPlainRoomMenue"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/ic_input_delete" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="500dp"
         android:layout_above="@+id/indicator"
-        android:layout_alignBottom="@+id/iVPlainRoomBackground"
-        android:layout_alignTop="@+id/iVPlainRoomBackground"
         android:layout_alignStart="@+id/iVPlainRoomBackground"
         android:layout_alignLeft="@+id/iVPlainRoomBackground"
+        android:layout_alignTop="@+id/iVPlainRoomBackground"
+        android:layout_alignBottom="@+id/iVPlainRoomBackground"
         app:layout_constraintBottom_toBottomOf="@+id/iVPlainRoomBackground"
-        app:layout_constraintStart_toStartOf="@+id/iVPlainRoomBackground"
-        app:layout_constraintTop_toTopOf="@+id/iVPlainRoomBackground"
         app:layout_constraintEnd_toEndOf="@+id/iVPlainRoomBackground"
+        app:layout_constraintStart_toStartOf="@+id/iVPlainRoomBackground"
 
-        tools:layout_editor_absoluteX="405dp"
-        tools:layout_editor_absoluteY="10dp">
+        app:layout_constraintTop_toTopOf="@+id/iVPlainRoomLinear">
 
     </androidx.viewpager.widget.ViewPager>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

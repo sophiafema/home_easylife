@@ -1,5 +1,6 @@
 package com.sophiafema.home_easylife;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,11 +17,6 @@ import com.sophiafema.home_easylife.view.Shutters;
 
 public class Fragment_Shutter extends Fragment
 {
-    Room r;
-    double position;
-    double [] positionlist = new double [2];
-    DatabaseAdapter db;
-
     com.sophiafema.home_easylife.view.Shutters shutterFBath;
     com.sophiafema.home_easylife.view.Shutters shutterFKitchen1;
     com.sophiafema.home_easylife.view.Shutters shutterFKitchen2;
@@ -36,11 +32,15 @@ public class Fragment_Shutter extends Fragment
     ImageView iVFLivingShuttersDown;
     ImageView iVFSleepingShuttersDown;
 
+    Room r;
+    double position;
+    double [] positionlist = new double [2];
+    DatabaseAdapter db;
+
 
     public Fragment_Shutter(Room room) {
         // Required empty public constructor
         this.r = room;
-
     }
 
     public static Fragment_Shutter newInstance(Room room) {
@@ -51,6 +51,7 @@ public class Fragment_Shutter extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
         View shutter = inflater.inflate(R.layout.fragment_shutter_bath, container, false);
+
         db = new DatabaseAdapter();
 
         if (r.getName().equals(Util.BATH) )
@@ -59,34 +60,38 @@ public class Fragment_Shutter extends Fragment
             position = r.getShutters().get(0).getPosition();
 
             shutterFBath = (com.sophiafema.home_easylife.view.Shutters) shutter.findViewById(R.id.shutterFBath);
+            iVFBathShuttersUp = (ImageView) shutter.findViewById(R.id.iVFBathShuttersUp);
+            iVFKitchenShuttersDown = (ImageView) shutter.findViewById(R.id.iVFBathShuttersDown);
+
             shutterFBath.setPosition((float) position);
 
             shutterFBath.setOnPositionChangedListener(new Shutters.OnPositionChangedListener() {
                 @Override
                 public void onColorChanged(float value) {
-                    //Übergabe Position in Raum und Datenbank
-                    r.getShutters().get(0).setPosition(value);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), value);
+                    setShutterPosition(0,value);
                     shutterFBath.setPosition(value);
+                    iVFBathShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFBathShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
 
-            iVFBathShuttersUp = (ImageView) shutter.findViewById(R.id.iVFBathShuttersUp);
             iVFBathShuttersUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    r.getShutters().get(0).setPosition(0);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 0);
+                    setShutterPosition(0,0);
                     shutterFBath.setPosition(0);
+                    iVFBathShuttersUp.setColorFilter(Color.CYAN);
+                    iVFBathShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
-            iVFKitchenShuttersDown = (ImageView) shutter.findViewById(R.id.iVFBathShuttersDown);
+
             iVFKitchenShuttersDown.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    r.getShutters().get(0).setPosition(1);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 1);
+                    setShutterPosition(0,1);
                     shutterFBath.setPosition(1);
+                    iVFBathShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFBathShuttersDown.setColorFilter(Color.CYAN);
                 }
             });
         }
@@ -108,9 +113,10 @@ public class Fragment_Shutter extends Fragment
                 @Override
                 public void onColorChanged(float value) {
                     //Übergabe Position in Raum und Datenbank
-                    r.getShutters().get(0).setPosition(value);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), value);
+                    setShutterPosition(0,value);
                     shutterFKitchen1.setPosition(value);
+                    iVFKitchenShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFKitchenShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
 
@@ -118,9 +124,10 @@ public class Fragment_Shutter extends Fragment
                 @Override
                 public void onColorChanged(float value) {
                     //Übergabe Position in Raum und Datenbank
-                    r.getShutters().get(1).setPosition(value);
-                    db.setPosition(r.getName(), r.getShutters().get(1).getName(), value);
+                    setShutterPosition(1,value);
                     shutterFKitchen2.setPosition(value);
+                    iVFKitchenShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFKitchenShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
 
@@ -128,27 +135,27 @@ public class Fragment_Shutter extends Fragment
             iVFKitchenShuttersUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    r.getShutters().get(0).setPosition(0);
-                    r.getShutters().get(1).setPosition(0);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 0);
-                    db.setPosition(r.getName(), r.getShutters().get(1).getName(), 0);
+                    setShutterPosition(0,0);
+                    setShutterPosition(1,0);
                     shutterFKitchen1.setPosition(0);
                     shutterFKitchen2.setPosition(0);
+                    iVFKitchenShuttersUp.setColorFilter(Color.CYAN);
+                    iVFKitchenShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
             iVFKitchenShuttersDown = (ImageView) shutter.findViewById(R.id.iVFKitchenShuttersDown);
             iVFKitchenShuttersDown.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    r.getShutters().get(0).setPosition(1);
-                    r.getShutters().get(1).setPosition(1);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 1);
-                    db.setPosition(r.getName(), r.getShutters().get(1).getName(), 1);
+                    setShutterPosition(0,1);
+                    setShutterPosition(1,1);
                     shutterFKitchen1.setPosition(1);
                     shutterFKitchen2.setPosition(1);
+                    iVFKitchenShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFKitchenShuttersDown.setColorFilter(Color.CYAN);
+
                 }
             });
-
         }
 
         else if (r.getName().equals(Util.LIVING))
@@ -157,34 +164,38 @@ public class Fragment_Shutter extends Fragment
             position = r.getShutters().get(0).getPosition();
 
             shutterFLiving = (com.sophiafema.home_easylife.view.Shutters) shutter.findViewById(R.id.shutterFLiving);
+            iVFLivingShuttersUp = (ImageView) shutter.findViewById(R.id. iVFLivingShuttersUp);
+            iVFLivingShuttersDown = (ImageView) shutter.findViewById(R.id.iVFLivingShuttersDown);
+
             shutterFLiving.setPosition((float) position);
 
             shutterFLiving.setOnPositionChangedListener(new Shutters.OnPositionChangedListener() {
                 @Override
                 public void onColorChanged(float value) {
-                    //Übergabe Position in Raum und Datenbank
-                    r.getShutters().get(0).setPosition(value);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), value);
+                    setShutterPosition(0,value);
                     shutterFLiving.setPosition(value);
+                    iVFLivingShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFLivingShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
 
-            iVFLivingShuttersUp = (ImageView) shutter.findViewById(R.id. iVFLivingShuttersUp);
             iVFLivingShuttersUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    r.getShutters().get(0).setPosition(0);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 0);
+                    setShutterPosition(0,0);
                     shutterFLiving.setPosition(0);
+                    iVFLivingShuttersUp.setColorFilter(Color.CYAN);
+                    iVFLivingShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
-            iVFLivingShuttersDown = (ImageView) shutter.findViewById(R.id.iVFLivingShuttersDown);
+
             iVFLivingShuttersDown.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    r.getShutters().get(0).setPosition(1);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 1);
+                    setShutterPosition(0,1);
                     shutterFLiving.setPosition(1);
+                    iVFLivingShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFLivingShuttersDown.setColorFilter(Color.CYAN);
                 }
             });
         }
@@ -195,41 +206,52 @@ public class Fragment_Shutter extends Fragment
             position = r.getShutters().get(0).getPosition();
 
             shutterFSleeping = (com.sophiafema.home_easylife.view.Shutters) shutter.findViewById(R.id.shutterFSleeping);
+            iVFSleepingShuttersUp = (ImageView) shutter.findViewById(R.id. iVFSleepingShuttersUp);
+            iVFSleepingShuttersDown = (ImageView) shutter.findViewById(R.id.iVFSleepingShuttersDown);
+
             shutterFSleeping.setPosition((float) position);
 
             shutterFSleeping.setOnPositionChangedListener(new Shutters.OnPositionChangedListener() {
                 @Override
                 public void onColorChanged(float value) {
-                    r.getShutters().get(0).setPosition(value);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), value);
+                    setShutterPosition(0,value);
                     shutterFSleeping.setPosition(value);
+                    iVFSleepingShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFSleepingShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
 
-            iVFSleepingShuttersUp = (ImageView) shutter.findViewById(R.id. iVFSleepingShuttersUp);
             iVFSleepingShuttersUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    r.getShutters().get(0).setPosition(0);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 0);
+                    setShutterPosition(0,0);
                     shutterFSleeping.setPosition(0);
+                    iVFSleepingShuttersUp.setColorFilter(Color.CYAN);
+                    iVFSleepingShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
-            iVFSleepingShuttersDown = (ImageView) shutter.findViewById(R.id.iVFSleepingShuttersDown);
+
             iVFSleepingShuttersDown.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    r.getShutters().get(0).setPosition(1);
-                    db.setPosition(r.getName(), r.getShutters().get(0).getName(), 1);
+                    setShutterPosition(0,1);
                     shutterFSleeping.setPosition(1);
+                    iVFSleepingShuttersUp.setColorFilter(Color.TRANSPARENT);
+                    iVFSleepingShuttersDown.setColorFilter(Color.CYAN);
                 }
             });
         }
 
         return shutter;
 
-
-
     }
+
+    //Position der Jalousie in Room und Database speichern
+    public void setShutterPosition(int arrayposition, float value)
+    {
+        r.getShutters().get(arrayposition).setPosition(value);
+        db.setPosition(r.getName(), r.getShutters().get(arrayposition).getName(), value);
+    }
+
 
 }
