@@ -19,7 +19,6 @@ import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
 import com.sophiafema.home_easylife.view.Picker;
 
-
 public class Fragment_Music extends Fragment
 {
     Room r;
@@ -29,7 +28,6 @@ public class Fragment_Music extends Fragment
     DatabaseAdapter db;
     int musiccounter = 1;
     final String musiclist [] = {"Mamma Mia - ABBA", "Better - Nico Santos", "Let It Be - Beatles", "Sixteen - Ellie Goulding", "SOS - Avicii" };
-
 
     com.sophiafema.home_easylife.view.VolumePicker pFMusik;
     ImageView iVFMusicFF;
