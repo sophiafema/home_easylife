@@ -37,15 +37,16 @@
         android:id="@+id/iVEvents_AddPicture"
         android:layout_width="@dimen/event_icon"
         android:layout_height="@dimen/event_icon"
+        android:background="@drawable/circle_shape"
+        android:padding="@dimen/event_iconmargin"
+        android:tint="@color/colorTextLight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="@dimen/event_iconmargin"
-        android:background="@drawable/circle_shape"
         app:layout_constraintVertical_bias="0.142"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <EditText
         android:id="@+id/eTEvents_AddName"
@@ -69,11 +70,11 @@
         android:id="@+id/iVEvents_AddShutters"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/iVEvents_AddLight"
         app:srcCompat="@color/colorPrimary" />
 
     <ImageView
@@ -82,6 +83,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iVEvents_AddShutters"
         app:srcCompat="@color/colorPrimary" />
@@ -100,11 +102,11 @@
         android:id="@+id/iVEvents_AddLight"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iVEvents_AddMusic"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:srcCompat="@color/colorPrimary" />
 
     <TextView
@@ -237,7 +239,7 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddLiving"
-            android:layout_width="78dp"
+            android:layout_width="80dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
@@ -254,7 +256,7 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddKitchen"
-            android:layout_width="78dp"
+            android:layout_width="80dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
@@ -271,7 +273,7 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddSleeping"
-            android:layout_width="78dp"
+            android:layout_width="80dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
@@ -288,7 +290,7 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddBath"
-            android:layout_width="78dp"
+            android:layout_width="80dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"

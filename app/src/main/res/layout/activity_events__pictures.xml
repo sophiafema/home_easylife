@@ -58,7 +58,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_icon_weather_sunrise"
+                app:srcCompat="@drawable/ic_icon_weather_sunrise"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -70,7 +70,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_icon_feather_heart"
+                app:srcCompat="@drawable/ic_icon_feather_heart"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -81,7 +81,7 @@
                 android:layout_height="@dimen/event_icon"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_cooking"
+                app:srcCompat="@drawable/ic_cooking"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -98,7 +98,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_icon_material_tv"
+                app:srcCompat="@drawable/ic_icon_material_tv"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -110,7 +110,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_sleeping"
+                app:srcCompat="@drawable/ic_sleeping"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -121,7 +121,7 @@
                 android:layout_height="@dimen/event_icon"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_gluehbirne_aus_ereignisse"
+                app:srcCompat="@drawable/ic_gluehbirne_aus_ereignisse"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -139,7 +139,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_gluehbirne_weiss_an"
+                app:srcCompat="@drawable/ic_gluehbirne_weiss_an"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -151,7 +151,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_thermostat"
+                app:srcCompat="@drawable/ic_thermostat"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -162,7 +162,7 @@
                 android:layout_height="@dimen/event_icon"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_clean"
+                app:srcCompat="@drawable/ic_clean"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -180,7 +180,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_jalousie"
+                app:srcCompat="@drawable/ic_jalousie"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -192,7 +192,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_work"
+                app:srcCompat="@drawable/ic_work"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -203,7 +203,7 @@
                 android:layout_height="@dimen/event_icon"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_musik"
+                app:srcCompat="@drawable/ic_musik"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -221,7 +221,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_champagne"
+                app:srcCompat="@drawable/ic_champagne"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -233,7 +233,7 @@
                 android:layout_marginRight="@dimen/event_marginright"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_popcorn"
+                app:srcCompat="@drawable/ic_popcorn"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />
@@ -244,7 +244,7 @@
                 android:layout_height="@dimen/event_icon"
                 android:layout_marginBottom="@dimen/event_marginbottom"
                 android:background="@drawable/circle_shape"
-                android:src="@drawable/ic_party"
+                app:srcCompat="@drawable/ic_party"
                 android:tint="@color/colorTextLight"
                 android:padding="@dimen/event_iconmargin"
                 android:contentDescription="@string/general" />

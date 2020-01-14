@@ -39,8 +39,12 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     TextView tVEvents_AddMusic;
 
     // Bottom sheet
-
     BottomSheetDialog bottomSheetDialog;
+
+    public static final String EVENTS_PICTURES = "EVENTS_PICTURES";
+
+    static final int REQUEST_CODE = 2;
+
 
 
     @Override
@@ -94,6 +98,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
     }
 
+
     @Override
     public void onClick(View view) {
 
@@ -119,20 +124,33 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
             case R.id.choose_icon:
                 Intent intent1 = new Intent(this, Events_Pictures.class);
-                startActivity(intent1);
+                startActivityForResult(intent1, REQUEST_CODE);
                 bottomSheetDialog.cancel();
                 break;
-
-
         }
 
-//        System.out.println(view.getId());
-//        if (view.getId() == R.id.tVEvents_AddCancel) {
-//            this.finish();
-//        }
-//
-//        else if(view.getId() == R.id.iVEvents_AddPicture) {
-//            bottomSheetDialog.show();
-//        }
+
+
+
+
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        int resourceId;
+        switch (requestCode){
+            case(REQUEST_CODE):{
+                if(resultCode == RESULT_OK){
+                    System.out.println("drinnen");
+                    resourceId = data.getIntExtra(EVENTS_PICTURES, 0);
+                    iVEvents_AddPicture.setImageResource(resourceId);
+
+                }
+                break;
+            }
+        }
     }
 }
