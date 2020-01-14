@@ -35,14 +35,16 @@
 
     <ImageView
         android:id="@+id/iVEvents_AddPicture"
-        android:layout_width="46dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/event_icon"
+        android:layout_height="@dimen/event_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.159"
+        android:padding="@dimen/event_iconmargin"
+        android:background="@drawable/circle_shape"
+        app:layout_constraintVertical_bias="0.142"
         app:srcCompat="@android:drawable/ic_menu_crop" />
 
     <EditText

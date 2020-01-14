@@ -4,6 +4,258 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Events_Pictures">
+
+
+    <TextView
+        android:id="@+id/tVEvents_PictureHeading"
+        android:layout_width="223dp"
+        android:layout_height="51dp"
+        android:paddingLeft="55dp"
+        android:paddingTop="12dp"
+        android:text="@string/icons"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <ImageView
+        android:id="@+id/iVEvents_PictureMenue"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="Menü"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@android:drawable/ic_input_delete" />
+
+
+    <TableLayout
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP1"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_icon_weather_sunrise"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP2"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_icon_feather_heart"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP3"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_cooking"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP4"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_icon_material_tv"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP5"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_sleeping"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP6"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_gluehbirne_aus_ereignisse"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP7"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_gluehbirne_weiss_an"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP8"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_thermostat"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP9"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_clean"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP10"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_jalousie"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP11"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_work"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP12"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_musik"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP13"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_champagne"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP14"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginRight="@dimen/event_marginright"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_popcorn"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+            <ImageView
+                android:id="@+id/iVEvents_PictureP15"
+                android:layout_width="@dimen/event_icon"
+                android:layout_height="@dimen/event_icon"
+                android:layout_marginBottom="@dimen/event_marginbottom"
+                android:background="@drawable/circle_shape"
+                android:src="@drawable/ic_party"
+                android:tint="@color/colorTextLight"
+                android:padding="@dimen/event_iconmargin"
+                android:contentDescription="@string/general" />
+
+        </TableRow>
+
+
+
+
+
+    </TableLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
