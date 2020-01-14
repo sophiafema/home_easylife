@@ -2,6 +2,7 @@ package com.sophiafema.home_easylife;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,9 +16,8 @@ import com.sophiafema.home_easylife.view.Picker;
 public class LightSettingsActivity extends AppCompatActivity {
 
     BrightnessPicker picker;
-    DatabaseAdapter db;
     Room r;
-    double  brightnessChange;
+    double brightness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,26 +25,26 @@ public class LightSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_light_settings);
 
         Intent intent = getIntent();
-        final double brightness = intent.getDoubleExtra(Fragment_Light.LIGHT_BRIGHTNESS, 0);
-        brightnessChange = brightness;
-        db = new DatabaseAdapter();
+        brightness = intent.getDoubleExtra(Fragment_Light.LIGHT_BRIGHTNESS, 0);
 
         picker = findViewById(R.id.brightness_picker);
+        Log.e("pBright", " "+brightness);
         picker.setValueToPercent((float) brightness);
         picker.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override
             public void onColorSelected(float color) {
                 //color = light
-
-                //Übergabe Helligkeit in Raum und Datenbank
-                //r.getLights().get(0).setBrightness(color);
-                //db.setBrightness(r.getName(),r.getLights().get(0).getName(), color);
+                brightness = color;
             }
         });
 
         findViewById(R.id.layout_light_settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra(Fragment_Light.LIGHT_BRIGHTNESS, brightness);
+                //resultIntent.putExtra(Fragment_Light., nnnn);
+                setResult(Activity.RESULT_OK, resultIntent);
                 finish();
             }
         });
