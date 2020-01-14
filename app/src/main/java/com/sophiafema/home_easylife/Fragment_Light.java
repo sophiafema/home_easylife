@@ -24,12 +24,13 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 {
     public static final String LIGHT_BRIGHTNESS = "LIGHT_BRIGHTNESS";
     public static final String LIGHT_POWER = "LIGHT_POWER";
+    static final int REQUEST_CODE = 1; // The request code.
     Room r;
+    DatabaseAdapter db;
     double brightness;
     boolean on;
-    DatabaseAdapter db;
     int arrayposition;
-    static final int REQUEST_CODE = 1; // The request code.
+
 
     ImageView iVFLightBath;
     ImageView iVFLightLiving;
@@ -66,11 +67,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
            sFLightBath = light.findViewById(R.id.sFLightBath);
            iVFLightBath = light.findViewById(R.id.iVFLightBath);
 
-           arrayposition=0;
-           brightness = r.getLights().get(0).getBrightness();
-           on = r.getLights().get(0).isOn();
-           setSwitchPosition();
-           setImages();
+           doAtStart();
 
            iVFLightBath.setOnClickListener(this);
            sFLightBath.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -90,11 +87,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
             iVFLightHallway = light.findViewById(R.id.iVFLightHallway1);
             sFLightHallway =  light.findViewById(R.id.sFLightHallway);
 
-            arrayposition=0;
-            brightness = r.getLights().get(0).getBrightness();
-            on = r.getLights().get(0).isOn();
-            setSwitchPosition();
-            setImages();
+            doAtStart();
 
            iVFLightHallway.setOnClickListener(this);
            sFLightHallway.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -115,11 +108,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
             iVFLightLiving = light.findViewById(R.id.iVFLightLiving1);
             sFLightLiving = light.findViewById(R.id.sFLightLiving);
 
-            arrayposition=0;
-            brightness = r.getLights().get(0).getBrightness();
-            on = r.getLights().get(0).isOn();
-            setSwitchPosition();
-            setImages();
+            doAtStart();
 
             iVFLightLiving.setOnClickListener(this);
             sFLightLiving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -139,11 +128,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
             iVFLightSleeping = light.findViewById(R.id.iVFLightSleeping1);
             sFLightSleeping = light.findViewById((R.id.sFLightSleeping));
 
-            arrayposition=0;
-            brightness = r.getLights().get(0).getBrightness();
-            on = r.getLights().get(0).isOn();
-            setSwitchPosition();
-            setImages();
+            doAtStart();
 
             iVFLightSleeping.setOnClickListener(this);
             sFLightSleeping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -197,9 +182,27 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                @Override
                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                    switchSettings(isChecked);
-                   savePower();
-                   setImages();
 
+                   if(!isChecked)
+                   {
+                       for (int i = 0; i< 3; i++)
+                       {
+                           r.getLights().get(i).setOn(false);
+                           savePower();
+                       }
+                       on = false;
+                   }
+                   else
+                   {
+                       for (int i = 0; i< 3; i++)
+                       {
+                           r.getLights().get(i).setOn(true);
+                           savePower();
+                       }
+                       on = true;
+                   }
+
+                   setImages();
                }
            });
        }
@@ -238,6 +241,15 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         intent.putExtra(LIGHT_BRIGHTNESS, brightness);
         intent.putExtra(LIGHT_POWER, on);
         startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    public void doAtStart()
+    {
+        arrayposition=0;
+        brightness = r.getLights().get(0).getBrightness();
+        on = r.getLights().get(0).isOn();
+        setSwitchPosition();
+        setImages();
     }
 
     public void saveBrightness()
@@ -318,11 +330,11 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         else if (r.getName().equals(Util.KITCHEN))
         {
             if(r.getLights().get(0).isOn()){iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
-            else if(r.getLights().get(1).isOn()){iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
-            else if(r.getLights().get(2).isOn()){iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
-            else if(!r.getLights().get(0).isOn()){iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
-            else if(!r.getLights().get(1).isOn()){iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
-            else if(!r.getLights().get(2).isOn()){iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            if(r.getLights().get(1).isOn()){iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            if(r.getLights().get(2).isOn()){iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            if(!r.getLights().get(0).isOn()){iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            if(!r.getLights().get(1).isOn()){iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            if(!r.getLights().get(2).isOn()){iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
         }
 
     }
