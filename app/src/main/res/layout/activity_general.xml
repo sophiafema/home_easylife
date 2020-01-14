@@ -144,7 +144,7 @@
         android:text="@string/shutter_down"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralMusic"
-        app:layout_constraintStart_toEndOf="@+id/iVGeneralShutterIcon"
+        app:layout_constraintStart_toEndOf="@+id/iVGeneralShuttersIcon"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic" />
 
     <TextView
@@ -193,7 +193,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralLight"
         app:layout_constraintStart_toStartOf="@+id/iVGeneralLight"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralLight"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/ic_gluehbirne_weiss_aus"
+        android:tint="@color/colorTextLight"/>
 
     <ImageView
         android:id="@+id/iVGeneralTemperatureIcon"
@@ -204,10 +205,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralTemperature"
         app:layout_constraintStart_toStartOf="@+id/iVGeneralTemperature"
         app:layout_constraintTop_toBottomOf="@+id/iVGeneralLight"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/ic_thermostat"
+        android:tint="@color/colorTextLight"/>
 
     <ImageView
-        android:id="@+id/iVGeneralShutterIcon"
+        android:id="@+id/iVGeneralShuttersIcon"
         android:layout_width="@dimen/icon_width"
         android:layout_height="@dimen/icon_height"
         android:layout_marginStart="10dp"
@@ -215,7 +217,8 @@
         app:layout_constraintBottom_toTopOf="@+id/iVGeneralShutters"
         app:layout_constraintStart_toStartOf="@+id/iVGeneralMusic"
         app:layout_constraintTop_toBottomOf="@+id/iVGeneralTemperature"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/ic_jalousie"
+        android:tint="@color/colorTextLight"/>
 
     <ImageView
         android:id="@+id/iVGeneralMusicIcon"
@@ -226,6 +229,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralShutters"
         app:layout_constraintStart_toStartOf="@+id/iVGeneralShutters"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralShutters"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
+        app:srcCompat="@drawable/ic_musik"
+        android:tint="@color/colorTextLight"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,12 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     ImageView iVGeneralShutters;
     ImageView iVGeneralMusic;
 
+    ImageView iVGeneralLightIcon;
+    ImageView iVGeneralTemperatureIcon;
+    ImageView iVGeneralShuttersIcon;
+    ImageView iVGeneralMusicIcon;
+
+
     Switch swGeneralLight;
     Switch swGeneralTemperature;
     Switch swGeneralMusic;
@@ -61,6 +67,11 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         iVGeneralTemperature = (ImageView) findViewById(R.id.iVGeneralTemperature);
         iVGeneralShutters = (ImageView) findViewById(R.id.iVGeneralShutters);
         iVGeneralMusic = (ImageView) findViewById(R.id.iVGeneralMusic);
+
+        iVGeneralLightIcon = (ImageView) findViewById(R.id.iVGeneralLightIcon);
+        iVGeneralTemperatureIcon = (ImageView) findViewById(R.id.iVGeneralTemperatureIcon);
+        iVGeneralShuttersIcon = (ImageView) findViewById(R.id.iVGeneralShuttersIcon);
+        iVGeneralMusicIcon = (ImageView) findViewById(R.id.iVGeneralMusicIcon);
 
         swGeneralLight = (Switch) findViewById(R.id.swGeneralLight);
         swGeneralTemperature = (Switch) findViewById(R.id.swGeneralTemperature);
@@ -102,8 +113,10 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
     public void setTextLightOn(boolean isChecked) {
         if(isChecked) {
             tVGeneralLight.setText(R.string.light_on);
+            iVGeneralLightIcon.setImageResource(R.drawable.ic_gluehbirne_weiss_an);
         }else{
             tVGeneralLight.setText(R.string.light_off);
+            iVGeneralLightIcon.setImageResource(R.drawable.ic_gluehbirne_weiss_aus);
         }
     }
     public void setLightOn(boolean isChecked) {
