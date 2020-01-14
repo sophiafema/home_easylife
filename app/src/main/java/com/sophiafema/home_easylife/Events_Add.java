@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.sophiafema.home_easylife.models.Event;
 
 public class Events_Add extends AppCompatActivity implements View.OnClickListener{
@@ -35,6 +37,9 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     TextView tVEvents_AddShutters;
     TextView tVEvents_AddMusic;
 
+    // Bottom sheet
+
+    BottomSheetDialog bottomSheetDialog;
 
 
     @Override
@@ -49,6 +54,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         tVEvents_AddSave = (TextView) findViewById(R.id.tVEvents_AddSave);
 
         iVEvents_AddPicture = (ImageView) findViewById(R.id.iVEvents_AddPicture);
+        iVEvents_AddPicture.setOnClickListener(this);
         eTEvents_AddName = (EditText) findViewById(R.id.eTEvents_AddName);
 
         iVEvents_AddHallway = (ImageView) findViewById(R.id.iVEvents_AddHallway);
@@ -70,14 +76,59 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         tVEvents_AddMusic = (TextView) findViewById(R.id.tVEvents_AddMusic);
 
 
+        // Bottom sheet
+
+        bottomSheetDialog = new BottomSheetDialog(Events_Add.this);
+
+        View view = getLayoutInflater().inflate(R.layout.events_bottomsheet, null);
+        bottomSheetDialog.setContentView(view);
+
+        View  take_photoView = view.findViewById(R.id.take_photo);
+        View  choose_galeryView = view.findViewById(R.id.choose_galery);
+        View  choose_iconView = view.findViewById(R.id.choose_icon);
+
+        take_photoView.setOnClickListener(this);
+        choose_galeryView.setOnClickListener(this);
+        choose_iconView.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
-        System.out.println(view.getId());
-        if (view.getId() == R.id.tVEvents_AddCancel) {
-            this.finish();
+
+        int id = view.getId();
+
+        switch (id)
+        {
+            case R.id.tVEvents_AddCancel:
+                this.finish();
+                break;
+
+            case R.id.iVEvents_AddPicture:
+                bottomSheetDialog.show();
+                break;
+
+            case R.id.take_photo:
+                Toast.makeText(this, "Foto", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.choose_galery:
+                Toast.makeText(this, "Galerie", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.choose_icon:
+                Toast.makeText(this, "Icon", Toast.LENGTH_SHORT).show();
+                break;
+
         }
+
+//        System.out.println(view.getId());
+//        if (view.getId() == R.id.tVEvents_AddCancel) {
+//            this.finish();
+//        }
+//
+//        else if(view.getId() == R.id.iVEvents_AddPicture) {
+//            bottomSheetDialog.show();
+//        }
     }
 }
