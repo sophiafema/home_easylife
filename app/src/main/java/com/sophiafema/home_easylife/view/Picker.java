@@ -264,7 +264,7 @@ public abstract class Picker extends View {
 
     public OnClickIntoCenter onClickIntoCenter;
     public interface OnClickIntoCenter {
-        public void onClick(float value);
+        public void onClick(boolean isEnabled);
     }
     public void setOnClickIntoCenter(OnClickIntoCenter listener) {
         this.onClickIntoCenter = listener;
@@ -595,7 +595,7 @@ public abstract class Picker extends View {
                         /*mCenterHaloPaint.setAlpha(0x50);*/
                         /*setColor(getOldCenterColor());*/
                         if (onClickIntoCenter != null) {
-                            onClickIntoCenter.onClick(mValue);
+                            onClickIntoCenter.onClick(mWheelIsEnabled);
                         }
                         invalidate();
                     }

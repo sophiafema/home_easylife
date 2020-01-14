@@ -6,6 +6,15 @@ import android.util.AttributeSet;
 public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter {
 
 
+    public OnClickInCenter onClickInCenter;
+    public interface OnClickInCenter {
+        public void onClick(boolean isEnabled);
+    }
+    public void setOnClickIntoCenter(OnClickInCenter listener) {
+        this.onClickInCenter = listener;
+    }
+
+
     public BrightnessPicker(Context context) {
         super(context);
     }
@@ -28,34 +37,55 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
     @Override
     public void setTextFromValue(float value) {
         boolean pIsZero = calculatePercentWithValue(value)<1;
-        String textTrue = "Turn ON";
-        String textFalse = "Turn OFF";
-        if(pIsZero) {
-            setCenterText(textTrue);
+        setText(!pIsZero);
+    }
+
+    private void setText(boolean isEnabled) {
+        String textTurnOn = "Turn ON";
+        String textTurnOffe = "Turn OFF";
+        if(isEnabled) {
+            setCenterText(textTurnOffe);
         }
         else {
-            setCenterText(textFalse);
+            setCenterText(textTurnOn);
         }
     }
 
     @Override
-    public void onClick(float value) {
-        boolean isEnabled = getWheelIsEnabled();
-        String textTrue = "Turn ON";
-        String textFalse = "Turn OFF";
+    public void onClick(boolean isEnabled) {
+        String textTurnOn = "Turn ON";
+        String textTurnOffe = "Turn OFF";
         if(!(getValuePercent()<1)) {
-            if (isEnabled) {
-                setCenterText(textTrue);
-            } else {
-                setCenterText(textFalse);
+            if(!isEnabled) {
+                setCenterText(textTurnOffe);
             }
-
+            else {
+                setCenterText(textTurnOn);
+            }
+            if (onClickInCenter != null) {
+                onClickInCenter.onClick(!isEnabled);
+            }
             toggleWheelIsEnabled();
         }
         else {
             setValueToPercent(100);
-            setCenterText(textFalse);
+            setCenterText(textTurnOffe);
+            if (onClickInCenter != null) {
+                onClickInCenter.onClick(false);
+            }
         }
+
+
+
     }
+
+    @Override
+    public void setWheelIsEnabled(boolean isEnabled) {
+        super.setWheelIsEnabled(isEnabled);
+        setText(isEnabled);
+        invalidate();
+    }
+
+
 
 }

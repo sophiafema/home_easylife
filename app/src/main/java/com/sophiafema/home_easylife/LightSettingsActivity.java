@@ -18,6 +18,7 @@ public class LightSettingsActivity extends AppCompatActivity {
     BrightnessPicker picker;
     Room r;
     double brightness;
+    boolean power;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +27,23 @@ public class LightSettingsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         brightness = intent.getDoubleExtra(Fragment_Light.LIGHT_BRIGHTNESS, 0);
+        power = intent.getBooleanExtra(Fragment_Light.LIGHT_POWER, false);
 
         picker = findViewById(R.id.brightness_picker);
-        Log.e("pBright", " "+brightness);
         picker.setValueToPercent((float) brightness);
+        Log.e("Power", ""+power);
+        picker.setWheelIsEnabled(power);
         picker.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override
             public void onColorSelected(float color) {
                 //color = light
                 brightness = color;
+            }
+        });
+        picker.setOnClickIntoCenter(new BrightnessPicker.OnClickInCenter() {
+            @Override
+            public void onClick(boolean isEnabled) {
+                power = isEnabled;
             }
         });
 
@@ -43,7 +52,7 @@ public class LightSettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra(Fragment_Light.LIGHT_BRIGHTNESS, brightness);
-                //resultIntent.putExtra(Fragment_Light., nnnn);
+                resultIntent.putExtra(Fragment_Light.LIGHT_POWER, power);
                 setResult(Activity.RESULT_OK, resultIntent);
                 finish();
             }

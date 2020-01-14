@@ -28,7 +28,6 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     double brightness;
     boolean on;
     DatabaseAdapter db;
-    double  returnValue;
     int arrayposition;
     static final int REQUEST_CODE = 1; // The request code.
 
@@ -70,17 +69,16 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
            arrayposition=0;
            brightness = r.getLights().get(0).getBrightness();
            on = r.getLights().get(0).isOn();
-           sFLightBath.setChecked(on);
-           setImageBath();
+           setSwitchPosition();
+           setImages();
 
            iVFLightBath.setOnClickListener(this);
            sFLightBath.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                @Override
                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     switchSettings(isChecked);
-                    r.getLights().get(0).setOn(on);
-                    db.setLightPower(r.getName(),r.getLights().get(0).getName(), on);
-                    setImageBath();
+                    savePower();
+                    setImages();
                }
            });
        }
@@ -95,81 +93,19 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
             arrayposition=0;
             brightness = r.getLights().get(0).getBrightness();
             on = r.getLights().get(0).isOn();
-            sFLightHallway.setChecked(on);
-            setImageHallway();
+            setSwitchPosition();
+            setImages();
 
            iVFLightHallway.setOnClickListener(this);
            sFLightHallway.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     switchSettings(isChecked);
-                    r.getLights().get(0).setOn(on);
-                    db.setLightPower(r.getName(),r.getLights().get(0).getName(), on);
-                    setImageHallway();
+                    savePower();
+                    setImages();
                 }
             });
 
-        }
-
-        else if (r.getName().equals(Util.KITCHEN))
-        {
-            light = inflater.inflate(R.layout.fragment_light_kitchen, container, false);
-
-            sFLightKitchen = light.findViewById(R.id.sFLightKitchen);
-            iVFLightKitchen1 = light.findViewById(R.id.iVFLightKitchen1);
-            iVFLightKitchen2 = light.findViewById(R.id.iVFLightKitchen2);
-            iVFLightKitchen3 = light.findViewById(R.id.iVFLightKitchen3);
-
-            if(!(r.getLights().get(0).isOn() && r.getLights().get(1).isOn() && r.getLights().get(2).isOn()))
-            {
-                on = false;
-            }
-            else
-            {
-                on = true;
-            }
-
-            sFLightKitchen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-
-                }
-            });
-
-
-            iVFLightKitchen1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    arrayposition=0;
-                    brightness = r.getLights().get(0).getBrightness();
-                    Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
-                    intent.putExtra(LIGHT_BRIGHTNESS, brightness);
-                    startActivity(intent);
-                }
-            });
-
-            iVFLightKitchen2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    arrayposition=1;
-                    brightness = r.getLights().get(1).getBrightness();
-                    Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
-                    intent.putExtra(LIGHT_BRIGHTNESS, brightness);
-                    startActivity(intent);
-                }
-            });
-
-            iVFLightKitchen3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    arrayposition=2;
-                    brightness = r.getLights().get(2).getBrightness();
-                    Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
-                    intent.putExtra(LIGHT_BRIGHTNESS, brightness);
-                    startActivity(intent);
-                }
-            });
         }
 
         else if (r.getName().equals(Util.LIVING))
@@ -182,17 +118,16 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
             arrayposition=0;
             brightness = r.getLights().get(0).getBrightness();
             on = r.getLights().get(0).isOn();
-            sFLightLiving.setChecked(on);
-            setImageLiving();
+            setSwitchPosition();
+            setImages();
 
             iVFLightLiving.setOnClickListener(this);
             sFLightLiving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     switchSettings(isChecked);
-                    r.getLights().get(0).setOn(on);
-                    db.setLightPower(r.getName(),r.getLights().get(0).getName(), on);
-                    setImageLiving();
+                    savePower();
+                    setImages();
                 }
             });
         }
@@ -207,20 +142,67 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
             arrayposition=0;
             brightness = r.getLights().get(0).getBrightness();
             on = r.getLights().get(0).isOn();
-            sFLightSleeping.setChecked(on);
-            setImageSleeping();
+            setSwitchPosition();
+            setImages();
 
             iVFLightSleeping.setOnClickListener(this);
             sFLightSleeping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     switchSettings(isChecked);
-                    r.getLights().get(0).setOn(on);
-                    db.setLightPower(r.getName(),r.getLights().get(0).getName(), on);
-                    setImageSleeping();
+                    savePower();
+                    setImages();
                 }
             });
         }
+
+       else if (r.getName().equals(Util.KITCHEN))
+       {
+           light = inflater.inflate(R.layout.fragment_light_kitchen, container, false);
+
+           sFLightKitchen = light.findViewById(R.id.sFLightKitchen);
+           iVFLightKitchen1 = light.findViewById(R.id.iVFLightKitchen1); //Array Platz 0
+           iVFLightKitchen2 = light.findViewById(R.id.iVFLightKitchen2); //Array Platz 1
+           iVFLightKitchen3 = light.findViewById(R.id.iVFLightKitchen3); //Array Platz 2
+
+           getIsAraryOn();
+           setSwitchPosition();
+           setImages();
+
+           iVFLightKitchen1.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   arrayposition=0;
+                   onClickHelper();
+               }
+           });
+
+           iVFLightKitchen2.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   arrayposition=1;
+                   onClickHelper();
+               }
+           });
+
+           iVFLightKitchen3.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   arrayposition=2;
+                   onClickHelper();
+               }
+           });
+
+           sFLightKitchen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+               @Override
+               public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                   switchSettings(isChecked);
+                   savePower();
+                   setImages();
+
+               }
+           });
+       }
 
        return light;
 
@@ -228,10 +210,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
-        intent.putExtra(LIGHT_BRIGHTNESS, brightness);
-        intent.putExtra(LIGHT_POWER, on);
-        startActivityForResult(intent, REQUEST_CODE);
+        onClickHelper();
     }
 
     @Override
@@ -241,79 +220,123 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         switch (requestCode){
             case(REQUEST_CODE):{
             if(resultCode == RESULT_OK){
-                returnValue = data.getDoubleExtra(LIGHT_BRIGHTNESS, brightness);
+                brightness = data.getDoubleExtra(LIGHT_BRIGHTNESS, brightness);
+                on = data.getBooleanExtra(LIGHT_POWER, on);
                 saveBrightness();
-
+                savePower();
+                setImages();
+                setSwitchPosition();
             }
             break;
             }
         }
+    }
 
+    public void onClickHelper(){
+        brightness = r.getLights().get(arrayposition).getBrightness();
+        Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
+        intent.putExtra(LIGHT_BRIGHTNESS, brightness);
+        intent.putExtra(LIGHT_POWER, on);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     public void saveBrightness()
     {
-        r.getLights().get(arrayposition).setBrightness(returnValue);
-        db.setBrightness(r.getName(), r.getLights().get(arrayposition).getName(), returnValue);
+        r.getLights().get(arrayposition).setBrightness(brightness);
+        db.setBrightness(r.getName(), r.getLights().get(arrayposition).getName(), brightness);
+
+    }
+    public void savePower()
+    {
+        r.getLights().get(arrayposition).setOn(on);
+        db.setLightPower(r.getName(), r.getLights().get(arrayposition).getName(), on);
 
     }
 
     public void switchSettings (boolean isChecked){
-        if(isChecked)
+        if(isChecked) {on = true;}
+        else { on = false;}
+    }
+
+    public void setSwitchPosition()
+    {
+        if (r.getName().equals(Util.BATH))
         {
-            on = true;
+            sFLightBath.setChecked(on);
         }
-        else
+
+        else if (r.getName().equals(Util.LIVING))
         {
+            sFLightLiving.setChecked(on);
+        }
+
+        else if (r.getName().equals(Util.SLEEPING))
+        {
+            sFLightSleeping.setChecked(on);
+        }
+
+        else if (r.getName().equals(Util.HALLWAY))
+        {
+            sFLightHallway.setChecked(on);
+        }
+
+        else if (r.getName().equals(Util.KITCHEN))
+        {
+            getIsAraryOn();
+            sFLightKitchen.setChecked(on);
+
+        }
+    }
+
+    public void setImages()
+    {
+
+        if (r.getName().equals(Util.BATH))
+        {
+            if(on){iVFLightBath.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            else { iVFLightBath.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+        }
+
+        else if (r.getName().equals(Util.LIVING))
+        {
+            if(on){iVFLightLiving.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            else { iVFLightLiving.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+        }
+
+        else if (r.getName().equals(Util.SLEEPING))
+        {
+            if(on){iVFLightSleeping.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            else { iVFLightSleeping.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+        }
+
+        else if (r.getName().equals(Util.HALLWAY))
+        {
+            if(on){iVFLightHallway.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            else { iVFLightHallway.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+        }
+
+        else if (r.getName().equals(Util.KITCHEN))
+        {
+            if(r.getLights().get(0).isOn()){iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            else if(r.getLights().get(1).isOn()){iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            else if(r.getLights().get(2).isOn()){iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+            else if(!r.getLights().get(0).isOn()){iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            else if(!r.getLights().get(1).isOn()){iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            else if(!r.getLights().get(2).isOn()){iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+        }
+
+    }
+
+    public void getIsAraryOn ()
+    {
+        boolean light1 = r.getLights().get(0).isOn();
+        boolean light2 = r.getLights().get(0).isOn();
+        boolean light3 = r.getLights().get(0).isOn();
+
+        if (!(light1 && light2 && light3)) {
             on = false;
-        }
-    }
-
-    public void setImageBath()
-    {
-        if(on)
-        {
-            iVFLightBath.setImageResource(R.drawable.image_test_2);
-        }
-        else
-        {
-            iVFLightBath.setImageResource(R.drawable.iv_plainroom_bath);
-        }
-    }
-
-    public void setImageLiving()
-    {
-        if(on)
-        {
-            iVFLightLiving.setImageResource(R.drawable.image_test_2);
-        }
-        else
-        {
-            iVFLightLiving.setImageResource(R.drawable.iv_plainroom_bath);
-        }
-    }
-
-    public void setImageSleeping()
-    {
-        if(on)
-        {
-            iVFLightSleeping.setImageResource(R.drawable.image_test_2);
-        }
-        else
-        {
-            iVFLightSleeping.setImageResource(R.drawable.iv_plainroom_bath);
-        }
-    }
-
-    public void setImageHallway()
-    {
-        if(on)
-        {
-            iVFLightHallway.setImageResource(R.drawable.image_test_2);
-        }
-        else
-        {
-            iVFLightHallway.setImageResource(R.drawable.iv_plainroom_bath);
+        } else {
+            on = true;
         }
     }
 
