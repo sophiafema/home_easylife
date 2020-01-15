@@ -10,19 +10,17 @@
 
     <TextView
         android:id="@+id/tVGeneralHeading"
-        android:layout_width="223dp"
-        android:layout_height="51dp"
+        android:layout_width="221dp"
+        android:layout_height="@dimen/back_button"
+        android:layout_marginLeft="@dimen/heading_margin"
+        android:layout_marginTop="@dimen/heading_margin"
         android:paddingLeft="55dp"
-        android:paddingTop="12dp"
+        android:paddingTop="5dp"
         android:text="@string/general"
         android:textColor="@android:color/background_light"
         android:textSize="@dimen/textSize_s"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iVGeneralMenue"
@@ -30,54 +28,53 @@
         android:layout_height="@dimen/back_button"
         android:contentDescription="Menü"
         android:tint="@color/colorTextLight"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037"
+        app:layout_constraintBottom_toBottomOf="@+id/tVGeneralHeading"
+        app:layout_constraintEnd_toEndOf="@+id/tVGeneralHeading"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tVGeneralHeading"
+        app:layout_constraintTop_toTopOf="@+id/tVGeneralHeading"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <ImageView
         android:id="@+id/iVGeneralLight"
-        android:layout_width="@dimen/distance_width"
-        android:layout_height="@dimen/distance_height"
+        android:layout_width="391dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314"
+        app:layout_constraintVertical_bias="0.299"
         app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/iVGeneralTemperature"
-        android:layout_width="@dimen/distance_width"
-        android:layout_height="@dimen/distance_height"
+        android:layout_width="391dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="@dimen/distance_fields"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iVGeneralLight"
         app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/iVGeneralShutters"
-        android:layout_width="@dimen/distance_width"
-        android:layout_height="@dimen/distance_height"
+        android:layout_width="391dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="@dimen/distance_fields"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iVGeneralMusic"
         app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/iVGeneralMusic"
-        android:layout_width="@dimen/distance_width"
-        android:layout_height="@dimen/distance_height"
+        android:layout_width="391dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="@dimen/distance_fields"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iVGeneralTemperature"
         app:srcCompat="@color/colorPrimary" />
@@ -113,27 +110,26 @@
 
     <ImageView
         android:id="@+id/iVGeneralShuttersDown"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginRight="@dimen/distance_switch"
+        android:layout_width="@dimen/icon_shutter"
+        android:layout_height="@dimen/icon_shutter"
+        android:rotation="180"
+        android:layout_marginRight="@dimen/distance_shutter"
         app:layout_constraintBottom_toBottomOf="@+id/iVGeneralMusic"
         app:layout_constraintEnd_toEndOf="@+id/iVGeneralMusic"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic"
         app:layout_constraintVertical_bias="0.81"
-        app:srcCompat="@android:drawable/ic_menu_more" />
+        app:srcCompat="@drawable/ic_jalousie_button" />
 
     <ImageView
         android:id="@+id/iVGeneralShuttersUp"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:rotation="180"
+        android:layout_width="@dimen/icon_shutter"
+        android:layout_height="@dimen/icon_shutter"
+        android:layout_marginRight="@dimen/distance_shutter"
         app:layout_constraintBottom_toTopOf="@+id/iVGeneralShuttersDown"
         app:layout_constraintEnd_toEndOf="@+id/iVGeneralMusic"
         app:layout_constraintTop_toTopOf="@+id/iVGeneralMusic"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:drawable/ic_menu_more" />
+        app:layout_constraintVertical_bias="0.666"
+        app:srcCompat="@drawable/ic_jalousie_button" />
 
     <TextView
         android:id="@+id/tVGeneralShutters"

@@ -8,32 +8,33 @@
     tools:context=".General">
 
 
+
     <TextView
         android:id="@+id/tVEventsHeading"
-        android:layout_width="152dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="221dp"
+        android:layout_height="@dimen/back_button"
+        android:layout_marginLeft="@dimen/heading_margin"
+        android:layout_marginTop="@dimen/heading_margin"
         android:paddingLeft="55dp"
-        android:paddingTop="12dp"
+        android:paddingTop="5dp"
         android:text="@string/events"
         android:textColor="@android:color/background_light"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        android:textSize="@dimen/textSize_s"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iVEventsMenue"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="@dimen/back_button"
+        android:layout_height="@dimen/back_button"
         android:contentDescription="Menü"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:tint="@color/colorTextLight"
+        app:layout_constraintBottom_toBottomOf="@+id/tVEventsHeading"
+        app:layout_constraintEnd_toEndOf="@+id/tVEventsHeading"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tVEventsHeading"
+        app:layout_constraintTop_toTopOf="@+id/tVEventsHeading"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <ImageView
