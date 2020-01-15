@@ -8,4 +8,6 @@ public class Util {
     public static final String HALLWAY = "hallway";
     public static final String SLEEPING = "sleeping";
     public static final String ROOM = "room";
+
+    public static final String EVENT = "event";
 }
