@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".EventAddFunctionFragment">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iVEvents_AddLight"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tVEvents_AddLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/light"
+            android:textColor="@android:color/background_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iVEventsLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/iVEvents_AddTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/iVEvents_AddLight"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/tVEvents_AddTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thermo"
+            android:textColor="@android:color/background_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iVEventsAddTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/iVEvents_AddMusic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/iVEvents_AddTemperature"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/tVEvents_AddMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/music"
+            android:textColor="@android:color/background_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iVEventsAddMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/iVEvents_AddShutters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/iVEvents_AddMusic"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/tVEvents_AddShutters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shutter"
+            android:textColor="@android:color/background_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iVEventsAddShutter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
