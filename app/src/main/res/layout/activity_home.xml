@@ -35,8 +35,8 @@
 
     <ImageView
         android:id="@+id/iVHomeHallwayHelper"
-        android:layout_width="49dp"
-        android:layout_height="111dp"
+        android:layout_width="50dp"
+        android:layout_height="118dp"
         android:background="@color/colorPrimary"
         android:contentDescription="@string/hallway"
         app:layout_constraintStart_toStartOf="@+id/iVHomeHallway"

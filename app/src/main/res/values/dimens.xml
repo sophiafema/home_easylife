@@ -26,7 +26,7 @@
     <dimen name="back_button">40dp</dimen>
 
     <!-- Überschrift-->
-    <dimen name="heading_margin">10dp</dimen>
+    <dimen name="heading_margin">20dp</dimen>
 
     <!-- Zentralsteuerung-->
     <dimen name="distance_switch">20dp</dimen>

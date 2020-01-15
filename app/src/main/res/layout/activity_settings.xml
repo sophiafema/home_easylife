@@ -8,23 +8,108 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".Settings">
 
+
+    <TextView
+        android:id="@+id/tVSettingsHeading"
+        android:layout_width="221dp"
+        android:layout_height="@dimen/back_button"
+        android:layout_marginLeft="@dimen/heading_margin"
+        android:layout_marginTop="@dimen/heading_margin"
+        android:paddingLeft="55dp"
+        android:paddingTop="5dp"
+        android:text="@string/settings"
+        android:textColor="@android:color/background_light"
+        android:textSize="@dimen/textSize_s"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iVSettingsMenue"
+        android:layout_width="@dimen/back_button"
+        android:layout_height="@dimen/back_button"
+        android:contentDescription="Menü"
+        android:tint="@color/colorTextLight"
+        app:layout_constraintBottom_toBottomOf="@+id/tVSettingsHeading"
+        app:layout_constraintEnd_toEndOf="@+id/tVSettingsHeading"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tVSettingsHeading"
+        app:layout_constraintTop_toTopOf="@+id/tVSettingsHeading"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+
     <Button
         android:id="@+id/btnSettingsLogOut"
-        android:layout_width="127dp"
-        android:layout_height="53dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:background="@color/colorPrimary"
         android:bufferType="spannable"
         android:lineSpacingExtra="10sp"
         android:orientation="horizontal"
-        android:text="Log Out"
+        android:text="@string/logout"
         android:textColor="@android:color/background_light"
-        android:textSize="18sp"
+        android:textSize="@dimen/textSize_s"
         android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.917" />
+
+
+    <ImageView
+        android:id="@+id/iVSettingsPwd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/event_functions"
+        android:layout_marginBottom="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSettingsLogOut"
+        app:srcCompat="@color/colorPrimary"
+        tools:layout_editor_absoluteX="103dp" />
+
+    <ImageView
+        android:id="@+id/iVSettingsName2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="@dimen/distance_fields"
+        app:layout_constraintBottom_toTopOf="@+id/iVSettingsPwd"
+        app:srcCompat="@color/colorPrimary"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+        android:id="@+id/iVSettingsChevron"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:layout_marginRight="@dimen/heading_margin"
+        android:tint="@color/colorTextLight"
+        app:layout_constraintBottom_toBottomOf="@+id/iVSettingsPwd"
+        app:layout_constraintEnd_toEndOf="@+id/iVSettingsPwd"
+        app:layout_constraintTop_toTopOf="@+id/iVSettingsPwd"
+        app:srcCompat="@drawable/ic_chevron_right_black_24dp" />
+
+    <TextView
+        android:id="@+id/tVSettingsPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_switch"
+        android:text="@string/change_pwd"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/textSize_s"
+        app:layout_constraintBottom_toBottomOf="@+id/iVSettingsPwd"
+        app:layout_constraintStart_toStartOf="@+id/iVSettingsPwd"
+        app:layout_constraintTop_toTopOf="@+id/iVSettingsPwd" />
+
+    <TextView
+        android:id="@+id/tVSettingsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_switch"
+        android:layout_marginTop="10dp"
+        android:text="@string/username"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/textSize_s"
+        app:layout_constraintStart_toStartOf="@+id/iVSettingsName2"
+        app:layout_constraintTop_toTopOf="@+id/iVSettingsName2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
