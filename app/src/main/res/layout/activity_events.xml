@@ -33,18 +33,20 @@
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_input_delete" />
+        android:tint="@color/colorTextLight"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <ImageView
         android:id="@+id/iVEventsAdd"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:tint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"

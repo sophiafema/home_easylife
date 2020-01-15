@@ -3,6 +3,7 @@ package com.sophiafema.home_easylife;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -190,14 +191,15 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         else if(view.getId() == R.id.iVGeneralShuttersUp) {
             setTextShuttersUp(true);
             setShuttersUp(true);
-            iVGeneralShuttersUp.setColorFilter(Color.CYAN);
+            iVGeneralShuttersUp.setColorFilter(getResources().getColor(R.color.colorAccent));
             iVGeneralShuttersDown.setColorFilter(Color.TRANSPARENT);
         }
         else if(view.getId() == R.id.iVGeneralShuttersDown) {
             setTextShuttersUp(false);
             setShuttersUp(false);
-            iVGeneralShuttersDown.setColorFilter(Color.CYAN);
+            iVGeneralShuttersDown.setColorFilter(getResources().getColor(R.color.colorAccent));
             iVGeneralShuttersUp.setColorFilter(Color.TRANSPARENT);
+
         }
     }
 

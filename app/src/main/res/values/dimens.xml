@@ -16,12 +16,25 @@
     <dimen name="color_pointer_radius">14dp</dimen>
 
 
+
+    <!-- Schriftgrössen-->
+    <dimen name="textSize_xs">15sp</dimen>
+    <dimen name="textSize_s">20dp</dimen>
+    <dimen name="textSize_m">25dp</dimen>
+    <dimen name="textSize_l">30dp</dimen>
+    <dimen name="textSize_xl">60dp</dimen>
+
+
+
     <!-- Zentralsteuerung-->
     <dimen name="distance_switch">20dp</dimen>
-    <dimen name="distance_fields">2dp</dimen>
+    <dimen name="distance_fields">5dp</dimen>
+    <dimen name="distance_width">350dp</dimen>
     <dimen name="distance_height">100dp</dimen>
-    <dimen name="icon_height">50dp</dimen>
-    <dimen name="icon_width">50dp</dimen>
+    <dimen name="icon_height">40dp</dimen>
+    <dimen name="icon_width">40dp</dimen>
+
+    <dimen name="text_marginleft">20dp</dimen>
 
     <!-- Events-->
     <dimen name="event_icon">80dp</dimen>
