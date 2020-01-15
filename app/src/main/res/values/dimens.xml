@@ -15,8 +15,6 @@
     <dimen name="color_pointer_halo_radius">18dp</dimen>
     <dimen name="color_pointer_radius">14dp</dimen>
 
-
-
     <!-- Schriftgrössen-->
     <dimen name="textSize_xs">15sp</dimen>
     <dimen name="textSize_s">20dp</dimen>
@@ -24,7 +22,8 @@
     <dimen name="textSize_l">30dp</dimen>
     <dimen name="textSize_xl">60dp</dimen>
 
-
+    <!-- Back Button-->
+    <dimen name="back_button">40dp</dimen>
 
     <!-- Zentralsteuerung-->
     <dimen name="distance_switch">20dp</dimen>
@@ -41,5 +40,6 @@
     <dimen name="event_marginright">55dp</dimen>
     <dimen name="event_marginbottom">30dp</dimen>
     <dimen name="event_iconmargin">12dp</dimen>
-
+    <dimen name="event_functions">50dp</dimen>
+    <dimen name="event_add">40dp</dimen>
 </resources>

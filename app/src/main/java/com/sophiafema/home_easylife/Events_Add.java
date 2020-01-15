@@ -1,9 +1,11 @@
 package com.sophiafema.home_easylife;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Event;
+import com.sophiafema.home_easylife.models.EventsRoom;
+import com.sophiafema.home_easylife.models.Music;
 import com.sophiafema.home_easylife.models.Room;
 
 public class Events_Add extends AppCompatActivity implements View.OnClickListener{
@@ -31,20 +35,26 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     ImageView iVEvents_AddSleeping;
     ImageView iVEvents_AddKitchen;
 
-    ImageView iVEvents_AddLight;
-    ImageView iVEvents_AddTemperature;
-    ImageView iVEvents_AddShutters;
-    ImageView iVEvents_AddMusic;
+    ConstraintLayout iVEvents_AddLight;
+    ConstraintLayout iVEvents_AddTemperature;
+    ConstraintLayout iVEvents_AddShutters;
+    ConstraintLayout iVEvents_AddMusic;
 
     TextView tVEvents_AddLight;
     TextView tVEvents_AddTemperature;
     TextView tVEvents_AddShutters;
     TextView tVEvents_AddMusic;
 
+    ImageView iVAddLight;
+    ImageView iVAddTemperature;
+    ImageView iVAddShutters;
+    ImageView iVAddMusic;
+
 
     Room r;
     DatabaseAdapter db;
     String currentRoom;
+    Event event;
 
 
     // Bottom sheet
@@ -59,15 +69,6 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events__add);
-
-
-
-        Intent intent = getIntent();
-        currentRoom = intent.getStringExtra(Util.ROOM);
-        if(currentRoom == null) {
-            currentRoom = Util.LIVING;
-        }
-        Log.e("current room", ""+currentRoom);
 
         tVEvents_AddCancel = (TextView) findViewById(R.id.tVEvents_AddCancel);
         tVEvents_AddCancel.setOnClickListener(this);
@@ -89,11 +90,10 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         iVEvents_AddKitchen = (ImageView) findViewById(R.id.iVEvents_AddKitchen);
         iVEvents_AddKitchen.setOnClickListener(this);
 
-
-        iVEvents_AddLight = (ImageView) findViewById(R.id.iVEvents_AddLight);
-        iVEvents_AddTemperature = (ImageView) findViewById(R.id.iVEvents_AddTemperature);
-        iVEvents_AddShutters = (ImageView) findViewById(R.id.iVEvents_AddShutters);
-        iVEvents_AddMusic = (ImageView) findViewById(R.id.iVEvents_AddMusic);
+        iVEvents_AddLight = findViewById(R.id.iVEvents_AddLight);
+        iVEvents_AddTemperature = findViewById(R.id.iVEvents_AddTemperature);
+        iVEvents_AddShutters = findViewById(R.id.iVEvents_AddShutters);
+        iVEvents_AddMusic = findViewById(R.id.iVEvents_AddMusic);
 
 
         tVEvents_AddLight = (TextView) findViewById(R.id.tVEvents_AddLight);
@@ -101,10 +101,40 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         tVEvents_AddShutters = (TextView) findViewById(R.id.tVEvents_AddShutters);
         tVEvents_AddMusic = (TextView) findViewById(R.id.tVEvents_AddMusic);
 
+        iVAddLight = findViewById(R.id.iVEventsLight);
+        iVAddTemperature = findViewById(R.id.iVEventsAddTemperature);
+        iVAddShutters = findViewById(R.id.iVEventsAddShutter);
+        iVAddMusic = findViewById(R.id.iVEventsAddMusic);
+
+
+
+        Intent intent = getIntent();
+        event = (Event) intent.getSerializableExtra(Util.EVENT);
+
+        //currentRoom = intent.getStringExtra(Util.ROOM);
+        if(event == null) {
+            currentRoom = Util.LIVING;
+            event = new Event(0, "default", 0);
+            //event.getRoomByName(currentRoom).setMusic(new Music());
+        }
+        else {
+            if(event.getRooms() != null) {
+                if(event.getRooms().size()>0)
+                    currentRoom = event.getRooms().get(0).getName();
+                else {
+                    event.fillRooms();
+                }
+            }
+            else {
+                event.fillRooms();
+            }
+        }
+
+        Log.e("current room", ""+currentRoom);
+        changeRoom(currentRoom);
 
 
         // Bottom sheet
-
         bottomSheetDialog = new BottomSheetDialog(Events_Add.this);
 
         View view = getLayoutInflater().inflate(R.layout.events_bottomsheet, null);
@@ -120,6 +150,47 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
     }
 
+    public void setFunctionOverview(EventsRoom room) {
+        if(room.hasLights()) {
+            //iVEvents_AddLight.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            iVAddLight.setImageResource(R.drawable.ic_cancel_black);
+        }
+        else {
+            //iVEvents_AddLight.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            iVAddLight.setImageResource(R.drawable.ic_add_black_24dp);
+        }
+        if(room.hasThermostat())  {
+            //iVEvents_AddTemperature.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            iVAddTemperature.setImageResource(R.drawable.ic_cancel_black);
+        }
+        else {
+            //iVEvents_AddTemperature.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            iVAddTemperature.setImageResource(R.drawable.ic_add_black_24dp);
+        }
+        if(room.hasMusic())  {
+            //iVEvents_AddMusic.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            iVAddMusic.setImageResource(R.drawable.ic_cancel_black);
+        }
+        else {
+            //iVEvents_AddMusic.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            iVAddMusic.setImageResource(R.drawable.ic_add_black_24dp);
+        }
+        if(room.hasShutters())  {
+            //iVEvents_AddShutters.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            iVAddShutters.setImageResource(R.drawable.ic_cancel_black);
+
+        }
+        else {
+            //iVEvents_AddShutters.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            iVAddShutters.setImageResource(R.drawable.ic_add_black_24dp);
+        }
+    }
+
+    public void changeRoom(String currentRoom) {
+        setButtonColor(currentRoom);
+        EventsRoom room = event.getRoomByName(currentRoom);
+        setFunctionOverview(room);
+    }
 
     @Override
     public void onClick(View view) {
@@ -151,23 +222,28 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.iVEvents_AddHallway:
-                setButtonColor(currentRoom);
+                currentRoom = Util.HALLWAY;
+                changeRoom(currentRoom);
                 break;
 
             case R.id.iVEvents_AddLiving:
-                setButtonColor(currentRoom);
+                currentRoom = Util.LIVING;
+                changeRoom(currentRoom);
                 break;
 
             case R.id.iVEvents_AddSleeping:
-                setButtonColor(currentRoom);
+                currentRoom = Util.SLEEPING;
+                changeRoom(currentRoom);
                 break;
 
             case R.id.iVEvents_AddKitchen:
-                setButtonColor(currentRoom);
+                currentRoom = Util.KITCHEN;
+                changeRoom(currentRoom);
                 break;
 
             case R.id.iVEvents_AddBath:
-                setButtonColor(currentRoom);
+                currentRoom = Util.BATH;
+                changeRoom(currentRoom);
                 break;
         }
 

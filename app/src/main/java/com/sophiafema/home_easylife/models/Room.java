@@ -8,7 +8,6 @@ public class Room extends SimpleRoom {
     private ArrayList<Shutter> shutters;
     private Music music;
 
-
     public Room() {
         super();
     }
@@ -100,4 +99,7 @@ public class Room extends SimpleRoom {
     public void setMusic(Music music) {
         this.music = music;
     }
+
+
+
 }

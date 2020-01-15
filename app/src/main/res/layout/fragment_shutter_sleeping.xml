@@ -50,7 +50,7 @@
         android:id="@+id/shutterFSleeping"
         android:layout_width="205dp"
         android:layout_height="237dp"
-        android:src="@drawable/image_test_2"
+        android:src="@drawable/jalousie"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.077"

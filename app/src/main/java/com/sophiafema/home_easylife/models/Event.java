@@ -1,8 +1,11 @@
 package com.sophiafema.home_easylife.models;
 
+import com.sophiafema.home_easylife.Util;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Event {
+public class Event implements Serializable {
     public int getPictureID() {
         return pictureID;
     }
@@ -14,7 +17,7 @@ public class Event {
     private int pictureID;
     private String name;
     private int id;
-    private ArrayList<Room> rooms;
+    private ArrayList<EventsRoom> rooms;
 //    private String day;
 //    private int time;
 
@@ -22,13 +25,30 @@ public class Event {
 
     }
 
-    public Event(int pictureID, String name, int id, ArrayList<Room> rooms) {
+    public Event(int pictureID, String name, int id, ArrayList<EventsRoom> rooms) {
         this.pictureID = pictureID;
         this.name = name;
         this.id = id;
         this.rooms = rooms;
 //        this.day = day;
 //        this.time = time;
+    }
+
+    public Event(int pictureID, String name, int id) {
+        this.pictureID = pictureID;
+        this.name = name;
+        this.id = id;
+        fillRooms();
+
+    }
+
+    public void fillRooms() {
+        this.rooms = new ArrayList<>();
+        rooms.add(new EventsRoom(Util.LIVING, 0));
+        rooms.add(new EventsRoom(Util.BATH, 1));
+        rooms.add(new EventsRoom(Util.KITCHEN, 2));
+        rooms.add(new EventsRoom(Util.SLEEPING, 3));
+        rooms.add(new EventsRoom(Util.HALLWAY, 4));
     }
 
     public boolean inMultipleRooms() {
@@ -51,12 +71,23 @@ public class Event {
         this.id = id;
     }
 
-    public ArrayList<Room> getRooms() {
+    public ArrayList<EventsRoom> getRooms() {
         return rooms;
     }
 
-    public void setRooms(ArrayList<Room> rooms) {
+    public void setRooms(ArrayList<EventsRoom> rooms) {
         this.rooms = rooms;
+    }
+
+    public EventsRoom getRoomByName(String name) {
+        EventsRoom e;
+        for(EventsRoom room : rooms) {
+            if(room.getName().equals(name)) {
+                e = room;
+                return e;
+            }
+        }
+        return null;
     }
 
 //    public String getDay() {

@@ -20,6 +20,7 @@ import com.sophiafema.home_easylife.models.Event;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Music;
 import com.sophiafema.home_easylife.models.Room;
+import com.sophiafema.home_easylife.models.EventsRoom;
 import com.sophiafema.home_easylife.models.Shutter;
 import com.sophiafema.home_easylife.models.Thermostat;
 
@@ -84,7 +85,7 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         eventsSleeping = new ArrayList<Event>();
 
 
-        ArrayList<Room> roomAll = new ArrayList<>();
+        ArrayList<EventsRoom> roomAll = new ArrayList<>();
 
         ArrayList<Light> l = new ArrayList<>();
         l.add(new Light(0, "esstisch", 3, 4, false));
@@ -94,7 +95,7 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         ArrayList<Shutter> lo = new ArrayList<>();
         lo.add(new Shutter(0, "east", 40));
         Music m = new Music(0, "music", 4, true, false);
-        Room living = new Room(Util.LIVING, 0, l, t, lo,m);
+        EventsRoom living = new EventsRoom(Util.LIVING, 0, l, t, lo,m);
 
         ArrayList<Light> l1 = new ArrayList<>();
         l1.add(new Light(0, "general", 3, 4, false));
@@ -102,14 +103,14 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         ArrayList<Shutter> lo1 = new ArrayList<>();
         lo1.add(new Shutter(0, "east", 0));
         Music m1 = new Music(0, "music", 4, true, false);
-        Room bath = new Room(Util.BATH, 0, l1, t1, lo1,m1);
+        EventsRoom bath = new EventsRoom(Util.BATH, 0, l1, t1, lo1,m1);
 
         roomAll.add(living);
         roomAll.add(bath);
 
-        ArrayList<Room> room= new ArrayList<>();
+        ArrayList<EventsRoom> room= new ArrayList<>();
         room.add(living);
-        ArrayList<Room> room1= new ArrayList<>();
+        ArrayList<EventsRoom> room1= new ArrayList<>();
         room1.add(bath);
 
 
