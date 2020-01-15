@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.sophiafema.home_easylife.models.Room;
@@ -35,6 +36,11 @@ public class LightSettingsActivity extends AppCompatActivity {
             public void onColorSelected(float color) {
                 //color = light
                 brightness = color;
+                Log.e("Color", ""+color);
+                if (picker.getValuePercent() == 0.0)
+                {
+                    power = false;
+                }
             }
         });
         picker.setOnClickIntoCenter(new BrightnessPicker.OnClickInCenter() {
@@ -43,6 +49,8 @@ public class LightSettingsActivity extends AppCompatActivity {
                 power = isEnabled;
             }
         });
+
+        picker.getValuePercent();
 
         findViewById(R.id.layout_light_settings).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,5 +63,6 @@ public class LightSettingsActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }

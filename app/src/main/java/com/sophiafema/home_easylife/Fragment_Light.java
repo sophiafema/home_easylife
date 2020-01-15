@@ -179,29 +179,45 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                @Override
                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                   if(isChecked)
-                   {
-                       on = true;
-                       for (int i = 0; i< 3; i++)
-                       {
-                           r.getLights().get(i).setOn(true);
-                           savePower();
-                           Log.e("isCheckedIF", ""+r.getLights().get(i).isOn());
-                       }
-                   }
+                   boolean light1 = r.getLights().get(0).isOn();
+                   boolean light2 = r.getLights().get(1).isOn();
+                   boolean light3 = r.getLights().get(2).isOn();
 
-                   else
-                   {
-                       on = false;
-                       for (int i = 0; i< 3; i++)
+                   if ((light1 && !light2 && !light3)) {
+                       if(!isChecked)
                        {
-                           r.getLights().get(i).setOn(false);
+                           allLightsOff();
+                           setImages();
                            savePower();
-                           Log.e("isCheckedELSE", ""+r.getLights().get(i).isOn());
                        }
-                   }
 
-                   setImages();
+                   } else if ((!light1 && light2 && !light3)) {
+                       if(!isChecked)
+                       {
+                           allLightsOff();
+                           setImages();
+                           savePower();
+                       }
+                   } else if ((!light1 && !light2 && light3)) {
+                       if(!isChecked)
+                       {
+                           allLightsOff();
+                           setImages();
+                           savePower();
+                       }
+                   } else {
+                       if (isChecked) {
+                           on = true;
+                           for (int i = 0; i < 3; i++) {
+                               r.getLights().get(i).setOn(true);
+                               savePower();
+                           }
+                       } else {
+                          allLightsOff();
+                       }
+
+                       setImages();
+                   }
                }
            });
        }
@@ -349,6 +365,15 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         } else {
             on = true;
         }
+    }
+
+    public void allLightsOff()
+    {
+            on = false;
+            for (int i = 0; i < 3; i++) {
+                r.getLights().get(i).setOn(false);
+                savePower();
+            }
     }
 
 
