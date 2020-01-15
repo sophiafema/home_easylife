@@ -2,17 +2,17 @@
 <resources>
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#121212</color>
-    <color name="colorPrimaryLight">#2BDBDB</color>
-    <color name="colorAccent">#2BDBDB</color>
-    <color name="colorSecondary">#2BDBDB</color>
-    <color name="colorHot">#2BDBDB</color>
+    <color name="colorPrimaryLight">#0DC490</color>
+    <color name="colorAccent">#0DC490</color>
+    <color name="colorSecondary">#0DC490</color>
+    <color name="colorHot">#0DC490</color>
 
     <color name="colorGrey">#616162</color>
     <color name="colorTextLight">#EBEBEB</color>
 
 
     <!-- picker colors -->
-    <color name="colorText">#FFFFFF</color>
+    <color name="colorText">#96FFFFFF</color>
     <color name="colorSelectedWheel">#FFB200</color>
     <color name="colorDisabledWheel">#5C5C5C</color>
 

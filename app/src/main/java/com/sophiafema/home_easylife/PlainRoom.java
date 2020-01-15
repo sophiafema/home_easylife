@@ -37,7 +37,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     String currentRoom;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
