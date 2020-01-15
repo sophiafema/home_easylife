@@ -1,6 +1,5 @@
 package com.sophiafema.home_easylife;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,7 +13,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 
-import com.sophiafema.home_easylife.database.Database;
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
 
@@ -27,10 +25,9 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     static final int REQUEST_CODE = 1; // The request code.
     Room r;
     DatabaseAdapter db;
-    double brightness;
-    boolean on;
-    int arrayposition;
-
+    static double brightness;
+    static boolean on;
+    static int arrayposition;
 
     ImageView iVFLightBath;
     ImageView iVFLightLiving;
@@ -150,7 +147,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
            iVFLightKitchen2 = light.findViewById(R.id.iVFLightKitchen2); //Array Platz 1
            iVFLightKitchen3 = light.findViewById(R.id.iVFLightKitchen3); //Array Platz 2
 
-           getIsAraryOn();
+           getIsArrayOn();
            setSwitchPosition();
            setImages();
 
@@ -181,25 +178,27 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
            sFLightKitchen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                @Override
                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                   switchSettings(isChecked);
 
-                   if(!isChecked)
+                   if(isChecked)
                    {
-                       for (int i = 0; i< 3; i++)
-                       {
-                           r.getLights().get(i).setOn(false);
-                           savePower();
-                       }
-                       on = false;
-                   }
-                   else
-                   {
+                       on = true;
                        for (int i = 0; i< 3; i++)
                        {
                            r.getLights().get(i).setOn(true);
                            savePower();
+                           Log.e("isCheckedIF", ""+r.getLights().get(i).isOn());
                        }
-                       on = true;
+                   }
+
+                   else
+                   {
+                       on = false;
+                       for (int i = 0; i< 3; i++)
+                       {
+                           r.getLights().get(i).setOn(false);
+                           savePower();
+                           Log.e("isCheckedELSE", ""+r.getLights().get(i).isOn());
+                       }
                    }
 
                    setImages();
@@ -214,6 +213,15 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         onClickHelper();
+    }
+
+    public void onClickHelper(){
+        brightness = r.getLights().get(arrayposition).getBrightness();
+        on = r.getLights().get(arrayposition).isOn();
+        Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
+        intent.putExtra(LIGHT_BRIGHTNESS, brightness);
+        intent.putExtra(LIGHT_POWER, on);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     @Override
@@ -235,14 +243,6 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         }
     }
 
-    public void onClickHelper(){
-        brightness = r.getLights().get(arrayposition).getBrightness();
-        Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
-        intent.putExtra(LIGHT_BRIGHTNESS, brightness);
-        intent.putExtra(LIGHT_POWER, on);
-        startActivityForResult(intent, REQUEST_CODE);
-    }
-
     public void doAtStart()
     {
         arrayposition=0;
@@ -262,7 +262,6 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     {
         r.getLights().get(arrayposition).setOn(on);
         db.setLightPower(r.getName(), r.getLights().get(arrayposition).getName(), on);
-
     }
 
     public void switchSettings (boolean isChecked){
@@ -294,7 +293,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
         else if (r.getName().equals(Util.KITCHEN))
         {
-            getIsAraryOn();
+            getIsArrayOn();
             sFLightKitchen.setChecked(on);
 
         }
@@ -339,13 +338,13 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
     }
 
-    public void getIsAraryOn ()
+    public void getIsArrayOn()
     {
         boolean light1 = r.getLights().get(0).isOn();
-        boolean light2 = r.getLights().get(0).isOn();
-        boolean light3 = r.getLights().get(0).isOn();
+        boolean light2 = r.getLights().get(1).isOn();
+        boolean light3 = r.getLights().get(2).isOn();
 
-        if (!(light1 && light2 && light3)) {
+        if (!light1 && !light2 && !light3) {
             on = false;
         } else {
             on = true;
