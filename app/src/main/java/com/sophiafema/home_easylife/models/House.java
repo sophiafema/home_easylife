@@ -36,7 +36,7 @@ public class House {
         l.add(new Light(2, "general", 3, 4, false));
         Thermostat t = new Thermostat(0, "thermo", 30, true);
         ArrayList<Shutter> lo = new ArrayList<>();
-        lo.add(new Shutter(0, "east", 40));
+        lo.add(new Shutter(0, "east", 0.3f));
         Music m = new Music(0, "music", 4, true, false);
         living = new Room(Util.LIVING, 0, l, t, lo,m);
     }
@@ -62,7 +62,7 @@ public class House {
         l.add(new Light(1, "sofa", 3, 4, false));
         Thermostat t = new Thermostat(0, "thermo", 30, true);
         ArrayList<Shutter> lo = new ArrayList<>();
-        lo.add(new Shutter(0, "east", 40));
+        lo.add(new Shutter(0, "east", 0.5f));
         Music m = new Music(0, "music", 4, true, false);
         sleeping = new Room(Util.SLEEPING, 0, l, t, lo,m);
     }
@@ -73,8 +73,8 @@ public class House {
         l.add(new Light(2, "general", 3, 4, false));
         Thermostat t = new Thermostat(0, "thermo", 30, true);
         ArrayList<Shutter> lo = new ArrayList<>();
-        lo.add(new Shutter(0, "east", 40));
-        lo.add(new Shutter(0, "west", 50));
+        lo.add(new Shutter(0, "east", 0.4f));
+        lo.add(new Shutter(0, "west", 0.5f));
         Music m = new Music(0, "music", 4, true, false);
         kitch = new Room(Util.KITCHEN, 0, l, t, lo,m);
     }
