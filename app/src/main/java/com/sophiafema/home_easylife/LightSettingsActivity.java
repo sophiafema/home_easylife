@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
 import com.sophiafema.home_easylife.view.BrightnessPicker;
 import com.sophiafema.home_easylife.view.Picker;
@@ -31,7 +29,6 @@ public class LightSettingsActivity extends AppCompatActivity {
 
         picker = findViewById(R.id.brightness_picker);
         picker.setValueToPercent((float) brightness);
-        Log.e("Power", ""+power);
         picker.setWheelIsEnabled(power);
         picker.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override
