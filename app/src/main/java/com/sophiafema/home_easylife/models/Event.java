@@ -1,8 +1,11 @@
 package com.sophiafema.home_easylife.models;
 
+import com.sophiafema.home_easylife.Util;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Event {
+public class Event implements Serializable {
     public int getPictureID() {
         return pictureID;
     }
@@ -31,6 +34,18 @@ public class Event {
 //        this.time = time;
     }
 
+    public Event(int pictureID, String name, int id) {
+        this.pictureID = pictureID;
+        this.name = name;
+        this.id = id;
+        this.rooms = new ArrayList<>();
+        rooms.add(new EventsRoom(Util.LIVING, 0));
+        rooms.add(new EventsRoom(Util.BATH, 1));
+        rooms.add(new EventsRoom(Util.KITCHEN, 2));
+        rooms.add(new EventsRoom(Util.SLEEPING, 3));
+        rooms.add(new EventsRoom(Util.HALLWAY, 4));
+    }
+
     public boolean inMultipleRooms() {
         return rooms.size()>1;
     }
@@ -57,6 +72,17 @@ public class Event {
 
     public void setRooms(ArrayList<EventsRoom> rooms) {
         this.rooms = rooms;
+    }
+
+    public EventsRoom getRoomByName(String name) {
+        EventsRoom e;
+        for(EventsRoom room : rooms) {
+            if(room.getName().equals(name)) {
+                e = room;
+                return e;
+            }
+        }
+        return null;
     }
 
 //    public String getDay() {
