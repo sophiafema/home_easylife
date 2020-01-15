@@ -152,36 +152,28 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
     public void setFunctionOverview(EventsRoom room) {
         if(room.hasLights()) {
-            //iVEvents_AddLight.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             iVAddLight.setImageResource(R.drawable.ic_cancel_black);
         }
         else {
-            //iVEvents_AddLight.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             iVAddLight.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
         }
         if(room.hasThermostat())  {
-            //iVEvents_AddTemperature.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             iVAddTemperature.setImageResource(R.drawable.ic_cancel_black);
         }
         else {
-            //iVEvents_AddTemperature.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             iVAddTemperature.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
         }
         if(room.hasMusic())  {
-            //iVEvents_AddMusic.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             iVAddMusic.setImageResource(R.drawable.ic_cancel_black);
         }
         else {
-            //iVEvents_AddMusic.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             iVAddMusic.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
         }
         if(room.hasShutters())  {
-            //iVEvents_AddShutters.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             iVAddShutters.setImageResource(R.drawable.ic_cancel_black);
 
         }
         else {
-            //iVEvents_AddShutters.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             iVAddShutters.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
         }
     }
