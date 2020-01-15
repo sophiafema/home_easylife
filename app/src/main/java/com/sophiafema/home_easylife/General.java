@@ -191,14 +191,15 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         else if(view.getId() == R.id.iVGeneralShuttersUp) {
             setTextShuttersUp(true);
             setShuttersUp(true);
-            iVGeneralShuttersUp.setColorFilter(Color.CYAN);
+            iVGeneralShuttersUp.setColorFilter(getResources().getColor(R.color.colorAccent));
             iVGeneralShuttersDown.setColorFilter(Color.TRANSPARENT);
         }
         else if(view.getId() == R.id.iVGeneralShuttersDown) {
             setTextShuttersUp(false);
             setShuttersUp(false);
-            iVGeneralShuttersDown.setBackgroundColor(R.color.colorAccent);
+            iVGeneralShuttersDown.setColorFilter(getResources().getColor(R.color.colorAccent));
             iVGeneralShuttersUp.setColorFilter(Color.TRANSPARENT);
+
         }
     }
 
