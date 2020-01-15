@@ -26,16 +26,16 @@
 
     <ImageView
         android:id="@+id/iVGeneralMenue"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/back_button"
+        android:layout_height="@dimen/back_button"
         android:contentDescription="Menü"
+        android:tint="@color/colorTextLight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        android:tint="@color/colorTextLight"
+        app:layout_constraintVertical_bias="0.037"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <ImageView

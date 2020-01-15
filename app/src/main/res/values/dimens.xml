@@ -24,7 +24,8 @@
     <dimen name="textSize_l">30dp</dimen>
     <dimen name="textSize_xl">60dp</dimen>
 
-
+    <!-- Back Button-->
+    <dimen name="back_button">40dp</dimen>
 
     <!-- Zentralsteuerung-->
     <dimen name="distance_switch">20dp</dimen>
