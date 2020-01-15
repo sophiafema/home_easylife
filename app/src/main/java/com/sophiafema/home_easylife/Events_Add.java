@@ -1,6 +1,7 @@
 package com.sophiafema.home_easylife;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -31,10 +32,10 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     ImageView iVEvents_AddSleeping;
     ImageView iVEvents_AddKitchen;
 
-    ImageView iVEvents_AddLight;
-    ImageView iVEvents_AddTemperature;
-    ImageView iVEvents_AddShutters;
-    ImageView iVEvents_AddMusic;
+    ConstraintLayout iVEvents_AddLight;
+    ConstraintLayout iVEvents_AddTemperature;
+    ConstraintLayout iVEvents_AddShutters;
+    ConstraintLayout iVEvents_AddMusic;
 
     TextView tVEvents_AddLight;
     TextView tVEvents_AddTemperature;
@@ -62,12 +63,14 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
 
 
-        Intent intent = getIntent();
-        currentRoom = intent.getStringExtra(Util.ROOM);
+        //Intent intent = getIntent();
+        //currentRoom = intent.getStringExtra(Util.ROOM);
         if(currentRoom == null) {
             currentRoom = Util.LIVING;
         }
         Log.e("current room", ""+currentRoom);
+
+
 
         tVEvents_AddCancel = (TextView) findViewById(R.id.tVEvents_AddCancel);
         tVEvents_AddCancel.setOnClickListener(this);
@@ -90,10 +93,10 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         iVEvents_AddKitchen.setOnClickListener(this);
 
 
-        iVEvents_AddLight = (ImageView) findViewById(R.id.iVEvents_AddLight);
-        iVEvents_AddTemperature = (ImageView) findViewById(R.id.iVEvents_AddTemperature);
-        iVEvents_AddShutters = (ImageView) findViewById(R.id.iVEvents_AddShutters);
-        iVEvents_AddMusic = (ImageView) findViewById(R.id.iVEvents_AddMusic);
+        iVEvents_AddLight = findViewById(R.id.iVEvents_AddLight);
+        iVEvents_AddTemperature = findViewById(R.id.iVEvents_AddTemperature);
+        iVEvents_AddShutters = findViewById(R.id.iVEvents_AddShutters);
+        iVEvents_AddMusic = findViewById(R.id.iVEvents_AddMusic);
 
 
         tVEvents_AddLight = (TextView) findViewById(R.id.tVEvents_AddLight);
@@ -102,6 +105,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         tVEvents_AddMusic = (TextView) findViewById(R.id.tVEvents_AddMusic);
 
 
+        findViewById(R.id.FRFEventAddFunction);
 
         // Bottom sheet
 
@@ -119,6 +123,14 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         choose_iconView.setOnClickListener(this);
 
     }
+
+    public void setFunctionOverview(String currentRoom) {
+
+
+    }
+
+
+
 
 
     @Override

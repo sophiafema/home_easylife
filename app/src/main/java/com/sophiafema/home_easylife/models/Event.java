@@ -14,7 +14,7 @@ public class Event {
     private int pictureID;
     private String name;
     private int id;
-    private ArrayList<Room> rooms;
+    private ArrayList<EventsRoom> rooms;
 //    private String day;
 //    private int time;
 
@@ -22,7 +22,7 @@ public class Event {
 
     }
 
-    public Event(int pictureID, String name, int id, ArrayList<Room> rooms) {
+    public Event(int pictureID, String name, int id, ArrayList<EventsRoom> rooms) {
         this.pictureID = pictureID;
         this.name = name;
         this.id = id;
@@ -51,11 +51,11 @@ public class Event {
         this.id = id;
     }
 
-    public ArrayList<Room> getRooms() {
+    public ArrayList<EventsRoom> getRooms() {
         return rooms;
     }
 
-    public void setRooms(ArrayList<Room> rooms) {
+    public void setRooms(ArrayList<EventsRoom> rooms) {
         this.rooms = rooms;
     }
 
