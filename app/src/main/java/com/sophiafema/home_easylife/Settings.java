@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +21,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.sophiafema.home_easylife.R;
 
-public class Settings extends AppCompatActivity implements
-        View.OnClickListener {
+public class Settings extends AppCompatActivity implements View.OnClickListener {
+
+    ImageView iVSettingsMenue;
+    TextView tVSettingsHeading;
 
 
 
@@ -34,6 +37,12 @@ public class Settings extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+
+        //Menü-Leiste
+        iVSettingsMenue = (ImageView) findViewById(R.id.iVSettingsMenue);
+        iVSettingsMenue.setOnClickListener(this);
+        tVSettingsHeading = (TextView) findViewById(R.id.tVSettingsHeading);
+        tVSettingsHeading.setOnClickListener(this);
 
 
         // Buttons
@@ -84,6 +93,11 @@ public class Settings extends AppCompatActivity implements
         int i = v.getId();
         if (i == R.id.btnSettingsLogOut) {
             signOut();
+        }
+
+        else if(i == R.id.tVSettingsHeading | i == R.id.iVSettingsMenue)
+        {
+            finish();
         }
     }
 }
