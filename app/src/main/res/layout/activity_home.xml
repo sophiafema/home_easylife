@@ -119,76 +119,68 @@
         android:id="@+id/tVHomeLiving"
         android:layout_width="92dp"
         android:layout_height="21dp"
+        android:layout_marginLeft="@dimen/event_iconmargin"
+        android:layout_marginBottom="@dimen/event_iconmargin"
         android:background="@color/colorPrimary"
         android:text="@string/living"
         android:textColor="@android:color/background_light"
         android:textSize="@dimen/textSize_xs"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeLiving"
-        app:layout_constraintEnd_toEndOf="@+id/iVHomeLiving"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="@+id/iVHomeLiving"
-        app:layout_constraintTop_toTopOf="@+id/iVHomeLiving"
-        app:layout_constraintVertical_bias="0.969" />
+        app:layout_constraintStart_toStartOf="@+id/iVHomeLiving" />
 
     <TextView
         android:id="@+id/tVHomeKitchen"
         android:layout_width="45dp"
         android:layout_height="21dp"
+        android:layout_marginLeft="@dimen/event_iconmargin"
+        android:layout_marginBottom="@dimen/event_iconmargin"
         android:background="@color/colorPrimary"
         android:text="@string/kitchen"
         android:textColor="@android:color/background_light"
         android:textSize="@dimen/textSize_xs"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeKitchen"
-        app:layout_constraintEnd_toEndOf="@+id/iVHomeKitchen"
-        app:layout_constraintHorizontal_bias="0.194"
-        app:layout_constraintStart_toStartOf="@+id/iVHomeKitchen"
-        app:layout_constraintTop_toTopOf="@+id/iVHomeKitchen"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintStart_toStartOf="@+id/iVHomeKitchen" />
 
     <TextView
         android:id="@+id/tVHomeHallway"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="@dimen/event_iconmargin"
+        android:layout_marginBottom="@dimen/event_iconmargin"
         android:background="@color/colorPrimary"
         android:text="@string/hallway"
         android:textColor="@android:color/background_light"
         android:textSize="@dimen/textSize_xs"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeHallway"
-        app:layout_constraintEnd_toEndOf="@+id/iVHomeHallway"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toStartOf="@+id/iVHomeHallway"
-        app:layout_constraintTop_toTopOf="@+id/iVHomeHallway"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintStart_toStartOf="@+id/iVHomeHallway" />
 
     <TextView
         android:id="@+id/tVHomeSleeping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="@dimen/event_iconmargin"
+        android:layout_marginBottom="@dimen/event_iconmargin"
         android:background="@color/colorPrimary"
         android:text="@string/sleeping"
         android:textColor="@android:color/background_light"
         android:textSize="@dimen/textSize_xs"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeSleeping"
-        app:layout_constraintEnd_toEndOf="@+id/iVHomeSleeping"
-        app:layout_constraintHorizontal_bias="0.464"
-        app:layout_constraintStart_toStartOf="@+id/iVHomeSleeping"
-        app:layout_constraintTop_toTopOf="@+id/iVHomeSleeping"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintStart_toStartOf="@+id/iVHomeSleeping" />
 
     <TextView
         android:id="@+id/tVHomeBath"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/event_iconmargin"
+        android:layout_marginBottom="@dimen/event_iconmargin"
         android:background="@color/colorPrimary"
         android:text="@string/bath"
         android:textColor="@android:color/background_light"
         android:textSize="@dimen/textSize_xs"
         app:layout_constraintBottom_toBottomOf="@+id/iVHomeBath"
-        app:layout_constraintEnd_toEndOf="@+id/iVHomeBath"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toStartOf="@+id/iVHomeBath"
-        app:layout_constraintTop_toTopOf="@+id/iVHomeBath"
-        app:layout_constraintVertical_bias="0.945" />
+        app:layout_constraintStart_toStartOf="@+id/iVHomeBath" />
 
     <TextView
         android:id="@+id/tVHomeGeneral"
@@ -236,9 +228,10 @@
         android:progressDrawable="@drawable/circular_progress_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/iVHomeSettings"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48000002" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/tVHomeName"
