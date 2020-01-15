@@ -61,7 +61,7 @@ public class Fragment_Shutter extends Fragment
 
             shutterFBath = (com.sophiafema.home_easylife.view.Shutters) shutter.findViewById(R.id.shutterFBath);
             iVFBathShuttersUp = (ImageView) shutter.findViewById(R.id.iVFBathShuttersUp);
-            iVFKitchenShuttersDown = (ImageView) shutter.findViewById(R.id.iVFBathShuttersDown);
+            iVFBathShuttersDown = (ImageView) shutter.findViewById(R.id.iVFBathShuttersDown);
 
             shutterFBath.setPosition((float) position);
 
@@ -80,18 +80,18 @@ public class Fragment_Shutter extends Fragment
                 public void onClick(View v) {
                     setShutterPosition(0,0);
                     shutterFBath.setPosition(0);
-                    iVFBathShuttersUp.setColorFilter(Color.CYAN);
+                    iVFBathShuttersUp.setColorFilter(getResources().getColor(R.color.colorAccent));
                     iVFBathShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
 
-            iVFKitchenShuttersDown.setOnClickListener(new View.OnClickListener() {
+            iVFBathShuttersDown.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     setShutterPosition(0,1);
                     shutterFBath.setPosition(1);
                     iVFBathShuttersUp.setColorFilter(Color.TRANSPARENT);
-                    iVFBathShuttersDown.setColorFilter(Color.CYAN);
+                    iVFBathShuttersDown.setColorFilter(getResources().getColor(R.color.colorAccent));
                 }
             });
         }
@@ -139,7 +139,7 @@ public class Fragment_Shutter extends Fragment
                     setShutterPosition(1,0);
                     shutterFKitchen1.setPosition(0);
                     shutterFKitchen2.setPosition(0);
-                    iVFKitchenShuttersUp.setColorFilter(Color.CYAN);
+                    iVFKitchenShuttersUp.setColorFilter(getResources().getColor(R.color.colorAccent));
                     iVFKitchenShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
@@ -152,7 +152,7 @@ public class Fragment_Shutter extends Fragment
                     shutterFKitchen1.setPosition(1);
                     shutterFKitchen2.setPosition(1);
                     iVFKitchenShuttersUp.setColorFilter(Color.TRANSPARENT);
-                    iVFKitchenShuttersDown.setColorFilter(Color.CYAN);
+                    iVFKitchenShuttersDown.setColorFilter(getResources().getColor(R.color.colorAccent));
 
                 }
             });
@@ -184,7 +184,7 @@ public class Fragment_Shutter extends Fragment
                 public void onClick(View v) {
                     setShutterPosition(0,0);
                     shutterFLiving.setPosition(0);
-                    iVFLivingShuttersUp.setColorFilter(Color.CYAN);
+                    iVFLivingShuttersUp.setColorFilter(getResources().getColor(R.color.colorAccent));
                     iVFLivingShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
@@ -195,7 +195,7 @@ public class Fragment_Shutter extends Fragment
                     setShutterPosition(0,1);
                     shutterFLiving.setPosition(1);
                     iVFLivingShuttersUp.setColorFilter(Color.TRANSPARENT);
-                    iVFLivingShuttersDown.setColorFilter(Color.CYAN);
+                    iVFLivingShuttersDown.setColorFilter(getResources().getColor(R.color.colorAccent));
                 }
             });
         }
@@ -226,7 +226,7 @@ public class Fragment_Shutter extends Fragment
                 public void onClick(View v) {
                     setShutterPosition(0,0);
                     shutterFSleeping.setPosition(0);
-                    iVFSleepingShuttersUp.setColorFilter(Color.CYAN);
+                    iVFSleepingShuttersUp.setColorFilter(getResources().getColor(R.color.colorAccent));
                     iVFSleepingShuttersDown.setColorFilter(Color.TRANSPARENT);
                 }
             });
@@ -237,7 +237,7 @@ public class Fragment_Shutter extends Fragment
                     setShutterPosition(0,1);
                     shutterFSleeping.setPosition(1);
                     iVFSleepingShuttersUp.setColorFilter(Color.TRANSPARENT);
-                    iVFSleepingShuttersDown.setColorFilter(Color.CYAN);
+                    iVFSleepingShuttersDown.setColorFilter(getResources().getColor(R.color.colorAccent));
                 }
             });
         }
