@@ -38,6 +38,11 @@ public class Event implements Serializable {
         this.pictureID = pictureID;
         this.name = name;
         this.id = id;
+        fillRooms();
+
+    }
+
+    public void fillRooms() {
         this.rooms = new ArrayList<>();
         rooms.add(new EventsRoom(Util.LIVING, 0));
         rooms.add(new EventsRoom(Util.BATH, 1));

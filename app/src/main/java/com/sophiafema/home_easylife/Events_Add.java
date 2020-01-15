@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +44,11 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     TextView tVEvents_AddTemperature;
     TextView tVEvents_AddShutters;
     TextView tVEvents_AddMusic;
+
+    ImageView iVAddLight;
+    ImageView iVAddTemperature;
+    ImageView iVAddShutters;
+    ImageView iVAddMusic;
 
 
     Room r;
@@ -95,21 +101,37 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         tVEvents_AddShutters = (TextView) findViewById(R.id.tVEvents_AddShutters);
         tVEvents_AddMusic = (TextView) findViewById(R.id.tVEvents_AddMusic);
 
+        iVAddLight = findViewById(R.id.iVEventsLight);
+        iVAddTemperature = findViewById(R.id.iVEventsAddTemperature);
+        iVAddShutters = findViewById(R.id.iVEventsAddShutter);
+        iVAddMusic = findViewById(R.id.iVEventsAddMusic);
+
 
 
         Intent intent = getIntent();
         event = (Event) intent.getSerializableExtra(Util.EVENT);
-        event = new Event(0, "event", 0);
 
         //currentRoom = intent.getStringExtra(Util.ROOM);
-        if(currentRoom == null) {
+        if(event == null) {
             currentRoom = Util.LIVING;
-            event.getRoomByName(currentRoom).setMusic(new Music());
+            event = new Event(0, "default", 0);
+            //event.getRoomByName(currentRoom).setMusic(new Music());
+        }
+        else {
+            if(event.getRooms() != null) {
+                if(event.getRooms().size()>0)
+                    currentRoom = event.getRooms().get(0).getName();
+                else {
+                    event.fillRooms();
+                }
+            }
+            else {
+                event.fillRooms();
+            }
         }
 
         Log.e("current room", ""+currentRoom);
         changeRoom(currentRoom);
-
 
 
         // Bottom sheet
@@ -130,30 +152,37 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
     public void setFunctionOverview(EventsRoom room) {
         if(room.hasLights()) {
-            iVEvents_AddLight.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            //iVEvents_AddLight.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            iVAddLight.setImageResource(R.drawable.ic_cancel_black);
         }
         else {
-            iVEvents_AddLight.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-
+            //iVEvents_AddLight.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            iVAddLight.setImageResource(R.drawable.ic_add_black_24dp);
         }
         if(room.hasThermostat())  {
-            iVEvents_AddTemperature.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            //iVEvents_AddTemperature.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            iVAddTemperature.setImageResource(R.drawable.ic_cancel_black);
         }
         else {
-            iVEvents_AddTemperature.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-
+            //iVEvents_AddTemperature.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            iVAddTemperature.setImageResource(R.drawable.ic_add_black_24dp);
         }
         if(room.hasMusic())  {
-            iVEvents_AddMusic.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            //iVEvents_AddMusic.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            iVAddMusic.setImageResource(R.drawable.ic_cancel_black);
         }
         else {
-            iVEvents_AddMusic.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            //iVEvents_AddMusic.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            iVAddMusic.setImageResource(R.drawable.ic_add_black_24dp);
         }
         if(room.hasShutters())  {
-            iVEvents_AddShutters.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            //iVEvents_AddShutters.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            iVAddShutters.setImageResource(R.drawable.ic_cancel_black);
+
         }
         else {
-            iVEvents_AddShutters.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            //iVEvents_AddShutters.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            iVAddShutters.setImageResource(R.drawable.ic_add_black_24dp);
         }
     }
 
