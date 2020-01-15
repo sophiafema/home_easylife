@@ -22,6 +22,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 {
     public static final String LIGHT_BRIGHTNESS = "LIGHT_BRIGHTNESS";
     public static final String LIGHT_POWER = "LIGHT_POWER";
+    public static final String LIGHT_ROOM = "LIGHT_ROOM";
     static final int REQUEST_CODE = 1; // The request code.
     Room r;
     DatabaseAdapter db;
@@ -42,6 +43,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     Switch sFLightSleeping;
     Switch sFLightHallway;
     Switch sFLightKitchen;
+
+    boolean clickedOnSwitch=true;
 
 
     public Fragment_Light(Room room) {
@@ -71,8 +74,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                @Override
                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     switchSettings(isChecked);
-                    savePower();
-                    setImages();
+                    savePower(isChecked, arrayposition);
+                    setImages(isChecked);
                }
            });
        }
@@ -91,8 +94,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     switchSettings(isChecked);
-                    savePower();
-                    setImages();
+                    savePower(isChecked, arrayposition);
+                    setImages(isChecked);
                 }
             });
 
@@ -112,8 +115,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     switchSettings(isChecked);
-                    savePower();
-                    setImages();
+                    savePower(isChecked, arrayposition);
+                    setImages(isChecked);
                 }
             });
         }
@@ -132,8 +135,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     switchSettings(isChecked);
-                    savePower();
-                    setImages();
+                    savePower(isChecked, arrayposition);
+                    setImages(isChecked);
                 }
             });
         }
@@ -148,8 +151,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
            iVFLightKitchen3 = light.findViewById(R.id.iVFLightKitchen3); //Array Platz 2
 
            getIsArrayOn();
-           setSwitchPosition();
-           setImages();
+           setSwitchPosition(on);
+           setImages(on);
 
            iVFLightKitchen1.setOnClickListener(new View.OnClickListener() {
                @Override
@@ -175,6 +178,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                }
            });
 
+
            sFLightKitchen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                @Override
                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -183,41 +187,21 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                    boolean light2 = r.getLights().get(1).isOn();
                    boolean light3 = r.getLights().get(2).isOn();
 
-                   if ((light1 && !light2 && !light3)) {
-                       if(!isChecked)
-                       {
-                           allLightsOff();
-                           setImages();
-                           savePower();
-                       }
+                    if (isChecked && clickedOnSwitch) {
 
-                   } else if ((!light1 && light2 && !light3)) {
-                       if(!isChecked)
-                       {
-                           allLightsOff();
-                           setImages();
-                           savePower();
-                       }
-                   } else if ((!light1 && !light2 && light3)) {
-                       if(!isChecked)
-                       {
-                           allLightsOff();
-                           setImages();
-                           savePower();
-                       }
-                   } else {
-                       if (isChecked) {
                            on = true;
                            for (int i = 0; i < 3; i++) {
                                r.getLights().get(i).setOn(true);
-                               savePower();
+                               savePower(on, i);
                            }
-                       } else {
+                           System.out.println("schleife 1");
+                       } else if (clickedOnSwitch){
+                           System.out.println("schleife 0");
                           allLightsOff();
                        }
 
-                       setImages();
-                   }
+                       setImages(on);
+                    clickedOnSwitch = true;
                }
            });
        }
@@ -237,6 +221,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
         intent.putExtra(LIGHT_BRIGHTNESS, brightness);
         intent.putExtra(LIGHT_POWER, on);
+        intent.putExtra(LIGHT_ROOM, r.getName());
         startActivityForResult(intent, REQUEST_CODE);
     }
 
@@ -249,10 +234,13 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
             if(resultCode == RESULT_OK){
                 brightness = data.getDoubleExtra(LIGHT_BRIGHTNESS, brightness);
                 on = data.getBooleanExtra(LIGHT_POWER, on);
-                saveBrightness();
-                savePower();
-                setImages();
-                setSwitchPosition();
+                System.out.println(on);
+                System.out.println(brightness);
+                saveBrightness(brightness, arrayposition);
+                savePower(on, arrayposition);
+                setImages(on);
+                clickedOnSwitch = false;
+                setSwitchPosition(on);
             }
             break;
             }
@@ -264,17 +252,17 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         arrayposition=0;
         brightness = r.getLights().get(0).getBrightness();
         on = r.getLights().get(0).isOn();
-        setSwitchPosition();
-        setImages();
+        setSwitchPosition(on);
+        setImages(on);
     }
 
-    public void saveBrightness()
+    public void saveBrightness(double brightness, int arrayposition)
     {
         r.getLights().get(arrayposition).setBrightness(brightness);
         db.setBrightness(r.getName(), r.getLights().get(arrayposition).getName(), brightness);
 
     }
-    public void savePower()
+    public void savePower(boolean on, int arrayposition)
     {
         r.getLights().get(arrayposition).setOn(on);
         db.setLightPower(r.getName(), r.getLights().get(arrayposition).getName(), on);
@@ -285,7 +273,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         else { on = false;}
     }
 
-    public void setSwitchPosition()
+    public void setSwitchPosition(boolean on)
     {
         if (r.getName().equals(Util.BATH))
         {
@@ -311,11 +299,10 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         {
             getIsArrayOn();
             sFLightKitchen.setChecked(on);
-
         }
     }
 
-    public void setImages()
+    public void setImages(boolean on)
     {
 
         if (r.getName().equals(Util.BATH))
@@ -369,10 +356,10 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
     public void allLightsOff()
     {
-            on = false;
+        on = false;
             for (int i = 0; i < 3; i++) {
                 r.getLights().get(i).setOn(false);
-                savePower();
+                savePower(false, i);
             }
     }
 

@@ -77,7 +77,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                 tVPlainRoomMenue.setText(R.string.living);
                 break;
             case Util.BATH:
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);;
+                iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);
                 setButtonColor(currentRoom);
                 tVPlainRoomMenue.setText(R.string.bath);
                 break;

@@ -754,6 +754,7 @@ public abstract class Picker extends View {
         float value = calculateValueWithPercent(percent);
         configValue(value);
         mPointerColor.setColor(calculateColor(mValue));
+        oldSelectedListenerValue = value;
         invalidate();
     }
 
