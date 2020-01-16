@@ -6,18 +6,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Event implements Serializable {
-    public int getPictureID() {
-        return pictureID;
-    }
-
-    public void setPictureID(int pictureID) {
-        this.pictureID = pictureID;
-    }
 
     private int pictureID;
     private String name;
     private String id;
     private ArrayList<EventsRoom> rooms;
+
+    private boolean isActivated;
 //    private String day;
 //    private int time;
 
@@ -30,6 +25,7 @@ public class Event implements Serializable {
         this.name = name;
         this.id = id;
         this.rooms = rooms;
+        this.isActivated = false;
 //        this.day = day;
 //        this.time = time;
     }
@@ -39,7 +35,7 @@ public class Event implements Serializable {
         this.name = name;
         this.id = id;
         fillRooms();
-
+        this.isActivated = false;
     }
 
     public void fillRooms() {
@@ -107,6 +103,23 @@ public class Event implements Serializable {
             }
         }
     }
+
+    public int getPictureID() {
+        return pictureID;
+    }
+
+    public void setPictureID(int pictureID) {
+        this.pictureID = pictureID;
+    }
+
+    public boolean isActivated() {
+        return isActivated;
+    }
+
+    public void setActivated(boolean activated) {
+        isActivated = activated;
+    }
+
 
 //    public String getDay() {
 //        return day;

@@ -315,12 +315,18 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
             image.setImageResource(contact.getPictureID());
             ImageView background = holder.iVEvents;
             Switch sw = holder.swEvents;
+            sw.setChecked(contact.isActivated());
             sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked) {
                         activateEvent(contact);
+                        contact.setActivated(true);
                     }
+                    else {
+                        contact.setActivated(false);
+                    }
+                    dba.setEvent(contact);
                 }
             });
 
