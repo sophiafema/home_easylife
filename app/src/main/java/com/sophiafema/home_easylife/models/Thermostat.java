@@ -1,5 +1,8 @@
 package com.sophiafema.home_easylife.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 public class Thermostat {
 
     public static String NAME = "name";
@@ -53,4 +56,5 @@ public class Thermostat {
     public void setPower(boolean power) {
         this.power = power;
     }
+
 }

@@ -1,6 +1,11 @@
 package com.sophiafema.home_easylife.models;
 
-public class Light {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Light implements Serializable {
 
     public static String BRIGHTNESS = "brightness";
     public static String COLOR = "color";
@@ -60,4 +65,6 @@ public class Light {
     public void setOn(boolean on) {
         this.on = on;
     }
+
+
 }

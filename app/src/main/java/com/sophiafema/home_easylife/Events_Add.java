@@ -64,6 +64,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     BottomSheetDialog bottomSheetDialog;
 
     public static final String EVENTS_PICTURES = "EVENTS_PICTURES";
+    public static EventsRoom eroom;
 
     static final int REQUEST_CODE = 2;
     static final int REQUEST_CODE_LIGHT = 3;
@@ -156,7 +157,6 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    public EventsRoom eroom;
     public void setFunctionOverview(EventsRoom room) {
         eroom = room;
         if(room.hasLights()) {
@@ -167,11 +167,25 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVAddLight.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle bundle = new Bundle();
+                    /*Bundle bundle = new Bundle();
                     bundle.putSerializable(Util.EVENTSROOM, eroom);
                     Intent i = new Intent(getBaseContext(), Event_Fragment_Light.class);
-                    i.putExtra(Util.EVENTSROOM, bundle);
-                    startActivityForResult(i, REQUEST_CODE_LIGHT);
+                    i.putExtra(Util.EVENTSROOM, bundle);*/
+                    Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Light.class);
+                    ArrayList<Light> l = new ArrayList<>();
+                    l.add(new Light(0, "esstisch", 3, 4, false));
+                    l.add(new Light(1, "sofa", 3, 4, false));
+                    l.add(new Light(2, "general", 3, 4, false));
+                    //r.setLights(l);
+                    eroom.setLights(l);
+                    Light light = new Light(0, "esstisch", 3, 4, false);
+                    //mIntent.putExtra(Util.EVENTSROOM, light);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Util.EVENTSROOM, eroom);
+                    mIntent.putExtras(bundle);
+
+                    startActivityForResult(mIntent, REQUEST_CODE_LIGHT);
                 }
             });
         }
@@ -316,10 +330,10 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                 case REQUEST_CODE_LIGHT:
                     Bundle bundle = data.getExtras();
                     if (bundle != null) {
-                        //EventsRoom eventsRoom = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);
-                        //event.setRoomByName(eventsRoom.getName(), eventsRoom);
-                        //setFunctionOverview(eventsRoom);
-                        //System.out.println(eventsRoom.getName());
+                        EventsRoom eventsRoom = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);
+                        event.setRoomByName(eventsRoom.getName(), eventsRoom);
+                        setFunctionOverview(eventsRoom);
+                        System.out.println(eventsRoom.getName());
                     }
                     break;
 

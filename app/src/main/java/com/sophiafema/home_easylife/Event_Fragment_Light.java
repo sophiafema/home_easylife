@@ -18,11 +18,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
+import com.sophiafema.home_easylife.models.Event;
 import com.sophiafema.home_easylife.models.EventsRoom;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Room;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -63,20 +65,30 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        Intent mI = getIntent();
+        /*Bundle bundle = this.getIntent().getExtras();
+        System.out.println(bundle);
+        Light light = null;
+        if (bundle != null) {
+            light = (Light) bundle.getSerializable(Util.EVENTSROOM);
+            System.out.println(bundle.getSerializable(Util.EVENTSROOM));
+        }
+        //Light light = mI.getParcelableExtra(Util.EVENTSROOM);
+        System.out.println("light " + light);*/
+
+
+
         Bundle bundle = this.getIntent().getExtras();
         if (bundle != null) {
             r = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);
         }
 
+        System.out.println(r.getName());
+
 
         if(r == null) {
             r = new EventsRoom(Util.LIVING, 0);
         }
-        /*ArrayList<Light> l = new ArrayList<>();
-        l.add(new Light(0, "esstisch", 3, 4, false));
-        l.add(new Light(1, "sofa", 3, 4, false));
-        l.add(new Light(2, "general", 3, 4, false));
-        r.setLights(l);*/
 
         if(r.getLights().size() < 1) {
             dba = new DatabaseAdapter();
@@ -209,10 +221,6 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                        boolean light1 = r.getLights().get(0).isOn();
-                        boolean light2 = r.getLights().get(1).isOn();
-                        boolean light3 = r.getLights().get(2).isOn();
-
                         if (isChecked && clickedOnSwitch) {
 
                             on = true;
@@ -239,7 +247,7 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Util.EVENTSROOM, r);
                 Intent resultIntent = new Intent();
-                resultIntent.putExtra(Util.EVENTSROOM, bundle);
+                resultIntent.putExtras(bundle);
                 setResult(Activity.RESULT_OK, resultIntent);
                 finish();
             }
