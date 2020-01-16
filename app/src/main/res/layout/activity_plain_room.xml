@@ -158,14 +158,15 @@
 
     </me.relex.circleindicator.CircleIndicator>
 
+
     <TextView
         android:id="@+id/tVPlainRoomMenue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="221dp"
+        android:layout_height="@dimen/back_button"
         android:layout_marginLeft="@dimen/heading_margin"
         android:layout_marginTop="@dimen/heading_margin"
         android:paddingLeft="55dp"
-        android:paddingTop="12dp"
+        android:paddingTop="5dp"
         android:text=" "
         android:textColor="@android:color/background_light"
         android:textSize="@dimen/textSize_s"
@@ -176,15 +177,14 @@
         android:id="@+id/iVPlainRoomMenue"
         android:layout_width="@dimen/back_button"
         android:layout_height="@dimen/back_button"
-        android:layout_alignStart="@+id/tVPlainRoomMenue"
-        android:layout_alignLeft="@+id/tVPlainRoomMenue"
-        android:layout_alignTop="@+id/tVPlainRoomMenue"
-        android:layout_alignBottom="@+id/tVPlainRoomMenue"
+        android:contentDescription="Menü"
+        android:tint="@color/colorTextLight"
         app:layout_constraintBottom_toBottomOf="@+id/tVPlainRoomMenue"
+        app:layout_constraintEnd_toEndOf="@+id/tVPlainRoomMenue"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tVPlainRoomMenue"
         app:layout_constraintTop_toTopOf="@+id/tVPlainRoomMenue"
-        app:layout_constraintVertical_bias="1.0"
-        android:tint="@color/colorTextLight"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
 

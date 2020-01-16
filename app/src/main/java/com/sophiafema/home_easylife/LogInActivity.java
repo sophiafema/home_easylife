@@ -4,6 +4,8 @@ package com.sophiafema.home_easylife;
         import androidx.appcompat.app.AppCompatActivity;
 
         import android.content.Intent;
+        import android.content.res.AssetManager;
+        import android.graphics.Typeface;
         import android.os.Bundle;
         import android.text.TextUtils;
         import android.util.Log;
@@ -19,6 +21,8 @@ package com.sophiafema.home_easylife;
         import com.google.firebase.auth.FirebaseUser;
         import com.sophiafema.home_easylife.R;
         import com.sophiafema.home_easylife.models.House;
+
+        import java.util.Locale;
 
 
 public class LogInActivity extends AppCompatActivity implements
@@ -41,6 +45,7 @@ public class LogInActivity extends AppCompatActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
 
         // Views
         mStatusTextView = findViewById(R.id.status);
