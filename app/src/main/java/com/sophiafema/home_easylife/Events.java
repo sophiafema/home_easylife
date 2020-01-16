@@ -8,19 +8,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Event;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Music;
-import com.sophiafema.home_easylife.models.Room;
 import com.sophiafema.home_easylife.models.EventsRoom;
+import com.sophiafema.home_easylife.models.Room;
 import com.sophiafema.home_easylife.models.Shutter;
 import com.sophiafema.home_easylife.models.Thermostat;
 
@@ -29,6 +32,8 @@ import java.util.ArrayList;
 //import com.sophiafema.home_easylife.models.Event;
 
 public class Events extends AppCompatActivity implements View.OnClickListener {
+    static final int REQUEST_CODE_EVENT = 7;
+
     RecyclerView recyclerViewAll, recyclerViewLiving, recyclerViewBath, recyclerViewKitchen, recyclerViewSleeping, recyclerViewHallway;
 
     ImageView iVEventsMenue;
@@ -50,6 +55,15 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
     ArrayList<Event> eventsHallway;
     ArrayList<Event> eventsSleeping;
 
+    EventsAdapter adapter;
+    EventsAdapter adapterLiving;
+    EventsAdapter adapterBath;
+    EventsAdapter adapterKitchen;
+    EventsAdapter adapterSleeping;
+    EventsAdapter adapterHallway;
+
+    DatabaseAdapter dba;
+
 
     int images [] = {R.drawable.common_google_signin_btn_icon_light, R.drawable.common_full_open_on_phone,
             R.drawable.common_google_signin_btn_text_dark_focused, R.drawable.common_google_signin_btn_icon_light_normal_background,
@@ -61,6 +75,9 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+
+        dba = new DatabaseAdapter();
+        events = dba.getEvents();
 
         iVEventsMenue = (ImageView) findViewById(R.id.iVEventsMenue);
         tVEventsHeading = (TextView) findViewById(R.id.tVEventsHeading);
@@ -76,7 +93,6 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         iVEventsPicture = (ImageView) findViewById(R.id.iVEventsPicture);
 
 
-        events = new ArrayList<Event>();
         eventsAll = new ArrayList<Event>();
         eventsLiving = new ArrayList<Event>();
         eventsBath = new ArrayList<Event>();
@@ -85,43 +101,7 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         eventsSleeping = new ArrayList<Event>();
 
 
-        ArrayList<EventsRoom> roomAll = new ArrayList<>();
 
-        ArrayList<Light> l = new ArrayList<>();
-        l.add(new Light(0, "esstisch", 3, 4, false));
-        l.add(new Light(1, "sofa", 3, 4, false));
-        l.add(new Light(2, "general", 3, 4, false));
-        Thermostat t = new Thermostat(0, "thermo", 30, true);
-        ArrayList<Shutter> lo = new ArrayList<>();
-        lo.add(new Shutter(0, "east", 40));
-        Music m = new Music(0, "music", 4, true, false);
-        EventsRoom living = new EventsRoom(Util.LIVING, 0, l, t, lo,m);
-
-        ArrayList<Light> l1 = new ArrayList<>();
-        l1.add(new Light(0, "general", 3, 4, false));
-        Thermostat t1 = new Thermostat(0, "thermo", 30, true);
-        ArrayList<Shutter> lo1 = new ArrayList<>();
-        lo1.add(new Shutter(0, "east", 0));
-        Music m1 = new Music(0, "music", 4, true, false);
-        EventsRoom bath = new EventsRoom(Util.BATH, 0, l1, t1, lo1,m1);
-
-        roomAll.add(living);
-        roomAll.add(bath);
-
-        ArrayList<EventsRoom> room= new ArrayList<>();
-        room.add(living);
-        ArrayList<EventsRoom> room1= new ArrayList<>();
-        room1.add(bath);
-
-
-        events.add(new Event(0, "hallo", 2, roomAll));
-        events.add(new Event(0, "hallok", 2, roomAll));
-        events.add(new Event(0, "hallob", 2, roomAll));
-        events.add(new Event(0, "hallol", 2, roomAll));
-        events.add(new Event(0, "hallo1", 2, room));
-        events.add(new Event(0, "hallo2", 2, room1));
-
-        setRoomLists(events);
 
 
         // Lookup the recyclerview in activity layout
@@ -132,61 +112,157 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         recyclerViewKitchen = (RecyclerView) findViewById(R.id.recyclerViewKitchen);
         recyclerViewHallway = (RecyclerView) findViewById(R.id.recyclerViewHallway);
 
+        setRoomLists(events);
 
-
-        EventsAdapter adapter = new EventsAdapter(eventsAll);
+        adapter = new EventsAdapter(eventsAll);
         recyclerViewAll.setAdapter(adapter);
         recyclerViewAll.setLayoutManager(new LinearLayoutManager(this));
 
-        EventsAdapter adapterLiving = new EventsAdapter(eventsLiving);
+        adapterLiving = new EventsAdapter(eventsLiving);
         recyclerViewLiving.setAdapter(adapterLiving);
         recyclerViewLiving.setLayoutManager(new LinearLayoutManager(this));
 
-        EventsAdapter adapterBath = new EventsAdapter(eventsBath);
+        adapterBath = new EventsAdapter(eventsBath);
         recyclerViewBath.setAdapter(adapterBath);
         recyclerViewBath.setLayoutManager(new LinearLayoutManager(this));
 
-        EventsAdapter adapterSleeping = new EventsAdapter(eventsSleeping);
+        adapterSleeping = new EventsAdapter(eventsSleeping);
         recyclerViewSleeping.setAdapter(adapterSleeping);
         recyclerViewSleeping.setLayoutManager(new LinearLayoutManager(this));
 
-        EventsAdapter adapterKitchen = new EventsAdapter(eventsKitchen);
+        adapterKitchen = new EventsAdapter(eventsKitchen);
         recyclerViewKitchen.setAdapter(adapterKitchen);
         recyclerViewKitchen.setLayoutManager(new LinearLayoutManager(this));
 
-        EventsAdapter adapterHallway = new EventsAdapter(eventsHallway);
+        adapterHallway = new EventsAdapter(eventsHallway);
         recyclerViewHallway.setAdapter(adapterHallway);
         recyclerViewHallway.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
+    private void updateRecyclerViews(String room) {
+        if(room.equals("all")) {
+            //to all
+            adapter.notifyDataSetChanged();
+        }
+        else if(room.equals(Util.LIVING)) {
+            //living room
+            adapterLiving.notifyDataSetChanged();
+        }
+        else if(room.equals(Util.BATH)) {
+            //bath room
+            adapterBath.notifyDataSetChanged();
+        }
+        else if(room.equals(Util.KITCHEN)) {
+            //kitchen room
+            adapterKitchen.notifyDataSetChanged();
+        }
+        else if(room.equals(Util.HALLWAY)) {
+            //hallway room
+            adapterHallway.notifyDataSetChanged();
+        }
+        else if(room.equals(Util.SLEEPING)) {
+            //sleeping room
+            adapterSleeping.notifyDataSetChanged();
+        }
+    }
+
     public void setRoomLists(ArrayList<Event> events) {
         for(Event e : events) {
-            if(e.getRooms().size()>1) {
-                //to all
-                eventsAll.add(e);
-            }
-            else if(e.getRooms().get(0).getName().equals(Util.LIVING)) {
-                //living room
-                eventsLiving.add(e);
-            }
-            else if(e.getRooms().get(0).getName().equals(Util.BATH)) {
-                //bath room
-                eventsBath.add(e);
-            }
-            else if(e.getRooms().get(0).getName().equals(Util.KITCHEN)) {
-                //kitchen room
-                eventsKitchen.add(e);
-            }
-            else if(e.getRooms().get(0).getName().equals(Util.HALLWAY)) {
-                //hallway room
-                eventsHallway.add(e);
-            }
-            else if(e.getRooms().get(0).getName().equals(Util.SLEEPING)) {
-                //sleeping room
-                eventsSleeping.add(e);
-            }
+            addRoom(e);
         }
+    }
+    public String addRoom(Event e) {
+        String room = "";
+
+        if(e.numberOfRoomsWithFunction() > 1) {
+            //to all
+            eventsAll.add(e);
+            room = "all";
+        }
+        else if(e.getRoomByName(Util.LIVING).hasFunctions()) {
+            //living room
+            eventsLiving.add(e);
+            room = Util.LIVING;
+        }
+        else if(e.getRoomByName(Util.BATH).hasFunctions()) {
+            //bath room
+            eventsBath.add(e);
+            room = Util.BATH;
+        }
+        else if(e.getRoomByName(Util.KITCHEN).hasFunctions()) {
+            //kitchen room
+            eventsKitchen.add(e);
+            room = Util.KITCHEN;
+        }
+        else if(e.getRoomByName(Util.HALLWAY).hasFunctions()) {
+            //hallway room
+            eventsHallway.add(e);
+            room = Util.HALLWAY;
+        }
+        else if(e.getRoomByName(Util.SLEEPING).hasFunctions()) {
+            //sleeping room
+            eventsSleeping.add(e);
+            room = Util.SLEEPING;
+        }
+        return room;
+    }
+
+    public void removeRoom(String room, int index) {
+        if(room.equals("all")) {
+            //to all
+            eventsAll.remove(index);
+        }
+        else if(room.equals(Util.LIVING)) {
+            //living room
+            eventsLiving.remove(index);
+        }
+        else if(room.equals(Util.BATH)) {
+            //bath room
+            eventsBath.remove(index);
+        }
+        else if(room.equals(Util.KITCHEN)) {
+            //kitchen room
+            eventsKitchen.remove(index);
+        }
+        else if(room.equals(Util.HALLWAY)) {
+            //hallway room
+            eventsHallway.remove(index);
+        }
+        else if(room.equals(Util.SLEEPING)) {
+            //sleeping room
+            eventsSleeping.remove(index);
+        }
+    }
+
+    public String getRoom(Event e) {
+        String room = "";
+
+        if(e.numberOfRoomsWithFunction() > 1) {
+            //to all
+            room = "all";
+        }
+        else if(e.getRoomByName(Util.LIVING).hasFunctions()) {
+            //living room
+            room = Util.LIVING;
+        }
+        else if(e.getRoomByName(Util.BATH).hasFunctions()) {
+            //bath room
+            room = Util.BATH;
+        }
+        else if(e.getRoomByName(Util.KITCHEN).hasFunctions()) {
+            //kitchen room
+            room = Util.KITCHEN;
+        }
+        else if(e.getRoomByName(Util.HALLWAY).hasFunctions()) {
+            //hallway room
+            room = Util.HALLWAY;
+        }
+        else if(e.getRoomByName(Util.SLEEPING).hasFunctions()) {
+            //sleeping room
+            room = Util.SLEEPING;
+        }
+        return room;
     }
 
     @Override
@@ -199,7 +275,7 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
              else if(view.getId() == R.id.iVEventsAdd)
              {
                  Intent intent1 = new Intent(this, Events_Add.class);
-                 startActivity(intent1);
+                 startActivityForResult(intent1, REQUEST_CODE_EVENT);
              }
     }
 
@@ -227,14 +303,45 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             // Get the data model based on position
-            Event contact = mEvents.get(position);
+            final Event contact = mEvents.get(position);
+            final int pos = position;
+            final String arrayname = getRoom(contact);
+
 
             // Set item views based on your views and data model
             TextView textView = holder.nameTextView;
             textView.setText(contact.getName());
             ImageView image = holder.img;
-            image.setImageResource(images[contact.getPictureID()]);
+            image.setImageResource(contact.getPictureID());
+            ImageView background = holder.iVEvents;
+            Switch sw = holder.swEvents;
+            sw.setChecked(contact.isActivated());
+            sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked) {
+                        activateEvent(contact);
+                        contact.setActivated(true);
+                    }
+                    else {
+                        contact.setActivated(false);
+                    }
+                    dba.setEvent(contact);
+                }
+            });
 
+            background.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent1 = new Intent(getApplicationContext(), Events_Add.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Util.EVENT, contact);
+                    intent1.putExtras(bundle);
+                    intent1.putExtra(Util.EVENT_INDEX, pos);
+                    intent1.putExtra(Util.EVENT_ARRAY_ROOM, arrayname);
+                    startActivityForResult(intent1, REQUEST_CODE_EVENT);
+                }
+            });
         }
 
         @Override
@@ -250,6 +357,7 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
             // for any view that will be set as you render a row
             public TextView nameTextView;
             public Switch swEvents;
+            public ImageView iVEvents;
             public ImageView img;
 
             // We also create a constructor that accepts the entire item row
@@ -262,6 +370,53 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
                 nameTextView = (TextView) itemView.findViewById(R.id.tVEventsName);
                 swEvents = (Switch) itemView.findViewById(R.id.swEvents);
                 img = (ImageView) itemView.findViewById(R.id.iVEventsPicture);
+                iVEvents = (ImageView) itemView.findViewById(R.id.iVEventsBackground);
+            }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK){
+            switch (requestCode){
+                case(REQUEST_CODE_EVENT):
+                    Bundle bundle = data.getExtras();
+                    if(data.hasExtra(Util.EVENT_ARRAY_ROOM) && data.hasExtra(Util.EVENT_INDEX)) {
+                        removeRoom(data.getStringExtra(Util.EVENT_ARRAY_ROOM), data.getIntExtra(Util.EVENT_INDEX, 0));
+                    }
+                    if (bundle != null) {
+                        Event event = (Event) bundle.getSerializable(Util.EVENT);
+                        events.add(event);
+                        dba.setEvent(event);
+                        String room = addRoom(event);
+                        updateRecyclerViews(room);
+                    }
+                    break;
+            }
+        }
+    }
+
+    public void activateEvent(Event event) {
+        System.out.println(event);
+        for(EventsRoom room : event.getRooms()) {
+            if(room.hasLights()) {
+                for(Light l : room.getLights()) {
+                    dba.setLight(room.getName(), l);
+                }
+            }
+            if(room.hasShutters()) {
+                for(Shutter s : room.getShutters()) {
+                    dba.setShutter(room.getName(), s);
+                }
+            }
+            if(room.hasThermostat()) {
+                dba.setThermostat(room.getName(), room.getThermo());
+            }
+            if(room.hasMusic()) {
+                dba.setMusic(room.getName(), room.getMusic());
             }
         }
     }

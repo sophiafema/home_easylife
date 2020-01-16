@@ -1,6 +1,11 @@
 package com.sophiafema.home_easylife.models;
 
-public class Thermostat {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Thermostat implements Serializable {
 
     public static String NAME = "name";
     public static String ID = "id";
@@ -53,4 +58,5 @@ public class Thermostat {
     public void setPower(boolean power) {
         this.power = power;
     }
+
 }

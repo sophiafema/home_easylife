@@ -1,8 +1,16 @@
 package com.sophiafema.home_easylife.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class EventsRoom extends Room {
+public class EventsRoom extends Room implements Serializable {
+
+    public EventsRoom() {
+        super();
+    }
 
     public EventsRoom(String name, int id) {
        super(name, id, new ArrayList<Light>(), null, new ArrayList<Shutter>(), null);

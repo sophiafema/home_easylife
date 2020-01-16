@@ -16,6 +16,10 @@
         <activity android:name=".Events" />
         <activity android:name=".General" />
         <activity android:name=".PlainRoom" />
+        <activity android:name=".Event_Fragment_Light" />
+        <activity android:name=".Event_Fragment_Music" />
+        <activity android:name=".Event_Fragment_Temperature" />
+        <activity android:name=".Event_Fragment_Shutter" />
         <activity android:name=".LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,6 +1,8 @@
 package com.sophiafema.home_easylife.models;
 
-public class SimpleRoom {
+import java.io.Serializable;
+
+public class SimpleRoom implements Serializable {
 
     private String name;
     private int id;

@@ -1,8 +1,12 @@
 package com.sophiafema.home_easylife.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Room extends SimpleRoom {
+public class Room extends SimpleRoom implements Serializable {
     private ArrayList<Light> lights;
     private Thermostat thermo;
     private ArrayList<Shutter> shutters;
@@ -99,7 +103,6 @@ public class Room extends SimpleRoom {
     public void setMusic(Music music) {
         this.music = music;
     }
-
 
 
 }

@@ -6,18 +6,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Event implements Serializable {
-    public int getPictureID() {
-        return pictureID;
-    }
-
-    public void setPictureID(int pictureID) {
-        this.pictureID = pictureID;
-    }
 
     private int pictureID;
     private String name;
-    private int id;
+    private String id;
     private ArrayList<EventsRoom> rooms;
+
+    private boolean isActivated;
 //    private String day;
 //    private int time;
 
@@ -25,21 +20,22 @@ public class Event implements Serializable {
 
     }
 
-    public Event(int pictureID, String name, int id, ArrayList<EventsRoom> rooms) {
+    public Event(int pictureID, String name, String id, ArrayList<EventsRoom> rooms) {
         this.pictureID = pictureID;
         this.name = name;
         this.id = id;
         this.rooms = rooms;
+        this.isActivated = false;
 //        this.day = day;
 //        this.time = time;
     }
 
-    public Event(int pictureID, String name, int id) {
+    public Event(int pictureID, String name, String id) {
         this.pictureID = pictureID;
         this.name = name;
         this.id = id;
         fillRooms();
-
+        this.isActivated = false;
     }
 
     public void fillRooms() {
@@ -63,11 +59,11 @@ public class Event implements Serializable {
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,6 +73,16 @@ public class Event implements Serializable {
 
     public void setRooms(ArrayList<EventsRoom> rooms) {
         this.rooms = rooms;
+    }
+
+    public int numberOfRoomsWithFunction() {
+        int number=0;
+        for(EventsRoom room : rooms) {
+            if(room.hasFunctions()) {
+                number++;
+            }
+        }
+        return number;
     }
 
     public EventsRoom getRoomByName(String name) {
@@ -89,6 +95,31 @@ public class Event implements Serializable {
         }
         return null;
     }
+
+    public void setRoomByName(String name, EventsRoom room) {
+        for(int i = 0; i<rooms.size(); i++) {
+            if(rooms.get(i).getName().equals(name)) {
+                rooms.set(i, room);
+            }
+        }
+    }
+
+    public int getPictureID() {
+        return pictureID;
+    }
+
+    public void setPictureID(int pictureID) {
+        this.pictureID = pictureID;
+    }
+
+    public boolean isActivated() {
+        return isActivated;
+    }
+
+    public void setActivated(boolean activated) {
+        isActivated = activated;
+    }
+
 
 //    public String getDay() {
 //        return day;
