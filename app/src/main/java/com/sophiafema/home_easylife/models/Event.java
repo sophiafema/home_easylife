@@ -90,6 +90,14 @@ public class Event implements Serializable {
         return null;
     }
 
+    public void setRoomByName(String name, EventsRoom room) {
+        for(int i = 0; i<rooms.size(); i++) {
+            if(rooms.get(i).getName().equals(name)) {
+                rooms.set(i, room);
+            }
+        }
+    }
+
 //    public String getDay() {
 //        return day;
 //    }

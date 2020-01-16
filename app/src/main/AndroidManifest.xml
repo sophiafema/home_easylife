@@ -16,6 +16,7 @@
         <activity android:name=".Events" />
         <activity android:name=".General" />
         <activity android:name=".PlainRoom" />
+        <activity android:name=".Event_Fragment_Light" />
         <activity android:name=".LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

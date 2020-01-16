@@ -18,8 +18,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Event;
 import com.sophiafema.home_easylife.models.EventsRoom;
+import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Music;
 import com.sophiafema.home_easylife.models.Room;
+
+import java.util.ArrayList;
 
 public class Events_Add extends AppCompatActivity implements View.OnClickListener{
 
@@ -63,6 +66,8 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     public static final String EVENTS_PICTURES = "EVENTS_PICTURES";
 
     static final int REQUEST_CODE = 2;
+    static final int REQUEST_CODE_LIGHT = 3;
+    static final int REQUEST_CODE_MUSIC = 4;
 
 
     @Override
@@ -115,6 +120,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         if(event == null) {
             currentRoom = Util.LIVING;
             event = new Event(0, "default", 0);
+
             //event.getRoomByName(currentRoom).setMusic(new Music());
         }
         else {
@@ -150,12 +156,24 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
     }
 
+    public EventsRoom eroom;
     public void setFunctionOverview(EventsRoom room) {
+        eroom = room;
         if(room.hasLights()) {
             iVAddLight.setImageResource(R.drawable.ic_cancel_black);
         }
         else {
             iVAddLight.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
+            iVAddLight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Util.EVENTSROOM, eroom);
+                    Intent i = new Intent(getBaseContext(), Event_Fragment_Light.class);
+                    i.putExtra(Util.EVENTSROOM, bundle);
+                    startActivityForResult(i, REQUEST_CODE_LIGHT);
+                }
+            });
         }
         if(room.hasThermostat())  {
             iVAddTemperature.setImageResource(R.drawable.ic_cancel_black);
@@ -289,15 +307,23 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     {
         super.onActivityResult(requestCode, resultCode, data);
         int resourceId;
-        switch (requestCode){
-            case(REQUEST_CODE):{
-                if(resultCode == RESULT_OK){
-                    System.out.println("drinnen");
+        if(resultCode == RESULT_OK){
+            switch (requestCode){
+                case(REQUEST_CODE):
                     resourceId = data.getIntExtra(EVENTS_PICTURES, 0);
                     iVEvents_AddPicture.setImageResource(resourceId);
+                    break;
+                case REQUEST_CODE_LIGHT:
+                    Bundle bundle = data.getExtras();
+                    if (bundle != null) {
+                        //EventsRoom eventsRoom = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);
+                        //event.setRoomByName(eventsRoom.getName(), eventsRoom);
+                        //setFunctionOverview(eventsRoom);
+                        //System.out.println(eventsRoom.getName());
+                    }
+                    break;
 
-                }
-                break;
+
             }
         }
     }

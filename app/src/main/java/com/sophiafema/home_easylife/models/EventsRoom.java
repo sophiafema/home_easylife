@@ -1,8 +1,9 @@
 package com.sophiafema.home_easylife.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class EventsRoom extends Room {
+public class EventsRoom extends Room implements Serializable {
 
     public EventsRoom(String name, int id) {
        super(name, id, new ArrayList<Light>(), null, new ArrayList<Shutter>(), null);
