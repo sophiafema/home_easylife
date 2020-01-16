@@ -245,7 +245,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVEvents_AddTemperature.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_LIGHT, eroom);
+                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_THERMOSTAT, eroom);
                 }
             });
         }
@@ -271,7 +271,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVEvents_AddMusic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_LIGHT, eroom);
+                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_MUSIC, eroom);
                 }
             });
         }
@@ -297,7 +297,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVEvents_AddShutters.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_LIGHT, eroom);
+                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_SHUTTERS, eroom);
                 }
             });
 
