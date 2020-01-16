@@ -79,7 +79,7 @@ public class Events_Pictures extends AppCompatActivity implements View.OnClickLi
         int resourceId = R.drawable.ic_icon_weather_sunrise; //default plus
         switch(view.getId()) {
             case R.id.iVEvents_PictureP1:
-                resourceId = R.drawable.ic_gluehbirne_weiss_an;
+                resourceId = R.drawable.ic_icon_weather_sunrise;
                 break;
             case R.id.iVEvents_PictureP2:
                 resourceId = R.drawable.ic_icon_feather_heart;
