@@ -160,7 +160,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         if (event.getPictureID() == 0) {
             event.setPictureID(R.drawable.ic_menu_gallery);
         }
-        iVEvents_AddPicture.setImageResource(R.drawable.ic_menu_gallery);
+        iVEvents_AddPicture.setImageResource(event.getPictureID());
 
         if(!event.getName().equals("")) {
             eTEvents_AddName.setText(event.getName());
