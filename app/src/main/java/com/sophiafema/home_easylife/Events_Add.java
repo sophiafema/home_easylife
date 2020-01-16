@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import com.sophiafema.home_easylife.models.Music;
 import com.sophiafema.home_easylife.models.Room;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Events_Add extends AppCompatActivity implements View.OnClickListener{
 
@@ -60,6 +62,9 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     String currentRoom;
     Event event;
 
+    int arraypositionEvent = -1;
+    String arrayroomEvent = "";
+
 
     // Bottom sheet
     BottomSheetDialog bottomSheetDialog;
@@ -83,6 +88,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         tVEvents_AddCancel.setOnClickListener(this);
 
         tVEvents_AddSave = (TextView) findViewById(R.id.tVEvents_AddSave);
+        tVEvents_AddSave.setOnClickListener(this);
 
         iVEvents_AddPicture = (ImageView) findViewById(R.id.iVEvents_AddPicture);
         iVEvents_AddPicture.setOnClickListener(this);
@@ -117,15 +123,21 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
 
 
 
-        Intent intent = getIntent();
-        event = (Event) intent.getSerializableExtra(Util.EVENT);
+        Intent i = this.getIntent();
+        Bundle bundle = i.getExtras();
+        if (bundle != null) {
+            event = (Event) bundle.getSerializable(Util.EVENT);
+        }
+        if(i.hasExtra(Util.EVENT_INDEX) && i.hasExtra(Util.EVENT_ARRAY_ROOM)) {
+            arraypositionEvent = i.getIntExtra(Util.EVENT_INDEX, -1);
+            arrayroomEvent = i.getStringExtra(Util.EVENT_ARRAY_ROOM);
+        }
 
         //currentRoom = intent.getStringExtra(Util.ROOM);
         if(event == null) {
             currentRoom = Util.LIVING;
-            event = new Event(0, "default", 0);
-
-            //event.getRoomByName(currentRoom).setMusic(new Music());
+            String id = UUID.randomUUID().toString();
+            event = new Event(0, "", id);
         }
         else {
             if(event.getRooms() != null) {
@@ -139,6 +151,15 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                 event.fillRooms();
             }
         }
+        if (event.getPictureID() == 0) {
+            event.setPictureID(R.drawable.ic_menu_gallery);
+        }
+        iVEvents_AddPicture.setImageResource(R.drawable.ic_menu_gallery);
+
+        if(!event.getName().equals("")) {
+            eTEvents_AddName.setText(event.getName());
+        }
+
 
         Log.e("current room", ""+currentRoom);
         changeRoom(currentRoom);
@@ -157,7 +178,18 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         take_photoView.setOnClickListener(this);
         choose_galeryView.setOnClickListener(this);
         choose_iconView.setOnClickListener(this);
+    }
 
+    private boolean validateForm() {
+        boolean valid = true;
+        String email = eTEvents_AddName.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            eTEvents_AddName.setError("Required.");
+            valid = false;
+        } else {
+            eTEvents_AddName.setError(null);
+        }
+        return valid;
     }
 
     public void setFunctionOverview(EventsRoom room) {
@@ -247,12 +279,21 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.tVEvents_AddSave:
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(Util.EVENT, event);
-                Intent resultIntent = new Intent();
-                resultIntent.putExtras(bundle);
-                setResult(Activity.RESULT_OK, resultIntent);
-                this.finish();
+                if(validateForm()) {
+                    event.setName(eTEvents_AddName.getText().toString());
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Util.EVENT, event);
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtras(bundle);
+                    if(arraypositionEvent > -1) {
+                        resultIntent.putExtra(Util.EVENT_INDEX, arraypositionEvent);
+                        resultIntent.putExtra(Util.EVENT_ARRAY_ROOM, arrayroomEvent);
+                    }
+
+                    setResult(Activity.RESULT_OK, resultIntent);
+                    this.finish();
+                }
+
                 break;
             case R.id.iVEvents_AddPicture:
                 bottomSheetDialog.show();
@@ -353,6 +394,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                 case(REQUEST_CODE):
                     resourceId = data.getIntExtra(EVENTS_PICTURES, 0);
                     iVEvents_AddPicture.setImageResource(resourceId);
+                    event.setPictureID(resourceId);
                     break;
             }
             if(REQUEST_CODE_LIGHT == requestCode || requestCode == REQUEST_CODE_MUSIC || requestCode == REQUEST_CODE_SHUTTERS || requestCode == REQUEST_CODE_THERMOSTAT) {

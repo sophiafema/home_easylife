@@ -16,7 +16,7 @@ public class Event implements Serializable {
 
     private int pictureID;
     private String name;
-    private int id;
+    private String id;
     private ArrayList<EventsRoom> rooms;
 //    private String day;
 //    private int time;
@@ -25,7 +25,7 @@ public class Event implements Serializable {
 
     }
 
-    public Event(int pictureID, String name, int id, ArrayList<EventsRoom> rooms) {
+    public Event(int pictureID, String name, String id, ArrayList<EventsRoom> rooms) {
         this.pictureID = pictureID;
         this.name = name;
         this.id = id;
@@ -34,7 +34,7 @@ public class Event implements Serializable {
 //        this.time = time;
     }
 
-    public Event(int pictureID, String name, int id) {
+    public Event(int pictureID, String name, String id) {
         this.pictureID = pictureID;
         this.name = name;
         this.id = id;
@@ -63,11 +63,11 @@ public class Event implements Serializable {
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,6 +77,16 @@ public class Event implements Serializable {
 
     public void setRooms(ArrayList<EventsRoom> rooms) {
         this.rooms = rooms;
+    }
+
+    public int numberOfRoomsWithFunction() {
+        int number=0;
+        for(EventsRoom room : rooms) {
+            if(room.hasFunctions()) {
+                number++;
+            }
+        }
+        return number;
     }
 
     public EventsRoom getRoomByName(String name) {

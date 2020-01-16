@@ -242,8 +242,8 @@ public class Database extends AsyncTask<Object, Void, Object> {
     }
 
 
-    public Event getEvent(String userId, String event) {
-        DocumentReference docRef = getDocumentReferenceEvent(userId, event);
+    public Event getEvent(String userId, String id) {
+        DocumentReference docRef = getDocumentReferenceEvent(userId, id);
         Task<DocumentSnapshot> task = docRef.get();
         try {
             DocumentSnapshot doc = Tasks.await(task);

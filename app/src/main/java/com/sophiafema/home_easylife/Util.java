@@ -10,5 +10,7 @@ public class Util {
     public static final String ROOM = "room";
 
     public static final String EVENT = "event";
+    public static final String EVENT_INDEX = "eventindex";
+    public static final String EVENT_ARRAY_ROOM = "eventallayroom";
     public static final String EVENTSROOM = "eventsroom";
 }

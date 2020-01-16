@@ -28,7 +28,7 @@ public class DatabaseAdapter {
      * - setMusic
      * - setMusic
      * - setTemp
-     * - setRoom
+     * - addRoom
      * - setEvent
      *
      * - setBrightness

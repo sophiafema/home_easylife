@@ -92,7 +92,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         lo.add(new Shutter(0, "west", 50));
         Music m = new Music(0, "music", 4, true, false);
         r = new Room(Util.LIVING, 0, l, t, lo,m);
-        db.setRoom(r.getName(), r);*/
+        db.addRoom(r.getName(), r);*/
 
     }
 
