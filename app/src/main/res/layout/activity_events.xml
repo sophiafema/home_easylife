@@ -50,14 +50,18 @@
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="550dp"
+        android:layout_width="375dp"
+        android:layout_height="548dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:layout_width="354dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -67,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/rooms"
                 android:textColor="@android:color/background_light"
-                android:textSize="20sp" />
+                android:textSize="@dimen/textSize_m" />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -85,14 +89,13 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/living"
                 android:textColor="@android:color/background_light"
-                android:textSize="20sp" />
+                android:textSize="@dimen/textSize_m" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewLiving"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/tVEventsHeadingBath"
@@ -101,14 +104,13 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/bath"
                 android:textColor="@android:color/background_light"
-                android:textSize="20sp" />
+                android:textSize="@dimen/textSize_m" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewBath"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/tVEventsHeadingKitchen"
@@ -117,14 +119,13 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/kitchen"
                 android:textColor="@android:color/background_light"
-                android:textSize="20sp" />
+                android:textSize="@dimen/textSize_m" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewKitchen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/tVEventsHeadingSleeping"
@@ -133,14 +134,13 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/sleeping"
                 android:textColor="@android:color/background_light"
-                android:textSize="20sp" />
+                android:textSize="@dimen/textSize_m" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewSleeping"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/tVEventsHeadingHallway"
@@ -149,14 +149,13 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/hallway"
                 android:textColor="@android:color/background_light"
-                android:textSize="20sp" />
+                android:textSize="@dimen/textSize_m" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewHallway"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
