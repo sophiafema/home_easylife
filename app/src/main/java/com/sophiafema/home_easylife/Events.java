@@ -87,8 +87,6 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
 
         iVEventsBackground = (ImageView) findViewById(R.id.iVEventsBackground);
         tVEventsName = (TextView) findViewById(R.id.tVEventsName);
-        tVEventsTime = (TextView) findViewById(R.id.tVEventsTime);
-        tVEventsRepetition = (TextView) findViewById(R.id.tVEventsRepetition);
         swEvents = (Switch) findViewById(R.id.swEvents);
         iVEventsPicture = (ImageView) findViewById(R.id.iVEventsPicture);
 
