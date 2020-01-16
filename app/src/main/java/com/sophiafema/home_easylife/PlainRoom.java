@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
@@ -35,6 +36,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     Room r;
     DatabaseAdapter db;
     String currentRoom;
+    private ProgressBar spinner;
 
 
     @Override
@@ -42,6 +44,9 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plain_room);
         db = new DatabaseAdapter();
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
 
         //current Room wird aus Home über den Intent übergeben!
         //Raumabfrage für Hintergrund
@@ -113,6 +118,12 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        spinner.setVisibility(View.GONE);
+    }
+
     //TODO Hintergrünbilder einfügen
     @Override
     public void onClick(View view) {
@@ -125,11 +136,10 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         else
         {
+            spinner.setVisibility(View.VISIBLE);
              Intent intent2 = new Intent(this, PlainRoom.class);
 
             //Raum übergeben --> mit statischen variablen in Util
-
-
             if(view.getId() == R.id.iVPlainRoomHallway)
             {
                 intent2.putExtra(Util.ROOM, Util.HALLWAY);

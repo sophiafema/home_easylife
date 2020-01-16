@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,11 +79,16 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     static final int REQUEST_CODE_SHUTTERS = 5;
     static final int REQUEST_CODE_THERMOSTAT = 6;
 
+    private ProgressBar spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events__add);
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
 
         tVEvents_AddCancel = (TextView) findViewById(R.id.tVEvents_AddCancel);
         tVEvents_AddCancel.setOnClickListener(this);
@@ -180,6 +186,12 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         choose_iconView.setOnClickListener(this);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        spinner.setVisibility(View.GONE);
+    }
+
     private boolean validateForm() {
         boolean valid = true;
         String email = eTEvents_AddName.getText().toString();
@@ -192,6 +204,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         return valid;
     }
 
+    //TODO remove function
     public void setFunctionOverview(EventsRoom room) {
         eroom = room;
         if(room.hasLights()) {
@@ -202,6 +215,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVAddLight.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    spinner.setVisibility(View.VISIBLE);
                     Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Light.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(Util.EVENTSROOM, eroom);
@@ -218,6 +232,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVAddTemperature.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    spinner.setVisibility(View.VISIBLE);
                     Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Temperature.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(Util.EVENTSROOM, eroom);
@@ -234,6 +249,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVAddMusic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    spinner.setVisibility(View.VISIBLE);
                     Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Music.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(Util.EVENTSROOM, eroom);
@@ -251,6 +267,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVAddShutters.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    spinner.setVisibility(View.VISIBLE);
                     Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Shutter.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(Util.EVENTSROOM, eroom);

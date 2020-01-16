@@ -96,7 +96,7 @@ public class DatabaseAdapter {
         setThermostat(r.getName(), r.getThermo());
     }
     public void setEvent(Event e) {
-        db.setEvent(userId, e, e.getName());
+        db.setEvent(userId, e, e.getId());
     }
 
 
