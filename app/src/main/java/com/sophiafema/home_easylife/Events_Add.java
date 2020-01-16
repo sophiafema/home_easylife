@@ -160,7 +160,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         if (event.getPictureID() == 0) {
             event.setPictureID(R.drawable.ic_menu_gallery);
         }
-        iVEvents_AddPicture.setImageResource(R.drawable.ic_menu_gallery);
+        iVEvents_AddPicture.setImageResource(event.getPictureID());
 
         if(!event.getName().equals("")) {
             eTEvents_AddName.setText(event.getName());
@@ -209,57 +209,97 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         eroom = room;
         if(room.hasLights()) {
             iVAddLight.setImageResource(R.drawable.ic_cancel_black);
+            iVAddLight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    eroom.setLights(null);
+                    setFunctionOverview(eroom);
+                }
+            });
+            iVEvents_AddLight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_LIGHT, eroom);
+                }
+            });
         }
         else {
             iVAddLight.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
             iVAddLight.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    spinner.setVisibility(View.VISIBLE);
-                    Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Light.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(Util.EVENTSROOM, eroom);
-                    mIntent.putExtras(bundle);
-                    startActivityForResult(mIntent, REQUEST_CODE_LIGHT);
+                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_LIGHT, eroom);
                 }
             });
+            iVEvents_AddLight.setOnClickListener(null);
         }
         if(room.hasThermostat())  {
             iVAddTemperature.setImageResource(R.drawable.ic_cancel_black);
+            iVAddTemperature.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    eroom.setThermo(null);
+                    setFunctionOverview(eroom);
+                }
+            });
+            iVEvents_AddTemperature.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_THERMOSTAT, eroom);
+                }
+            });
         }
         else {
             iVAddTemperature.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
             iVAddTemperature.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    spinner.setVisibility(View.VISIBLE);
-                    Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Temperature.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(Util.EVENTSROOM, eroom);
-                    mIntent.putExtras(bundle);
-                    startActivityForResult(mIntent, REQUEST_CODE_THERMOSTAT);
+                    startFunctionActivity(Event_Fragment_Temperature.class, REQUEST_CODE_THERMOSTAT, eroom);
                 }
             });
+            iVEvents_AddTemperature.setOnClickListener(null);
         }
         if(room.hasMusic())  {
             iVAddMusic.setImageResource(R.drawable.ic_cancel_black);
+            iVAddMusic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    eroom.setMusic(null);
+                    setFunctionOverview(eroom);
+                }
+            });
+            iVEvents_AddMusic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_MUSIC, eroom);
+                }
+            });
         }
         else {
             iVAddMusic.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
             iVAddMusic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    spinner.setVisibility(View.VISIBLE);
-                    Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Music.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(Util.EVENTSROOM, eroom);
-                    mIntent.putExtras(bundle);
-                    startActivityForResult(mIntent, REQUEST_CODE_MUSIC);
+                    startFunctionActivity(Event_Fragment_Music.class, REQUEST_CODE_MUSIC, eroom);
                 }
             });
+            iVEvents_AddMusic.setOnClickListener(null);
         }
         if(room.hasShutters())  {
             iVAddShutters.setImageResource(R.drawable.ic_cancel_black);
+            iVAddShutters.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    eroom.setThermo(null);
+                    setFunctionOverview(eroom);
+                }
+            });
+            iVEvents_AddShutters.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_SHUTTERS, eroom);
+                }
+            });
 
         }
         else {
@@ -267,15 +307,21 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVAddShutters.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    spinner.setVisibility(View.VISIBLE);
-                    Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Shutter.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(Util.EVENTSROOM, eroom);
-                    mIntent.putExtras(bundle);
-                    startActivityForResult(mIntent, REQUEST_CODE_SHUTTERS);
+                    startFunctionActivity(Event_Fragment_Shutter.class, REQUEST_CODE_SHUTTERS, eroom);
                 }
             });
+            iVEvents_AddShutters.setOnClickListener(null);
         }
+    }
+
+
+    public void startFunctionActivity(Class mClass, int requestCode, EventsRoom eroom) {
+        spinner.setVisibility(View.VISIBLE);
+        Intent mIntent = new Intent(getApplicationContext(), mClass);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Util.EVENTSROOM, eroom);
+        mIntent.putExtras(bundle);
+        startActivityForResult(mIntent, requestCode);
     }
 
     public void changeRoom(String currentRoom) {
