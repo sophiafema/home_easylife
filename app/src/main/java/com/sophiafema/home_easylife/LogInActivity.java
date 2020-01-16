@@ -32,7 +32,6 @@ public class LogInActivity extends AppCompatActivity implements
     public static String USER_UID = "USER_UID";
     public static String STRING_USER_UID = "USER_UID";
 
-    private TextView mStatusTextView;
     //private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -48,7 +47,6 @@ public class LogInActivity extends AppCompatActivity implements
 
 
         // Views
-        mStatusTextView = findViewById(R.id.status);
         //mDetailTextView = findViewById(R.id.detail);
         mEmailField = findViewById(R.id.eTMainName);
         mPasswordField = findViewById(R.id.eTMainPasswort);
@@ -213,7 +211,7 @@ public class LogInActivity extends AppCompatActivity implements
     private void updateUI(FirebaseUser user) {
         //hideProgressBar();
         if (user != null) {
-            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail(), user.isEmailVerified()));
+            //mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail(), user.isEmailVerified()));
             USER_UID = user.getUid();
             //House house = new House();
             //house.setHouseInDatebase();
@@ -223,7 +221,7 @@ public class LogInActivity extends AppCompatActivity implements
             startActivity(intent);
 
         } else {
-            mStatusTextView.setText("Abgemeldet");
+            //mStatusTextView.setText("Abgemeldet");
             //mDetailTextView.setText(null);
 
             /*findViewById(R.id.emailPasswordButtons).setVisibility(View.VISIBLE);
