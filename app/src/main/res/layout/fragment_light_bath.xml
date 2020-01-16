@@ -8,6 +8,20 @@
     tools:context=".Fragment_Light" >
 
     <ImageView
+        android:id="@+id/iVPlainRoomLinear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/pager"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:text=" "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/iVFLightBath"
         android:layout_width="66dp"
         android:layout_height="64dp"

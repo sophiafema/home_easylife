@@ -81,13 +81,15 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddHallway"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="101dp"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
+            android:layout_weight="5"
+            android:scaleType="fitCenter"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
@@ -99,13 +101,15 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddLiving"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="101dp"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
+            android:layout_weight="6"
+            android:scaleType="fitCenter"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
@@ -117,13 +121,15 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddKitchen"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="101dp"
             android:background="@color/colorPrimary"
             android:padding="15dp"
+            android:layout_weight="6"
+            android:scaleType="fitCenter"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
@@ -135,13 +141,15 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddSleeping"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="101dp"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
+            android:layout_weight="6"
+            android:scaleType="fitCenter"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
@@ -153,8 +161,9 @@
 
         <ImageView
             android:id="@+id/iVEvents_AddBath"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
+            android:weightSum="2"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="101dp"
@@ -162,6 +171,8 @@
             android:layout_marginRight="0dp"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
+            android:layout_weight="6"
+            android:scaleType="fitCenter"
             android:paddingStart="10dp"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
@@ -170,7 +181,6 @@
             android:paddingBottom="10dp"
             android:tint="@color/colorTextLight"
             app:srcCompat="@drawable/iv_plainroom_bath" />
-
 
     </LinearLayout>
 

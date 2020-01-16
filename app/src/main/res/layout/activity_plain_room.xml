@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/iVPlainRoomBackground"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="350dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="10dp"
@@ -37,26 +37,25 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/iVPlainRoomLinear"
         android:layout_below="@id/tVPlainRoomMenue"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/iVPlainRoomLinear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tVPlainRoomMenue">
 
         <ImageView
             android:id="@+id/iVPlainRoomHallway"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"
+            android:layout_weight="5"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
             android:paddingStart="10dp"
@@ -65,34 +64,36 @@
             android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
+            android:scaleType="fitCenter"
             android:tint="@color/colorTextLight"
             app:srcCompat="@drawable/iv_plainroom_hallway" />
 
         <ImageView
             android:id="@+id/iVPlainRoomLiving"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="6"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
-            android:paddingStart="7dp"
-            android:paddingLeft="7dp"
-            android:paddingTop="7dp"
-            android:paddingEnd="7dp"
-            android:paddingRight="7dp"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
             android:paddingBottom="10dp"
+            android:scaleType="fitCenter"
             android:tint="@color/colorTextLight"
             app:srcCompat="@drawable/iv_plainroom_living" />
 
         <ImageView
             android:id="@+id/iVPlainRoomKitchen"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="0dp"
+            android:layout_weight="6"
             android:background="@color/colorPrimary"
             android:padding="15dp"
             android:paddingStart="10dp"
@@ -101,16 +102,17 @@
             android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
+            android:scaleType="fitCenter"
             android:tint="@color/colorTextLight"
             app:srcCompat="@drawable/iv_plainroom_kitchen" />
 
         <ImageView
             android:id="@+id/iVPlainRoomSleeping"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="0dp"
+            android:layout_weight="6"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
             android:paddingStart="10dp"
@@ -119,18 +121,19 @@
             android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
+            android:scaleType="fitCenter"
             android:tint="@color/colorTextLight"
             app:srcCompat="@drawable/iv_plainroom_sleeping" />
 
         <ImageView
             android:id="@+id/iVPlainRoomBath"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="78dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginRight="0dp"
+            android:layout_weight="6"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
             android:paddingStart="10dp"
@@ -139,7 +142,9 @@
             android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
+            android:scaleType="fitCenter"
             android:tint="@color/colorTextLight"
+            android:weightSum="2"
             app:srcCompat="@drawable/iv_plainroom_bath" />
 
     </LinearLayout>
@@ -191,7 +196,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:layout_above="@+id/indicator"
         android:layout_alignStart="@+id/iVPlainRoomBackground"
         android:layout_alignLeft="@+id/iVPlainRoomBackground"
