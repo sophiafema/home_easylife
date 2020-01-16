@@ -57,26 +57,28 @@
 
         <ImageView
             android:id="@+id/iVFBathShuttersDown"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:rotation="180"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.974"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_more" />
+            app:srcCompat="@drawable/ic_jalousie_button" />
 
         <ImageView
             android:id="@+id/iVFBathShuttersUp"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:rotation="180"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/iVFBathShuttersDown"
             app:layout_constraintEnd_toStartOf="@+id/iVFBathShuttersDown"
             app:layout_constraintTop_toTopOf="@+id/iVFBathShuttersDown"
-            app:srcCompat="@android:drawable/ic_menu_more" />
+            app:srcCompat="@drawable/ic_jalousie_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
