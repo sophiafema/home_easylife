@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.sophiafema.home_easylife.models.Event;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Music;
 import com.sophiafema.home_easylife.models.EventsRoom;
+import com.sophiafema.home_easylife.models.Room;
 import com.sophiafema.home_easylife.models.Shutter;
 import com.sophiafema.home_easylife.models.Thermostat;
 
@@ -74,6 +76,9 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
+        dba = new DatabaseAdapter();
+        events = dba.getEvents();
+
         iVEventsMenue = (ImageView) findViewById(R.id.iVEventsMenue);
         tVEventsHeading = (TextView) findViewById(R.id.tVEventsHeading);
         tVEventsHeading.setOnClickListener(this);
@@ -88,7 +93,6 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         iVEventsPicture = (ImageView) findViewById(R.id.iVEventsPicture);
 
 
-        events = new ArrayList<Event>();
         eventsAll = new ArrayList<Event>();
         eventsLiving = new ArrayList<Event>();
         eventsBath = new ArrayList<Event>();
@@ -97,19 +101,6 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         eventsSleeping = new ArrayList<Event>();
 
 
-
-        /*Event e1 = new Event(R.drawable.ic_menu_gallery, "hallo1", 0);
-        e1.fillRooms();
-        e1.getRoomByName(Util.BATH).setMusic(new Music());
-        e1.getRoomByName(Util.LIVING).setMusic(new Music());
-        Event e2 = new Event(R.drawable.ic_menu_gallery, "h1llo", 0);
-        e2.fillRooms();
-        e2.getRoomByName(Util.LIVING).setMusic(new Music());
-        events.add(e1);
-        events.add(e2);*/
-
-        dba = new DatabaseAdapter();
-        events = dba.getEvents();
 
 
 
@@ -323,6 +314,16 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
             ImageView image = holder.img;
             image.setImageResource(contact.getPictureID());
             ImageView background = holder.iVEvents;
+            Switch sw = holder.swEvents;
+            sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked) {
+                        activateEvent(contact);
+                    }
+                }
+            });
+
             background.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -388,6 +389,28 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
                         updateRecyclerViews(room);
                     }
                     break;
+            }
+        }
+    }
+
+    public void activateEvent(Event event) {
+        System.out.println(event);
+        for(EventsRoom room : event.getRooms()) {
+            if(room.hasLights()) {
+                for(Light l : room.getLights()) {
+                    dba.setLight(room.getName(), l);
+                }
+            }
+            if(room.hasShutters()) {
+                for(Shutter s : room.getShutters()) {
+                    dba.setShutter(room.getName(), s);
+                }
+            }
+            if(room.hasThermostat()) {
+                dba.setThermostat(room.getName(), room.getThermo());
+            }
+            if(room.hasMusic()) {
+                dba.setMusic(room.getName(), room.getMusic());
             }
         }
     }
