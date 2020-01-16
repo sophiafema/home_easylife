@@ -47,4 +47,5 @@
     <dimen name="event_iconmargin">12dp</dimen>
     <dimen name="event_functions">50dp</dimen>
     <dimen name="event_add">40dp</dimen>
+    <dimen name="event_add_fragment_height">500dp</dimen>
 </resources>

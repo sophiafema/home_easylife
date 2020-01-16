@@ -1,6 +1,8 @@
 package com.sophiafema.home_easylife.models;
 
-public class Music {
+import java.io.Serializable;
+
+public class Music implements Serializable {
 
     public static String NAME = "name";
     public static String ID = "id";

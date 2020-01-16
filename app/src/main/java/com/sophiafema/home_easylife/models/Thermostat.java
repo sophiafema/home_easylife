@@ -3,7 +3,9 @@ package com.sophiafema.home_easylife.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Thermostat {
+import java.io.Serializable;
+
+public class Thermostat implements Serializable {
 
     public static String NAME = "name";
     public static String ID = "id";

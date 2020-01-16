@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Event_Fragment_Shutter"
+    android:background="@color/colorPrimaryDark">
+
+
+    <TextView
+        android:id="@+id/tVEventsShutters_Cancel"
+        android:layout_width="130dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="@dimen/text_marginleft"
+        android:layout_marginTop="@dimen/text_marginleft"
+        android:text="@string/cancel"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/textSize_s"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tVEventsShutters_Save"
+        android:layout_width="70dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="@dimen/text_marginleft"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="@dimen/text_marginleft"
+        android:text="@string/safe"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/textSize_s"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/iVEvents_Add_Function_Light"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/event_functions"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tVFJalousieKitchen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_marginleft"
+            android:text="@string/shutter"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/textSize_s"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iVFKitchenShuttersDown"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.974"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:srcCompat="@android:drawable/ic_menu_more" />
+
+        <ImageView
+            android:id="@+id/iVFKitchenShuttersUp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="@+id/iVFKitchenShuttersDown"
+            app:layout_constraintEnd_toStartOf="@+id/iVFKitchenShuttersDown"
+            app:layout_constraintTop_toTopOf="@+id/iVFKitchenShuttersDown"
+            app:srcCompat="@android:drawable/ic_menu_more" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/collection"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/event_add_fragment_height"
+        app:layout_constraintTop_toBottomOf="@+id/iVEvents_Add_Function_Light">
+        <ImageView
+            android:id="@+id/iVShutterSettingBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.sophiafema.home_easylife.view.Shutters
+            android:id="@+id/shutterFKitchen1"
+            android:layout_width="150dp"
+            android:layout_height="189dp"
+            android:src="@drawable/jalousie"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.938"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shutterFKitchen2"
+            app:layout_constraintVertical_bias="0.635" />
+
+        <com.sophiafema.home_easylife.view.Shutters
+            android:id="@+id/shutterFKitchen2"
+            android:layout_width="146dp"
+            android:layout_height="185dp"
+            android:src="@drawable/jalousie"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.924"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.326" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

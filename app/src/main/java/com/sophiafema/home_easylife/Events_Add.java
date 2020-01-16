@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -69,6 +70,8 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
     static final int REQUEST_CODE = 2;
     static final int REQUEST_CODE_LIGHT = 3;
     static final int REQUEST_CODE_MUSIC = 4;
+    static final int REQUEST_CODE_SHUTTERS = 5;
+    static final int REQUEST_CODE_THERMOSTAT = 6;
 
 
     @Override
@@ -167,24 +170,10 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVAddLight.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*Bundle bundle = new Bundle();
-                    bundle.putSerializable(Util.EVENTSROOM, eroom);
-                    Intent i = new Intent(getBaseContext(), Event_Fragment_Light.class);
-                    i.putExtra(Util.EVENTSROOM, bundle);*/
                     Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Light.class);
-                    ArrayList<Light> l = new ArrayList<>();
-                    l.add(new Light(0, "esstisch", 3, 4, false));
-                    l.add(new Light(1, "sofa", 3, 4, false));
-                    l.add(new Light(2, "general", 3, 4, false));
-                    //r.setLights(l);
-                    eroom.setLights(l);
-                    Light light = new Light(0, "esstisch", 3, 4, false);
-                    //mIntent.putExtra(Util.EVENTSROOM, light);
-
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(Util.EVENTSROOM, eroom);
                     mIntent.putExtras(bundle);
-
                     startActivityForResult(mIntent, REQUEST_CODE_LIGHT);
                 }
             });
@@ -194,12 +183,32 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         }
         else {
             iVAddTemperature.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
+            iVAddTemperature.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Temperature.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Util.EVENTSROOM, eroom);
+                    mIntent.putExtras(bundle);
+                    startActivityForResult(mIntent, REQUEST_CODE_THERMOSTAT);
+                }
+            });
         }
         if(room.hasMusic())  {
             iVAddMusic.setImageResource(R.drawable.ic_cancel_black);
         }
         else {
             iVAddMusic.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
+            iVAddMusic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Music.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Util.EVENTSROOM, eroom);
+                    mIntent.putExtras(bundle);
+                    startActivityForResult(mIntent, REQUEST_CODE_MUSIC);
+                }
+            });
         }
         if(room.hasShutters())  {
             iVAddShutters.setImageResource(R.drawable.ic_cancel_black);
@@ -207,6 +216,16 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         }
         else {
             iVAddShutters.setImageResource(R.drawable.ic_add_circle_outline_black_24dp);
+            iVAddShutters.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent mIntent = new Intent(getApplicationContext(), Event_Fragment_Shutter.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Util.EVENTSROOM, eroom);
+                    mIntent.putExtras(bundle);
+                    startActivityForResult(mIntent, REQUEST_CODE_SHUTTERS);
+                }
+            });
         }
     }
 
@@ -227,6 +246,14 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                 this.finish();
                 break;
 
+            case R.id.tVEvents_AddSave:
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Util.EVENT, event);
+                Intent resultIntent = new Intent();
+                resultIntent.putExtras(bundle);
+                setResult(Activity.RESULT_OK, resultIntent);
+                this.finish();
+                break;
             case R.id.iVEvents_AddPicture:
                 bottomSheetDialog.show();
                 break;
@@ -327,17 +354,15 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                     resourceId = data.getIntExtra(EVENTS_PICTURES, 0);
                     iVEvents_AddPicture.setImageResource(resourceId);
                     break;
-                case REQUEST_CODE_LIGHT:
-                    Bundle bundle = data.getExtras();
-                    if (bundle != null) {
-                        EventsRoom eventsRoom = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);
-                        event.setRoomByName(eventsRoom.getName(), eventsRoom);
-                        setFunctionOverview(eventsRoom);
-                        System.out.println(eventsRoom.getName());
-                    }
-                    break;
-
-
+            }
+            if(REQUEST_CODE_LIGHT == requestCode || requestCode == REQUEST_CODE_MUSIC || requestCode == REQUEST_CODE_SHUTTERS || requestCode == REQUEST_CODE_THERMOSTAT) {
+                Bundle bundle = data.getExtras();
+                if (bundle != null) {
+                    EventsRoom eventsRoom = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);
+                    event.setRoomByName(eventsRoom.getName(), eventsRoom);
+                    setFunctionOverview(eventsRoom);
+                    System.out.println(eventsRoom.getName());
+                }
             }
         }
     }
