@@ -51,8 +51,8 @@
 
     <EditText
         android:id="@+id/eTEvents_AddName"
-        android:layout_width="218dp"
-        android:layout_height="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="@dimen/text_marginleft"
         android:backgroundTint="@android:color/background_light"

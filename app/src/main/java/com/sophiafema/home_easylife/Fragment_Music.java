@@ -40,6 +40,9 @@ public class Fragment_Music extends Fragment
         // Required empty public constructor
         this.r = room;
     }
+    public Fragment_Music() {
+        // Required empty public constructor
+    }
 
     public static Fragment_Music newInstance(Room room) {
         return new Fragment_Music(room);
