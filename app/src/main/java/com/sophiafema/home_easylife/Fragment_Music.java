@@ -72,6 +72,9 @@ public class Fragment_Music extends Fragment
         {
             setPlayPauseButton();
         }
+        else{
+            iVFMusicPlayPause.setImageResource(android.R.drawable.ic_media_play);
+        }
 
         pFMusik.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override

@@ -55,7 +55,7 @@
             android:layout_height="78dp"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
-            android:layout_weight="5"
+            android:layout_weight="6"
             android:background="@color/colorPrimary"
             android:padding="@dimen/event_iconmargin"
             android:paddingStart="10dp"
