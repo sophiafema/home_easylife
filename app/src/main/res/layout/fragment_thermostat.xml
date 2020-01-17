@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Fragment_Thermostat">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/iVPlainRoomLinear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:text=" " />
 
     <TextView
         android:id="@+id/tVFTermostat1"

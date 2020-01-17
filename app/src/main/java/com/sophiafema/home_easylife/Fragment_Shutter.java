@@ -42,6 +42,9 @@ public class Fragment_Shutter extends Fragment
         // Required empty public constructor
         this.r = room;
     }
+    public Fragment_Shutter() {
+        // Required empty public constructor
+    }
 
     public static Fragment_Shutter newInstance(Room room) {
         return new Fragment_Shutter(room);

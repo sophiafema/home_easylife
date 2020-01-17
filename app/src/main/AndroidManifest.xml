@@ -9,25 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Events_Pictures"></activity>
-        <activity android:name=".LightSettingsActivity" />
-        <activity android:name=".Events_Add" />
-        <activity android:name=".Settings" />
-        <activity android:name=".Events" />
-        <activity android:name=".General" />
-        <activity android:name=".PlainRoom" />
-        <activity android:name=".Event_Fragment_Light" />
-        <activity android:name=".Event_Fragment_Music" />
-        <activity android:name=".Event_Fragment_Temperature" />
-        <activity android:name=".Event_Fragment_Shutter" />
-        <activity android:name=".LogInActivity">
+        <activity android:name=".Events_Pictures"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LightSettingsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Events_Add"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Settings"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Events"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".General"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PlainRoom"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Event_Fragment_Light"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Event_Fragment_Music"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Event_Fragment_Temperature"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Event_Fragment_Shutter"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LogInActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home" />
+        <activity android:name=".Home"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

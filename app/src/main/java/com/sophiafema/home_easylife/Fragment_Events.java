@@ -17,6 +17,10 @@ public class Fragment_Events extends Fragment
 {
    Room r;
 
+    public Fragment_Events() {
+        // Required empty public constructor
+    }
+
    public Fragment_Events(Room room) {
         // Required empty public constructor
         this.r = room;

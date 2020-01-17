@@ -8,6 +8,20 @@
     tools:context=".Fragment_Music"
     android:background="@android:color/transparent">
 
+    <ImageView
+        android:id="@+id/iVPlainRoomLinear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/pager"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:text=" "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tVFMusic1"
         android:layout_width="wrap_content"
@@ -53,8 +67,9 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="4dp"
         android:src="@android:drawable/ic_media_ff"
+        app:layout_constraintBottom_toBottomOf="@+id/iVFMusicPlayPause"
         app:layout_constraintStart_toEndOf="@+id/iVFMusicPlayPause"
-        app:layout_constraintTop_toBottomOf="@+id/pFMusic" />
+        app:layout_constraintTop_toTopOf="@+id/iVFMusicPlayPause" />
 
     <ImageView
         android:id="@+id/iVFMusicBack"
@@ -63,26 +78,31 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
+
         android:src="@android:drawable/ic_media_rew"
+        app:layout_constraintBottom_toBottomOf="@+id/iVFMusicPlayPause"
         app:layout_constraintEnd_toStartOf="@+id/iVFMusicPlayPause"
-        app:layout_constraintTop_toBottomOf="@+id/pFMusic" />
+        app:layout_constraintTop_toTopOf="@+id/iVFMusicPlayPause" />
 
     <ImageView
         android:id="@+id/iVFMusicPlayPause"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pFMusic" />
+        app:layout_constraintTop_toBottomOf="@+id/pFMusic"
+        app:layout_constraintVertical_bias="0.108" />
 
     <com.sophiafema.home_easylife.view.VolumePicker
         android:id="@+id/pFMusic"
         android:layout_width="241dp"
         android:layout_height="229dp"
-        android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tVFMusicTitel" />
+        app:layout_constraintTop_toBottomOf="@+id/tVFMusicTitel"
+        app:layout_constraintVertical_bias="0.071" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

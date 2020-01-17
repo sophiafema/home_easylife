@@ -7,6 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".Fragment_Shutter" >
 
+    <ImageView
+        android:id="@+id/iVPlainRoomLinear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/pager"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:text=" "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tVFJalousieKitchen"
         android:layout_width="wrap_content"
@@ -46,26 +60,24 @@
 
     <com.sophiafema.home_easylife.view.Shutters
         android:id="@+id/shutterFKitchen1"
-        android:layout_width="150dp"
-        android:layout_height="189dp"
+        android:layout_width="126dp"
+        android:layout_height="165dp"
         android:src="@drawable/jalousie"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/shutterFKitchen2"
         app:layout_constraintTop_toBottomOf="@+id/shutterFKitchen2"
-        app:layout_constraintVertical_bias="0.635" />
+        app:layout_constraintVertical_bias="0.065" />
 
     <com.sophiafema.home_easylife.view.Shutters
         android:id="@+id/shutterFKitchen2"
-        android:layout_width="146dp"
-        android:layout_height="185dp"
+        android:layout_width="126dp"
+        android:layout_height="165dp"
         android:src="@drawable/jalousie"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.924"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintTop_toBottomOf="@+id/iVPlainRoomLinear"
+        app:layout_constraintVertical_bias="0.034" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

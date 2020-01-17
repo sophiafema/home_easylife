@@ -30,6 +30,9 @@ public class Fragment_Thermostat extends Fragment
         // Required empty public constructor
         this.r = room;
     }
+    public Fragment_Thermostat() {
+        // Required empty public constructor
+    }
 
     public static Fragment_Thermostat newInstance(Room room) { return new Fragment_Thermostat(room);}
 

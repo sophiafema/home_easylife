@@ -51,6 +51,9 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         // Required empty public constructor
         this.r = room;
     }
+    public Fragment_Light() {
+        // Required empty public constructor
+    }
 
     public static Fragment_Light newInstance(Room room) { return new Fragment_Light(room);}
 

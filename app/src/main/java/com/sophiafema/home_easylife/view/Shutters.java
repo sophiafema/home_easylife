@@ -359,7 +359,7 @@ public class Shutters extends View {
         int min = Math.min(width, height);
         setMeasuredDimension(width, height);
         mTranslationOffsetX = width * 0.5f;
-        mTranslationOffsetY = 20;
+        mTranslationOffsetY = mWindowThickness;
 
         // fill the rectangle instances.
         //mWindowWidth = (int) ((width / 2 - mWindowThickness*2)/1.5);
