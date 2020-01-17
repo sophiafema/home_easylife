@@ -35,6 +35,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     static double brightness;
     static boolean on;
     static int aPosition;
+    static boolean powerManual = false;
 
     ImageView iVFLightBath;
     ImageView iVFLightLiving;
@@ -182,7 +183,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
            boolean []lightOn = {r.getLights().get(0).isOn(), r.getLights().get(1).isOn(), r.getLights().get(2).isOn()};
 
-           boolean allLightOn = getIsArrayOn(lightOn);
+           boolean allLightOn = getIsArrayOn();
            setSwitchPosition(lightOn);
            setImages(lightOn);
 
@@ -191,6 +192,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                public void onClick(View v) {
                    double lightBrightness = r.getLights().get(0).getBrightness();
                    boolean []lightOnOne = {r.getLights().get(0).isOn()};
+                   powerManual = true;
                    onClickHelper(lightBrightness, Array.getBoolean(lightOnOne, 0),0);
 
                }
@@ -201,6 +203,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                public void onClick(View v) {
                    double lightBrightness = r.getLights().get(1).getBrightness();
                    boolean []lightOnTwo = {r.getLights().get(1).isOn()};
+                   powerManual = true;
                    onClickHelper(lightBrightness, Array.getBoolean(lightOnTwo, 0),1);
 
                }
@@ -211,36 +214,37 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                public void onClick(View v) {
                    double lightBrightness = r.getLights().get(2).getBrightness();
                    boolean []lightOnThree = {r.getLights().get(2).isOn()};
+                   powerManual = true;
                    onClickHelper(lightBrightness, Array.getBoolean(lightOnThree, 0),2);
 
                }
            });
 
-          /* sFLightKitchen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+           sFLightKitchen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                @Override
                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                    boolean [] lightOn = {isChecked};
 
-                   savePower(lightOn, 0);
-                   setImages(lightOn);
+                  if (isChecked && !powerManual) {
 
-                  if (isChecked) {
-
-                       on = true;
+                      Array.setBoolean(lightOn, 0, true);
                        for (int i = 0; i < 3; i++) {
                            r.getLights().get(i).setOn(true);
-                           savePower(on, i);
+                           savePower(lightOn, i);
                        }
                        System.out.println("schleife 1");
-                   } else {
-                       allLightsOff();
-                   }
+                   } else if(!isChecked){
+                      Array.setBoolean(lightOn, 0, false);
+                      for (int i = 0; i < 3; i++) {
+                          r.getLights().get(i).setOn(false);
+                          savePower(lightOn, i);
+                      }
 
-                   setImages(on);
-
+                  }
+                   setImages(lightOn);
                }
-           });*/
+           });
        }
 
        return light;
@@ -277,7 +281,11 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                 boolean [] lightOn = {data.getBooleanExtra(LIGHT_POWER, on)};
                 int resultAPosition = data.getIntExtra(LIGHT_APOSITION, aPosition);
 
-                Log.e("Araryposition", ""+resultAPosition);
+                if(lightBrightness == 0.0)
+                {
+                    Array.setBoolean(lightOn, 0, false);
+                }
+
                 if(resultAPosition==2)
                 {
                     saveBrightness(lightBrightness, 2);
@@ -297,9 +305,10 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                     Log.e("Schleife3", ""+resultAPosition);
                     Log.e("Power", ""+Array.getBoolean(lightOn, 0));
                 }
+
                 setImages(lightOn);
                 setSwitchPosition(lightOn);
-
+                powerManual = false;
             }
             break;
             }
@@ -353,7 +362,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
         else if (r.getName().equals(Util.KITCHEN))
         {
-            boolean allLightOn = getIsArrayOn(lightOn);
+            boolean allLightOn = getIsArrayOn();
             sFLightKitchen.setChecked(allLightOn);
         }
     }
@@ -396,11 +405,11 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
 
     }
-    public boolean getIsArrayOn(boolean[] lightOn)
+    public boolean getIsArrayOn()
     {
        boolean allLightOn;
 
-        if (!Array.getBoolean(lightOn, 0) && !Array.getBoolean(lightOn, 1) && !Array.getBoolean(lightOn, 2)) {
+        if (!r.getLights().get(0).isOn() && !r.getLights().get(1).isOn() && !r.getLights().get(2).isOn()) {
             allLightOn = false;
         } else {
             allLightOn = true;

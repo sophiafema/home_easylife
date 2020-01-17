@@ -48,7 +48,6 @@ public class LightSettingsActivity extends AppCompatActivity {
             public void onColorSelected(float color) {
                 //color = light
                 brightness = color;
-                System.out.println("selected" + brightness);
                 Log.e("Color", ""+color);
             }
         });
