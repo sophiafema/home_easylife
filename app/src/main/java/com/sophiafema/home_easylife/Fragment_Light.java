@@ -323,7 +323,6 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     }
     public void savePower(boolean [] lightOn, int arrayposition)
     {
-        Log.e("Arrayposition", ""+arrayposition);
         r.getLights().get(arrayposition).setOn(Array.getBoolean(lightOn, 0));
         db.setLightPower(r.getName(), r.getLights().get(arrayposition).getName(), Array.getBoolean(lightOn, 0));
     }

@@ -23,6 +23,7 @@ import com.sophiafema.home_easylife.models.EventsRoom;
 import com.sophiafema.home_easylife.models.Light;
 import com.sophiafema.home_easylife.models.Room;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,12 +34,14 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
     public static final String LIGHT_BRIGHTNESS = "LIGHT_BRIGHTNESS";
     public static final String LIGHT_POWER = "LIGHT_POWER";
     public static final String LIGHT_ROOM = "LIGHT_ROOM";
+    public static final String LIGHT_APOSITION = "LIGHT_APOSITION";
     static final int REQUEST_CODE = 1; // The request code.
     EventsRoom r;
     ArrayList<Light> lights;
     static double brightness;
     static boolean on;
-    static int arrayposition;
+    static int aPosition;
+    static boolean powerManual = false;
 
     ImageView iVFLightBath;
     ImageView iVFLightLiving;
@@ -57,8 +60,6 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
     TextView save;
     TextView cancel;
     DatabaseAdapter dba;
-
-    boolean clickedOnSwitch=true;
 
 
     @Override
@@ -105,114 +106,150 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
                 iVFLightBath = findViewById(R.id.iVFLightBath);
                 save = findViewById(R.id.tVEventsLight_SaveBath);
                 cancel = findViewById(R.id.tVEventsLight_CancelBath);
-                doAtStart();
+
+                boolean []lightOn = {r.getLights().get(0).isOn()};
+
+                setSwitchPosition(lightOn);
+                setImages(lightOn);
 
                 iVFLightBath.setOnClickListener(this);
                 sFLightBath.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         switchSettings(isChecked);
-                        savePower(isChecked, arrayposition);
-                        setImages(isChecked);
+
+                        boolean [] lightOn = {isChecked};
+
+                        savePower(lightOn, 0);
+                        setImages(lightOn);
                     }
                 });
             }
         else if (r.getName().equals(Util.HALLWAY)) {
-            setContentView(R.layout.activity_events_light_hallway);
-            setBackground();
-            iVFLightHallway = findViewById(R.id.iVFLightHallway1);
-            sFLightHallway = findViewById(R.id.sFLightHallway);
-            save = findViewById(R.id.tVEventsLight_SaveHallway);
-            cancel = findViewById(R.id.tVEventsLight_CancelHallway);
+                setContentView(R.layout.activity_events_light_hallway);
+                setBackground();
+                iVFLightHallway = findViewById(R.id.iVFLightHallway1);
+                sFLightHallway = findViewById(R.id.sFLightHallway);
+                save = findViewById(R.id.tVEventsLight_SaveHallway);
+                cancel = findViewById(R.id.tVEventsLight_CancelHallway);
 
-                doAtStart();
+                boolean []lightOn = {r.getLights().get(0).isOn()};
+
+                setSwitchPosition(lightOn);
+                setImages(lightOn);
 
                 iVFLightHallway.setOnClickListener(this);
                 sFLightHallway.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         switchSettings(isChecked);
-                        savePower(isChecked, arrayposition);
-                        setImages(isChecked);
+
+                        boolean [] lightOn = {isChecked};
+
+                        savePower(lightOn, 0);
+                        setImages(lightOn);
                     }
                 });
 
             }
         else if (r.getName().equals(Util.LIVING)) {
                 setContentView(R.layout.activity_events_light_living);
-            setBackground();
+                setBackground();
                 iVFLightLiving = findViewById(R.id.iVFLightLiving1);
                 sFLightLiving = findViewById(R.id.sFLightLiving);
-            save = findViewById(R.id.tVEventsLight_SaveLiving);
-            cancel = findViewById(R.id.tVEventsLight_CancelLiving);
+                save = findViewById(R.id.tVEventsLight_SaveLiving);
+                cancel = findViewById(R.id.tVEventsLight_CancelLiving);
 
-                doAtStart();
+                boolean []lightOn = {r.getLights().get(0).isOn()};
+
+                setSwitchPosition(lightOn);
+                setImages(lightOn);
 
                 iVFLightLiving.setOnClickListener(this);
                 sFLightLiving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         switchSettings(isChecked);
-                        savePower(isChecked, arrayposition);
-                        setImages(isChecked);
+
+                        boolean [] lightOn = {isChecked};
+
+                        savePower(lightOn, 0);
+                        setImages(lightOn);
                     }
                 });
             }
         else if (r.getName().equals(Util.SLEEPING)) {
                 setContentView(R.layout.activity_events_light_sleeping);
-            setBackground();
+                setBackground();
                 iVFLightSleeping = findViewById(R.id.iVFLightSleeping1);
                 sFLightSleeping = findViewById((R.id.sFLightSleeping));
-            save = findViewById(R.id.tVEventsLight_SaveSleeping);
-            cancel = findViewById(R.id.tVEventsLight_CancelSleeping);
+                save = findViewById(R.id.tVEventsLight_SaveSleeping);
+                cancel = findViewById(R.id.tVEventsLight_CancelSleeping);
 
-                doAtStart();
+                boolean []lightOn = {r.getLights().get(0).isOn()};
+
+                setSwitchPosition(lightOn);
+                setImages(lightOn);
 
                 iVFLightSleeping.setOnClickListener(this);
                 sFLightSleeping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         switchSettings(isChecked);
-                        savePower(isChecked, arrayposition);
-                        setImages(isChecked);
+
+                        boolean [] lightOn = {isChecked};
+
+                        savePower(lightOn, 0);
+                        setImages(lightOn);
                     }
                 });
             }
         else if (r.getName().equals(Util.KITCHEN)) {
                 setContentView(R.layout.activity_events_light_kitchen);
-            save = findViewById(R.id.tVEventsLight_SaveKitchen);
-            cancel = findViewById(R.id.tVEventsLight_CancelKitchen);
-            setBackground();
+                save = findViewById(R.id.tVEventsLight_SaveKitchen);
+                cancel = findViewById(R.id.tVEventsLight_CancelKitchen);
+                setBackground();
                 sFLightKitchen = findViewById(R.id.sFLightKitchen);
                 iVFLightKitchen1 = findViewById(R.id.iVFLightKitchen1); //Array Platz 0
                 iVFLightKitchen2 = findViewById(R.id.iVFLightKitchen2); //Array Platz 1
                 iVFLightKitchen3 = findViewById(R.id.iVFLightKitchen3); //Array Platz 2
 
-                getIsArrayOn();
-                setSwitchPosition(on);
-                setImages(on);
+                boolean []lightOn = {r.getLights().get(0).isOn(), r.getLights().get(1).isOn(), r.getLights().get(2).isOn()};
+
+                boolean allLightOn = getIsArrayOn();
+                setSwitchPosition(lightOn);
+                setImages(lightOn);
 
                 iVFLightKitchen1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        arrayposition = 0;
-                        onClickHelper();
+                        double lightBrightness = r.getLights().get(0).getBrightness();
+                        boolean []lightOnOne = {r.getLights().get(0).isOn()};
+                        powerManual = true;
+                        onClickHelper(lightBrightness, Array.getBoolean(lightOnOne, 0),0);
+
                     }
                 });
 
                 iVFLightKitchen2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        arrayposition = 1;
-                        onClickHelper();
+                        double lightBrightness = r.getLights().get(1).getBrightness();
+                        boolean []lightOnTwo = {r.getLights().get(1).isOn()};
+                        powerManual = true;
+                        onClickHelper(lightBrightness, Array.getBoolean(lightOnTwo, 0),1);
+
                     }
                 });
 
                 iVFLightKitchen3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        arrayposition = 2;
-                        onClickHelper();
+                        double lightBrightness = r.getLights().get(2).getBrightness();
+                        boolean []lightOnThree = {r.getLights().get(2).isOn()};
+                        powerManual = true;
+                        onClickHelper(lightBrightness, Array.getBoolean(lightOnThree, 0),2);
+
                     }
                 });
 
@@ -221,21 +258,25 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                        if (isChecked && clickedOnSwitch) {
+                        boolean [] lightOn = {isChecked};
 
-                            on = true;
+                        if (isChecked && !powerManual) {
+
+                            Array.setBoolean(lightOn, 0, true);
                             for (int i = 0; i < 3; i++) {
                                 r.getLights().get(i).setOn(true);
-                                savePower(on, i);
+                                savePower(lightOn, i);
                             }
                             System.out.println("schleife 1");
-                        } else if (clickedOnSwitch) {
-                            System.out.println("schleife 0");
-                            allLightsOff();
-                        }
+                        } else if(!isChecked){
+                            Array.setBoolean(lightOn, 0, false);
+                            for (int i = 0; i < 3; i++) {
+                                r.getLights().get(i).setOn(false);
+                                savePower(lightOn, i);
+                            }
 
-                        setImages(on);
-                        clickedOnSwitch = true;
+                        }
+                        setImages(lightOn);
                     }
                 });
             }
@@ -264,48 +305,65 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
 
         @Override
         public void onClick (View view){
-            onClickHelper();
+
+            double lightBrightness = r.getLights().get(0).getBrightness();
+            boolean []lightOn = {r.getLights().get(0).isOn()};
+            Log.e("Power", ""+Array.getBoolean(lightOn, 0));
+            onClickHelper(lightBrightness, Array.getBoolean(lightOn, 0),0);
         }
 
-        public void onClickHelper () {
-            brightness = r.getLights().get(arrayposition).getBrightness();
-            on = r.getLights().get(arrayposition).isOn();
+        public void onClickHelper (double lightBrightness, boolean lightOn, int aPosition) {
             Intent intent = new Intent(this, LightSettingsActivity.class);
-            intent.putExtra(LIGHT_BRIGHTNESS, brightness);
-            intent.putExtra(LIGHT_POWER, on);
+            intent.putExtra(LIGHT_BRIGHTNESS, lightBrightness);
+            intent.putExtra(LIGHT_POWER, lightOn);
             intent.putExtra(LIGHT_ROOM, r.getName());
+            intent.putExtra(LIGHT_APOSITION, aPosition);
             startActivityForResult(intent, REQUEST_CODE);
         }
 
         @Override
-        public void onActivityResult ( int requestCode, int resultCode, Intent data)
+        public void onActivityResult(int requestCode, int resultCode, Intent data)
         {
             super.onActivityResult(requestCode, resultCode, data);
-            switch (requestCode) {
-                case (REQUEST_CODE): {
-                    if (resultCode == RESULT_OK) {
-                        brightness = data.getDoubleExtra(LIGHT_BRIGHTNESS, brightness);
-                        on = data.getBooleanExtra(LIGHT_POWER, on);
-                        System.out.println(on);
-                        System.out.println(brightness);
-                        saveBrightness(brightness, arrayposition);
-                        savePower(on, arrayposition);
-                        setImages(on);
-                        clickedOnSwitch = false;
-                        setSwitchPosition(on);
+            switch (requestCode){
+                case(REQUEST_CODE):{
+                    if(resultCode == RESULT_OK){
+                        double lightBrightness = data.getDoubleExtra(LIGHT_BRIGHTNESS, brightness);
+                        boolean [] lightOn = {data.getBooleanExtra(LIGHT_POWER, on)};
+                        int resultAPosition = data.getIntExtra(LIGHT_APOSITION, aPosition);
+
+                        if(lightBrightness == 0.0)
+                        {
+                            Array.setBoolean(lightOn, 0, false);
+                        }
+
+                        if(resultAPosition==2)
+                        {
+                            saveBrightness(lightBrightness, 2);
+                            savePower(lightOn, 2);
+                            Log.e("Schleife1", ""+resultAPosition);
+                        }
+                        else if (resultAPosition==1)
+                        {
+                            saveBrightness(lightBrightness, 1);
+                            savePower(lightOn, 1);
+                            Log.e("Schleife2", ""+resultAPosition);
+                        }
+                        else
+                        {
+                            saveBrightness(lightBrightness, 0);
+                            savePower(lightOn, 0);
+                            Log.e("Schleife3", ""+resultAPosition);
+                            Log.e("Power", ""+Array.getBoolean(lightOn, 0));
+                        }
+
+                        setImages(lightOn);
+                        setSwitchPosition(lightOn);
+                        powerManual = false;
                     }
                     break;
                 }
             }
-        }
-
-        public void doAtStart ()
-        {
-            arrayposition = 0;
-            brightness = r.getLights().get(0).getBrightness();
-            on = r.getLights().get(0).isOn();
-            setSwitchPosition(on);
-            setImages(on);
         }
 
         public void saveBrightness ( double brightness, int arrayposition)
@@ -313,105 +371,98 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
             r.getLights().get(arrayposition).setBrightness(brightness);
 
         }
-        public void savePower ( boolean on, int arrayposition)
+        public void savePower(boolean [] lightOn, int arrayposition)
         {
-            r.getLights().get(arrayposition).setOn(on);
+            r.getLights().get(arrayposition).setOn(Array.getBoolean(lightOn, 0));
         }
 
-        public void switchSettings ( boolean isChecked){
-            if (isChecked) {
-                on = true;
+    public boolean switchSettings (boolean isChecked) {
+        boolean lightOn;
+        if (isChecked) {
+            lightOn = true;
+        } else {
+            lightOn = false;
+        }
+        return lightOn;
+    }
+
+        public void setSwitchPosition(boolean []lightOn)
+        {
+            if (r.getName().equals(Util.BATH))
+            {
+                sFLightBath.setChecked(Array.getBoolean(lightOn, 0));
+            }
+
+            else if (r.getName().equals(Util.LIVING))
+            {
+                sFLightLiving.setChecked(Array.getBoolean(lightOn, 0));
+            }
+
+            else if (r.getName().equals(Util.SLEEPING))
+            {
+                sFLightSleeping.setChecked(Array.getBoolean(lightOn, 0));
+            }
+
+            else if (r.getName().equals(Util.HALLWAY))
+            {
+                sFLightHallway.setChecked(Array.getBoolean(lightOn, 0));
+            }
+
+            else if (r.getName().equals(Util.KITCHEN))
+            {
+                boolean allLightOn = getIsArrayOn();
+                sFLightKitchen.setChecked(allLightOn);
+            }
+        }
+
+        public void setImages (boolean [] lightOn){
+
+            if (r.getName().equals(Util.BATH))
+            {
+                if(Array.getBoolean(lightOn, 0)){iVFLightBath.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+                else { iVFLightBath.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            }
+
+            else if (r.getName().equals(Util.LIVING))
+            {
+                if(Array.getBoolean(lightOn, 0)){iVFLightLiving.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+                else { iVFLightLiving.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            }
+
+            else if (r.getName().equals(Util.SLEEPING))
+            {
+                if(Array.getBoolean(lightOn, 0)){iVFLightSleeping.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+                else { iVFLightSleeping.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            }
+
+            else if (r.getName().equals(Util.HALLWAY))
+            {
+                if(Array.getBoolean(lightOn, 0)){iVFLightHallway.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+                else { iVFLightHallway.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            }
+
+            else if (r.getName().equals(Util.KITCHEN))
+            {
+                if(r.getLights().get(0).isOn()){iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+                if(r.getLights().get(1).isOn()){iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+                if(r.getLights().get(2).isOn()){iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_an_raum);}
+                if(!r.getLights().get(0).isOn()){iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+                if(!r.getLights().get(1).isOn()){iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+                if(!r.getLights().get(2).isOn()){iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_aus_raum);}
+            }
+
+        }
+
+        public boolean getIsArrayOn()
+        {
+            boolean allLightOn;
+
+            if (!r.getLights().get(0).isOn() && !r.getLights().get(1).isOn() && !r.getLights().get(2).isOn()) {
+                allLightOn = false;
             } else {
-                on = false;
+                allLightOn = true;
             }
-        }
-
-        public void setSwitchPosition ( boolean on)
-        {
-            if (r.getName().equals(Util.BATH)) {
-                sFLightBath.setChecked(on);
-            } else if (r.getName().equals(Util.LIVING)) {
-                sFLightLiving.setChecked(on);
-            } else if (r.getName().equals(Util.SLEEPING)) {
-                sFLightSleeping.setChecked(on);
-            } else if (r.getName().equals(Util.HALLWAY)) {
-                sFLightHallway.setChecked(on);
-            } else if (r.getName().equals(Util.KITCHEN)) {
-                getIsArrayOn();
-                sFLightKitchen.setChecked(on);
-            }
-        }
-
-        public void setImages ( boolean on)
-        {
-
-            if (r.getName().equals(Util.BATH)) {
-                if (on) {
-                    iVFLightBath.setImageResource(R.drawable.ic_gluehbirne_an_raum);
-                } else {
-                    iVFLightBath.setImageResource(R.drawable.ic_gluehbirne_aus_raum);
-                }
-            } else if (r.getName().equals(Util.LIVING)) {
-                if (on) {
-                    iVFLightLiving.setImageResource(R.drawable.ic_gluehbirne_an_raum);
-                } else {
-                    iVFLightLiving.setImageResource(R.drawable.ic_gluehbirne_aus_raum);
-                }
-            } else if (r.getName().equals(Util.SLEEPING)) {
-                if (on) {
-                    iVFLightSleeping.setImageResource(R.drawable.ic_gluehbirne_an_raum);
-                } else {
-                    iVFLightSleeping.setImageResource(R.drawable.ic_gluehbirne_aus_raum);
-                }
-            } else if (r.getName().equals(Util.HALLWAY)) {
-                if (on) {
-                    iVFLightHallway.setImageResource(R.drawable.ic_gluehbirne_an_raum);
-                } else {
-                    iVFLightHallway.setImageResource(R.drawable.ic_gluehbirne_aus_raum);
-                }
-            } else if (r.getName().equals(Util.KITCHEN)) {
-                if (r.getLights().get(0).isOn()) {
-                    iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_an_raum);
-                }
-                if (r.getLights().get(1).isOn()) {
-                    iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_an_raum);
-                }
-                if (r.getLights().get(2).isOn()) {
-                    iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_an_raum);
-                }
-                if (!r.getLights().get(0).isOn()) {
-                    iVFLightKitchen1.setImageResource(R.drawable.ic_gluehbirne_aus_raum);
-                }
-                if (!r.getLights().get(1).isOn()) {
-                    iVFLightKitchen2.setImageResource(R.drawable.ic_gluehbirne_aus_raum);
-                }
-                if (!r.getLights().get(2).isOn()) {
-                    iVFLightKitchen3.setImageResource(R.drawable.ic_gluehbirne_aus_raum);
-                }
-            }
-
-        }
-
-        public void getIsArrayOn ()
-        {
-            boolean light1 = r.getLights().get(0).isOn();
-            boolean light2 = r.getLights().get(1).isOn();
-            boolean light3 = r.getLights().get(2).isOn();
-
-            if (!light1 && !light2 && !light3) {
-                on = false;
-            } else {
-                on = true;
-            }
-        }
-
-        public void allLightsOff ()
-        {
-            on = false;
-            for (int i = 0; i < 3; i++) {
-                r.getLights().get(i).setOn(false);
-                savePower(false, i);
-            }
+            return allLightOn;
         }
 
 
