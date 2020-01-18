@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/back_button"
         android:layout_marginLeft="@dimen/heading_margin"
+        android:fontFamily="@font/raleway_semibold"
         android:layout_marginTop="@dimen/heading_margin"
         android:paddingLeft="55dp"
         android:paddingTop="8dp"

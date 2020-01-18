@@ -90,63 +90,54 @@
             android:id="@+id/tVFMusicTitel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:text="@string/music"
             android:textColor="@android:color/background_light"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/textSize_s"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.115" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iVFMusicFF"
             android:layout_width="46dp"
             android:layout_height="44dp"
+            android:layout_marginTop="5dp"
             android:src="@android:drawable/ic_media_ff"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.81"
+            app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.214" />
+            app:layout_constraintTop_toTopOf="@+id/iVFMusicPlayPause" />
 
         <ImageView
             android:id="@+id/iVFMusicBack"
             android:layout_width="42dp"
             android:layout_height="41dp"
+            android:layout_marginTop="5dp"
             android:src="@android:drawable/ic_media_rew"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.229"
+            app:layout_constraintHorizontal_bias="0.246"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.214" />
+            app:layout_constraintTop_toBottomOf="@+id/pFMusic" />
 
         <ImageView
             android:id="@+id/iVFMusicPlayPause"
-            android:layout_width="44dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="76dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.12" />
+            app:layout_constraintTop_toBottomOf="@+id/pFMusic" />
 
         <com.sophiafema.home_easylife.view.VolumePicker
             android:id="@+id/pFMusic"
             android:layout_width="241dp"
             android:layout_height="229dp"
-            android:layout_marginStart="96dp"
-            android:layout_marginLeft="96dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="25dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.822" />
+            app:layout_constraintTop_toBottomOf="@+id/tVFMusicTitel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
