@@ -42,10 +42,11 @@ public class LogInActivity extends AppCompatActivity implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
 
+        setContentView(R.layout.activity_log_in);
 
         // Views
         //mDetailTextView = findViewById(R.id.detail);
@@ -59,9 +60,10 @@ public class LogInActivity extends AppCompatActivity implements
         //findViewById(R.id.signOutButton).setOnClickListener(this);
         //findViewById(R.id.verifyEmailButton).setOnClickListener(this);
 
+
+        mAuth = FirebaseAuth.getInstance();
         // [START initialize_auth]
         // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
     }
 
