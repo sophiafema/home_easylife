@@ -363,11 +363,11 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.take_photo:
-                Toast.makeText(this, "Foto", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Not available", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.choose_galery:
-                Toast.makeText(this, "Galerie", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Not available", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.choose_icon:
