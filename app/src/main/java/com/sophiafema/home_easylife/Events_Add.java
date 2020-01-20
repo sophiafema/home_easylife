@@ -245,7 +245,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVEvents_AddTemperature.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startFunctionActivity(Event_Fragment_Light.class, REQUEST_CODE_THERMOSTAT, eroom);
+                    startFunctionActivity(Event_Fragment_Temperature.class, REQUEST_CODE_THERMOSTAT, eroom);
                 }
             });
         }
