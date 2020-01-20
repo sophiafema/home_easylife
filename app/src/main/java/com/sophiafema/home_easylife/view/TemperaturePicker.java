@@ -27,7 +27,7 @@ public class TemperaturePicker extends Picker {
 
     @Override
     public void setTextFromValue(float value) {
-        setCenterText("" + calculateTempFromPercent(calculatePercentWithValue(value)) + "C°");
+        setCenterText("" + calculateTempFromPercent(calculatePercentWithValue(value)) + "°C");
     }
 
     public double calculateTempFromPercent(float percent) {
