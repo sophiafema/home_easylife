@@ -15,6 +15,7 @@ import com.sophiafema.home_easylife.view.Picker;
 
 public class LightSettingsActivity extends AppCompatActivity {
 
+    //Instanzvariablen
     ImageView iVLightSettingBackground;
 
     BrightnessPicker picker;
@@ -25,6 +26,11 @@ public class LightSettingsActivity extends AppCompatActivity {
     boolean power;
     int aPosition;
 
+    /*
+        - speichert die Übergebenen Intents aus Fragment_Light
+        - setzt den Hintergrund
+        - setzt Helligkeit und Power
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +65,11 @@ public class LightSettingsActivity extends AppCompatActivity {
         picker.getValuePercent();
 
         findViewById(R.id.layout_light_settings).setOnClickListener(new View.OnClickListener() {
+
+           /*
+                - gibt die neuen Power und Brightness-Werte zurück an Fragment_Light
+                - beendet die LightSettingsActivity
+            */
             @Override
             public void onClick(View v) {
                 Intent resultIntent = new Intent();
@@ -71,6 +82,7 @@ public class LightSettingsActivity extends AppCompatActivity {
         });
     }
 
+    //Setzt den Hintergrund abhängig vom übergebenen Raum
     public void setBackground()
     {
         iVLightSettingBackground = (ImageView) findViewById(R.id.iVLightSettingBackground);
