@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Switch;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
@@ -101,7 +100,6 @@ public class Fragment_Shutter extends Fragment
 
         else if (r.getName().equals(Util.KITCHEN))
         {
-            //TODO Kitchen beide Shutters
             shutter = inflater.inflate(R.layout.fragment_shutter_kitchen, container, false);
 
             positionlist[0] = r.getShutters().get(0).getPosition();

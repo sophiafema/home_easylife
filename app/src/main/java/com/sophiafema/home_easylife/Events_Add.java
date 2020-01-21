@@ -204,7 +204,6 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         return valid;
     }
 
-    //TODO remove function
     public void setFunctionOverview(EventsRoom room) {
         eroom = room;
         if(room.hasLights()) {

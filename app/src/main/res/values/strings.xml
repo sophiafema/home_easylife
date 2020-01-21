@@ -59,7 +59,4 @@
     <string name="choose_existing_icon">Bestehendes Icon wählen</string>
     <string name="event_name">Ereignisname</string>
     <string name="icons">Icons</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

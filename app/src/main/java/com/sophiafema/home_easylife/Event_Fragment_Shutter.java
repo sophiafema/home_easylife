@@ -121,7 +121,6 @@ public class Event_Fragment_Shutter extends AppCompatActivity {
 
         else if (r.getName().equals(Util.KITCHEN))
         {
-            //TODO Kitchen beide Shutters
             setContentView(R.layout.activity_events_shutter_kitchen);
 
             positionlist[0] = r.getShutters().get(0).getPosition();
