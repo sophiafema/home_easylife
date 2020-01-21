@@ -364,6 +364,7 @@ public abstract class Picker extends View {
         mTextColor = a.getColor(R.styleable.Picker_color_text, b.getColor(R.color.colorText));
         mSelectedColor = a.getColor(R.styleable.Picker_color_selected, b.getColor(R.color.colorSelectedWheel));
         mWheelDisabledColor = a.getColor(R.styleable.Picker_color_disabled, b.getColor(R.color.colorDisabledWheel));
+        int mBackgroundColor = a.getColor(R.styleable.Picker_color_disabled, b.getColor(R.color.colorPrimaryDark));
 
         mGapAngle = 1;
 
@@ -419,7 +420,7 @@ public abstract class Picker extends View {
 
         //center
         mCenterNewPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mCenterNewPaint.setColor(Color.TRANSPARENT);
+        mCenterNewPaint.setColor(mBackgroundColor);
         mCenterNewPaint.setStyle(Paint.Style.FILL);
 
         mCenterNewColor = calculateColor(mValue);
@@ -438,7 +439,9 @@ public abstract class Picker extends View {
         canvas.translate(mTranslationOffsetX, mTranslationOffsetY);
         canvas.rotate(90);
 
+        canvas.drawCircle(0, 0, mColorCenterRadius, mCenterNewPaint);
         mColorWheelPath.addArc(mColorWheelRectangle, calculateDegree(mGapAngle/2), 360 - calculateDegree(mGapAngle));
+
 
 
         if(mWheelIsEnabled) {
@@ -472,7 +475,7 @@ public abstract class Picker extends View {
                     mColorPointerRadius, mPointerHaloDisabledPaint);
         }
 
-        canvas.drawCircle(0, 0, mColorCenterRadius/2.5f, mCenterNewPaint);
+
 
 
         String text = mCenterText;
@@ -540,7 +543,7 @@ public abstract class Picker extends View {
         mColorWheelRectangle.set(-mColorWheelRadius, -mColorWheelRadius,
                 mColorWheelRadius, mColorWheelRadius);
 
-        mColorCenterRadius = (int) ((float) mPreferredColorCenterRadius * ((float) mColorWheelRadius / (float) mPreferredColorWheelRadius));
+        mColorCenterRadius = (int) mColorWheelRadius;
         mColorCenterHaloRadius = (int) ((float) mPreferredColorCenterHaloRadius * ((float) mColorWheelRadius / (float) mPreferredColorWheelRadius));
         mCenterRectangle.set(-mColorCenterRadius, -mColorCenterRadius,
                 mColorCenterRadius, mColorCenterRadius);
