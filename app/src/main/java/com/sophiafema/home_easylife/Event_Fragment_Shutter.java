@@ -22,9 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Event_Fragment_Shutter extends AppCompatActivity {
 
-
-
-
     com.sophiafema.home_easylife.view.Shutters shutterFBath;
     com.sophiafema.home_easylife.view.Shutters shutterFKitchen1;
     com.sophiafema.home_easylife.view.Shutters shutterFKitchen2;
@@ -73,9 +70,6 @@ public class Event_Fragment_Shutter extends AppCompatActivity {
             shutters = db.getShutters(r.getName());
             r.setShutters(shutters);
         }
-
-
-
 
         if (r.getName().equals(Util.BATH) )
         {

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimaryDark"
-    tools:context=".EventAddFunctionFragment">
+    tools:context=".EventAddFunctionFragment2">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -66,17 +66,6 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        Intent mI = getIntent();
-        /*Bundle bundle = this.getIntent().getExtras();
-        System.out.println(bundle);
-        Light light = null;
-        if (bundle != null) {
-            light = (Light) bundle.getSerializable(Util.EVENTSROOM);
-            System.out.println(bundle.getSerializable(Util.EVENTSROOM));
-        }
-        //Light light = mI.getParcelableExtra(Util.EVENTSROOM);
-        System.out.println("light " + light);*/
-
 
         Bundle bundle = this.getIntent().getExtras();
         if (bundle != null) {

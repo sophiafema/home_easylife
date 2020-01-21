@@ -22,13 +22,7 @@ import com.sophiafema.home_easylife.R;
 
 public abstract class Picker extends View {
 
-    /**
-     * TO DO
-     *
-     *
-     *
-     *
-     */
+
 
     /*
      * Constants used to save/restore the instance state.
@@ -42,14 +36,8 @@ public abstract class Picker extends View {
      * Colors to construct the color wheel using {@link SweepGradient}.
      */
     private int[] COLORS;
-    //private int[] COLORS = new int[] {0xFF000000, 0xFF3A4000,0xFFDEC000, 0xFFDEC000, 0xFFDEC000, 0xFFEDDD00,  0xFFEDDD00, 0xFFFFEE00};
 
-    /*private static final int[] COLORS = new int[] { 0xFFFF0000, 0xFFFF00FF,
-            0xFF0000FF, 0xFF00FFFF, 0xFF00FF00, 0xFFFFFF00, 0xFFFF0000 };*/
 
-    /**
-     * {@code Paint} instance used to draw the color wheel.
-     */
     private Paint mColorWheelPaint;
     private Paint mColorWheelDisabledPaint;
     private Paint mColorWheelSelectedPaint;
@@ -59,126 +47,55 @@ public abstract class Picker extends View {
 
     private boolean mShowWheelSelected;
 
-    /**
-     * {@code Paint} instance used to draw the pointer's "halo".
-     */
+
     private Paint mPointerHaloPaint;
     private Paint mPointerHaloDisabledPaint;
-
-    /**
-     * {@code Paint} instance used to draw the pointer (the selected color).
-     */
     private Paint mPointerColor;
 
-    /**
-     * Text size
-     */
     private Paint mTextPaint;
     private Paint mTextHigherPaint;
     private Paint mTextLowerPaint;
     private int mTextColor;
 
-    /**
-     * The width of the color wheel thickness.
-     */
     private int mColorWheelThickness;
     private int mColorWheelSelectedThickness;
 
-    /**
-     * The radius of the color wheel.
-     */
     private int mColorWheelRadius;
     private int mPreferredColorWheelRadius;
 
-    /**
-     * The radius of the center circle inside the color wheel.
-     */
     private int mColorCenterRadius;
     private int mPreferredColorCenterRadius;
 
-    /**
-     * The radius of the halo of the center circle inside the color wheel.
-     */
     private int mColorCenterHaloRadius;
     private int mPreferredColorCenterHaloRadius;
 
-    /**
-     * The radius of the pointer.
-     */
     private int mColorPointerRadius;
-
-    /**
-     * The radius of the halo of the pointer.
-     */
     private int mColorPointerHaloRadius;
 
-    /**
-     * The rectangle enclosing the color wheel.
-     */
     private RectF mColorWheelRectangle = new RectF();
-
-    /**
-     * The rectangle enclosing the center inside the color wheel.
-     */
     private RectF mCenterRectangle = new RectF();
 
     Path mColorWheelPath = new Path();
     Path mColorWheelSelectedPath = new Path();
 
-    /**
-     * {@code true} if the user clicked on the pointer to start the move mode. <br>
-     * {@code false} once the user stops touching the screen.
-     *
-     * @see #onTouchEvent(MotionEvent)
-     */
     private boolean mUserIsMovingPointer = false;
 
     private boolean mWheelIsEnabled = true;
 
-
-    /**
-     * Whether to show the old color in the center or not.
-     */
     private boolean mShowCenterOldColor;
-
-    /**
-     * The ARGB value of the center with the new selected color.
-     */
     private int mCenterNewColor;
 
     /**
      * Number of pixels the origin of this view is moved in X- and Y-direction.
-     *
-     * <p>
-     * We use the center of this (quadratic) View as origin of our internal
-     * coordinate system. Android uses the upper left corner as origin for the
-     * View-specific coordinate system. So this is the value we use to translate
-     * from one coordinate system to the other.
-     * </p>
-     *
-     * <p>
-     * Note: (Re)calculated in {@link #onMeasure(int, int)}.
-     * </p>
-     *
-     * @see #onDraw(Canvas)
+        @see #onDraw(Canvas)
      */
     private float mTranslationOffsetX;
     private float mTranslationOffsetY;
 
-    /**
-     * Distance between pointer and user touch in X-direction.
-     */
+
     private float mSlopX;
-
-
-    /**
-     * Distance between pointer and user touch in Y-direction.
-     */
     private float mSlopY;
 
-    /**
-     * The pointer's position expressed as angle (in rad).
-     */
     private float mAngle;
 
     /**
@@ -186,39 +103,23 @@ public abstract class Picker extends View {
      */
     private float mGapAngle;
 
-    /**
-     * {@code Paint} instance used to draw the center with the new selected
-     * color.
-     */
     private Paint mCenterNewPaint;
 
-    /**
-     * {@code TouchAnywhereOnColorWheelEnabled} instance used to control <br>
-     * if the color wheel accepts input anywhere on the wheel or just <br>
-     * on the halo.
-     */
     private boolean mTouchAnywhereOnColorWheelEnabled = true;
 
 
     boolean mDirectionCounterClockWise;
 
-    /**
-     * {@code onColorChangedListener} instance of the onColorChangedListener
-     */
+
     private OnColorChangedListener onColorChangedListener;
 
-    /**
-     * Value from 0 to Math.PI*2
-     */
     private float mValue;
 
     private String mCenterText = "";
     private String mCenterHigherText = "";
     private String mCenterLowerText = "";
 
-    /**
-     * {@code onColorSelectedListener} instance of the onColorSelectedListener
-     */
+
     private OnColorSelectedListener onColorSelectedListener;
 
     public Picker(Context context) {
@@ -309,23 +210,13 @@ public abstract class Picker extends View {
         this.onColorSelectedListener = listener;
     }
 
-    /**
-     * Gets the onColorSelectedListener
-     *
-     * @return {@code OnColorSelectedListener}
-     */
+
     public OnColorSelectedListener getOnColorSelectedListener() {
         return this.onColorSelectedListener;
     }
 
-    /**
-     * Color of the latest entry of the onColorChangedListener.
-     */
     private float oldChangedListenerColor;
 
-    /**
-     * Color of the latest entry of the onColorSelectedListener.
-     */
     private float oldSelectedListenerValue;
 
 
@@ -425,10 +316,6 @@ public abstract class Picker extends View {
 
         mCenterNewColor = calculateColor(mValue);
         mShowCenterOldColor = true;
-
-        /*mCenterHaloPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mCenterHaloPaint.setColor(Color.BLACK);
-        mCenterHaloPaint.setAlpha(0x00);*/
     }
 
     @Override
@@ -651,6 +538,7 @@ public abstract class Picker extends View {
 
                             if ((angle >= (mGapAngle/2) || angle <= (-mGapAngle/2))) {
                                 float value = calcValue(angle);
+                                //in which direction is user moving pointer -> used for part around gap
                                 if (value < mValue)
                                     mDirectionCounterClockWise = true;
                                 else

@@ -37,27 +37,21 @@ public class Event_Fragment_Temperature extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_thermostat);
 
+        // get room
         Bundle bundle = this.getIntent().getExtras();
         if (bundle != null) {
             r = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);
         }
-
-
-
         if(r == null) {
             r = new EventsRoom(Util.LIVING, 0);
         }
-
-        System.out.println(r.getName());
-
+        //if room has no thermostat -> generate thermostat
         if(r.getThermo() == null) {
             db = new DatabaseAdapter();
             r.setThermo(db.getThermostat(r.getName()));
         }
-
         temperature = r.getThermo().getTemperature();
         power = r.getThermo().isPower();
-        db = new DatabaseAdapter();
 
         sFTermostat = (Switch) findViewById(R.id.sFTermostat);
         pFTermostat = (com.sophiafema.home_easylife.view.TemperaturePicker) findViewById(R.id.pFTermostat);
@@ -67,11 +61,8 @@ public class Event_Fragment_Temperature extends AppCompatActivity {
 
         save = findViewById(R.id.tVEventsThermostat_Save);
         cancel = findViewById(R.id.tVEventsThermostat_Cancel);
-
-
         setBackground();
 
-        //setPercentFromTemp
 
         pFTermostat.setOnColorSelectedListener(new Picker.OnColorSelectedListener() {
             @Override

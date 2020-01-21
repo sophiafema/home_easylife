@@ -45,13 +45,10 @@ public class Event_Fragment_Music extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_music);
 
-
         Bundle bundle = this.getIntent().getExtras();
         if (bundle != null) {
             r = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);
         }
-
-
 
         if(r == null) {
             r = new EventsRoom(Util.LIVING, 0);

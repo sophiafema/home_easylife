@@ -77,6 +77,19 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_events);
 
         dba = new DatabaseAdapter();
+        final Thread t1 = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                synchronized (this) {
+                    events = dba.getEvents();
+                    notify();
+                }
+
+            }
+
+        };
+        t1.start();
 
 
         iVEventsMenue = (ImageView) findViewById(R.id.iVEventsMenue);
@@ -106,22 +119,6 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         recyclerViewSleeping = (RecyclerView) findViewById(R.id.recyclerViewSleeping);
         recyclerViewKitchen = (RecyclerView) findViewById(R.id.recyclerViewKitchen);
         recyclerViewHallway = (RecyclerView) findViewById(R.id.recyclerViewHallway);
-
-        final Thread t1 = new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                synchronized (this) {
-                    System.out.println("runs1");
-                    events = dba.getEvents();
-                    System.out.println("runs2");
-                    notify();
-                }
-
-            }
-
-        };
-        t1.start();
 
         synchronized (t1) {
             try {
@@ -284,6 +281,11 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         return room;
     }
 
+    /**
+     * starts activity for adding a new event on plus
+     * ends activity on back button
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         System.out.println(view.getId());
@@ -298,6 +300,9 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
              }
     }
 
+    /**
+     * generates list view from arraylist
+     */
     public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder>{
 
         private ArrayList<Event> mEvents;
@@ -312,10 +317,10 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
             LayoutInflater inflater = LayoutInflater.from(context);
 
             // Inflate the custom layout
-            View contactView = inflater.inflate(R.layout.item_event, parent, false);
+            View eventsView = inflater.inflate(R.layout.item_event, parent, false);
 
             // Return a new holder instance
-            ViewHolder viewHolder = new ViewHolder(contactView);
+            ViewHolder viewHolder = new ViewHolder(eventsView);
             return viewHolder;
         }
 
@@ -403,9 +408,11 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
             switch (requestCode){
                 case(REQUEST_CODE_EVENT):
                     Bundle bundle = data.getExtras();
+                    //deletes room if it was already in list
                     if(data.hasExtra(Util.EVENT_ARRAY_ROOM) && data.hasExtra(Util.EVENT_INDEX)) {
                         removeRoom(data.getStringExtra(Util.EVENT_ARRAY_ROOM), data.getIntExtra(Util.EVENT_INDEX, 0));
                     }
+                    //adds events
                     if (bundle != null) {
                         Event event = (Event) bundle.getSerializable(Util.EVENT);
                         events.add(event);
@@ -418,6 +425,10 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    /**
+     * sets functions in room to settings of activity
+     * @param event
+     */
     public void activateEvent(Event event) {
         System.out.println(event);
         for(EventsRoom room : event.getRooms()) {

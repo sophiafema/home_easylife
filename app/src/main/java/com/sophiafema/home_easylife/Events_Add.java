@@ -139,7 +139,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             arrayroomEvent = i.getStringExtra(Util.EVENT_ARRAY_ROOM);
         }
 
-        //currentRoom = intent.getStringExtra(Util.ROOM);
+        //generates room
         if(event == null) {
             currentRoom = Util.LIVING;
             String id = UUID.randomUUID().toString();
