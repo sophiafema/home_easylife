@@ -1,5 +1,6 @@
 package com.sophiafema.home_easylife;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -226,11 +227,11 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
     private class PagerAdapter extends FragmentPagerAdapter
     {
-        public PagerAdapter(FragmentManager fm) {
+        private PagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
-        @Override
+        @Override @NonNull
         public Fragment getItem(int position)
         {
             //TODO an die fragments die Werte vom Room übergeben
@@ -244,7 +245,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                     case 1: return Fragment_Thermostat.newInstance(r);
                 }
                 indicator.createIndicators(2,0);
-                return null;
+                return Fragment_Light.newInstance(r);
             }
             else
             {
@@ -257,7 +258,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
                 }
                 indicator.createIndicators(4,0);
-                return null;
+                return Fragment_Light.newInstance(r);
             }
         }
 

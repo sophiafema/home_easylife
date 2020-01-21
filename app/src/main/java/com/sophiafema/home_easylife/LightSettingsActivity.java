@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -48,7 +47,6 @@ public class LightSettingsActivity extends AppCompatActivity {
             public void onColorSelected(float color) {
                 //color = light
                 brightness = color;
-                Log.e("Color", ""+color);
             }
         });
         picker.setOnClickIntoCenter(new BrightnessPicker.OnClickInCenter() {
@@ -65,8 +63,6 @@ public class LightSettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra(Fragment_Light.LIGHT_BRIGHTNESS, brightness);
-                System.out.println("in intent" + brightness);
-
                 resultIntent.putExtra(Fragment_Light.LIGHT_POWER, power);
                 resultIntent.putExtra(Fragment_Light.LIGHT_APOSITION, aPosition);
                 setResult(Activity.RESULT_OK, resultIntent);
