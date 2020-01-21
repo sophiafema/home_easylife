@@ -23,6 +23,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class Fragment_Light extends Fragment implements View.OnClickListener
 {
+   //Initialisierung aller benötigten Variablen
     public static final String LIGHT_BRIGHTNESS = "LIGHT_BRIGHTNESS";
     public static final String LIGHT_POWER = "LIGHT_POWER";
     public static final String LIGHT_ROOM = "LIGHT_ROOM";
@@ -52,6 +53,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     Switch sFLightKitchen;
 
 
+    //Konstruktor
     public Fragment_Light(Room room) {
         // Required empty public constructor
         this.r = room;
@@ -62,6 +64,12 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
     public static Fragment_Light newInstance(Room room) { return new Fragment_Light(room);}
 
+    /* OnCreate-Methode:
+        -View fürs swipen
+        -Funktionalität der Lichter aufgeteilt nach den Räumen
+        -holt die gespeicherten Daten (Power) aus der Datenbank, zeigt diese an (setzt die Images)
+        -regelt den ToggleButton und speichert die neuen Werte bei Veränderung ab
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
@@ -251,15 +259,22 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
     }
 
-
+    /*  On-Click Methode
+            - ruft die Werte Power und Brightness aus der Datenbank ab
+            - ruft Methode onClickHelper auf
+     */
     @Override
     public void onClick(View view) {
         double lightBrightness = r.getLights().get(0).getBrightness();
         boolean []lightOn = {r.getLights().get(0).isOn()};
-        Log.e("Power", ""+Array.getBoolean(lightOn, 0));
         onClickHelper(lightBrightness, Array.getBoolean(lightOn, 0),0);
     }
 
+    /* OnClickHelper Methode
+            - erzeugt neuen Intent
+            - Übergibt, Brightness, Power, Raum und die Arrayposition der Lampe
+            - startet die Activity LightSettingActivity
+     */
     public void onClickHelper(double lightBrightness, boolean lightOn, int aPosition){
 
         Intent intent = new Intent(getActivity(), LightSettingsActivity.class);
@@ -270,6 +285,12 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         startActivityForResult(intent, REQUEST_CODE);
     }
 
+    /*
+        - Empfängt die Ergebnisse der LightSettingActivity
+        - speichert die neuen Werte für Power und Brightness ab
+        - setzt Images und ToggleButton
+
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -290,20 +311,16 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
                 {
                     saveBrightness(lightBrightness, 2);
                     savePower(lightOn, 2);
-                    Log.e("Schleife1", ""+resultAPosition);
                 }
                 else if (resultAPosition==1)
                 {
                     saveBrightness(lightBrightness, 1);
                     savePower(lightOn, 1);
-                    Log.e("Schleife2", ""+resultAPosition);
                 }
                 else
                 {
                     saveBrightness(lightBrightness, 0);
                     savePower(lightOn, 0);
-                    Log.e("Schleife3", ""+resultAPosition);
-                    Log.e("Power", ""+Array.getBoolean(lightOn, 0));
                 }
 
                 setImages(lightOn);
@@ -315,18 +332,23 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         }
     }
 
+
+    //speichert die Helligkeit in der Datenbank
     public void saveBrightness(double brightness, int arrayposition)
     {
         r.getLights().get(arrayposition).setBrightness(brightness);
         db.setBrightness(r.getName(), r.getLights().get(arrayposition).getName(), brightness);
 
     }
+
+    //speichert Power in der Datenbank
     public void savePower(boolean [] lightOn, int arrayposition)
     {
         r.getLights().get(arrayposition).setOn(Array.getBoolean(lightOn, 0));
         db.setLightPower(r.getName(), r.getLights().get(arrayposition).getName(), Array.getBoolean(lightOn, 0));
     }
 
+    //gibt zurück, ob das Licht anhand des ToggleButtons aus oder an ist
     public boolean switchSettings (boolean isChecked) {
         boolean lightOn;
         if (isChecked) {
@@ -337,6 +359,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         return lightOn;
     }
 
+    //setzt den ToggleButton der jeweiligen Räume auf die richtige Position
     public void setSwitchPosition(boolean []lightOn)
     {
         if (r.getName().equals(Util.BATH))
@@ -366,6 +389,7 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
         }
     }
 
+    //setzt die Images der Lampen der jeweiligen Räume abhöngig ob das Licht an oder aus ist
     public void setImages (boolean [] lightOn){
 
         if (r.getName().equals(Util.BATH))
@@ -404,6 +428,8 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
 
     }
+
+    //fragt für den Raum Küche ab, ob mindestens ein Licht an ist oder ob alle Lichter aus sind
     public boolean getIsArrayOn()
     {
        boolean allLightOn;

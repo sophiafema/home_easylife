@@ -18,6 +18,7 @@ import com.sophiafema.home_easylife.view.Picker;
 
 public class Fragment_Thermostat extends Fragment
 {
+    //Instanzvariablen
     Room r;
     double temperature;
     boolean power;
@@ -26,6 +27,7 @@ public class Fragment_Thermostat extends Fragment
     com.sophiafema.home_easylife.view.TemperaturePicker pFTermostat;
     Switch sFTermostat;
 
+    //Konstruktor
     public Fragment_Thermostat(Room room) {
         // Required empty public constructor
         this.r = room;
@@ -36,6 +38,12 @@ public class Fragment_Thermostat extends Fragment
 
     public static Fragment_Thermostat newInstance(Room room) { return new Fragment_Thermostat(room);}
 
+    /*
+        - View fürs swipen
+        - sezt Temperatur, Power und ToggleButton
+        - speichert neue Temperatur in der Datenbank
+        - steuert den Toggle Button
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {

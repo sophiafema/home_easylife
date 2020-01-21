@@ -16,6 +16,7 @@ import com.sophiafema.home_easylife.view.Shutters;
 
 public class Fragment_Shutter extends Fragment
 {
+    //Initialisierung
     com.sophiafema.home_easylife.view.Shutters shutterFBath;
     com.sophiafema.home_easylife.view.Shutters shutterFKitchen1;
     com.sophiafema.home_easylife.view.Shutters shutterFKitchen2;
@@ -36,7 +37,7 @@ public class Fragment_Shutter extends Fragment
     double [] positionlist = new double [2];
     DatabaseAdapter db;
 
-
+    //Konstruktor
     public Fragment_Shutter(Room room) {
         // Required empty public constructor
         this.r = room;
@@ -49,6 +50,11 @@ public class Fragment_Shutter extends Fragment
         return new Fragment_Shutter(room);
     }
 
+    /*
+        - View fürs swipen
+        - setzt Position des Shutters
+        - steuert vollständiges öffnen und schließen
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
