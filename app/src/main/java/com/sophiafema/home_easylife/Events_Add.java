@@ -362,12 +362,12 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
                 bottomSheetDialog.show();
                 break;
 
-            case R.id.take_photo:
-                Toast.makeText(this, "Not available", Toast.LENGTH_SHORT).show();
+            case (R.id.take_photo):
+                Toast.makeText(this, "Pro-Version benötigt", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.choose_galery:
-                Toast.makeText(this, "Not available", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Pro-Version benötigt", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.choose_icon:
