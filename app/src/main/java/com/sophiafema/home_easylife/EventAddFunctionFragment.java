@@ -1,7 +1,5 @@
 package com.sophiafema.home_easylife;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,50 +7,46 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.sophiafema.home_easylife.models.Event;
-import com.sophiafema.home_easylife.models.EventsRoom;
 
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link EventAddFunctionFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link EventAddFunctionFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class EventAddFunctionFragment extends Fragment {
-
-    private EventsRoom room;
-    ImageView iVLightAdd;
-    ImageView iVThermostsAdd;
-    ImageView iVShutterAdd;
-    ImageView iVMusicAdd;
 
     public EventAddFunctionFragment() {
         // Required empty public constructor
     }
 
-    public EventAddFunctionFragment(EventsRoom room) {
-        this.room = room;
-    }
-
-
-    public static EventAddFunctionFragment newInstance(EventsRoom room) {
-        EventAddFunctionFragment fragment = new EventAddFunctionFragment(room);
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment EventAddFunctionFragment.
+     */
+    public static EventAddFunctionFragment newInstance(String param1, String param2) {
+        EventAddFunctionFragment fragment = new EventAddFunctionFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View event = inflater.inflate(R.layout.fragment_event_add_function, container, false);
-
-
-        return event;
-
-
+        return inflater.inflate(R.layout.fragment_event_add_function, container, false);
     }
+
+
 }

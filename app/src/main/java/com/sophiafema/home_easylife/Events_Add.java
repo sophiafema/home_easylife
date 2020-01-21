@@ -139,7 +139,7 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             arrayroomEvent = i.getStringExtra(Util.EVENT_ARRAY_ROOM);
         }
 
-        //currentRoom = intent.getStringExtra(Util.ROOM);
+        //generates room
         if(event == null) {
             currentRoom = Util.LIVING;
             String id = UUID.randomUUID().toString();
@@ -204,6 +204,10 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
         return valid;
     }
 
+    /**
+     * adds/removes/shows function overview onclick
+     * @param room
+     */
     public void setFunctionOverview(EventsRoom room) {
         eroom = room;
         if(room.hasLights()) {
@@ -312,7 +316,6 @@ public class Events_Add extends AppCompatActivity implements View.OnClickListene
             iVEvents_AddShutters.setOnClickListener(null);
         }
     }
-
 
     public void startFunctionActivity(Class mClass, int requestCode, EventsRoom eroom) {
         spinner.setVisibility(View.VISIBLE);

@@ -26,11 +26,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     ImageView iVSettingsMenue;
     TextView tVSettingsHeading;
 
-
-
-    // [START declare_auth]
     private FirebaseAuth mAuth;
-    // [END declare_auth]
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,13 +43,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
         // Buttons
         findViewById(R.id.btnSettingsLogOut).setOnClickListener(this);
-        //findViewById(R.id.signOutButton).setOnClickListener(this);
-        //findViewById(R.id.verifyEmailButton).setOnClickListener(this);
-
-        // [START initialize_auth]
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
     }
 
     // [START on_start_check_user]
@@ -62,15 +52,12 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser);
     }
 
     private void signOut() {
         mAuth.signOut();
         updateUI(null);
     }
-
-
 
     private void updateUI(FirebaseUser user) {
         //hideProgressBar();
@@ -79,11 +66,6 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
             Intent intent = new Intent(Settings.this, LogInActivity.class);
             startActivity(intent);
-
-        } else {
-            //mStatusTextView.setText("Abgemeldet");
-            //mDetailTextView.setText(null);
-
 
         }
     }

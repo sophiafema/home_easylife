@@ -40,6 +40,10 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
         setText(!pIsZero);
     }
 
+    /**
+     * changes text depending on value between anschalten and ausschalten
+     * @param isEnabled
+     */
     private void setText(boolean isEnabled) {
         String textTurnOn = "AN";
         String textTurnOffe = "AUS";
@@ -53,18 +57,14 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
         setCenterLowerText(schalten);
     }
 
+    /**
+     * changes text and color of wheel
+     * @param isEnabled
+     */
     @Override
     public void onClick(boolean isEnabled) {
-        String textTurnOn = "AN";
-        String textTurnOffe = "AUS";
-        String schalten = "schalten";
         if(!(getValuePercent()<1)) {
-            if(!isEnabled) {
-                setCenterHigherText(textTurnOffe);
-            }
-            else {
-                setCenterHigherText(textTurnOn);
-            }
+            setText(!isEnabled);
             if (onClickInCenter != null) {
                 onClickInCenter.onClick(!isEnabled);
             }
@@ -72,12 +72,11 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
         }
         else {
             setValueToPercent(100);
-            setCenterHigherText(textTurnOffe);
+            setText(true);
             if (onClickInCenter != null) {
                 onClickInCenter.onClick(false);
             }
         }
-        setCenterLowerText(schalten);
     }
 
     @Override
@@ -86,7 +85,4 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
         setText(isEnabled);
         invalidate();
     }
-
-
-
 }

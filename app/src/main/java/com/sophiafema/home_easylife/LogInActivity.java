@@ -49,22 +49,14 @@ public class LogInActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_log_in);
 
         // Views
-        //mDetailTextView = findViewById(R.id.detail);
         mEmailField = findViewById(R.id.eTMainName);
         mPasswordField = findViewById(R.id.eTMainPasswort);
-        //setProgressBar(R.id.progressBar);
-
         // Buttons
         findViewById(R.id.btnMainLogIn).setOnClickListener(this);
         findViewById(R.id.btnMainCreateAccount).setOnClickListener(this);
-        //findViewById(R.id.signOutButton).setOnClickListener(this);
-        //findViewById(R.id.verifyEmailButton).setOnClickListener(this);
 
 
         mAuth = FirebaseAuth.getInstance();
-        // [START initialize_auth]
-        // Initialize Firebase Auth
-        // [END initialize_auth]
     }
 
     // [START on_start_check_user]
@@ -105,13 +97,8 @@ public class LogInActivity extends AppCompatActivity implements
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-
-                        // [START_EXCLUDE]
-                        //hideProgressBar();
-                        // [END_EXCLUDE]
                     }
                 });
-        // [END create_user_with_email]
     }
 
     private void signIn(String email, String password) {
@@ -119,10 +106,6 @@ public class LogInActivity extends AppCompatActivity implements
         if (!validateForm()) {
             return;
         }
-
-        //showProgressBar();
-
-        // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -139,55 +122,9 @@ public class LogInActivity extends AppCompatActivity implements
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-
-                        // [START_EXCLUDE]
-                        /*if (!task.isSuccessful()) {
-                            //mStatusTextView.setText(R.string.auth_failed);
-                            Toast.makeText(LogInActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }*/
-                        //hideProgressBar();
-                        // [END_EXCLUDE]
                     }
                 });
-        // [END sign_in_with_email]
     }
-
-    private void signOut() {
-        mAuth.signOut();
-        updateUI(null);
-    }
-
-    /*private void sendEmailVerification() {
-        // Disable button
-        findViewById(R.id.verifyEmailButton).setEnabled(false);
-
-        // Send verification email
-        // [START send_email_verification]
-        final FirebaseUser user = mAuth.getCurrentUser();
-        user.sendEmailVerification()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-                        // Re-enable button
-                        findViewById(R.id.verifyEmailButton).setEnabled(true);
-
-                        if (task.isSuccessful()) {
-                            Toast.makeText(LogInActivity.this,
-                                    "Verification email sent to " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.e(TAG, "sendEmailVerification", task.getException());
-                            Toast.makeText(LogInActivity.this,
-                                    "Failed to send verification email.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        // [END_EXCLUDE]
-                    }
-                });
-        // [END send_email_verification]
-    }*/
 
     private boolean validateForm() {
         boolean valid = true;
@@ -212,24 +149,12 @@ public class LogInActivity extends AppCompatActivity implements
     }
 
     private void updateUI(FirebaseUser user) {
-        //hideProgressBar();
         if (user != null) {
-            //mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail(), user.isEmailVerified()));
             USER_UID = user.getUid();
-            //House house = new House();
-            //house.setHouseInDatebase();
 
             Intent intent = new Intent(LogInActivity.this, Home.class);
             intent.putExtra(STRING_USER_UID, user.getUid());
             startActivity(intent);
-
-        } else {
-            //mStatusTextView.setText("Abgemeldet");
-            //mDetailTextView.setText(null);
-
-            /*findViewById(R.id.emailPasswordButtons).setVisibility(View.VISIBLE);
-            findViewById(R.id.emailPasswordFields).setVisibility(View.VISIBLE);
-            findViewById(R.id.signedIn).setVisibility(View.GONE);*/
         }
     }
 
@@ -242,10 +167,5 @@ public class LogInActivity extends AppCompatActivity implements
         else if (i == R.id.btnMainCreateAccount) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }
-        /*else if (i == R.id.signOutButton) {
-            signOut();
-        } else if (i == R.id.verifyEmailButton) {
-            sendEmailVerification();
-        }*/
     }
 }

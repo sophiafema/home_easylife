@@ -28,22 +28,12 @@ public class Shutters extends View {
     private static final String STATE_PARENT = "parent";
     private static final String STATE_PERCENT = "angle";
 
-    /**
-     * {@code Paint} instance used to draw the color wheel.
-     */
     private Paint mWindowBorderPaint;
     private Paint mWindowSurfacePaint;
     private Paint mShutterHandlePaint;
 
-
-    /**
-     * The width of the color wheel thickness.
-     */
     private int mWindowThickness;
 
-    /**
-     * The radius of the color wheel.
-     */
     private int mWindowWidth;
     private int mWindowHeight;
     private int mPreferredWindowWidth;
@@ -52,53 +42,25 @@ public class Shutters extends View {
     private int mInnerWindowHeight;
     private int mInnerWindowWidth;
 
-    /**
-     * The radius of the center circle inside the color wheel.
-     */
     private int mShutterWidth;
     private int mPreferredShutterWidth;
     private int mLouvreHeight;
     private int mPreferredLouvreHeight;
 
-
-    /**
-     * The rectangle enclosing the color wheel.
-     */
     private RectF mWindowBorderRectangle = new RectF();
     private RectF mWindowSurfaceRectangle = new RectF();
 
-    /**
-     * The rectangle enclosing the center inside the color wheel.
-     */
     private RectF mCenterRectangle = new RectF();
     private int mShutterPartAmount;
     private RectF[] mShutterPartRectangle;
     private RectF mShutterHandle = new RectF();
 
-    /**
-     * {@code true} if the user clicked on the pointer to start the move mode. <br>
-     * {@code false} once the user stops touching the screen.
-     *
-     * @see #onTouchEvent(MotionEvent)
-     */
     private boolean mUserIsMovingShutter = false;
     private boolean mShutterMovementIsEnabled = true;
 
 
     /**
      * Number of pixels the origin of this view is moved in X- and Y-direction.
-     *
-     * <p>
-     * We use the center of this (quadratic) View as origin of our internal
-     * coordinate system. Android uses the upper left corner as origin for the
-     * View-specific coordinate system. So this is the value we use to translate
-     * from one coordinate system to the other.
-     * </p>
-     *
-     * <p>
-     * Note: (Re)calculated in {@link #onMeasure(int, int)}.
-     * </p>
-     *
      * @see #onDraw(Canvas)
      */
     private float mTranslationOffsetX;
@@ -110,21 +72,10 @@ public class Shutters extends View {
      */
     private float mSlopY;
 
-    /**
-     * The Louvre's position expressed as angle (in rad).
-     */
     private float mPercent;
 
-    /**
-     * {@code Paint} instance used to draw the center with the new selected
-     * color.
-     */
-    private Paint mShutterPaint;
 
-    /**
-     * {@code Paint} instance used to draw the halo of the center selected
-     * colors.
-     */
+    private Paint mShutterPaint;
     private Paint mShutterBackgroundPaint;
 
 
@@ -153,22 +104,10 @@ public class Shutters extends View {
         init(attrs, defStyle);
     }
 
-    /**
-     * An interface that is called whenever the color is changed. Currently it
-     * is always called when the color is changes.
-     *
-     * @author lars
-     *
-     */
     public interface OnPositionChangedListener {
         public void onColorChanged(float value);
     }
 
-    /**
-     * An interface that is called whenever a new color has been selected.
-     * Currently it is always called when the color wheel has been released.
-     *
-     */
     public interface OnColorSelectedListener {
         public void onColorSelected(int color);
     }
@@ -278,12 +217,6 @@ public class Shutters extends View {
         // them we let Canvas do the work for us.
         canvas.translate(mTranslationOffsetX, mTranslationOffsetY);
 
-        //mColorWheelPath.addArc(mWindowBorderRectangle, calculateDegree(mGapAngle/2), 360 - calculateDegree(mGapAngle));
-
-
-
-        //canvas.drawPath(mColorWheelPath, mWindowBorderPaint);
-
         canvas.drawRect(mWindowSurfaceRectangle, mWindowSurfacePaint);
         if(picBitmap!=null)
             canvas.drawBitmap(picBitmap, null, mWindowSurfaceRectangle, null);
@@ -294,7 +227,6 @@ public class Shutters extends View {
         int x = (int)(((mInnerWindowHeight-shutterPartHeight)*mPercent)/shutterPartHeight)+1;
 
 
-        //mCenterRectangle.set(-mShutterWidth, (int)(mWindowThickness*0.5), mShutterWidth, mLouvreHeight/2);
         mCenterRectangle.set(-mShutterWidth, (int)(mWindowThickness*0.5), mShutterWidth, (int) shutterPosition);
         canvas.drawRect(mCenterRectangle, mShutterBackgroundPaint);
 
@@ -457,10 +389,9 @@ public class Shutters extends View {
 
 
     /**
-     * Calculate the pointer's coordinates on the color wheel using the supplied
-     * angle.
+     * Calculate the pointer's coordinates
      *
-     * @param percent The position of the pointer expressed as angle (in rad).
+     * @param percent The position of the shutter.
      *
      * @return The coordinates of the pointer's center in our internal
      *         coordinate system.
@@ -480,8 +411,6 @@ public class Shutters extends View {
         Bundle state = new Bundle();
         state.putParcelable(STATE_PARENT, superState);
         state.putFloat(STATE_PERCENT, mPercent);
-        //state.putInt(STATE_OLD_COLOR, mCenterOldColor);
-        //state.putBoolean(STATE_SHOW_OLD_COLOR, mShowCenterOldColor);
 
         return state;
     }
@@ -492,11 +421,7 @@ public class Shutters extends View {
 
         Parcelable superState = savedState.getParcelable(STATE_PARENT);
         super.onRestoreInstanceState(superState);
-
         mPercent = savedState.getFloat(STATE_PERCENT);
-        //mShowCenterOldColor = savedState.getBoolean(STATE_SHOW_OLD_COLOR);
-        int currentColor = (int) mPercent*100;
-        //mPointerColor.setColor(currentColor);
     }
 
     //Getter and setter
