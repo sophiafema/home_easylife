@@ -160,7 +160,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         }
     }
 
-    //Status Text Jalousie
+    //Status Jalousie
     public void setTextShuttersUp(boolean isChecked)
     {
         if(isChecked) {
@@ -169,6 +169,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
             tVGeneralShutters.setText(R.string.shutter_down);
         }
     }
+
     public void setShuttersUp(boolean isChecked)
     {
         if(isChecked) {
@@ -177,7 +178,6 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
             dba.setAllShutterPosition(1.0);
         }
     }
-
 
     private boolean isShutterUp(double shutterPosition) {
         return shutterPosition < 50;
