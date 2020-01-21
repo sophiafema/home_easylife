@@ -1,7 +1,5 @@
 package com.sophiafema.home_easylife;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,14 +12,14 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link EventAddFunctionFragment2.OnFragmentInteractionListener} interface
+ * {@link EventAddFunctionFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link EventAddFunctionFragment2#newInstance} factory method to
+ * Use the {@link EventAddFunctionFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EventAddFunctionFragment2 extends Fragment {
+public class EventAddFunctionFragment extends Fragment {
 
-    public EventAddFunctionFragment2() {
+    public EventAddFunctionFragment() {
         // Required empty public constructor
     }
 
@@ -31,10 +29,10 @@ public class EventAddFunctionFragment2 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment EventAddFunctionFragment2.
+     * @return A new instance of fragment EventAddFunctionFragment.
      */
-    public static EventAddFunctionFragment2 newInstance(String param1, String param2) {
-        EventAddFunctionFragment2 fragment = new EventAddFunctionFragment2();
+    public static EventAddFunctionFragment newInstance(String param1, String param2) {
+        EventAddFunctionFragment fragment = new EventAddFunctionFragment();
         return fragment;
     }
 
@@ -47,7 +45,7 @@ public class EventAddFunctionFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_add_function_fragment2, container, false);
+        return inflater.inflate(R.layout.fragment_event_add_function, container, false);
     }
 
 

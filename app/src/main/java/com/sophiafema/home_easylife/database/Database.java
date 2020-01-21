@@ -27,6 +27,9 @@ import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
 
+/**
+ * get data from database
+ */
 public class Database extends AsyncTask<Object, Void, Object> {
 
     private FirebaseFirestore db;
@@ -40,6 +43,11 @@ public class Database extends AsyncTask<Object, Void, Object> {
         db = FirebaseFirestore.getInstance();
     }
 
+    /**
+     * should be removed in next release
+     * @param objects
+     * @return
+     */
     @Override
     protected Object doInBackground(Object[] objects) {
 

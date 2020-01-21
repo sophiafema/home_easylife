@@ -12,6 +12,11 @@ import com.sophiafema.home_easylife.models.Thermostat;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * easier for getting data from database
+ * -> use databaseadapter for recieving data
+ * returns correct objects
+ */
 public class DatabaseAdapter {
     private Database db;
     private String userId;
@@ -19,50 +24,7 @@ public class DatabaseAdapter {
     public DatabaseAdapter() {
         this.db = new Database();
         userId = LogInActivity.USER_UID;
-
-        //this.userId = Auth.getUserid();
     }
-
-    /**
-     * - setLight
-     * - setMusic
-     * - setMusic
-     * - setTemp
-     * - addRoom
-     * - setEvent
-     *
-     * - setBrightness
-     * - setLightPower
-     * - setTempPower
-     * - setTemp
-     * - setMusicPower
-     * - setVolume
-     * - setPlay
-     * - setLouvrePosition
-     * setName
-     *
-     * - getLight
-     * - getTemp
-     * - getMusic
-     * - getMusic
-     * - getEvent
-     * - getRoom
-     *
-     * - getAllRooms
-     * - getAllLight
-     * - getAllEvents
-     * - getAllLouvres
-     *
-     * - setAllPowerLight
-     * - setAllPowerMusic
-     * - setAllPowerTemp
-     * - setAllPositionLouvre
-     *
-     * - getAllPowerLight
-     * - getAllPowerMusic
-     * - getAllPowerTemp
-     * - getAllPositionLouvre
-     */
 
 
     public void setLight(String room, Light l) {

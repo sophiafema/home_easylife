@@ -186,7 +186,7 @@
 
     <fragment
         android:id="@+id/FRFEventAddFunction"
-        android:name="com.sophiafema.home_easylife.EventAddFunctionFragment2"
+        android:name="com.sophiafema.home_easylife.EventAddFunctionFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
