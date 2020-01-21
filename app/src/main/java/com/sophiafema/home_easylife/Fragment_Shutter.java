@@ -100,7 +100,6 @@ public class Fragment_Shutter extends Fragment
 
         else if (r.getName().equals(Util.KITCHEN))
         {
-            //TODO Kitchen beide Shutters
             shutter = inflater.inflate(R.layout.fragment_shutter_kitchen, container, false);
 
             positionlist[0] = r.getShutters().get(0).getPosition();

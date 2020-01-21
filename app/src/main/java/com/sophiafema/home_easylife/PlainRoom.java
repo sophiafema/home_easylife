@@ -152,7 +152,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         spinner.setVisibility(View.GONE);
     }
 
-    //TODO Hintergrünbilder einfügen
     @Override
     public void onClick(View view) {
 
@@ -261,9 +260,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         @Override @NonNull
         public Fragment getItem(int position)
         {
-            //TODO an die fragments die Werte vom Room übergeben
-
-
             if (r.getName().equals(Util.HALLWAY))
             {
                 switch (position)
