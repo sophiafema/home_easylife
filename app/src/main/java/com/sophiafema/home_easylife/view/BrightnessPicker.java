@@ -29,7 +29,7 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
 
     @Override
     public void configBeforeInit() {
-        setColors(new int[] {0xFF000000, 0xFF3A4000,0xFFDEC000, 0xFFDEC000, 0xFFDEC000, 0xFFEDDD00,  0xFFEDDD00, 0xFFFFEE00});
+        setColors(new int[] {0xFF121212, 0xFF323011, 0xFF67620E, 0xFF908606, 0xFFAEA202,  0xFFD2C400,0xFFE5D500 , 0xFFFFED2E});
         setOnClickIntoCenter(this);
     }
 

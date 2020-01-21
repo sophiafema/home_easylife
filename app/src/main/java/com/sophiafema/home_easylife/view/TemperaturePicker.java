@@ -21,7 +21,7 @@ public class TemperaturePicker extends Picker {
 
     @Override
     public void configBeforeInit() {
-        setColors(new int[] {0xFF153881, 0xFFf63a13});
+        setColors(new int[] {0xFF1D39B1, 0xFF6A2346, 0xFF881D1A});
     }
 
 
@@ -31,7 +31,7 @@ public class TemperaturePicker extends Picker {
     }
 
     public double calculateTempFromPercent(float percent) {
-        double temp = percent/7.14285 +18;
+        double temp = percent/8.333333 +16;
         return Math.round(temp*10)/10.0;
     }
 
