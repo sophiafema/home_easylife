@@ -78,7 +78,6 @@ public class Event_Fragment_Light extends AppCompatActivity implements View.OnCl
         System.out.println("light " + light);*/
 
 
-
         Bundle bundle = this.getIntent().getExtras();
         if (bundle != null) {
             r = (EventsRoom) bundle.getSerializable(Util.EVENTSROOM);

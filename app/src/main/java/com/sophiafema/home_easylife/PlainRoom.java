@@ -43,8 +43,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     String currentRoom;
     private ProgressBar spinner;
 
-    private final Lock lock = new ReentrantLock();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,40 +168,25 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
             if(view.getId() == R.id.iVPlainRoomHallway)
             {
                 intent2.putExtra(Util.ROOM, Util.HALLWAY);
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_flur_raum_v2);
-                setButtonColor(currentRoom);
-                tVPlainRoomMenue.setText(R.string.hallway);
             }
 
             else if (view.getId() == R.id.iVPlainRoomBath)
             {
                 intent2.putExtra(Util.ROOM, Util.BATH);
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_badezimmer_raum_v2);
-                setButtonColor(currentRoom);
-                tVPlainRoomMenue.setText(R.string.bath);
             }
 
             else if (view.getId() == R.id.iVPlainRoomKitchen)
             {
                 intent2.putExtra(Util.ROOM, Util.KITCHEN);
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_kueche_raum);
-                setButtonColor(currentRoom);
-                tVPlainRoomMenue.setText(R.string.kitchen);
             }
 
             else if (view.getId() == R.id.iVPlainRoomLiving)
             {
                 intent2.putExtra(Util.ROOM, Util.LIVING);
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_wohnzimmer_raum_v2);
-                setButtonColor(currentRoom);
-                tVPlainRoomMenue.setText(R.string.living);
             }
             else if (view.getId() == R.id.iVPlainRoomSleeping)
             {
                 intent2.putExtra(Util.ROOM, Util.SLEEPING);
-                iVPlainRoomBackground.setImageResource(R.drawable.ic_schlafzimmer_raum_v2);
-                setButtonColor(currentRoom);
-                tVPlainRoomMenue.setText(R.string.sleeping);
             }
 
             startActivity(intent2);

@@ -74,6 +74,8 @@ public abstract class Picker extends View {
      * Text size
      */
     private Paint mTextPaint;
+    private Paint mTextHigherPaint;
+    private Paint mTextLowerPaint;
     private int mTextColor;
 
     /**
@@ -211,6 +213,8 @@ public abstract class Picker extends View {
     private float mValue;
 
     private String mCenterText = "";
+    private String mCenterHigherText = "";
+    private String mCenterLowerText = "";
 
     /**
      * {@code onColorSelectedListener} instance of the onColorSelectedListener
@@ -360,6 +364,7 @@ public abstract class Picker extends View {
         mTextColor = a.getColor(R.styleable.Picker_color_text, b.getColor(R.color.colorText));
         mSelectedColor = a.getColor(R.styleable.Picker_color_selected, b.getColor(R.color.colorSelectedWheel));
         mWheelDisabledColor = a.getColor(R.styleable.Picker_color_disabled, b.getColor(R.color.colorDisabledWheel));
+        int mBackgroundColor = a.getColor(R.styleable.Picker_color_disabled, b.getColor(R.color.colorPrimaryDark));
 
         mGapAngle = 1;
 
@@ -392,6 +397,14 @@ public abstract class Picker extends View {
         //mTextPaint.setTextSize(200);
         mTextPaint.setColor(mTextColor);
 
+        mTextHigherPaint = new Paint();
+        //mTextPaint.setTextSize(200);
+        mTextHigherPaint.setColor(mTextColor);
+
+        mTextLowerPaint = new Paint();
+        //mTextPaint.setTextSize(200);
+        mTextLowerPaint.setColor(mTextColor);
+
 
         //Pointer
         mPointerHaloPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -407,7 +420,7 @@ public abstract class Picker extends View {
 
         //center
         mCenterNewPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mCenterNewPaint.setColor(Color.TRANSPARENT);
+        mCenterNewPaint.setColor(mBackgroundColor);
         mCenterNewPaint.setStyle(Paint.Style.FILL);
 
         mCenterNewColor = calculateColor(mValue);
@@ -426,7 +439,9 @@ public abstract class Picker extends View {
         canvas.translate(mTranslationOffsetX, mTranslationOffsetY);
         canvas.rotate(90);
 
+        canvas.drawCircle(0, 0, mColorCenterRadius, mCenterNewPaint);
         mColorWheelPath.addArc(mColorWheelRectangle, calculateDegree(mGapAngle/2), 360 - calculateDegree(mGapAngle));
+
 
 
         if(mWheelIsEnabled) {
@@ -460,13 +475,22 @@ public abstract class Picker extends View {
                     mColorPointerRadius, mPointerHaloDisabledPaint);
         }
 
-        canvas.drawCircle(0, 0, mColorCenterRadius/2.5f, mCenterNewPaint);
+
 
 
         String text = mCenterText;
         float textWidth = mTextPaint.measureText(text);
         float textHeight = mTextPaint.getTextSize();
         canvas.drawText(text, (-textWidth/2), (float) 0 + textHeight/3, mTextPaint);
+
+        String textLower = mCenterLowerText;
+        float textLowerWidth = mTextPaint.measureText(textLower);
+        float textLowerHeight = mTextPaint.getTextSize();
+        String textHigher = mCenterHigherText;
+        float textHigherWidth = mTextPaint.measureText(textHigher);
+        float textHigherHeight = mTextPaint.getTextSize();
+        canvas.drawText(textHigher, (-textHigherWidth/2), (float) 0 + textHigherHeight/3 - (textLowerHeight/2), mTextPaint);
+        canvas.drawText(textLower, (-textLowerWidth/2), (float) 0 + textLowerHeight/3 + (textHigherHeight/2), mTextPaint);
     }
 
     public float calculatePercentWithValue(float value) {
@@ -519,7 +543,7 @@ public abstract class Picker extends View {
         mColorWheelRectangle.set(-mColorWheelRadius, -mColorWheelRadius,
                 mColorWheelRadius, mColorWheelRadius);
 
-        mColorCenterRadius = (int) ((float) mPreferredColorCenterRadius * ((float) mColorWheelRadius / (float) mPreferredColorWheelRadius));
+        mColorCenterRadius = (int) mColorWheelRadius;
         mColorCenterHaloRadius = (int) ((float) mPreferredColorCenterHaloRadius * ((float) mColorWheelRadius / (float) mPreferredColorWheelRadius));
         mCenterRectangle.set(-mColorCenterRadius, -mColorCenterRadius,
                 mColorCenterRadius, mColorCenterRadius);
@@ -789,6 +813,14 @@ public abstract class Picker extends View {
 
     public void setCenterText(String text) {
         this.mCenterText = text;
+    }
+
+    public void setCenterHigherText(String text) {
+        this.mCenterHigherText = text;
+    }
+
+    public void setCenterLowerText(String text) {
+        this.mCenterLowerText = text;
     }
 
     public void setColors(int[] colors) {

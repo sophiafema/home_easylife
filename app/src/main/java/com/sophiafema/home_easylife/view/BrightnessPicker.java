@@ -29,7 +29,7 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
 
     @Override
     public void configBeforeInit() {
-        setColors(new int[] {0xFF000000, 0xFF3A4000,0xFFDEC000, 0xFFDEC000, 0xFFDEC000, 0xFFEDDD00,  0xFFEDDD00, 0xFFFFEE00});
+        setColors(new int[] {0xFF121212, 0xFF323011, 0xFF67620E, 0xFF908606, 0xFFAEA202,  0xFFD2C400,0xFFE5D500 , 0xFFFFED2E});
         setOnClickIntoCenter(this);
     }
 
@@ -41,26 +41,29 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
     }
 
     private void setText(boolean isEnabled) {
-        String textTurnOn = "AN schalten";
-        String textTurnOffe = "AUS schalten";
+        String textTurnOn = "AN";
+        String textTurnOffe = "AUS";
+        String schalten = "schalten";
         if(isEnabled) {
-            setCenterText(textTurnOffe);
+            setCenterHigherText(textTurnOffe);
         }
         else {
-            setCenterText(textTurnOn);
+            setCenterHigherText(textTurnOn);
         }
+        setCenterLowerText(schalten);
     }
 
     @Override
     public void onClick(boolean isEnabled) {
-        String textTurnOn = "AN schalten";
-        String textTurnOffe = "AUS schalten";
+        String textTurnOn = "AN";
+        String textTurnOffe = "AUS";
+        String schalten = "schalten";
         if(!(getValuePercent()<1)) {
             if(!isEnabled) {
-                setCenterText(textTurnOffe);
+                setCenterHigherText(textTurnOffe);
             }
             else {
-                setCenterText(textTurnOn);
+                setCenterHigherText(textTurnOn);
             }
             if (onClickInCenter != null) {
                 onClickInCenter.onClick(!isEnabled);
@@ -69,14 +72,12 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
         }
         else {
             setValueToPercent(100);
-            setCenterText(textTurnOffe);
+            setCenterHigherText(textTurnOffe);
             if (onClickInCenter != null) {
                 onClickInCenter.onClick(false);
             }
         }
-
-
-
+        setCenterLowerText(schalten);
     }
 
     @Override
