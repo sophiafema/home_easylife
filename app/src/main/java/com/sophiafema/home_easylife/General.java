@@ -90,7 +90,6 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         tVGeneralShutters = (TextView) findViewById(R.id.tVGeneralShutters);
 
 
-
         //set checked
         swGeneralLight.setChecked(lightIsOn);
         swGeneralTemperature.setChecked(temperatureIsOn);
@@ -108,9 +107,11 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         swGeneralLight.setOnCheckedChangeListener(this);
         swGeneralTemperature.setOnCheckedChangeListener(this);
         swGeneralMusic.setOnCheckedChangeListener(this);
+
+
     }
 
-    //Status Licht
+    //Status Text Licht
     public void setTextLightOn(boolean isChecked) {
         if(isChecked) {
             tVGeneralLight.setText(R.string.light_on);
@@ -121,6 +122,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         }
     }
 
+    //Status Datenbank Licht
     public void setLightOn(boolean isChecked) {
         if(isChecked) {
             dba.setAllLightsPower(true);
@@ -137,6 +139,8 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
             tVGeneralTemperature.setText(R.string.thermo_off);
         }
     }
+
+    //Status Datenbank Temperatur
     public void setTemperatureOn(boolean isChecked) {
         if(isChecked) {
             dba.setAllThermoPower(true);
@@ -153,6 +157,8 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
             tVGeneralMusic.setText(R.string.music_off);
         }
     }
+
+    //Status Datenbank Musik
     public void setMusicOn(boolean isChecked) {
         if(isChecked) {
             dba.setAllMusicPower(true);
@@ -161,7 +167,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         }
     }
 
-    //Status Jalousie
+    //Status Text Jalousien
     public void setTextShuttersUp(boolean isChecked)
     {
         if(isChecked) {
@@ -171,6 +177,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         }
     }
 
+    //Status Datenbank Jalousien
     public void setShuttersUp(boolean isChecked)
     {
         if(isChecked) {
@@ -180,10 +187,12 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         }
     }
 
+    //Position des Mittelwertes der Jalousien (Skala: 0-100)
     private boolean isShutterUp(double shutterPosition) {
         return shutterPosition < 50;
     }
 
+    //OnClick Methode für Jalousien
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.tVGeneralHeading) {
@@ -200,10 +209,10 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
             setShuttersUp(false);
             iVGeneralShuttersDown.setColorFilter(getResources().getColor(R.color.colorAccent));
             iVGeneralShuttersUp.setColorFilter(Color.TRANSPARENT);
-
         }
     }
 
+    //OnCheckedChanged Methode für Licht, Temperatur, Musik
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if(buttonView.getId() == R.id.swGeneralLight) {
