@@ -53,7 +53,6 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
 
 
     public Fragment_Light(Room room) {
-        // Required empty public constructor
         this.r = room;
     }
     public Fragment_Light() {
@@ -65,8 +64,9 @@ public class Fragment_Light extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
-        db = new DatabaseAdapter();
         View light = inflater.inflate(R.layout.fragment_light_bath, container, false);
+
+        db = new DatabaseAdapter();
 
        if (r.getName().equals(Util.BATH)) {
            light = inflater.inflate(R.layout.fragment_light_bath, container, false);

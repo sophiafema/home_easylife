@@ -110,7 +110,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
         swGeneralMusic.setOnCheckedChangeListener(this);
     }
 
-    //Status Text Licht
+    //Status Licht
     public void setTextLightOn(boolean isChecked) {
         if(isChecked) {
             tVGeneralLight.setText(R.string.light_on);
@@ -120,6 +120,7 @@ public class General extends AppCompatActivity implements View.OnClickListener ,
             iVGeneralLightIcon.setImageResource(R.drawable.ic_gluehbirne_weiss_aus);
         }
     }
+
     public void setLightOn(boolean isChecked) {
         if(isChecked) {
             dba.setAllLightsPower(true);
