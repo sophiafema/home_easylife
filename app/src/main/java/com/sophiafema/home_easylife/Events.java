@@ -77,7 +77,7 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_events);
 
         dba = new DatabaseAdapter();
-        events = dba.getEvents();
+
 
         iVEventsMenue = (ImageView) findViewById(R.id.iVEventsMenue);
         tVEventsHeading = (TextView) findViewById(R.id.tVEventsHeading);
@@ -99,9 +99,6 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         eventsSleeping = new ArrayList<Event>();
 
 
-
-
-
         // Lookup the recyclerview in activity layout
         recyclerViewAll = (RecyclerView) findViewById(R.id.recyclerViewAll);
         recyclerViewLiving = (RecyclerView) findViewById(R.id.recyclerViewLiving);
@@ -109,6 +106,30 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
         recyclerViewSleeping = (RecyclerView) findViewById(R.id.recyclerViewSleeping);
         recyclerViewKitchen = (RecyclerView) findViewById(R.id.recyclerViewKitchen);
         recyclerViewHallway = (RecyclerView) findViewById(R.id.recyclerViewHallway);
+
+        final Thread t1 = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                synchronized (this) {
+                    System.out.println("runs1");
+                    events = dba.getEvents();
+                    System.out.println("runs2");
+                    notify();
+                }
+
+            }
+
+        };
+        t1.start();
+
+        synchronized (t1) {
+            try {
+                t1.wait(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
         setRoomLists(events);
 
