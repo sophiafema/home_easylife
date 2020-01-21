@@ -190,9 +190,7 @@ public class DatabaseAdapter {
 
         SimpleRoom d = null;
         try {
-            d = (SimpleRoom) new Database().execute(new Object[] {"room", userId, room}).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+            d = (SimpleRoom) db.getRoom(userId, room);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -343,30 +341,7 @@ public class DatabaseAdapter {
 
     public ArrayList<Event> getEvents() {
         //return db.getAllEvents(userId);
-
-        ArrayList<Event> events = new ArrayList<>();
-        try {
-            Object obj = new Database().execute(new Object[] {"events", userId}).get();
-            if (obj instanceof ArrayList<?>) {
-                // Get the List.
-                ArrayList<?> al = (ArrayList<?>) obj;
-                if (al.size() > 0) {
-                    // Iterate.
-                    for (int i = 0; i < al.size(); i++) {
-                        // Still not enough for a type.
-                        Object object = al.get(i);
-                        if (object instanceof Event) {
-                            // Here we go!
-                            Event v = (Event) object;
-                            events.add(v);
-                        }
-                    }
-                }
-            }
-
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        ArrayList<Event> events = db.getAllEvents(userId);
         return events;
     }
 

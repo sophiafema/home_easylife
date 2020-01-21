@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -15,6 +16,9 @@ import android.widget.TextView;
 
 import com.sophiafema.home_easylife.database.DatabaseAdapter;
 import com.sophiafema.home_easylife.models.Room;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import me.relex.circleindicator.CircleIndicator;
 
@@ -38,11 +42,14 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     String currentRoom;
     private ProgressBar spinner;
 
+    private final Lock lock = new ReentrantLock();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plain_room);
+        r = null;
         db = new DatabaseAdapter();
 
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
@@ -55,6 +62,19 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         if(currentRoom == null) {
             currentRoom = Util.LIVING;
         }
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                synchronized (this) {
+                    r = db.getRoom(currentRoom);
+                    notify();
+                }
+
+            }
+
+        };
+        t.start();
 
         iVPlainRoomMenue = (ImageView) findViewById(R.id.iVPlainRoomMenue);
         tVPlainRoomMenue = (TextView) findViewById(R.id.tVPlainRoomMenue);
@@ -104,8 +124,15 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         }
 
         //Room mit Wert aus Datenbank befüllen
-        r = db.getRoom(currentRoom);
-        //Log.e("Lights", r.getLights().get(0).getName());
+
+
+        synchronized (t) {
+            try {
+                t.wait(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
         viewPager = (ViewPager)findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
