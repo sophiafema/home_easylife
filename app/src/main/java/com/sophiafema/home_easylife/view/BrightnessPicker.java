@@ -41,26 +41,29 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
     }
 
     private void setText(boolean isEnabled) {
-        String textTurnOn = "AN schalten";
-        String textTurnOffe = "AUS schalten";
+        String textTurnOn = "AN";
+        String textTurnOffe = "AUS";
+        String schalten = "schalten";
         if(isEnabled) {
-            setCenterText(textTurnOffe);
+            setCenterHigherText(textTurnOffe);
         }
         else {
-            setCenterText(textTurnOn);
+            setCenterHigherText(textTurnOn);
         }
+        setCenterLowerText(schalten);
     }
 
     @Override
     public void onClick(boolean isEnabled) {
-        String textTurnOn = "AN schalten";
-        String textTurnOffe = "AUS schalten";
+        String textTurnOn = "AN";
+        String textTurnOffe = "AUS";
+        String schalten = "schalten";
         if(!(getValuePercent()<1)) {
             if(!isEnabled) {
-                setCenterText(textTurnOffe);
+                setCenterHigherText(textTurnOffe);
             }
             else {
-                setCenterText(textTurnOn);
+                setCenterHigherText(textTurnOn);
             }
             if (onClickInCenter != null) {
                 onClickInCenter.onClick(!isEnabled);
@@ -69,14 +72,12 @@ public class BrightnessPicker extends Picker implements Picker.OnClickIntoCenter
         }
         else {
             setValueToPercent(100);
-            setCenterText(textTurnOffe);
+            setCenterHigherText(textTurnOffe);
             if (onClickInCenter != null) {
                 onClickInCenter.onClick(false);
             }
         }
-
-
-
+        setCenterLowerText(schalten);
     }
 
     @Override
