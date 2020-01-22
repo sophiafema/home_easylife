@@ -43,7 +43,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
 
     private ProgressBar spinner;
-    DatabaseAdapter db;
     Room r;
 
     @Override
@@ -79,22 +78,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         iVHomeGeneral .setOnClickListener(this);
         iVHomeEvents = (ImageView) findViewById(R.id.iVHomeEvents);
         iVHomeEvents .setOnClickListener(this);
-
-
-        //Datenbank Test hinzufuegen von Raum
-        //DatabaseAdapter dba = new DatabaseAdapter();
-        //dba.setLightPower(Util.LIVING, "esstisch", true);
-        /*ArrayList<Light> l = new ArrayList<>();
-        l.add(new Light(0, "esstisch", 3, 4, true));
-        l.add(new Light(1, "sofa", 3, 4, false));
-        Thermostat t = new Thermostat(0, "thermo", 30, true);
-        ArrayList<Shutter> lo = new ArrayList<>();
-        lo.add(new Shutter(0, "east", 40));
-        lo.add(new Shutter(0, "west", 50));
-        Music m = new Music(0, "music", 4, true, false);
-        r = new Room(Util.LIVING, 0, l, t, lo,m);
-        db.addRoom(r.getName(), r);*/
-
     }
 
     @Override
@@ -107,7 +90,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         spinner.setVisibility(View.VISIBLE);
-        //System.out.println(view.getId());
         if(view.getId() == R.id.iVHomeGeneral)
         {
             Intent intent1 = new Intent(this, General.class);
@@ -125,16 +107,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         }
         else
         {
-
-
-            //Datenbank Testabfrage
-
-            //System.out.println("room: " + db.getRoom(Util.LIVING).getName());
-            //System.out.println(db.getThermostat(r.getName()).getTemperature());
-
             Intent intent3 = new Intent(this, PlainRoom.class);
-
-            //Raum übergeben --> mit statischen variablen in Util
 
             if(view.getId() == R.id.iVHomeHallway)
             {
@@ -148,7 +121,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             {
                 intent3.putExtra(Util.ROOM, Util.KITCHEN);
             }
-
             else if (view.getId() == R.id.iVHomeLiving)
             {
                 intent3.putExtra(Util.ROOM, Util.LIVING);
@@ -157,7 +129,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             {
                 intent3.putExtra(Util.ROOM, Util.SLEEPING);
             }
-
             startActivity(intent3);
         }
     }

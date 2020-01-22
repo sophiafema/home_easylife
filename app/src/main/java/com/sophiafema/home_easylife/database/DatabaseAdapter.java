@@ -31,7 +31,7 @@ public class DatabaseAdapter {
         db.setFunction(userId, room, Database.LIGHT, l,  l.getName());
     }
     public void setMusic(String room, Music m) {
-        db.setFun pulction(userId, room, Database.MUSIC, m,  Database.MUSIC);
+        db.setFunction(userId, room, Database.MUSIC, m,  Database.MUSIC);
     }
     public void setShutter(String room, Shutter l) {
         db.setFunction(userId, room, Database.SHUTTER, l,  l.getName());
