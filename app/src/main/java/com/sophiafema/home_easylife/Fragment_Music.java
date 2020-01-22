@@ -18,6 +18,8 @@ import com.sophiafema.home_easylife.view.Picker;
 
 public class Fragment_Music extends Fragment
 {
+    //Initialisierung aller benötigten Variablen
+
     Room r;
     float volume;
     boolean play;
@@ -33,6 +35,7 @@ public class Fragment_Music extends Fragment
     TextView tVFMusicTitel;
     Switch sFMusic;
 
+    //Konstruktor
     public Fragment_Music(Room room) {
         // Required empty public constructor
         this.r = room;
@@ -45,6 +48,14 @@ public class Fragment_Music extends Fragment
         return new Fragment_Music(room);
     }
 
+    /*
+        - View fürs swipen
+        - Holt sich Volume, Play, und Power aus der Datenbank
+        - setzt Volume, den ToggleButton, PlayPause Button,
+        - speichert neuen Volume-Wert
+        - Kontrolliert ToggleButton
+        - Steuert die Anzeige/den Durchlauf der Musiktitel
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstantState)
     {
@@ -156,6 +167,7 @@ public class Fragment_Music extends Fragment
         return music;
     }
 
+    //steuert die ImageRessource des PlayPause Buttons
     public void setPlayPauseButton ()
     {
         if (play)

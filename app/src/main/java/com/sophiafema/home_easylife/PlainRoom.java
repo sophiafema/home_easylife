@@ -25,6 +25,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class PlainRoom extends AppCompatActivity implements View.OnClickListener {
 
+    //Instanzvariablen
     ImageView iVPlainRoomMenue;
     TextView tVPlainRoomMenue;
 
@@ -42,7 +43,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
     DatabaseAdapter db;
     String currentRoom;
     private ProgressBar spinner;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +93,8 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
         iVPlainRoomBackground = (ImageView) findViewById(R.id.iVPlainRoomBackground);
 
+        /*Setzt über die übergebene Room-ID den Hintergrund des aktuellen Raumes, färbt den Button des aktuellen Raumes in der Raumleiste grau
+         ein und setzt den Text des Zurück-Buttons */
         switch(currentRoom)
         {
             case Util.LIVING:
@@ -122,9 +124,6 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
                 break;
         }
 
-        //Room mit Wert aus Datenbank befüllen
-
-
         synchronized (t) {
             try {
                 t.wait(1000);
@@ -133,9 +132,12 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
             }
         }
 
+        // View pager zum swipen
+        //ruft Klasse ViwePagerAdapter auf
         viewPager = (ViewPager)findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
 
+        //Einbindung der ViewIndicatorDots/CircleIndicator
         indicator = (CircleIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
 
@@ -150,6 +152,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         spinner.setVisibility(View.GONE);
     }
 
+    //Startet entweder das Menü oder einen neuen Raum, der in Plain Room eingebunden ist
     @Override
     public void onClick(View view) {
 
@@ -193,6 +196,7 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    //setzt die Farbe der Raumleiste abhängig vom aktuellen Raum
     public void setButtonColor (String currentRoom) {
         switch (currentRoom) {
             case Util.LIVING:
@@ -234,6 +238,8 @@ public class PlainRoom extends AppCompatActivity implements View.OnClickListener
 
     }
 
+    //PagerAdapter fürs swipen
+    //weist zu, an welcher Stelle welches Fragment aufgerufen wird
     private class PagerAdapter extends FragmentPagerAdapter
     {
         private PagerAdapter(FragmentManager fm) {

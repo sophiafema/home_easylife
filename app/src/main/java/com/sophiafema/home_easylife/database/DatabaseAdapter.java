@@ -57,6 +57,7 @@ public class DatabaseAdapter {
             setMusic(r.getName(), r.getMusic());
         setThermostat(r.getName(), r.getThermo());
     }
+
     public void setEvent(Event e) {
         db.setEvent(userId, e, e.getId());
     }
